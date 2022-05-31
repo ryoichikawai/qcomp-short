@@ -1,2 +1,2 @@
-# qcomp-short-course
-A short course on quantum computation
+# Short Course on Quantum Computing with Qiskit
+
