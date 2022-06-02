@@ -3,61 +3,61 @@
 
 format: jb-book
 root: cover
-parts:
--  caption: Introduction
-   numbered: 2
-   chapters:
-   -  file: introduction/objectives.md
-   -  file: introduction/qmcomputation
-   -  file: introduction/what-is-information
-   -  file: introduction/python.md
-   -  file: introduction/qiskit.md
-   -  file: introduction/IBMQ.md
--  caption: Principles of Quantum Mechanics
-   numbered: 2
-   chapters:
-   -  file: quantum/00-chapter-intro
-   -  file: quantum/01-hilbert-space
-   -  file: quantum/02-operators
-   -  file: quantum/03-pure-states
-   -  file: quantum/04-qubit
-   -  file: quantum/05-interference
-   -  file: quantum/06-mixed-states
-   -  file: quantum/07-composite
-   -  file: quantum/08-entanglement
-   -  file: quantum/09-measurement
-   -  file: quantum/10-uncertainty
-   -  file: quantum/11-time-evolution
-   -  file: quantum/12-decoherence
-   -  file: quantum/references.md
-#-  caption: Numerical Quantum Mechanics with Qiskit
-#   numbered: 2
-#   chapters:
-#   -  file: states/statevector/intro
-#   -  file: states/statevector/data-types
-#   -  file: states/statevector/qubit-basis
-#   -  file: states/statevector/pauli-operators
-#   -  file: states/statevector/dual-space
-#   -  file: states/statevector/composite-systems
-#   -  file: states/statevector/classes
-#   -  file: states/statevector/class-statevector
-#   -  file: states/statevector/class-statefn
-#-  caption: Quantum Computing with Qiskit
-#   numbered: 2
-#   chapters:
-#   -  file: gates-q1/chapter_intro
-#      sections:
-#      -  file: gates-q1/x
-#      -  file: gates-q1/y
-#      -  file: gates-q1/z
-#      -  file: gates-q1/h
-#      -  file: gates-q1/s
-#      -  file: gates-q1/sx
-#   -  file: gates-q2/chapter_intro
-#      sections:
-#      -  file: gates-q2/cx
-#      -  file: gates-q2/cz
-#      -  file: gates-q2/cp
-#      -  file: gates-q2/swap
+numbered: 2
+chapters:
+-  file: preliminaries/intro
+   sections:
+   -  file: preliminaries/python
+   -  file: preliminaries/jupyter
+   -  file: preliminaries/qiskit
+   -  file: preliminaries/IBMQ
+-  file: introduction/intro
+   -  file: introduction/c-computation
+   -  file: introduction/q-computation
+ -  file: qubit1/intro
+   sections:
+   -  file: qubit1/qubit
+   -  file: qubit1/measurement
+   -  file: qubit1/bloch-sphere
+-  file: qgate1/intro
+   sections:
+   -  file: qgate1/operators
+   -  file: qgate1/pauli
+   -  file: qgate1/hadamard
+   -  file: qgate1/rotation
+   -  file: qgate1/phase
+   -  file: qgate1/clifford
+- file: qiskit1:/intro
+   -  file: qiskit1/backends
+   -  file: qiskit1/circuits
+   -  file: qiskit1/execution
+   -  file: qiskit1/outputs
+   -  file: qiskit1/tomography
+-  file: qubit2/intro
+   sections:
+   -  file: qubit2/product-states
+   -  file: qubit2/entanglement
+   -  file: qubit2/measurement
+   -  file: qubit2/teleportation
+   -  file: qubit2/entanglement-swapping
+-  file: qgate2/intro
+   sections:
+   -  file: qgate2/controlled-gates
+   -  file: qgate2/phase-kickback
+   -  file: qgate2/swap
+-  file: algorithms/intro
+   sections:
+   -  file: algorithms/oracle
+   -  file: algorithms/qwalk
+   -  file: algorithms/qfft
+   -  file: algorithms/phase-estimation
+   -  file: algorithms/period-finding
+   -  file: algorithms/spin-chains
+-  file: noises/intro
+   sections:
+   -  file: noises/mixed-states
+   -  file: noises/noisy-simulation
+   -  file: noises/error-correction
+
 
 
