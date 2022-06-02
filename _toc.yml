@@ -1,0 +1,63 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: cover
+parts:
+-  caption: Introduction
+   numbered: 2
+   chapters:
+   -  file: introduction/objectives.md
+   -  file: introduction/qmcomputation
+   -  file: introduction/what-is-information
+   -  file: introduction/python.md
+   -  file: introduction/qiskit.md
+   -  file: introduction/IBMQ.md
+-  caption: Principles of Quantum Mechanics
+   numbered: 2
+   chapters:
+   -  file: quantum/00-chapter-intro
+   -  file: quantum/01-hilbert-space
+   -  file: quantum/02-operators
+   -  file: quantum/03-pure-states
+   -  file: quantum/04-qubit
+   -  file: quantum/05-interference
+   -  file: quantum/06-mixed-states
+   -  file: quantum/07-composite
+   -  file: quantum/08-entanglement
+   -  file: quantum/09-measurement
+   -  file: quantum/10-uncertainty
+   -  file: quantum/11-time-evolution
+   -  file: quantum/12-decoherence
+   -  file: quantum/references.md
+#-  caption: Numerical Quantum Mechanics with Qiskit
+#   numbered: 2
+#   chapters:
+#   -  file: states/statevector/intro
+#   -  file: states/statevector/data-types
+#   -  file: states/statevector/qubit-basis
+#   -  file: states/statevector/pauli-operators
+#   -  file: states/statevector/dual-space
+#   -  file: states/statevector/composite-systems
+#   -  file: states/statevector/classes
+#   -  file: states/statevector/class-statevector
+#   -  file: states/statevector/class-statefn
+#-  caption: Quantum Computing with Qiskit
+#   numbered: 2
+#   chapters:
+#   -  file: gates-q1/chapter_intro
+#      sections:
+#      -  file: gates-q1/x
+#      -  file: gates-q1/y
+#      -  file: gates-q1/z
+#      -  file: gates-q1/h
+#      -  file: gates-q1/s
+#      -  file: gates-q1/sx
+#   -  file: gates-q2/chapter_intro
+#      sections:
+#      -  file: gates-q2/cx
+#      -  file: gates-q2/cz
+#      -  file: gates-q2/cp
+#      -  file: gates-q2/swap
+
+
