@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: A Short Course on Quantum Computation with Qiskit.
+title: A First Step to Quantum Computation with Qiskit.
 author: Ryoichi Kawai
 copyright: "Ryoichi Kawai 2022"
 logo: me-tiny.png
