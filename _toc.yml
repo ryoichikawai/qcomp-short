@@ -9,9 +9,9 @@ chapters:
 -  file: preliminaries/intro
    sections:
    -  file: preliminaries/python
-#-  file: preliminaries/jupyter
-#-  file: preliminaries/qiskit
-#-  file: preliminaries/IBMQ
+   -  file: preliminaries/jupyter
+   -  file: preliminaries/qiskit
+   -  file: preliminaries/cloud
 #-  file: introduction/intro
 #-  file: introduction/c-computation
 #-  file: introduction/q-computation
