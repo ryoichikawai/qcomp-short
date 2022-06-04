@@ -8,6 +8,7 @@ options:
 chapters:
 -  file: preliminaries/intro
    sections:
+   -  file: preliminaries/thisbook
    -  file: preliminaries/python
    -  file: preliminaries/jupyter
    -  file: preliminaries/qiskit
