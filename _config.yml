@@ -28,8 +28,8 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/ryoichikawai/qcomp-short # Online location of your book
-  path_to_book:  # Optional path to your book, relative to the repository root
+  url: https://github.com/ryoichikawai/qcomp-short/ # Online location of your book
+  path_to_book: ""  # Optional path to your book, relative to the repository root
   branch: main # Which branch of the repository should be used when creating links (optional)
 
 #repository:
@@ -39,21 +39,23 @@ repository:
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
-#html:
-#  use_issues_button: true
-#  use_repository_button: true
-
+html:
+   use_issues_button: true
+   use_repository_button: true
+   use_download_button: true
+   use_issues_button: true
 sphinx:
-   config:
-      html_theme_options:
-         use_download_button: true
-         use_issues_button: true
-         use_repository_button: true
-         use_edit_page_button: false
+#   config:
+#     html_theme_options:
+#         use_download_button: true
+#         use_issues_button: true
+#         use_repository_button: true
+#         use_edit_page_button: true
    bibtex_reference_style: label
    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 launch_buttons:
-   notebook_interface: "jupyterlab"
+   notebook_interface: "classic"
    binderhub_url: ""
    colab_url: "https://colab.research.google.com"
+#   thebe: true
