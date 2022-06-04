@@ -1,2 +1,2 @@
-# Short Course on Quantum Computing with Qiskit
+# First Step to Quantum Computing with Qiskit
 
