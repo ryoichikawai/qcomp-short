@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # A First Step to Quantum Computing and Qiskit
+# # A First Step to Quantum Computation with Qiskit
 
 # **Ryoichi Kawai**  
 # 

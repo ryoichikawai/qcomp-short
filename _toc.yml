@@ -4,15 +4,16 @@
 format: jb-book
 root: cover
 options:
-   numbered: 3
+   numbered: 2
 chapters:
--  file: preliminaries/intro
+-  file: prerequisites/intro
    sections:
-   -  file: preliminaries/thisbook
-   -  file: preliminaries/python
-   -  file: preliminaries/jupyter
-   -  file: preliminaries/qiskit
-   -  file: preliminaries/cloud
+   -  file: prerequisites/thisbook
+   -  file: prerequisites/python
+   -  file: prerequisites/jupyter
+   -  file: prerequisites/qiskit
+   -  file: prerequisites/cloud
+   -  file: prerequisites/quantum
 #-  file: introduction/intro
 #-  file: introduction/c-computation
 #-  file: introduction/q-computation
