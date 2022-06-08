@@ -101,10 +101,17 @@ np.cos(np.pi)
 
 # Notice `np.` attached to `cos()` and `pi`.  We must tell python platform that the mathematical expressions are defined in numpy.
 
-# ```{admonition} Copying python codes
+# ```{admonition} Running python codes on your computer
 # :class: tip
 # 
 # You can copy the python code to the clipboard on your computer.  Move the cursor to the top-right corner of the code block.  Copy icon shows up.  Just click it.  The content of the code block is copied.  You can paste it to your jupyter-lab (or a python source file) and run it.
+# ```
+
+# ```{admonition} Running python codes at Google Colab
+# :class: tip
+# 
+# Launch Google Colab from the launch button at the top of the page.  This page is automatically transferred to Colab.  Sign in to Colab if you haven't yet.  Now, you can run the python code by clicking a little triangle button at the upper-left corner of the code block.  You can modify the code and run your own version.
+# 
 # ```
 
 # 

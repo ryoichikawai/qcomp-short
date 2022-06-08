@@ -14,9 +14,10 @@ chapters:
    -  file: prerequisites/qiskit
    -  file: prerequisites/cloud
    -  file: prerequisites/quantum
-#-  file: introduction/intro
-#-  file: introduction/c-computation
-#-  file: introduction/q-computation
+-  file: introduction/intro
+   sections:
+   -  file: introduction/ccomp
+   -  file: introduction/qcomp
 #-  file: qubit1/intro
 #sections:
 #-  file: qubit1/qubit
