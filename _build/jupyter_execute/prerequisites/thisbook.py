@@ -24,6 +24,8 @@
 # 
 # There are many references in the documents, references to equation, figure, table, chapter, section, footnote, bibliography citation, ...  They are all linked to the actual target.  If you click the reference, the page jump to the target. For example, an equation number cited in a page is linked to the corresponding equation even it is in a different page. Clicking the cited equation number, the page containing the equation is shown  External URLs are also linked.   
 
+# ![Buttons](buttons.png)
+
 # ## Downloading the page
 # 
 # There is a download button at the upper-right corner.  You can download the original Jupyter notebook file (.ipynb) of the current page and the PDF version.  Click one of them with the left mouse button, download is supposed to start.  However, some web browser instead shows the contents in the browser.  If your browser does that, click ".ipynb" with the *right* mouse button and use "save link as ...". You can run the downloaded Jupyter notebook file on you computer using JupyterLab (See {numref}`sec-jupyter`).
