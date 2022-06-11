@@ -8,8 +8,9 @@
 
     <title>1.2. Python &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -41,12 +38,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +64,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +87,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +108,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../cover.html">
-   A First Step to Quantum Computation with Qiskit
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../cover.html">
+                    A First Step to Quantum Computation with Qiskit
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
    1. Prerequisites
@@ -172,109 +186,244 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qubit1/intro.html">
+   3. A Qubit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/qubit1.html">
+     3.1. Mathematics of a qubit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/measurement.html">
+     3.2. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/blochsphere.html">
+     3.3. Bloch sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/qcoin.html">
+     3.4. Tossing a quantum coin
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/prerequisites/python.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/ryoichikawai/qcomp-short/"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fprerequisites/python.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/prerequisites/python.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/prerequisites/python.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fprerequisites/python.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/prerequisites/python.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#installation">
    Installation
@@ -297,12 +446,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Python</h1>
@@ -341,11 +489,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="python">
-<span id="sec-python"></span><h1><span class="section-number">1.2. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<span id="sec-python"></span><h1><span class="section-number">1.2. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">Python</span></code> is a popular computer programming language. It is widely used in many different fields, scientific research, IT companies, financial institutions, <span class="math notranslate nohighlight">\(\cdots\)</span> .  The use of python is required in this short course. I hope that readers have a little bit of experience in coding with python. If you haven’t use it yet, you need to learn it a long with this course.  There are many online tutorials for self-studying.  Some of popular ones are listed at
 <a class="reference external" href="https://sunscrapers.com/blog/12-best-python-tutorials-for-beginners/#top-python-beginner-tutorials">sunscrapers.com</a>.  You can pick one that matches to your level.  The following book will be useful in general.</p>
 <blockquote>
@@ -354,7 +503,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>which is freely available at <a class="reference external" href="https://greenteapress.com/wp/think-python/">greenteapress.com</a>.  If you prefer a hard copy, You can buy a paperback at <a class="reference external" href="http://amzn.to/Owtmjy">amazon.com</a>.</p>
 <p>You must be able to execute python codes on a computer.  A computer provided by your school may have python on it.  You can also use online services such as Google Colab where you can run python codes for free.   However, school computers or online services often do not have modules you need.   It is highly recommended to have python on your own computer.  It is completely free but takes up some disk space (at least 5Gb).  In addition to basic installation, you need to install additional modules for quantum computing.  In this chapter, I explain how to install standard python.  Two additional modules, <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> and <code class="docutils literal notranslate"><span class="pre">qiskit</span></code> will be introduced in the following sections.</p>
 <section id="installation">
-<h2>Installation <a class="footnote-reference brackets" href="#skip-installation" id="id1">1</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2>Installation <a class="footnote-reference brackets" href="#skip-installation" id="id1">1</a><a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
 <p>There are many ways to install python.  One problem is that basic python (we shall call it <em>python platform</em>) is not enough to do almost anything. For example, the python platform does not provide any scientific function. We need to install many modules along with the python platform.  Fortunately, most of modules we need are managed by a package manager called <em>conda</em>.  Unless you are expert of python, I strongly recommend to use <em>conda</em>.</p>
 <ol class="simple">
 <li><p><strong>Downloading anaconda package</strong><br />
@@ -386,7 +535,7 @@ There may be newer version of packages.  To update installed packages,  run the 
 <p>You will see hundreds of packages.  We will be using many of them even without knowing it.</p>
 </section>
 <section id="using-python">
-<h2>Using Python<a class="headerlink" href="#using-python" title="Permalink to this headline">¶</a></h2>
+<h2>Using Python<a class="headerlink" href="#using-python" title="Permalink to this headline">#</a></h2>
 <p>You can use python interactively inside the text window.  Just use command <code class="docutils literal notranslate"><span class="pre">python</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>  
 <span class="n">Python</span> <span class="mf">3.9.12</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Apr</span>  <span class="mi">4</span> <span class="mi">2022</span><span class="p">,</span> <span class="mi">05</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">27</span><span class="p">)</span> <span class="p">[</span><span class="n">MSC</span> <span class="n">v</span><span class="mf">.1916</span> <span class="mi">64</span> <span class="n">bit</span> <span class="p">(</span><span class="n">AMD64</span><span class="p">)]</span> <span class="p">::</span> <span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="n">on</span> <span class="n">win32</span>  
@@ -407,7 +556,7 @@ There may be newer version of packages.  To update installed packages,  run the 
 <p>We rarely use the interactive mode. Instead, we write a source code using a text editor and run it.  There are also so-called integrated development environment (IDE). <code class="docutils literal notranslate"><span class="pre">spyder</span></code> and <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> are the two most popular IDEs for python.  We use<code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code> to develop python codes.  Actually, this textbook is entirely written with <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code>.</p>
 </section>
 <section id="numpy">
-<h2>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
+<h2>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">#</a></h2>
 <p>Unlike other computer languages such as C++, Python platform is not capable of mathematical calculation. Mathematical modules are provided by various packages.  Among them, <em>Numpy</em> is commonly used.  Free documentation and tutorial are available at <a class="reference external" href="https://numpy.org/learn/">numpy.org</a>.</p>
 <p>To use it, we must <em>import</em> the module to your code.  In this book, we import it as</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -442,7 +591,7 @@ There may be newer version of packages.  To update installed packages,  run the 
 </section>
 <hr class="docutils" />
 <section id="matplotlib">
-<h2>Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h2>
+<h2>Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">#</a></h2>
 <p>When we want to show results of computation as graphs, we use a plotting module <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.  It is a powerful visualization package for scientific research.  Free documentation and tutorials are available at
 <a class="reference external" href="https://matplotlib.org/">matplotlib.org</a>.</p>
 <p>In this book we import it as</p>
@@ -461,7 +610,7 @@ The following example plots <span class="math notranslate nohighlight">\(\sin(x)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6b68227490&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4a78ee7b80&gt;]
 </pre></div>
 </div>
 <img alt="../_images/python_11_1.png" src="../_images/python_11_1.png" />
@@ -502,9 +651,11 @@ The following example plots <span class="math notranslate nohighlight">\(\sin(x)
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="thisbook.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -520,24 +671,28 @@ The following example plots <span class="math notranslate nohighlight">\(\sin(x)
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ryoichi Kawai<br/>
+  
+      &copy; Copyright Ryoichi Kawai 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Ryoichi Kawai<br/>
-    
-        &copy; Copyright Ryoichi Kawai 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

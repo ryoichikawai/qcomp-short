@@ -91,7 +91,7 @@
 # 
 # where `np` is a shorthand of `numpy`.  You can access methods (functions) and attributes associated with the numpy class using the shorthand.  For example, we calculate $\cos(\pi)$ as
 
-# In[1]:
+# In[2]:
 
 
 import numpy as np
@@ -135,7 +135,7 @@ np.cos(np.pi)
 # The following example plots $\sin(x)$ for $x \in [0,2\pi]$
 # 
 
-# In[2]:
+# In[6]:
 
 
 import matplotlib.pyplot as plt   # visualization tools

@@ -19,11 +19,12 @@ chapters:
    sections:
    -  file: introduction/ccomp
    -  file: introduction/qcomp
-#-  file: qubit1/intro
-#sections:
-#-  file: qubit1/qubit
-#-  file: qubit1/measurement
-#-  file: qubit1/bloch-sphere
+-  file: qubit1/intro
+   sections:
+   -  file: qubit1/qubit1
+   -  file: qubit1/measurement
+   -  file: qubit1/blochsphere
+   -  file: qubit1/qcoin
 #-  file: qgate1/intro
 #sections:
 #-  file: qgate1/operators

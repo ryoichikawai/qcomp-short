@@ -8,8 +8,9 @@
 
     <title>1.7. Mathematics &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -41,12 +38,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +64,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +87,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +108,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../cover.html">
-   A First Step to Quantum Computation with Qiskit
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../cover.html">
+                    A First Step to Quantum Computation with Qiskit
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
    1. Prerequisites
@@ -172,109 +186,244 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qubit1/intro.html">
+   3. A Qubit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/qubit1.html">
+     3.1. Mathematics of a qubit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/measurement.html">
+     3.2. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/blochsphere.html">
+     3.3. Bloch sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/qcoin.html">
+     3.4. Tossing a quantum coin
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/prerequisites/math.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/ryoichikawai/qcomp-short/"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fprerequisites/math.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/prerequisites/math.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/prerequisites/math.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fprerequisites/math.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/prerequisites/math.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ket-and-bra">
    Ket and bra
@@ -322,12 +471,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Mathematics</h1>
@@ -391,11 +539,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="mathematics">
-<span id="sec-math"></span><h1><span class="section-number">1.7. </span>Mathematics<a class="headerlink" href="#mathematics" title="Permalink to this headline">¶</a></h1>
+<span id="sec-math"></span><h1><span class="section-number">1.7. </span>Mathematics<a class="headerlink" href="#mathematics" title="Permalink to this headline">#</a></h1>
 <p>The theory of quantum mechanics is built on linear algebra.  I hope that you have studied elementary linear algebra prior to this book.  While I briefly introduce necessary mathematics, I expect you to review the theory of complex vector spaces (Hilbert spaces).  You can find a good summary of mathematics is also given in this book</p>
 <ul class="simple">
 <li><p>J. Audretsch: <em>Entangled Systems - New Directions in Quantum Physics</em> (Wiley-VCH, 2007)</p></li>
@@ -407,13 +556,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p>The following is a summary of Hilbert space using abstract mathematical expressions.  The ket and bra notation of vectors may be new to you.  Otherwise, it is just a standard linear algebra.  I will discuss each item in later chapters with practical examples for quantum computation.  For now, refresh your understanding of linear algebra.</p>
 <section id="ket-and-bra">
-<h2>Ket and bra<a class="headerlink" href="#ket-and-bra" title="Permalink to this headline">¶</a></h2>
+<h2>Ket and bra<a class="headerlink" href="#ket-and-bra" title="Permalink to this headline">#</a></h2>
 <p>You are familiar with Euclidean vectors such as forces and velocities, which expressed as <span class="math notranslate nohighlight">\(\vec{F}\)</span> and <span class="math notranslate nohighlight">\(\vec{v}\)</span>, respectively. They are real vectors.  Quantum mechanics is mathematically described with complex vectors in a <em>Hilbert space</em>. In order to avoid confusion a complex vector <span class="math notranslate nohighlight">\(\psi\)</span> is denoted as <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>, which is called <em>ket vector</em> or simply <em>ket</em>.
 For every ket <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>, there is a corresponding complex vector <span class="math notranslate nohighlight">\(\langle\psi|\)</span>, which is known as <em>bra vector</em> or just <em>bra</em>. Mathematically, <span class="math notranslate nohighlight">\(\langle\psi|\)</span> is the <em>adjoint</em> or <em>dual</em> of <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>. From physics point of view, they are equivalent.  We need bra vectors to compute inner products (See subsection <a class="reference internal" href="#subsec-innerproduct"><span class="std std-ref">Inner product</span></a>).</p>
 <p>Since kets and bras are vectors,  two basic mathematical operations, <em>addition</em> <span class="math notranslate nohighlight">\(|a\rangle+|b\rangle\)</span> are <em>scalar mulitplication</em> <span class="math notranslate nohighlight">\(\lambda |a\rangle\)</span> (<span class="math notranslate nohighlight">\(\lambda\)</span> is a complex number) can be applied to them.  The regular rules of calculation are applied as given below.  The dual of the operations are <span class="math notranslate nohighlight">\(\langle a| + \langle b|\)</span> and <span class="math notranslate nohighlight">\(\langle a | \lambda^*\)</span> where <span class="math notranslate nohighlight">\(\lambda^*\)</span> is a complex conjugate of <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 </section>
 <section id="addition">
-<h2>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">¶</a></h2>
+<h2>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">#</a></h2>
 <p>The following statements are valid for any <span class="math notranslate nohighlight">\(|a\rangle\)</span>, <span class="math notranslate nohighlight">\(|b\rangle\)</span>, <span class="math notranslate nohighlight">\(|c\rangle\)</span> in the same vector space.
 The same rules are applied to bra vectors.</p>
 <table class="colwidths-auto table">
@@ -442,7 +591,7 @@ The same rules are applied to bra vectors.</p>
 </table>
 </section>
 <section id="scalar-multiplication">
-<h2>Scalar multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline">¶</a></h2>
+<h2>Scalar multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline">#</a></h2>
 <p>The following statements are valid for any <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|b\rangle\)</span> in the same vector space and any complex numbers <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>.
 The same rules are applied to bra vectors.</p>
 <table class="colwidths-auto table">
@@ -471,7 +620,7 @@ The same rules are applied to bra vectors.</p>
 </table>
 </section>
 <section id="superposition">
-<h2>Superposition<a class="headerlink" href="#superposition" title="Permalink to this headline">¶</a></h2>
+<h2>Superposition<a class="headerlink" href="#superposition" title="Permalink to this headline">#</a></h2>
 <p>Combining addition and scalar multiplication, we can construct a superposition of vectors,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -488,7 +637,7 @@ The same rules are applied to bra vectors.</p>
 <hr class="docutils" />
 </section>
 <section id="inner-product">
-<span id="subsec-innerproduct"></span><h2>Inner product<a class="headerlink" href="#inner-product" title="Permalink to this headline">¶</a></h2>
+<span id="subsec-innerproduct"></span><h2>Inner product<a class="headerlink" href="#inner-product" title="Permalink to this headline">#</a></h2>
 <p>In the Euclidean vector space, an inner product (dot product) <span class="math notranslate nohighlight">\(\,\vec{a} \cdot \vec{b}\,\)</span> is real and <span class="math notranslate nohighlight">\(\,\vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}\)</span>. The inner product in a Hilbert space differs in two points. Firstly, the inner product in a Hilbert space <span class="math notranslate nohighlight">\(\langle a|b \rangle\)</span> is complex.  Secondly, the inner product is not symmetric between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, that is <span class="math notranslate nohighlight">\(\langle a|b \rangle \ne \langle b|a \rangle\)</span>. Instead, the two inner products are complex conjugate to each other as <span class="math notranslate nohighlight">\(\langle a|b \rangle^* = \langle b|a \rangle\)</span>.</p>
 <p>The inner product between <span class="math notranslate nohighlight">\(|c \rangle\)</span> and a superposition state <span class="math notranslate nohighlight">\(|\psi \rangle = \alpha |a \rangle + \beta |b \rangle\)</span> can be computed with the distribution rule</p>
 <div class="math notranslate nohighlight">
@@ -506,13 +655,13 @@ The same rules are applied to bra vectors.</p>
 </section>
 <hr class="docutils" />
 <section id="orthogonality">
-<h2>Orthogonality<a class="headerlink" href="#orthogonality" title="Permalink to this headline">¶</a></h2>
+<h2>Orthogonality<a class="headerlink" href="#orthogonality" title="Permalink to this headline">#</a></h2>
 <p>The inner product of two Euclidean vectors <span class="math notranslate nohighlight">\(\vec{a}\)</span> and <span class="math notranslate nohighlight">\(\vec{b}\)</span> may be expressed as <span class="math notranslate nohighlight">\(\vec{a}\cdot\vec{b} = a b \cos\theta\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span> is the angle between the two vectors. When <span class="math notranslate nohighlight">\(\theta = \pm \frac{\pi}{2}\)</span>, the inner product vanishes.  Then, the two vectors are said to be orthogonal. Although no such angle can be defined between two kets, we say that <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|a\rangle\)</span> are <em>orthogonal</em> if <span class="math notranslate nohighlight">\(\langle a | b \rangle = 0\)</span>.</p>
 <hr class="docutils" />
 <p><span class="math notranslate nohighlight">\(|q\rangle\)</span> and <span class="math notranslate nohighlight">\(|b\rangle\)</span> are normalized and orthogonal to each other and have the. SHow that <span class="math notranslate nohighlight">\(|\psi\rangle = |a\rangle + i |b \rangle\)</span> and <span class="math notranslate nohighlight">\(|\varphi\rangle = |a\rangle - i |b \rangle\)</span>. are orthogonal. if</p>
 </section>
 <section id="norm-and-normarization">
-<h2>Norm and normarization<a class="headerlink" href="#norm-and-normarization" title="Permalink to this headline">¶</a></h2>
+<h2>Norm and normarization<a class="headerlink" href="#norm-and-normarization" title="Permalink to this headline">#</a></h2>
 <p>Recall that the norm (magnitude) of an Euclidean vector is defined by <span class="math notranslate nohighlight">\(\|\vec{a}\| = \sqrt{\vec{a}\cdot\vec{a}}\)</span>.
 The norm of <span class="math notranslate nohighlight">\(\ket{a}\)</span> is defined in the same way.  Replacing the dot product with inner product, we have the norm of <span class="math notranslate nohighlight">\(|a\rangle\)</span> as</p>
 <div class="math notranslate nohighlight">
@@ -536,17 +685,17 @@ When <span class="math notranslate nohighlight">\(\langle a|a \rangle = 1\)</spa
 </section>
 <hr class="docutils" />
 <section id="basis-sets">
-<h2>Basis sets<a class="headerlink" href="#basis-sets" title="Permalink to this headline">¶</a></h2>
+<h2>Basis sets<a class="headerlink" href="#basis-sets" title="Permalink to this headline">#</a></h2>
 <p>In a freshman physics course, perhaps you expressed a force vector in the three-dimensional Euclidean space as <span class="math notranslate nohighlight">\(\vec{F} = F_x \vec{i} + F_y \vec{j} + F_z \vec{k}\)</span>.  In fact, any vector can be expressed in the same way using the basis vectors  <span class="math notranslate nohighlight">\(\vec{i}\)</span>, <span class="math notranslate nohighlight">\(\vec{j}\)</span> and <span class="math notranslate nohighlight">\(\vec{k}\)</span>.  These three vectors are orthogonal to each other and their magnitude is 1.  Hence they are <em>orthonormal basis</em>.</p>
 <p>Similarly, a <span class="math notranslate nohighlight">\(n\)</span>-dimensional Hilbert space is <em>spanned</em> by a basis set <span class="math notranslate nohighlight">\(\{\ket{e_0}, \ket{e_1}, \cdots, \ket{e_{n-1}}\}\)</span>.  We assume that the basis vectors are normized and orthogonal to each other.  Such basis set is called <em>orthonormal basis</em> and the basis vectors satisfy</p>
 <div class="math notranslate nohighlight" id="equation-orthonormal">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-orthonormal" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-orthonormal" title="Permalink to this equation">#</a></span>\[
 \langle e_i | e_j \rangle = \delta_{ij}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> is the usual Kronecker’s delta.</p>
 <p>The basis vectors are <em>linearly independent</em> and <em>complete</em>.  That means that any ket vector  can be expressed as a linear combination of the base vectors as</p>
 <div class="math notranslate nohighlight" id="equation-basis-expansion">
-<span class="eqno">(1.2)<a class="headerlink" href="#equation-basis-expansion" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-basis-expansion" title="Permalink to this equation">#</a></span>\[
 |\psi\rangle = c_0 |e_0\rangle + c_1 |e_1\rangle  \cdots c_{n-1} |e_{n-1}\rangle = \sum_{i=0}^{n-1} c_i |e_i\rangle
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(c_i\)</span> is complex.
@@ -560,10 +709,10 @@ Using the orthonormality condition <a class="reference internal" href="#equation
 <p>If <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> is normalized, the coefficients is normalized as <span class="math notranslate nohighlight">\(\sum_j |c_j|^2 = 1\)</span>.</p>
 </section>
 <section id="completeness">
-<h2>Completeness<a class="headerlink" href="#completeness" title="Permalink to this headline">¶</a></h2>
+<h2>Completeness<a class="headerlink" href="#completeness" title="Permalink to this headline">#</a></h2>
 <p>In Equation <a class="reference internal" href="#equation-basis-expansion">(1.2)</a> we expanded an arbitrary vector in a complete basis set.  The following <em>closure relation</em> guarantees the completeness.</p>
 <div class="math notranslate nohighlight" id="equation-completeness">
-<span class="eqno">(1.3)<a class="headerlink" href="#equation-completeness" title="Permalink to this equation">¶</a></span>\[
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-completeness" title="Permalink to this equation">#</a></span>\[
 |e_0\rangle\langle e_0| + |e_1\rangle\langle e_1| + \cdots + |e_{n-1}\rangle\langle e_{n-1}| = I
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\{|e_i\rangle\}\)</span> is an orthonormal basis.  <span class="math notranslate nohighlight">\(|e_i\rangle\langle e_i|\)</span> is a kind of operator called <em>projection operator</em>, which we study in XXX.  It acts on a ket as follows:</p>
@@ -597,9 +746,11 @@ Using the orthonormality condition <a class="reference internal" href="#equation
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="quantum.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -615,24 +766,28 @@ Using the orthonormality condition <a class="reference internal" href="#equation
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ryoichi Kawai<br/>
+  
+      &copy; Copyright Ryoichi Kawai 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Ryoichi Kawai<br/>
-    
-        &copy; Copyright Ryoichi Kawai 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
