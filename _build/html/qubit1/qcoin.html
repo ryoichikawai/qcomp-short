@@ -401,12 +401,41 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classical-simulation">
+   Classical simulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantum-simulation">
+   Quantum simulation
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -418,6 +447,24 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classical-simulation">
+   Classical simulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantum-simulation">
+   Quantum simulation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -427,8 +474,53 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tossing-a-quantum-coin">
 <span id="sec-qcoin"></span><h1><span class="section-number">3.4. </span>Tossing a quantum coin<a class="headerlink" href="#tossing-a-quantum-coin" title="Permalink to this headline">#</a></h1>
-<p>To demonstrate the stochastic nature of quantum measurement, we consider a quantum coin.  The coin has two states, head and tail. We assign head to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and tail to <span class="math notranslate nohighlight">\(|1\rangle\)</span>  The superposition state <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right)\)</span> indicates that the state of the quantum coin is neither head nor tail.  Based on the Born rule, the chance to get head is 50% and tail 50%.  Since the outcome is completely random, measuring the state of the quantum coin is equivalent to tossing a classical coin.</p>
+<p>It is a common practice to pick one of two choices by tossing up a coin.  The classical motion of coin is chaotic and approximately the probability to get head and tail is equal. We can simulate the process on classical computer using random number generator.  Such simulation is known as Monte Carlo simulation after the name of famous casino city.  One  can simulate the same process on a quantum computer without random numbers by exploiting the stochastic nature of quantum measurement.  In the following, both a classical and quantum simulation are shown.</p>
+<section id="classical-simulation">
+<h2>Classical simulation<a class="headerlink" href="#classical-simulation" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Classical Monte Carlo simulation of coin tossing</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># coin is tossed 10000 times for statistical analysis</span>
+<span class="n">shots</span><span class="o">=</span><span class="mi">10000</span>
+
+<span class="c1"># generate random number</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">shots</span><span class="p">)</span>
+
+<span class="c1"># count number of heads and tails</span>
+<span class="c1"># if the random number is less than 0.5, it is head.</span>
+<span class="c1"># otherwise, it is tail.</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">c</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">tail</span> <span class="o">=</span> <span class="n">shots</span><span class="o">-</span><span class="n">head</span>
+
+<span class="c1"># print out the probabilities</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;head=&quot;</span><span class="p">,</span><span class="n">head</span><span class="o">/</span><span class="n">shots</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tail=&quot;</span><span class="p">,</span><span class="n">tail</span><span class="o">/</span><span class="n">shots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head= 0.4937
+tail= 0.5063
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="quantum-simulation">
+<h2>Quantum simulation<a class="headerlink" href="#quantum-simulation" title="Permalink to this headline">#</a></h2>
+<p>To demonstrate the stochastic nature of quantum measurement, we consider a quantum coin.  The quantum coin has two states, head and tail. We assign the head to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and the tail to <span class="math notranslate nohighlight">\(|1\rangle\)</span>  The superposition state <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right)\)</span> indicates that the state of the quantum coin is neither head nor tail.  Based on the Born rule, the chance to get head is 50% and tail 50%.  Since the outcome is completely random, measuring the state of the quantum coin is equivalent to tossing a classical coin.</p>
 <p>In the following qiskit code, the superposition state using a Hadamard gate (we will discuss this in next chapter) and then the state of the qubit is measured.  The result is stored in a classical bit. The quantum computation is simulated with <code class="docutils literal notranslate"><span class="pre">qasm_simulator</span></code> on your computer instead of sending the code to a real quantum computer. (We will send this to real quantum computer in a later chapter.) We repeat the simulation 10000 times and find the probabilities to find head and tail. Since the number of samplings is finite, the result is not exactly 50%-50% but close to  it.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To run this code in Google Colab</span>
+<span class="c1"># uncomment and execute the following line</span>
+<span class="c1">#!pip install qiskit ipywidgets pylatexenc</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tossing Up Quantum Coin</span>
@@ -462,10 +554,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/qcoin_2_0.png" src="../_images/qcoin_2_0.png" />
+<img alt="../_images/qcoin_7_0.png" src="../_images/qcoin_7_0.png" />
 </div>
 </div>
-<p>The quantum circuit shows two lines, one for quantum register and the other for classical register.  The classical register contains a bit.  Usually the outcome of measurement on a qubit is stored. The quantum register contains a qubit.  It is initially reset to <span class="math notranslate nohighlight">\(\ket{0}\)</span>.  The diagram shows that a single-qubit gate <code class="docutils literal notranslate"><span class="pre">H</span></code> (Hadamard gate) is applied on the qubit.  The outcome is <span class="math notranslate nohighlight">\(H |0\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle \right)\)</span>.  The next gate shows that the state of the qubit is measured and the result, either <strong>0</strong> or <strong>1</strong>, is sent to the classical register.  In the current example, <strong>0</strong> or <strong>1</strong> is obtained with the equal probability.  Now, we execute the circuit.</p>
+<p>The quantum circuit shows two lines, one for quantum register and the other for classical register.  The classical register contains a bit.  Usually the outcome of measurement on a qubit is stored. The quantum register contains a qubit.  It is initially reset to <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  The diagram shows that a single-qubit gate <span class="math notranslate nohighlight">\(H\)</span> (Hadamard gate) is applied on the qubit.  The outcome is <span class="math notranslate nohighlight">\(H |0\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle \right)\)</span>.  The next gate shows that the state of the qubit is measured and the result, either <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>, is sent to the classical register.  In the current example, <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span> is obtained with the equal probability.  Now, we execute the circuit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chose a general quantum simulator without noise.</span>
@@ -492,9 +584,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/qcoin_4_0.png" src="../_images/qcoin_4_0.png" />
+<img alt="../_images/qcoin_9_0.png" src="../_images/qcoin_9_0.png" />
 </div>
 </div>
+<p>The outcome is not exactly 50%-50%.  This is because the simulation is executed with a finite shots and thus there is statistical error due to finite sampling.  Theoretically infinite sampling is required but practically it is not possible. However, this is not an issue of quantum computation.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

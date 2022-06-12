@@ -24,8 +24,18 @@
 # 
 # Unfortunately, Colab does not have qiskit.  However, you can install it.  Add the following code block at the beginning.
 # ```
-# !pip install qiskit ipywidgets
+# !pip install qiskit ipywidgets pylatexenc
 # ```
 # Now, your qiskit codes run in Colab.  The installation is only temporary.  When you close the session, qiskit is removed.  You must install it each time you start new Colab session.
+
+# ```{admonition} Running Qiskit on Google Colab
+# :class: tip
+# :name: download-page
+# 
+# If you want to run qiskit codes on Google Colab, you need to add the following command in a code block.
+# 
+# `!pip install qiskit ipywidgets pylatexenc`
+# 
+# ```
 
 # [^cloud]: There are methods to store packages permanently but the procedure is rather complicated.  Therefore, we do not discuss it here.

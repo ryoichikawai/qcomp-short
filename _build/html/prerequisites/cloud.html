@@ -485,10 +485,15 @@ Login to <a class="reference external" href="https://quantum-computing.ibm.com/"
 <p>Google Colab also gives you a similar free development environment. It is not identical but compatible to JupyterLab.  However, it is for general purpose and you must install necessary python packages such as qiskit each time.  Nevertheless, it is convenient if you do not have access to a local jupyter environment.</p>
 <p>You need to have a google account to use this free service. If you don’t have one yet, you can open an account at <a class="reference external" href="https://accounts.google.com/signup">accounts.google.com</a>.  Once you obtained your account, sign in at <a class="reference external" href="https://colab.research.google.com/">golan.research.google.com</a>.  You can start writing codes or upload jupyter notebook files.</p>
 <p>Unfortunately, Colab does not have qiskit.  However, you can install it.  Add the following code block at the beginning.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install qiskit ipywidgets
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install qiskit ipywidgets pylatexenc
 </pre></div>
 </div>
 <p>Now, your qiskit codes run in Colab.  The installation is only temporary.  When you close the session, qiskit is removed.  You must install it each time you start new Colab session.</p>
+<div class="tip admonition" id="download-page">
+<p class="admonition-title">Running Qiskit on Google Colab</p>
+<p>If you want to run qiskit codes on Google Colab, you need to add the following command in a code block.</p>
+<p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">qiskit</span> <span class="pre">ipywidgets</span> <span class="pre">pylatexenc</span></code></p>
+</div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="cloud"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
