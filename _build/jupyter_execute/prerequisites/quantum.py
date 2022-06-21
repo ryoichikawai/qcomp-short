@@ -4,7 +4,7 @@
 # (sec-quantum)=
 # # Quantum Mechanics
 
-# Quantum computation obviously relies on the principles of quantum mechanics. You need to understand them to learn quantum computation.  However, traditional quantum mechanics courses usually do not cover the principles essential to quantum computation. Therefore, quantum mechanics is not prerequisite.  No prior knowledge in quantum mechanics is assumed and I introduce relevant parts of quantum mechanics as needed.  If you wish to learn them in depth, the following book is recommended.
+# Quantum computation obviously relies on the principles of quantum mechanics. You need to understand them to learn quantum computation.  However, traditional quantum mechanics courses usually do not cover the principles essential to quantum computation. Therefore, quantum mechanics is not prerequisite.  No prior knowledge in quantum mechanics is assumed and I introduce basic mathematical expressions of quantum mechanics in {numref}`sec-statevectors` and {numref}`sec-operators`.   If you wish to learn them in depth, the following book is recommended.
 # 
 # * J. Audretsch: *Entangled Systems - New Directions in Quantum Physics* (Wiley-VCH, 2007)
 # 

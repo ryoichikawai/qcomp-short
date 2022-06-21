@@ -14,7 +14,8 @@ chapters:
    -  file: prerequisites/qiskit
    -  file: prerequisites/cloud
    -  file: prerequisites/quantum
-   -  file: prerequisites/math
+   -  file: prerequisites/vectors
+   -  file: prerequisites/operators
 -  file: introduction/intro
    sections:
    -  file: introduction/ccomp

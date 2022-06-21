@@ -1,0 +1,1219 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.8. Operators &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. What is a Quantum Computer?" href="../introduction/intro.html" />
+    <link rel="prev" title="1.7. State vectors" href="vectors.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/me-tiny.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">A First Step to Quantum Computation with Qiskit.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../cover.html">
+                    A First Step to Quantum Computation with Qiskit
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   1. Prerequisites
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="thisbook.html">
+     1.1. About This Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python.html">
+     1.2. Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="jupyter.html">
+     1.3. JupyterLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qiskit.html">
+     1.4. Qiskit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cloud.html">
+     1.5. Cloud IDE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantum.html">
+     1.6. Quantum Mechanics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="vectors.html">
+     1.7. State vectors
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.8. Operators
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../introduction/intro.html">
+   2. What is a Quantum Computer?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ccomp.html">
+     2.1. Classical computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/qcomp.html">
+     2.2. Quantum computation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qubit1/intro.html">
+   3. A Qubit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/qubit1.html">
+     3.1. Mathematical expression of a qubit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/measurement.html">
+     3.2. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/blochsphere.html">
+     3.3. Bloch sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/qcoin.html">
+     3.4. Tossing a quantum coin
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/prerequisites/operators.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fprerequisites/operators.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/prerequisites/operators.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operator-times-ket">
+   Operator times ket
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scalar-multiplication">
+   Scalar multiplication
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linearity">
+   Linearity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operator-sum">
+   Operator sum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operator-products">
+   Operator products
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#identity-operator-i">
+   Identity operator
+   <span class="math notranslate nohighlight">
+    \(I\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-elements">
+   Matrix elements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dyads">
+   Dyads
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#self-adjoint-operators">
+   Self-adjoint operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unitary-operators">
+   Unitary operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eigenvalues-and-eigenvectors">
+   Eigenvalues and eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-of-operators">
+   Trace of operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pauli-operators">
+   Pauli Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-of-operators">
+   Functions of operators
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Operators</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operator-times-ket">
+   Operator times ket
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scalar-multiplication">
+   Scalar multiplication
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linearity">
+   Linearity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operator-sum">
+   Operator sum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operator-products">
+   Operator products
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#identity-operator-i">
+   Identity operator
+   <span class="math notranslate nohighlight">
+    \(I\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-elements">
+   Matrix elements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dyads">
+   Dyads
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#self-adjoint-operators">
+   Self-adjoint operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unitary-operators">
+   Unitary operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#eigenvalues-and-eigenvectors">
+   Eigenvalues and eigenvectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-of-operators">
+   Trace of operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pauli-operators">
+   Pauli Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-of-operators">
+   Functions of operators
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="operators">
+<span id="chap-operators"></span><h1><span class="section-number">1.8. </span>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">#</a></h1>
+<p>An operator is defined on a Hilbert space and acts on a vector in the same Hilbert space.  More precisely, we use <em>linear</em> operators.  In this section, we learn the following mathematical operations associated with operators.  Physical interpretations will be followed after this section.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>operation</p></th>
+<th class="text-align:center head"><p>mathematical expression</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>operator times ket</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(A \ket{\psi}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>adjoint operator</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\bra{\psi} A^\dagger\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>scalar multiplication</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\lambda A, \quad \lambda \in \mathbb{C}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>operator sum</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(A+B\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>identity operator</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(I\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>operator multiplication</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(AB\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>commutation</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\([A\, B]=AB-BA \)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>matrix element</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\langle \psi \vert A \vert \varphi  \rangle\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>trace</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\text{tr} A\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>dyad</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\ket{\psi}\bra{\varphi}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>projection operator</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(P^2=P\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Self-adjoint operators</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(A^\dagger = A\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Unitary operator</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(U^\dagger U = I\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Eigenvalue and eigenvector</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(A \ket{a_i} = \lambda_i \ket{a_i}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Pauli operator</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(X, Y, Z\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>function of operator</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(f(A)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<section id="operator-times-ket">
+<span id="pp-times-ket"></span><h2>Operator times ket<a class="headerlink" href="#operator-times-ket" title="Permalink to this headline">#</a></h2>
+<p>When a operator <span class="math notranslate nohighlight">\(A\)</span> acts on any ket in the Hilbert space, it transforms the ket to another ket in the same Hilbert space,</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{b} = A \ket{a}.  
+\]</div>
+<p>Similarly every bra is transformed as</p>
+<div class="math notranslate nohighlight">
+\[
+\bra{b} = \bra{a} A^\dagger
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A^\dagger\)</span> is <em>Hermite conjugate</em> or <em>adjoint</em> of <span class="math notranslate nohighlight">\(A\)</span>.  The adjoint of the adjoint operator is the original operator, that is  <span class="math notranslate nohighlight">\((A^\dagger)^\dagger = A\)</span>.</p>
+<p>It is wrong to think that <span class="math notranslate nohighlight">\(A^\dagger\)</span> always act on bra.  It can be applied to ket and <span class="math notranslate nohighlight">\(A^\dagger \ket{a}\)</span> is perfectly OK.  However, in general <span class="math notranslate nohighlight">\(A \ket{a} \ne A^\dagger \ket{A}\)</span>. Therefore <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(A^\dagger\)</span> are two different operators..  By definition, the adjoint expression of <span class="math notranslate nohighlight">\(A^\dagger \ket{A}\)</span> is <span class="math notranslate nohighlight">\(\bra{a} (A^\dagger)^\dagger = \bra{a} A\)</span>.</p>
+<p><strong>Example</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.1  Operator <span class="math notranslate nohighlight">\(X\)</span> transforms the basis vectors as <span class="math notranslate nohighlight">\(X\ket{0} \equiv \ket{1}\)</span> and <span class="math notranslate nohighlight">\(X\ket{1} \equiv \ket{0}\)</span>.</p>
+<p><strong>Example</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.2  Consider <span class="math notranslate nohighlight">\(H\)</span> transforms the basis vectors as <span class="math notranslate nohighlight">\(H\ket{0} \equiv \ket{+}\)</span> and <span class="math notranslate nohighlight">\(H\ket{1} \equiv \ket{-}\)</span>.
+(See <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec-basis-sets</span></code> for the definition of <span class="math notranslate nohighlight">\(\ket{\pm}\)</span>.)  <span class="math notranslate nohighlight">\(H\)</span> is known as <em>Hadamard</em> gate and one of the very important quantum gates.</p>
+</section>
+<section id="scalar-multiplication">
+<h2>Scalar multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline">#</a></h2>
+<p><span class="math notranslate nohighlight">\(\lambda A\)</span> is another operator where <span class="math notranslate nohighlight">\(\lambda\)</span> is any complex number.  You can place the scalar in the either side of the operator, i.e., <span class="math notranslate nohighlight">\(\lambda A = A \lambda\)</span>. The adjoint of <span class="math notranslate nohighlight">\(\lambda A\)</span> is <span class="math notranslate nohighlight">\(\lambda^* A^\dagger\)</span>.  Notice that the complex conjugate of the scalar in the adjoint.</p>
+<p>The following associativity holds:</p>
+<div class="math notranslate nohighlight">
+\[
+(\lambda A) \ket{a} = \lambda (A \ket{a}) = A (\lambda \ket{a})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+(\lambda \eta) A = \lambda (\eta A)
+\]</div>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.1     Find the adjoint of <span class="math notranslate nohighlight">\(\lambda A \ket{a}\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="linearity">
+<h2>Linearity<a class="headerlink" href="#linearity" title="Permalink to this headline">#</a></h2>
+<p>When an operator acts on a superposition state, the following linearity holds:</p>
+<div class="math notranslate nohighlight">
+\[
+A \left(\alpha \ket{\psi} + \beta\ket{\phi}\right) = \alpha A \ket{\psi} + \beta A \ket{\phi}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb{C}\)</span>.</p>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.2     Show that <span class="math notranslate nohighlight">\(H\ket{+} = \ket{0}\)</span> and <span class="math notranslate nohighlight">\(H \ket{-} = \ket{1}\)</span> where <span class="math notranslate nohighlight">\(H\)</span> is the Hadamard gate.</p>
+</section>
+<hr class="docutils" />
+<section id="operator-sum">
+<h2>Operator sum<a class="headerlink" href="#operator-sum" title="Permalink to this headline">#</a></h2>
+<p>The sum of operators satisfies the following distributivity:</p>
+<div class="math notranslate nohighlight">
+\[
+\left(A+B\right)\ket{\psi} = A \ket{\psi} + B \ket{\psi}.
+\]</div>
+</section>
+<section id="operator-products">
+<h2>Operator products<a class="headerlink" href="#operator-products" title="Permalink to this headline">#</a></h2>
+<p>For any operators <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> in a Hilbert space, the product <span class="math notranslate nohighlight">\(PQ\)</span> is also an operator in the same Hilbert space. When <span class="math notranslate nohighlight">\(Q\)</span> is applied on <span class="math notranslate nohighlight">\(\ket{a}\)</span> and <span class="math notranslate nohighlight">\(P\)</span> is applied on the result of the first operation,  the final result is also a vector in the same Hilbert space:</p>
+<div class="math notranslate nohighlight">
+\[
+P (Q\ket{a}) = P \ket{b} = \ket{c}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\ket{b} = Q \ket{a}\)</span>. The associativity <span class="math notranslate nohighlight">\(P (Q\ket{a}) = (PQ) \ket{a}\)</span> holds.</p>
+<p>Similarly, when we apply <span class="math notranslate nohighlight">\(P\)</span> on <span class="math notranslate nohighlight">\(\ket{a}\)</span> first and <span class="math notranslate nohighlight">\(Q\)</span> afterward, the associativity  <span class="math notranslate nohighlight">\(Q (P\ket{a}) = (QP) \ket{a}\)</span> holds as well.
+In general the outcomes of these two operations are different and thus <span class="math notranslate nohighlight">\(PQ \ne QP\)</span>.  In other words, <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> do not <em>commute</em>.  The difference between <span class="math notranslate nohighlight">\(PQ\)</span> and <span class="math notranslate nohighlight">\(QP\)</span> is expressed with <em>commutator</em></p>
+<div class="math notranslate nohighlight">
+\[
+[P,Q] \equiv PQ - QP.
+\]</div>
+<p>Only when <span class="math notranslate nohighlight">\([P,Q]=0\)</span>, we can change the order of operations. The commutation relation is of fundamental importance in quantum mechanics.</p>
+<p>For some operators, anti-commutation</p>
+<div class="math notranslate nohighlight">
+\[
+\{P,Q\} \equiv PQ + QP
+\]</div>
+<p>also plays an important role.</p>
+<p>The dual of the above transformation is</p>
+<div class="math notranslate nohighlight">
+\[
+\bra{c} = \bra{b}P^\dagger = (\bra{a} Q^\dagger) P^\dagger
+\]</div>
+<p>Using the associativity <span class="math notranslate nohighlight">\(PQ\)</span>, <span class="math notranslate nohighlight">\(\bra{c} = \bra{a} (PQ)^\dagger\)</span>.  By direct comparison, we find</p>
+<div class="math notranslate nohighlight" id="equation-pq-dagger">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-pq-dagger" title="Permalink to this equation">#</a></span>\[
+(PQ)^\dagger = Q^\dagger P^\dagger.
+\]</div>
+<p>We learned a similar relation in a linear algebra course: <span class="math notranslate nohighlight">\((PQ)^T=Q^T P^T\)</span> where <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are matrices and <span class="math notranslate nohighlight">\(T\)</span> is transpose.  We will see that this equality is indeed equivalent to <a class="reference internal" href="#equation-pq-dagger">(1.4)</a>.</p>
+</section>
+<section id="identity-operator-i">
+<h2>Identity operator <span class="math notranslate nohighlight">\(I\)</span><a class="headerlink" href="#identity-operator-i" title="Permalink to this headline">#</a></h2>
+<p>The simplest operator is the <em>identity</em> operator <span class="math notranslate nohighlight">\(I\)</span> which transforms a vector to itself:</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{a} = I \ket{a}.
+\]</div>
+<p>The adjoit of the transformation is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\bra{a} = \bra{a} I^\dagger
+\]</div>
+<p>It is easy to show that for any operator <span class="math notranslate nohighlight">\(A\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+A\,I = I\, A = A.
+\]</div>
+<p>The identity operator looks trivial.  However, it is ubiquitous in quantum computation. First of all, it is needed to define inverse operators.  The inverse operator of <span class="math notranslate nohighlight">\(A\)</span> is defined by</p>
+<div class="math notranslate nohighlight">
+\[
+A^{-1} A = A A^{-1} = I.
+\]</div>
+<p>Not all operators have their inverse but most of operators we use in quantum computation do.</p>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.3     The identity operator <span class="math notranslate nohighlight">\(I\)</span> satisfies <span class="math notranslate nohighlight">\(I = I^{-1} = I^\dagger = I^2\)</span>.  Prove it.</p>
+</section>
+<hr class="docutils" />
+<section id="matrix-elements">
+<h2>Matrix elements<a class="headerlink" href="#matrix-elements" title="Permalink to this headline">#</a></h2>
+<p>Consider an expression <span class="math notranslate nohighlight">\(\langle a | A | b \rangle\)</span>.  It is not clear if <span class="math notranslate nohighlight">\(A\)</span> is acting on the ket or the bra. Let us assume that <span class="math notranslate nohighlight">\(A\)</span> acts on the ket as<span class="math notranslate nohighlight">\(\langle b | (A | a \rangle)\)</span>.  Then, it is a regular inner product.  If <span class="math notranslate nohighlight">\(A \ket{a}=\ket{c}\)</span>, it is indeed <span class="math notranslate nohighlight">\(\langle  b|c \rangle\)</span>.  It turns out that when <span class="math notranslate nohighlight">\(A\)</span> can act on the bra, the same inner product is obtained.  Therefore, we don’t have to specify which way the operator acts.  The quantity <span class="math notranslate nohighlight">\(\langle a | A | b \rangle\)</span> is called <em>matrix element</em> of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Most of mathematical objects we encounter in quantum mechanics are defined in some abstract space and they are not directly connected to what we see in the real world.  The inner products and also matrix elements are numbers we are familiar with.  Hence, abstract expressions of quantum mechanics and physical values we experience in the real world are connected through the inner product.  In this sense, the inner product is very essential.  Without it, quantum mechanics is completely separated from the real world and would be useless.</p>
+<p><strong>Example</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.3     <span class="math notranslate nohighlight">\(\bra{0}X\ket{0} = 0\)</span>.</p>
+<blockquote>
+<div><p>Calculation: <span class="math notranslate nohighlight">\(\bra{0}X\ket{0} = \langle 0 | 1 \rangle = 0\)</span> where <span class="math notranslate nohighlight">\(X\ket{0} = \ket{1}\)</span> is used.</p>
+</div></blockquote>
+<p><strong>Example</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.4     <span class="math notranslate nohighlight">\(\bra{+}H\ket{+} = \frac{1}{\sqrt{2}}\)</span>.</p>
+<blockquote>
+<div><p>Calculation: <span class="math notranslate nohighlight">\(\bra{+}H\ket{+} = \langle + | 0 \rangle = \left(\frac{1}{\sqrt{2}}(\bra{0}+\bra{1}) \right) \ket{0} = \frac{1}{\sqrt{2}} \left(\langle 0|0 \rangle + \langle 1|0 \rangle \right)= \frac{1}{\sqrt{2}}.
+\)</span>.</p>
+</div></blockquote>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.4     Evaluate matrix element <span class="math notranslate nohighlight">\(\bra{+} H \ket{-}\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="dyads">
+<h2>Dyads<a class="headerlink" href="#dyads" title="Permalink to this headline">#</a></h2>
+<p>A kind of product between a bra <span class="math notranslate nohighlight">\(\bra{\psi}\)</span> and a ket <span class="math notranslate nohighlight">\(\ket{\varphi}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\varphi} \bra{\psi}
+\]</div>
+<p>is an operator known as <em>dyad</em>.  In fact, it transforms a ket to another ket:</p>
+<div class="math notranslate nohighlight">
+\[ \left(\ket{\varphi}\bra{\psi}\right) \ket{a} = \ket{\varphi} \langle \psi|a \rangle = \lambda \ket{\varphi}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda = \langle \psi|a \rangle\)</span>.</p>
+<p>A special case of dyad, <span class="math notranslate nohighlight">\(\ket{\psi}\bra{\psi}\)</span> is known as <em>orthogonal projection operator</em>.  Assuming <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> is normalized, it satisfies the idempotency <span class="math notranslate nohighlight">\(P^2=P\)</span>. Mathematically, the idempotency is the definition of projection operators and the orthogonal projection operator is a special kind of projection operators. However, as in physics literature, we shall call it projection operator without “orthogonal”.  We have already encounter it in the closure relation of the complete basis set <a class="reference internal" href="vectors.html#equation-completeness">(1.3)</a>.</p>
+</section>
+<section id="self-adjoint-operators">
+<h2>Self-adjoint operators<a class="headerlink" href="#self-adjoint-operators" title="Permalink to this headline">#</a></h2>
+<p>When <span class="math notranslate nohighlight">\(A = A^\dagger\)</span>, operator <span class="math notranslate nohighlight">\(A\)</span> is self-adjoint (or Hermitian).  Identity <span class="math notranslate nohighlight">\(I\)</span> and projection operator <span class="math notranslate nohighlight">\(P\)</span> are self-adjoint.</p>
+</section>
+<section id="unitary-operators">
+<h2>Unitary operators<a class="headerlink" href="#unitary-operators" title="Permalink to this headline">#</a></h2>
+<p>When an operator transform a <em>state vector</em> to another <em>state vector</em>, the transformation should preserve the norm of the <em>stat vectors</em>.  Consider a transformation <span class="math notranslate nohighlight">\(\ket{\psi'} = U \ket{\psi}\)</span> and its adjoint <span class="math notranslate nohighlight">\(\bra{\psi'} = \bra{\psi} U^\dagger\)</span>.  Since the norm must preserve, we have
+<span class="math notranslate nohighlight">\(\langle \psi'|\psi' \rangle = \bra{\psi} U^\dagger U \ket{\psi} = \langle \psi|\psi \rangle\)</span>, which indicates that</p>
+<div class="math notranslate nohighlight">
+\[
+U^\dagger U = I.
+\]</div>
+<p>Any operator that satisfies this condition is <em>unitary</em>. In quantum computation , we apply a set of gates on an input state vector and the outcome is also a state vector, quantum circuit must be unitary operators (unless quantum measurement is involved in it).</p>
+<p>Unitary operators are conveniently written in the exponential form</p>
+<div class="math notranslate nohighlight">
+\[
+U = e^{-i \theta A}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is a self-adjoint operator and <span class="math notranslate nohighlight">\(\theta\)</span> is a real parameter.</p>
+<p>Its adjoint is</p>
+<div class="math notranslate nohighlight">
+\[
+U^\dagger = e^{i \theta A^\dagger} = e^{i \theta A}
+\]</div>
+<p>which leads to <span class="math notranslate nohighlight">\(U^\dagger U = I\)</span> and thus <span class="math notranslate nohighlight">\(U\)</span> is unitary.</p>
+<p>The operator exponential functions are used for time-evolution, space rotation, space translation, <span class="math notranslate nohighlight">\(\cdots\)</span> and they are a key mathematical component for symmetry groups and conservation laws.</p>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.5     Show that <span class="math notranslate nohighlight">\(U^\dagger U = e^{i \theta A^\dagger} e^{-i \theta A} = I\)</span> if <span class="math notranslate nohighlight">\(A\)</span> is self-adjoint.</p>
+</section>
+<hr class="docutils" />
+<section id="eigenvalues-and-eigenvectors">
+<h2>Eigenvalues and eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Permalink to this headline">#</a></h2>
+<p>When an operator <span class="math notranslate nohighlight">\(A\)</span> and its adjoint <span class="math notranslate nohighlight">\(A^\dagger\)</span> commute, i.e. <span class="math notranslate nohighlight">\([A,A^\dagger]=0\)</span>, <span class="math notranslate nohighlight">\(A\)</span> is a <em>normal</em> operator and there are special kets which are transformed to “itself”  by <span class="math notranslate nohighlight">\(A\)</span>.  Mathematically, it is expressed by</p>
+<div class="math notranslate nohighlight" id="equation-eigeneq">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-eigeneq" title="Permalink to this equation">#</a></span>\[
+A \ket{a} = \lambda \ket{a}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda \in \mathbb{C}\)</span>.  The right hand side is not exactly the “itself” but multiplied by a constant <span class="math notranslate nohighlight">\(\lambda\)</span> which is called <em>eigenvalue</em>.  (In next section, we will see that <span class="math notranslate nohighlight">\(\ket{a}\)</span> and <span class="math notranslate nohighlight">\(\lambda \ket{a}\)</span> represent the same physical state.)  The ket <span class="math notranslate nohighlight">\(\ket{a}\)</span> is called <em>eigenvector</em> or <em>eigenket</em> of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>There are many such vectors.  More precisely, there are <span class="math notranslate nohighlight">\(N\)</span> eigenkets in <span class="math notranslate nohighlight">\(N\)</span>-dimensional Hilbert space.  Therefore, we write <a class="reference internal" href="#equation-eigeneq">(1.5)</a> as</p>
+<div class="math notranslate nohighlight">
+\[
+A \ket{a_i} = \lambda_i \ket{a_i}, \quad i=1,\cdots, N.
+\]</div>
+<p>When <span class="math notranslate nohighlight">\(A\)</span> is self-adjoint, the eigenvalues are all real, which is important when we discuss measurement of physical quantities in {numref}`sec_measurement}.</p>
+</section>
+<section id="trace-of-operators">
+<h2>Trace of operators<a class="headerlink" href="#trace-of-operators" title="Permalink to this headline">#</a></h2>
+<p>Another operation on operators we often use is tracing.   For an operator <span class="math notranslate nohighlight">\(A \in \mathcal{H}\)</span>, the trace of the operator is defined by</p>
+<div class="math notranslate nohighlight">
+\[
+\text{tr} A = \sum_j  \bra{e_j} A  \ket{e_j}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{\ket{e_j}, \, j=1,n\}\)</span> is a basis set in the Hilbert space.  <span class="math notranslate nohighlight">\(\bra{e_j} A  \ket{e_j}\)</span> is matrix element.</p>
+<p>The following properties of the trace are useful.  (<span class="math notranslate nohighlight">\(A\)</span>and <span class="math notranslate nohighlight">\(B\)</span> are operators and <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb{C}\)</span>.)</p>
+<ul class="simple">
+<li><p>linearity</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\text{tr}\left(\alpha A\right) = \alpha\, \text{tr} A\)</span><br />
+<span class="math notranslate nohighlight">\(\text{tr} \left(\alpha A+\beta B\right) = \alpha\, \text{tr} A + \beta\, \text{tr} B\)</span></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>cyclic permutations</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\text{tr}\left(AB\right) = \text{tr}\left(BA\right)\)</span></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>adjoint operator</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\text{tr} A^\dagger = (\text{tr} A)^*\)</span></p>
+</div></blockquote>
+<p>The following trace formula for dyads are also usefull</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\text{tr}\left(\ket{\varphi}\bra{\psi}\right) = \langle\psi|\varphi\rangle\)</span>.<br />
+<span class="math notranslate nohighlight">\(\text{tr}\left(A\ket{\varphi}\bra{\psi}\right) = \langle\psi|A|\varphi\rangle\)</span>.</p>
+</div></blockquote>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.6     Show that <span class="math notranslate nohighlight">\(\text{tr} \left([A,B]\right) = 0\)</span>,  even when <span class="math notranslate nohighlight">\([A,B]\ne 0\)</span>.</p>
+<hr class="docutils" />
+</section>
+<section id="pauli-operators">
+<span id="sec-pauli-ops"></span><h2>Pauli Operators<a class="headerlink" href="#pauli-operators" title="Permalink to this headline">#</a></h2>
+<p>Pauli operators <span class="math notranslate nohighlight">\(\sigma_x\)</span>. <span class="math notranslate nohighlight">\(\sigma_y\)</span>, and <span class="math notranslate nohighlight">\(\sigma_z\)</span> are originally used to express electron spin.  They plays very important roles in the qubit-based quantum computation.</p>
+<p>Traditionally in literature on quantum computation, symbols <span class="math notranslate nohighlight">\(X\equiv \sigma_x\)</span>, <span class="math notranslate nohighlight">\(Y\equiv \sigma_y\)</span>, and <span class="math notranslate nohighlight">\(Z\equiv \sigma_z\)</span> are used.  By definition, the Pauli operators satisfy</p>
+<ul class="simple">
+<li><p>commutation relation</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\([X,Y]=2 i Z, \qquad [Y,Z]=2 i X, \qquad [Z,X]=2 i Y\)</span></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>anti-commutatioan relation</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\{X,Y\} = \{Y,Z\} = \{Z,X\} = 0\)</span></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>self-inverse</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(X^2 = Y^2 = Z^2 = I\)</span></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>self-adjoint</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(X^\dagger=X, \qquad Y^\dagger=Y, \qquad Z^\dagger = Z\)</span></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>unitary</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(X^\dagger X = Y^\dagger Y = Z^\dagger Z = I\)</span></p>
+</div></blockquote>
+<p>In <span class="math notranslate nohighlight">\(\mathbb{C}^2\)</span>, any operator <span class="math notranslate nohighlight">\(A\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+A = c_0 I + c_1 X + c_2 Y + c_3 Z
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_0 = \text{tr}(I A)\)</span>, <span class="math notranslate nohighlight">\(c_1 = \text{tr}(X A)\)</span>, <span class="math notranslate nohighlight">\(c_2 = \text{tr}(Y A)\)</span>, and <span class="math notranslate nohighlight">\(c_3 = \text{tr}(Z A)\)</span>.  When <span class="math notranslate nohighlight">\(A\)</span> is self-adjoint, all the coefficients are real.</p>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.7     Using the properties given above</p>
+<ol class="simple">
+<li><p>Show that <span class="math notranslate nohighlight">\(X Y = i Z\)</span>,</p></li>
+<li><p>Show that <span class="math notranslate nohighlight">\(XYZ = i I\)</span>,</p></li>
+<li><p>Show that <span class="math notranslate nohighlight">\(\text{tr} X = \text{tr} Y = \text{tr} Z = 0\)</span>.</p></li>
+</ol>
+<hr class="docutils" />
+<p>Among the three Pauli operators, <span class="math notranslate nohighlight">\(X\)</span> is the most important for quantum computation.  We already encounter this operator in <code class="xref std std-numref docutils literal notranslate"><span class="pre">qmcomp</span></code>. Its main roles are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span> flips the computational basis.</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(X \ket{0} = \ket{1}, \qquad X \ket{1} = \ket{0}\)</span>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span> swaps the coefficients in a superposition state.</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(X \left(c_0\ket{0} + c_1 \ket{1}\right) = c_1\ket{0} + c_0 \ket{1}\)</span>,</p>
+</div></blockquote>
+<p><span class="math notranslate nohighlight">\(Z\)</span> does not flip the basis but change the relative phase.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Z\)</span> does nothing on <span class="math notranslate nohighlight">\(\ket{0}\)</span></p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(Z \ket{0} = \ket{0}\)</span>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Z\)</span> inverts the phase of <span class="math notranslate nohighlight">\(\ket{1}\)</span>.</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(Z \ket{1} = - \ket{1}\)</span>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>When acting on a superposition state <span class="math notranslate nohighlight">\(Z\)</span> changes the relative phase as</p></li>
+</ul>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(Z \left(c_0\ket{0} + c_1 \ket{1}\right) = c_0\ket{0} - c_1 \ket{1}\)</span></p>
+</div></blockquote>
+<p>When <span class="math notranslate nohighlight">\(Z\)</span> acts on <span class="math notranslate nohighlight">\(\ket{1}\)</span>, the ket acquires a new phase “<span class="math notranslate nohighlight">\(-\)</span>”. Since the global phase is irrelevant, the operator essential does nothing thing to <span class="math notranslate nohighlight">\(\ket{0}\)</span> nor <span class="math notranslate nohighlight">\(\ket{1}\)</span>. However, when it acts on a superposition state, the relative phase between <span class="math notranslate nohighlight">\(\ket{0}\)</span> and <span class="math notranslate nohighlight">\(\ket{1}\)</span> changes.</p>
+<p>Any operator <span class="math notranslate nohighlight">\(A\)</span> In <span class="math notranslate nohighlight">\(\mathbb{C}^2\)</span> can be decomposed as</p>
+<div class="math notranslate nohighlight">
+\[
+A = c_0 I + c_1 X + c_2 Y + c_3 Z
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_0 = \text{tr}(I A)\)</span>, <span class="math notranslate nohighlight">\(c_1 = \text{tr}(X A)\)</span>, <span class="math notranslate nohighlight">\(c_2 = \text{tr}(Y A)\)</span>, and <span class="math notranslate nohighlight">\(c_3 = \text{tr}(Z A)\)</span>.  This decomposition suggests that we need only <span class="math notranslate nohighlight">\(I\)</span> and the Pauli operators to transform a qubit.</p>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.8     Initially a qubit is in <span class="math notranslate nohighlight">\(\ket{0}\)</span>. We want to transform it to <span class="math notranslate nohighlight">\(\ket{-} = \frac{1}{\sqrt{2}} \left(\ket{0} - \ket{1}\right)\)</span>. In previous sections, we learn that the Hadamard gate transforms <span class="math notranslate nohighlight">\(\ket{1}\)</span> to <span class="math notranslate nohighlight">\(\ket{-}\)</span>. Pick two operators from <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(H\)</span>, and construct a quantum circuit that transforms <span class="math notranslate nohighlight">\(\ket{0}\)</span> to <span class="math notranslate nohighlight">\(\ket{-}\)</span>.  There are two possible combinations. Find both.  (The following Qiskit example veryify the solutions.</p>
+<p><strong>Qiskit Example</strong></p>
+<p>We shall demonstrate the two solution to the above exercise using Qiskit.  We use two qubits.  Initially they are both in <span class="math notranslate nohighlight">\(\ket{0}\)</span>.  Then, we apply different gates to them. At the end, both should be in <span class="math notranslate nohighlight">\(\ket{-}\)</span>.  In this example, we use <code class="docutils literal notranslate"><span class="pre">statevector_simulator</span></code> which calculate the transformation exactly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="c1"># declare to use two qubit</span>
+<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+
+<span class="c1"># reset a quantum circuit with the two qubit</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="c1"># We apply X and H on the first qubit</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># We apply H and Z on the second qubit</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Show the circuit</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/operators_28_0.png" src="../_images/operators_28_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We use state vector simulator</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="n">psi</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+
+<span class="c1"># plot_bloch_multivector plots Bloch vector for each qubit.</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_bloch_multivector</span>
+<span class="n">plot_bloch_multivector</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+
+<span class="c1"># Find that both qubits are |-&gt; </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/operators_29_0.png" src="../_images/operators_29_0.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Qiskit note: Pauli Operators</p>
+<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_qiskit_calc</span></code>, we calculated inner products of computational basis using <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> module.  The same module provides predefined Pauli operators  <code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, and <code class="docutils literal notranslate"><span class="pre">Z</span></code>.   Applying operator on ket is done with “&#64;”.  For example <span class="math notranslate nohighlight">\(X \ket{0}\)</span> is <code class="docutils literal notranslate"><span class="pre">(X&#64;One).eval()</span></code> in Qiskit.</p>
+<p><a class="reference external" href="https://qiskit.org/documentation/apidoc/opflow.html">QIskit API Reference: qiskit.opflow</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.opflow</span> <span class="kn">import</span> <span class="n">Zero</span><span class="p">,</span> <span class="n">One</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span>
+
+<span class="c1"># Show that I|0&gt;=|0&gt; and (|1&gt;=|1&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I|0&gt; == |0&gt; &quot;</span><span class="p">,</span><span class="n">I</span><span class="nd">@Zero</span> <span class="o">==</span> <span class="n">Zero</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I|1&gt; == |1&gt; &quot;</span><span class="p">,</span><span class="n">I</span><span class="nd">@One</span> <span class="o">==</span> <span class="n">One</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Show that Z|0&gt;=|1&gt; and X|1&gt;=|0&gt;</span>
+<span class="c1"># X*ket must be evaluated by .eval()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X|0&gt; == |1&gt; &quot;</span><span class="p">,(</span><span class="n">X</span><span class="nd">@One</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="o">==</span> <span class="n">Zero</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X|1&gt; == |0&gt; &quot;</span><span class="p">,(</span><span class="n">X</span><span class="nd">@Zero</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="o">==</span> <span class="n">One</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Check if X is self-sdjoint</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X is self-adjoint &quot;</span><span class="p">,</span><span class="o">~</span><span class="n">X</span> <span class="o">==</span> <span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Check if X is unitary</span>
+<span class="c1"># I and X are defined in different way, we need to eval() in both sieds.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X is unitary &quot;</span><span class="p">,(</span><span class="o">~</span><span class="n">X</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="o">==</span> <span class="n">I</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I|0&gt; == |0&gt;  True
+I|1&gt; == |1&gt;  True
+
+X|0&gt; == |1&gt;  True
+X|1&gt; == |0&gt;  True
+
+X is self-adjoint  True
+X is unitary  True
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.9     Demonstrate <span class="math notranslate nohighlight">\(Z\ket{0}=\ket{0}\)</span> and <span class="math notranslate nohighlight">\(Z\ket{1}=-\ket{1}\)</span> using the <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> module.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_bloch_multivector</span>
+<span class="n">plot_bloch_multivector</span><span class="p">(</span><span class="n">One</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/operators_33_0.png" src="../_images/operators_33_0.png" />
+</div>
+</div>
+</section>
+<section id="functions-of-operators">
+<h2>Functions of operators<a class="headerlink" href="#functions-of-operators" title="Permalink to this headline">#</a></h2>
+<p>A function <span class="math notranslate nohighlight">\(f(x)\)</span> maps an input value <span class="math notranslate nohighlight">\(x\)</span> to an output value <span class="math notranslate nohighlight">\(f\)</span>.  Then what <span class="math notranslate nohighlight">\(f(A)\)</span> means if <span class="math notranslate nohighlight">\(A\)</span> is an operator? It is interpreted as a map from an operator <span class="math notranslate nohighlight">\(A\)</span> to another operator <span class="math notranslate nohighlight">\(f\)</span>.  For example exponential function <span class="math notranslate nohighlight">\(e^x\)</span> is a number and <span class="math notranslate nohighlight">\(e^A\)</span> is an operator. But it is not clear how the function of of operator is applied to a vector?  We define <span class="math notranslate nohighlight">\(e^A\)</span> using a power series (Taylor expansion).  For example,</p>
+<div class="math notranslate nohighlight">
+\[
+e^x = 1 + x + \frac{1}{2}x^2 + \cdots + \frac{1}{n!}x^n + \cdots
+\]</div>
+<p>Now we replace 1 with <span class="math notranslate nohighlight">\(I\)</span> and <span class="math notranslate nohighlight">\(x\)</span> with <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+e^A = I + A + \frac{1}{2} A^2 + \cdots \frac{1}{n!} A^n + \cdots
+\]</div>
+<p>Since we know how to calcuate the product of operators, there is no problem with <span class="math notranslate nohighlight">\(A^n\)</span>.  Hence, we evaluate</p>
+<div class="math notranslate nohighlight">
+\[
+e^A \ket{\psi} = I \ket{\psi} + A \ket{\psi} + \cdots + \frac{1}{n!} A^n \ket{\psi} + \cdots.
+\]</div>
+<p>For a general function <span class="math notranslate nohighlight">\(f(A)\)</span>, we assume that <span class="math notranslate nohighlight">\(f(x)\)</span> is a nice smooth function which can be expanded in a power series.  Then, the function of opperator is understood as</p>
+<div class="math notranslate nohighlight">
+\[
+f(A) = I + c_1 A + c_2 A^2 + \cdot + c_n A^n + \cdots, \qquad \text{where  } c_n = \frac{1}{n!} \frac{d f}{dx} \Big|_{x=0}
+\]</div>
+<p>We don’t consider a function singular at <span class="math notranslate nohighlight">\(x=0\)</span> like <span class="math notranslate nohighlight">\(\log{A}\)</span>.</p>
+<p>A special care is required for a function of multiple operators.  For example we are familiar with  <span class="math notranslate nohighlight">\(e^{x+y} = e^x e^y,\,\)</span> if <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are regular numbers.  In contrast,  <span class="math notranslate nohighlight">\(e^{A+B} \ne e^A e^B,\,\,\)</span> if <span class="math notranslate nohighlight">\([A,B]\ne 0\)</span>.</p>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.10     For Pauli operator <span class="math notranslate nohighlight">\(X\)</span>, show that <span class="math notranslate nohighlight">\(\,e^{i \theta X} = I \cos \theta - i X \sin \theta \,\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span> is a real number. Hint: Use <span class="math notranslate nohighlight">\(X^2=I\)</span> in the power series.</p>
+<p>When <span class="math notranslate nohighlight">\(\theta=\frac{\pi}{4}\)</span>, the equality indicates that <span class="math notranslate nohighlight">\(e^{i \frac{\pi}{4} X} = \frac{1}{\sqrt{2}}  ( I - i X)\)</span>.  Applying the operator on <span class="math notranslate nohighlight">\(\ket{0}\)</span> we obtain <span class="math notranslate nohighlight">\(e^{i \frac{\pi}{4} X}\ket{0} = \frac{1}{\sqrt{2}} \left (\ket{0}  - i \ket{1} \right)\)</span>.
+In the following Qiskit example, we will check it using <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> module.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># import qiskit.opflow</span>
+<span class="kn">from</span> <span class="nn">qiskit.opflow</span> <span class="kn">import</span> <span class="n">Zero</span><span class="p">,</span> <span class="n">One</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span>
+
+<span class="c1"># we use Statevector class for vidualization</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># construct the exponential operator using a method exp_i()</span>
+<span class="c1"># X.exp_i() creates exp(i X)</span>
+<span class="n">expX</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="o">*</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">exp_i</span><span class="p">()</span>
+
+<span class="c1"># evaluate expX * Zero</span>
+<span class="n">psi</span><span class="o">=</span><span class="p">(</span><span class="n">expX</span><span class="nd">@Zero</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="c1"># print out the results</span>
+<span class="c1"># attribute &#39;primitive&#39; extracts the information of the vector</span>
+<span class="c1"># method &#39;draw(&#39;latex&#39;)&#39; print out the vector using LaTeX.</span>
+<span class="c1"># The detailed usage of attributes and methods are given in later chapters.</span>
+<span class="n">psi</span><span class="o">.</span><span class="n">primitive</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{\sqrt{2}}{2} |0\rangle- \frac{\sqrt{2} i}{2} |1\rangle\]</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>Version 0.8.0:   Last modified on May 3, 2022</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./prerequisites"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="vectors.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.7. </span>State vectors</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../introduction/intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>What is a Quantum Computer?</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ryoichi Kawai<br/>
+  
+      &copy; Copyright Ryoichi Kawai 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
