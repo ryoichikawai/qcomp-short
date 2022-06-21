@@ -36,13 +36,10 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -198,7 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit1/qubit1.html">
-     3.1. Mathematics of a qubit
+     3.1. Mathematical expression of a qubit
     </a>
    </li>
    <li class="toctree-l2">
@@ -460,6 +457,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#global-phase">
+   Global phase
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basis-sets">
    Basis sets
   </a>
@@ -524,6 +526,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#global-phase">
+   Global phase
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basis-sets">
    Basis sets
   </a>
@@ -557,9 +564,12 @@ title="Print to PDF"
 <p>The following is a summary of Hilbert space using abstract mathematical expressions.  The ket and bra notation of vectors may be new to you.  Otherwise, it is just a standard linear algebra.  I will discuss each item in later chapters with practical examples for quantum computation.  For now, refresh your understanding of linear algebra.</p>
 <section id="ket-and-bra">
 <h2>Ket and bra<a class="headerlink" href="#ket-and-bra" title="Permalink to this headline">#</a></h2>
-<p>You are familiar with Euclidean vectors such as forces and velocities, which expressed as <span class="math notranslate nohighlight">\(\vec{F}\)</span> and <span class="math notranslate nohighlight">\(\vec{v}\)</span>, respectively. They are real vectors.  Quantum mechanics is mathematically described with complex vectors in a <em>Hilbert space</em>. In order to avoid confusion a complex vector <span class="math notranslate nohighlight">\(\psi\)</span> is denoted as <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>, which is called <em>ket vector</em> or simply <em>ket</em>.
-For every ket <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>, there is a corresponding complex vector <span class="math notranslate nohighlight">\(\langle\psi|\)</span>, which is known as <em>bra vector</em> or just <em>bra</em>. Mathematically, <span class="math notranslate nohighlight">\(\langle\psi|\)</span> is the <em>adjoint</em> or <em>dual</em> of <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>. From physics point of view, they are equivalent.  We need bra vectors to compute inner products (See subsection <a class="reference internal" href="#subsec-innerproduct"><span class="std std-ref">Inner product</span></a>).</p>
-<p>Since kets and bras are vectors,  two basic mathematical operations, <em>addition</em> <span class="math notranslate nohighlight">\(|a\rangle+|b\rangle\)</span> are <em>scalar mulitplication</em> <span class="math notranslate nohighlight">\(\lambda |a\rangle\)</span> (<span class="math notranslate nohighlight">\(\lambda\)</span> is a complex number) can be applied to them.  The regular rules of calculation are applied as given below.  The dual of the operations are <span class="math notranslate nohighlight">\(\langle a| + \langle b|\)</span> and <span class="math notranslate nohighlight">\(\langle a | \lambda^*\)</span> where <span class="math notranslate nohighlight">\(\lambda^*\)</span> is a complex conjugate of <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>The state of a quantum object is mathematically described by a complex vector in a <em>Hilbert space</em>, which is called <em>state vector</em>. The state vector is denoted as <span class="math notranslate nohighlight">\(|\bullet\rangle\)</span>, which is called <em>ket vector</em> or simply <em>ket</em>.  “<span class="math notranslate nohighlight">\(\bullet\)</span>” in the ket can be any symbol representing the state.  For example, an electron in a spin-up state is commonly expressed by <span class="math notranslate nohighlight">\(\ket{\uparrow}\)</span>. We could use <span class="math notranslate nohighlight">\(|\)</span>♥ <span class="math notranslate nohighlight">\(\rangle\)</span>, <span class="math notranslate nohighlight">\(|\)</span>♠<span class="math notranslate nohighlight">\(\rangle\)</span>, <span class="math notranslate nohighlight">\(|\)</span>♦<span class="math notranslate nohighlight">\(\rangle\)</span>, <span class="math notranslate nohighlight">\(|\)</span>♣<span class="math notranslate nohighlight">\(\rangle\)</span> to express the states of quantum cards (if they exist.)  We often write an arbitrary state as <span class="math notranslate nohighlight">\(| \psi\rangle\)</span>.</p>
+<p>For every ket <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>, there is a corresponding complex vector <span class="math notranslate nohighlight">\(\langle\psi|\)</span>, which is known as <em>bra vector</em> or just <em>bra</em>. Mathematically, <span class="math notranslate nohighlight">\(\langle\psi|\)</span> is the <em>adjoint</em> or <em>dual</em> of <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.
+The corresponding bra with the same symbol as a ket represents the same state of the qubit.  For example, both <span class="math notranslate nohighlight">\(|\uparrow\rangle\)</span> and <span class="math notranslate nohighlight">\(\langle\uparrow|\)</span> represent the same spin-up state.
+We need bra vectors to compute inner products (See subsection <a class="reference internal" href="#subsec-innerproduct"><span class="std std-ref">Inner product</span></a>).</p>
+<p>You are familiar with Euclidean vectors such as forces and velocities and the rules of calculation with them.
+Since kets and bras are vectors, they share the same mathematical operations with the Euclidean vectors, namely two basic mathematical operations, <em>addition</em> <span class="math notranslate nohighlight">\(|a\rangle+|b\rangle\)</span> and <em>scalar mulitplication</em> <span class="math notranslate nohighlight">\(\lambda |a\rangle\)</span> (<span class="math notranslate nohighlight">\(\lambda\)</span> is a complex number).  The regular rules of calculation are listed below.  The dual of the operations are <span class="math notranslate nohighlight">\(\langle a| + \langle b|\)</span> and <span class="math notranslate nohighlight">\(\langle a | \lambda^*\)</span> where <span class="math notranslate nohighlight">\(\lambda^*\)</span> is a complex conjugate of <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 </section>
 <section id="addition">
 <h2>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">#</a></h2>
@@ -668,22 +678,17 @@ The norm of <span class="math notranslate nohighlight">\(\ket{a}\)</span> is def
 \[
 \||a\rangle\| = \sqrt{\langle a|a \rangle}  \ge 0.
 \]</div>
-<p>When <span class="math notranslate nohighlight">\(\langle a|a \rangle = 1\)</span>, the ket is said to be <em>normalized</em>.  Although we cannot express the ket as an arrow, physicists often use an imaginary arrow to represent a ket and the norm can be viewed as the length of the imaginary arrow.  This analogy works quite well.  So, the normalized ket is much like an Euclidean unit vector.</p>
-<p>Consider kets <span class="math notranslate nohighlight">\(|\psi\rangle = \alpha |a\rangle\)</span> and <span class="math notranslate nohighlight">\(|\psi\rangle = \beta |a\rangle\)</span>.  Although they share the same ket <span class="math notranslate nohighlight">\(|a\rangle\)</span>, <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and <span class="math notranslate nohighlight">\(|\phi\rangle\)</span> are different kets.  We know that two Euclidean vectors <span class="math notranslate nohighlight">\(\vec{F} = a \vec{x}\)</span> and <span class="math notranslate nohighlight">\(\vec{G} = b \vec{x}\)</span> are both parallel to <span class="math notranslate nohighlight">\(\vec{x}\)</span>.  Thus, <span class="math notranslate nohighlight">\(\vec{F}\)</span> and <span class="math notranslate nohighlight">\(\vec{G}\)</span> are also parallel to each other. Using the same analogy, we say that <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>, <span class="math notranslate nohighlight">\(|\phi\rangle\)</span> and <span class="math notranslate nohighlight">\(|a\rangle\)</span> are all parallel to each other.  It is convenient to introduce a unit vector <span class="math notranslate nohighlight">\(|\tilde{a}\rangle\)</span> in the “direction” of <span class="math notranslate nohighlight">\(|a\rangle\)</span>. More precisely, we want to have a ket satisfies <span class="math notranslate nohighlight">\(\langle \tilde{a} | \tilde{a} \rangle = 1\)</span> and <span class="math notranslate nohighlight">\(|a\rangle = \lambda |\tilde{a}\rangle\)</span>.
-Every vector in the same “direction” can be expressed as <span class="math notranslate nohighlight">\(\lambda |\tilde{a}\rangle\)</span> with a certain <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
-<p>The unit vector, or equivalently, the normalized vector <span class="math notranslate nohighlight">\(\ket{\tilde{a}}\)</span> can be obtained by scaling the original ket as</p>
-<div class="math notranslate nohighlight">
-\[
-|\tilde{a}\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}.
-\]</div>
-<p>This procedure is called <em>normalization</em>.
-When <span class="math notranslate nohighlight">\(\langle a|a \rangle = 1\)</span>, the vector is said to be <em>normalized</em>.</p>
-<p>When a pair of vectors are normalized and orthogonal to each other,they are <em>orthonormal</em>.</p>
+<p>When <span class="math notranslate nohighlight">\(\langle a|a \rangle = 1\)</span>, the ket is said to be <em>normalized</em>.  Although we cannot express the ket as an arrow, physicists often use an imaginary arrow to represent a ket and the norm can be viewed as the length of the imaginary arrow.  This analogy works quite well.  So, the normalized ket is much like a unit vector.</p>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="intro.html#chap-prerequisites"><span class="std std-numref">1</span></a>.3    Show that <span class="math notranslate nohighlight">\(|\tilde{a}\rangle\)</span> is normalized.</p>
-<p><strong>Exercise</strong> <a class="reference internal" href="intro.html#chap-prerequisites"><span class="std std-numref">1</span></a>.4     <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|b\rangle\)</span> are normalized and orthogonal to each other and have the. Show that <span class="math notranslate nohighlight">\(|\psi\rangle = |a\rangle + i |b \rangle\)</span> and <span class="math notranslate nohighlight">\(|\varphi\rangle = |a\rangle - i |b \rangle\)</span> are orthogonal.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="intro.html#chap-prerequisites"><span class="std std-numref">1</span></a>.3    Show that <span class="math notranslate nohighlight">\(|b\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}\)</span> is normalized.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="intro.html#chap-prerequisites"><span class="std std-numref">1</span></a>.4     <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|b\rangle\)</span> are normalized and orthogonal to each other. Show that <span class="math notranslate nohighlight">\(|\psi\rangle = |a\rangle + i |b \rangle\)</span> and <span class="math notranslate nohighlight">\(|\varphi\rangle = |a\rangle - i |b \rangle\)</span> are orthogonal.</p>
 </section>
 <hr class="docutils" />
+<section id="global-phase">
+<h2>Global phase<a class="headerlink" href="#global-phase" title="Permalink to this headline">#</a></h2>
+<p>It is easy to show that if <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> is normalized, <span class="math notranslate nohighlight">\(e^{i \theta}|\psi\rangle,\,\theta \in \mathbb{R}\)</span> is also normalized.
+Although they are mathematically different, the two kets corresponds to the same physical state.  The factor <span class="math notranslate nohighlight">\(e^{i \theta}\)</span> is known as global phase and does not play any significant role in physics.  Hence, we can ignore it.  Quantum computation can be simplified by utilizing the freedom to chose any global phase.</p>
+</section>
 <section id="basis-sets">
 <h2>Basis sets<a class="headerlink" href="#basis-sets" title="Permalink to this headline">#</a></h2>
 <p>In a freshman physics course, perhaps you expressed a force vector in the three-dimensional Euclidean space as <span class="math notranslate nohighlight">\(\vec{F} = F_x \vec{i} + F_y \vec{j} + F_z \vec{k}\)</span>.  In fact, any vector can be expressed in the same way using the basis vectors  <span class="math notranslate nohighlight">\(\vec{i}\)</span>, <span class="math notranslate nohighlight">\(\vec{j}\)</span> and <span class="math notranslate nohighlight">\(\vec{k}\)</span>.  These three vectors are orthogonal to each other and their magnitude is 1.  Hence they are <em>orthonormal basis</em>.</p>

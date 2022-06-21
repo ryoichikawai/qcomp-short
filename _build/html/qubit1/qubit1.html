@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3.1. Mathematics of a qubit &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>3.1. Mathematical expression of a qubit &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -36,13 +36,10 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -51,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3.2. Qubit Measurement" href="measurement.html" />
@@ -196,7 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.1. Mathematics of a qubit
+     3.1. Mathematical expression of a qubit
     </a>
    </li>
    <li class="toctree-l2">
@@ -400,23 +399,80 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pure-states">
+   Pure states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ket-and-bra-for-a-qubit">
+   Ket and bra for a qubit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalization-and-global-phase">
+   Normalization and global phase
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Mathematics of a qubit</h1>
+                <h1>Mathematical expression of a qubit</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pure-states">
+   Pure states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ket-and-bra-for-a-qubit">
+   Ket and bra for a qubit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalization-and-global-phase">
+   Normalization and global phase
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -424,8 +480,34 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="mathematics-of-a-qubit">
-<span id="sec-math-qubit"></span><h1><span class="section-number">3.1. </span>Mathematics of a qubit<a class="headerlink" href="#mathematics-of-a-qubit" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="mathematical-expression-of-a-qubit">
+<span id="sec-math-qubit"></span><h1><span class="section-number">3.1. </span>Mathematical expression of a qubit<a class="headerlink" href="#mathematical-expression-of-a-qubit" title="Permalink to this headline">#</a></h1>
+<p>Quantum computers store information in a two-dimensional Hilbert space called a qubit.   In this section, I will introduce mathematical description of a single qubit.</p>
+<section id="pure-states">
+<h2>Pure states<a class="headerlink" href="#pure-states" title="Permalink to this headline">#</a></h2>
+<p>The state of a classical particle is precisely identified by its position and momentum, which is a point in the phase space.  Hence, the classical state is a <em>phase point</em>.  The phase point moves in the phase space according to the Newton’s laws of motion and forms a <em>phase trajectory</em>. In contrast,</p>
+<blockquote>
+<div><p>the state of a quantum object is specified by a complex vector in the Hilbert space,</p>
+</div></blockquote>
+<p>The vector is known as <em>state vector</em> and expressed with a <em>ket</em> as explained below. In ideal situations, a single state vector contains everything about the state of the qubit. Such a state is called <em>pure state</em>. The pure state evolves in time according to Schrödinger which I introduce shortly.</p>
+<p>In less ideal situations, a qubit is in a <em>mix state</em> involving multiple state vectors, which will be discussed in a later chapter.  In this chapter, we focus on pure states.</p>
+</section>
+<section id="ket-and-bra-for-a-qubit">
+<h2>Ket and bra for a qubit<a class="headerlink" href="#ket-and-bra-for-a-qubit" title="Permalink to this headline">#</a></h2>
+<p>.</p>
+<p>Unless otherwise is specified, state vectors are assumed to be normalized. That is <span class="math notranslate nohighlight">\(\langle \psi | \psi \rangle = 1\)</span> (See <a class="reference internal" href="../prerequisites/math.html#sec-math"><span class="std std-numref">Section 1.7</span></a>).</p>
+<p>A qubit is a two-dimensional Hilbert space and thus any qubit state can be written as</p>
+<div class="math notranslate nohighlight" id="equation-eq-qubit-purestate">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-eq-qubit-purestate" title="Permalink to this equation">#</a></span>\[
+| \psi \rangle = c_0 | 0 \rangle + c_1 | 1 \rangle
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(| 0 \rangle \)</span> and <span class="math notranslate nohighlight">\(| 1 \rangle\)</span> are orthonormal basis vectors satisfying <span class="math notranslate nohighlight">\(\langle 0 | 0 \rangle = \langle 1 | 1 \rangle = 1\)</span> and <span class="math notranslate nohighlight">\(\langle 0 | 1 \rangle = \langle 1 | 0 \rangle = 0\)</span>.  The coefficients <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> are complex numbers. The normalization requirement is satisfied if <span class="math notranslate nohighlight">\(|c_0|^2 + |c_1|^2 = 1\)</span>.</p>
+<p>This basis set is known as <em>computational basis</em> and the basis vectors do not represent any particular physical basis set.  In real quantum computers,  a qubit can be realized, for example, by an electron spin, <span class="math notranslate nohighlight">\(|0\rangle \equiv | \uparrow \rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle \equiv |\downarrow \rangle\)</span> or a polarization of photon, <span class="math notranslate nohighlight">\(|0\rangle \equiv | H \rangle\)</span> (horizontal polarization) and <span class="math notranslate nohighlight">\(|1\rangle \equiv | V \rangle\)</span> (vertical polarization).  By using the computational basis set, we don’t have to worry about what type of hardware is used.  The mathematical expression we use can be applied to all of quantum computers based on qubits.</p>
+</section>
+<section id="normalization-and-global-phase">
+<h2>Normalization and global phase<a class="headerlink" href="#normalization-and-global-phase" title="Permalink to this headline">#</a></h2>
+<p>The state of a quantum object is express by a ket in the Hilbert space.  However, the ket is not unique.  Many kets actually corresponds to the same physical state.  If <span class="math notranslate nohighlight">\(\ket{\varphi}\)</span> represents a state, <span class="math notranslate nohighlight">\(|\psi\rangle = \alpha \ket{\varphi}\)</span> also represent the same state where <span class="math notranslate nohighlight">\(\alpha\)</span> is any complex number. For example, <span class="math notranslate nohighlight">\(\ket{\varphi}, -\ket{\varphi}, i \ket{\varphi}, \frac{1}{2} \ket{\varphi}, 2 \ket{\varphi}\)</span> all represent the same quantum state. However, the difference is only the scalar factor.    In mathematics, <span class="math notranslate nohighlight">\(\{ \alpha \ket{\varphi}, \forall \alpha \in \mathbb{C}\}\)</span> is known as <em>ray</em>.   Any ray represents the same quantum state.  Although this ambiguity does not cause a fundamental trouble, it is certainly inconvenient.  We attempt to reduce the ambiguity.    This leads to <span class="math notranslate nohighlight">\(|\alpha|^2=1\)</span>.  However, the ambiguity still remains since <span class="math notranslate nohighlight">\(\alpha = e^{i \theta}\)</span> satisfies the normalization condition with any real value of <span class="math notranslate nohighlight">\(\theta\)</span>. In summary, if <span class="math notranslate nohighlight">\(|\varphi\rangle\)</span> is a normalized state vector, <span class="math notranslate nohighlight">\(e^{i \theta} | \varphi\rangle\)</span> is also a normalized state vector and both represent the same physical state. In other word,s <span class="math notranslate nohighlight">\(e^{i \theta}\)</span>, which is called <em>global phase</em>, does not contribute to the physical state of qubit.  Hence, it can be ignored.  This property is utilized when we develop efficient quantum computing codes.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

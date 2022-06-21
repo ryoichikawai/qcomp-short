@@ -5,7 +5,10 @@
 # 
 # Before going to quantum computation, let us briefly look at classical computation.
 
-# ## Bits
+# ## Clcassical information
+# 
+# 
+# 
 # 
 # A classical computer consists of many small building blocks, each of them has two possible states.  We assign indexes to these states, $\texttt{0}$ and $\texttt{1}$.  When the device is in one state, we interpret it as `0` and in the other state as `1`.  We call the information stored in this device unit `bit` and use a symbol $b \in \{\texttt{0},\texttt{1}\}$.  The computer consists of many bits, bit 0, bit 1, bit 2, .......  For convenience, we denote the bits as $b_0, b_1, b_2, \cdots $ and altogether the information is stored in a string of n bits, $'\, b_{n-1}\, b_{n-2}\, \cdots\, b_1\, b_0\, '$, for example $\texttt{0010101}$.
 

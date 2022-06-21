@@ -19,10 +19,14 @@
 
 # ## Ket and bra
 # 
-# You are familiar with Euclidean vectors such as forces and velocities, which expressed as $\vec{F}$ and $\vec{v}$, respectively. They are real vectors.  Quantum mechanics is mathematically described with complex vectors in a *Hilbert space*. In order to avoid confusion a complex vector $\psi$ is denoted as $|\psi\rangle$, which is called *ket vector* or simply *ket*. 
-# For every ket $|\psi\rangle$, there is a corresponding complex vector $\langle\psi|$, which is known as *bra vector* or just *bra*. Mathematically, $\langle\psi|$ is the _adjoint_ or _dual_ of $|\psi\rangle$. From physics point of view, they are equivalent.  We need bra vectors to compute inner products (See subsection {ref}`subsec-innerproduct`).
+# The state of a quantum object is mathematically described by a complex vector in a *Hilbert space*, which is called *state vector*. The state vector is denoted as $|\bullet\rangle$, which is called *ket vector* or simply *ket*.  "$\bullet$" in the ket can be any symbol representing the state.  For example, an electron in a spin-up state is commonly expressed by $\ket{\uparrow}$. We could use $|$&hearts; $\rangle$, $|$&spades;$\rangle$, $|$&diams;$\rangle$, $|$&clubs;$\rangle$ to express the states of quantum cards (if they exist.)  We often write an arbitrary state as $| \psi\rangle$. 
 # 
-# Since kets and bras are vectors,  two basic mathematical operations, *addition* $|a\rangle+|b\rangle$ are *scalar mulitplication* $\lambda |a\rangle$ ($\lambda$ is a complex number) can be applied to them.  The regular rules of calculation are applied as given below.  The dual of the operations are $\langle a| + \langle b|$ and $\langle a | \lambda^*$ where $\lambda^*$ is a complex conjugate of $\lambda$. 
+# For every ket $|\psi\rangle$, there is a corresponding complex vector $\langle\psi|$, which is known as *bra vector* or just *bra*. Mathematically, $\langle\psi|$ is the _adjoint_ or _dual_ of $|\psi\rangle$. 
+# The corresponding bra with the same symbol as a ket represents the same state of the qubit.  For example, both $|\uparrow\rangle$ and $\langle\uparrow|$ represent the same spin-up state.
+# We need bra vectors to compute inner products (See subsection {ref}`subsec-innerproduct`).
+# 
+# You are familiar with Euclidean vectors such as forces and velocities and the rules of calculation with them. 
+# Since kets and bras are vectors, they share the same mathematical operations with the Euclidean vectors, namely two basic mathematical operations, *addition* $|a\rangle+|b\rangle$ and *scalar mulitplication* $\lambda |a\rangle$ ($\lambda$ is a complex number).  The regular rules of calculation are listed below.  The dual of the operations are $\langle a| + \langle b|$ and $\langle a | \lambda^*$ where $\lambda^*$ is a complex conjugate of $\lambda$. 
 
 # ## Addition
 # The following statements are valid for any $|a\rangle$, $|b\rangle$, $|c\rangle$ in the same vector space.
@@ -107,30 +111,20 @@
 # \||a\rangle\| = \sqrt{\langle a|a \rangle}  \ge 0.
 # $$
 # 
-# When $\langle a|a \rangle = 1$, the ket is said to be _normalized_.  Although we cannot express the ket as an arrow, physicists often use an imaginary arrow to represent a ket and the norm can be viewed as the length of the imaginary arrow.  This analogy works quite well.  So, the normalized ket is much like an Euclidean unit vector. 
-# 
-# Consider kets $|\psi\rangle = \alpha |a\rangle$ and $|\psi\rangle = \beta |a\rangle$.  Although they share the same ket $|a\rangle$, $|\psi\rangle$ and $|\phi\rangle$ are different kets.  We know that two Euclidean vectors $\vec{F} = a \vec{x}$ and $\vec{G} = b \vec{x}$ are both parallel to $\vec{x}$.  Thus, $\vec{F}$ and $\vec{G}$ are also parallel to each other. Using the same analogy, we say that $|\psi\rangle$, $|\phi\rangle$ and $|a\rangle$ are all parallel to each other.  It is convenient to introduce a unit vector $|\tilde{a}\rangle$ in the "direction" of $|a\rangle$. More precisely, we want to have a ket satisfies $\langle \tilde{a} | \tilde{a} \rangle = 1$ and $|a\rangle = \lambda |\tilde{a}\rangle$.
-# Every vector in the same "direction" can be expressed as $\lambda |\tilde{a}\rangle$ with a certain $\lambda$. 
-# 
-# The unit vector, or equivalently, the normalized vector $\ket{\tilde{a}}$ can be obtained by scaling the original ket as
-# 
-# $$
-# |\tilde{a}\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}.
-# $$
-# 
-# This procedure is called _normalization_.
-# When $\langle a|a \rangle = 1$, the vector is said to be _normalized_.
-# 
-# When a pair of vectors are normalized and orthogonal to each other,they are *orthonormal*.
+# When $\langle a|a \rangle = 1$, the ket is said to be _normalized_.  Although we cannot express the ket as an arrow, physicists often use an imaginary arrow to represent a ket and the norm can be viewed as the length of the imaginary arrow.  This analogy works quite well.  So, the normalized ket is much like a unit vector. 
 
 # ___
 # 
-# __Exercise__ {numref}`%s <chap-prerequisites>`.3 &nbsp;  Show that $|\tilde{a}\rangle$ is normalized.     
+# __Exercise__ {numref}`%s <chap-prerequisites>`.3 &nbsp;  Show that $|b\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}$ is normalized.     
 # 
-# 
-# __Exercise__ {numref}`%s <chap-prerequisites>`.4 &nbsp;   $|a\rangle$ and $|b\rangle$ are normalized and orthogonal to each other and have the. Show that $|\psi\rangle = |a\rangle + i |b \rangle$ and $|\varphi\rangle = |a\rangle - i |b \rangle$ are orthogonal.  
+# __Exercise__ {numref}`%s <chap-prerequisites>`.4 &nbsp;   $|a\rangle$ and $|b\rangle$ are normalized and orthogonal to each other. Show that $|\psi\rangle = |a\rangle + i |b \rangle$ and $|\varphi\rangle = |a\rangle - i |b \rangle$ are orthogonal.  
 # 
 # ___
+
+# ## Global phase
+# 
+# It is easy to show that if $|\psi\rangle$ is normalized, $e^{i \theta}|\psi\rangle,\,\theta \in \mathbb{R}$ is also normalized.
+# Although they are mathematically different, the two kets corresponds to the same physical state.  The factor $e^{i \theta}$ is known as global phase and does not play any significant role in physics.  Hence, we can ignore it.  Quantum computation can be simplified by utilizing the freedom to chose any global phase.
 
 # ## Basis sets
 # 
