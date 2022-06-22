@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3.4. Tossing a quantum coin &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>3.3. Tossing a quantum coin &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="3.3. Bloch sphere" href="blochsphere.html" />
+    <link rel="prev" title="3.2. Qubit Measurement" href="measurement.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,8 +154,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/math.html">
-     1.7. Mathematics
+    <a class="reference internal" href="../prerequisites/vectors.html">
+     1.7. State vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../prerequisites/operators.html">
+     1.8. Operators
     </a>
    </li>
   </ul>
@@ -194,7 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="qubit1.html">
-     3.1. Mathematical expression of a qubit
+     3.1. Single qubit
     </a>
    </li>
    <li class="toctree-l2">
@@ -202,14 +207,9 @@ const thebe_selector_output = ".output, .cell_output"
      3.2. Qubit Measurement
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="blochsphere.html">
-     3.3. Bloch sphere
-    </a>
-   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.4. Tossing a quantum coin
+     3.3. Tossing a quantum coin
     </a>
    </li>
   </ul>
@@ -470,7 +470,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tossing-a-quantum-coin">
-<span id="sec-qcoin"></span><h1><span class="section-number">3.4. </span>Tossing a quantum coin<a class="headerlink" href="#tossing-a-quantum-coin" title="Permalink to this headline">#</a></h1>
+<span id="sec-qcoin"></span><h1><span class="section-number">3.3. </span>Tossing a quantum coin<a class="headerlink" href="#tossing-a-quantum-coin" title="Permalink to this headline">#</a></h1>
 <p>It is a common practice to pick one of two choices by tossing up a coin.  The classical motion of coin is chaotic and approximately the probability to get head and tail is equal. We can simulate the process on classical computer using random number generator.  Such simulation is known as Monte Carlo simulation after the name of famous casino city.  One  can simulate the same process on a quantum computer without random numbers by exploiting the stochastic nature of quantum measurement.  In the following, both a classical and quantum simulation are shown.</p>
 <section id="classical-simulation">
 <h2>Classical simulation<a class="headerlink" href="#classical-simulation" title="Permalink to this headline">#</a></h2>
@@ -498,8 +498,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head= 0.4962
-tail= 0.5038
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head= 0.5012
+tail= 0.4988
 </pre></div>
 </div>
 </div>
@@ -615,11 +615,11 @@ tail= 0.5038
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="blochsphere.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="measurement.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.3. </span>Bloch sphere</p>
+            <p class="prev-next-title"><span class="section-number">3.2. </span>Qubit Measurement</p>
         </div>
     </a>
 </div>

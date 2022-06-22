@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3.2. Qubit Measurement &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>4.2. Qubit Measurement &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,10 +48,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.3. Bloch sphere" href="blochsphere.html" />
-    <link rel="prev" title="3.1. Mathematical expression of a qubit" href="qubit1.html" />
+    <link rel="next" title="5. References" href="../references.html" />
+    <link rel="prev" title="4.1. Single qubit" href="qubit.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -147,21 +149,11 @@ const thebe_selector_output = ".output, .cell_output"
      1.5. Cloud IDE
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/quantum.html">
-     1.6. Quantum Mechanics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/math.html">
-     1.7. Mathematics
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../introduction/intro.html">
-   2. What is a Quantum Computer?
+  <a class="reference internal" href="../qmsummary/intro.html">
+   2. Quantum Mechanics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -170,48 +162,75 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     2.1. State vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/operators.html">
+     2.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     2.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     2.4. Quantum measurement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../introduction/intro.html">
+   3. What is a Quantum Computer?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="../introduction/ccomp.html">
-     2.1. Classical computation
+     3.1. Classical computation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../introduction/qcomp.html">
-     2.2. Quantum computation
+     3.2. Quantum computation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   3. A Qubit
+   4. A Qubit
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="qubit1.html">
-     3.1. Mathematical expression of a qubit
+    <a class="reference internal" href="qubit.html">
+     4.1. Single qubit
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.2. Qubit Measurement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="blochsphere.html">
-     3.3. Bloch sphere
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="qcoin.html">
-     3.4. Tossing a quantum coin
+     4.2. Qubit Measurement
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   5. References
+  </a>
  </li>
 </ul>
 
@@ -397,12 +416,53 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#born-rule">
+   Born rule
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantum-coin-flipping">
+   Quantum coin flipping
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classical-simulation">
+     Classical simulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quantum-simulation">
+     Quantum simulation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -414,6 +474,36 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#born-rule">
+   Born rule
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantum-coin-flipping">
+   Quantum coin flipping
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classical-simulation">
+     Classical simulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quantum-simulation">
+     Quantum simulation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -422,7 +512,135 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="qubit-measurement">
-<span id="sec-qubit-measurement"></span><h1><span class="section-number">3.2. </span>Qubit Measurement<a class="headerlink" href="#qubit-measurement" title="Permalink to this headline">#</a></h1>
+<span id="sec-qubit-measurement"></span><h1><span class="section-number">4.2. </span>Qubit Measurement<a class="headerlink" href="#qubit-measurement" title="Permalink to this headline">#</a></h1>
+<p>Measuring a physical quantity in quantum mechanics is a bit weird.  I am not going to present a full theory of measurement. If you are interested in it, read Ref. <span id="id1">[<a class="reference internal" href="../references.html#id4" title="Jürgen Audretsch. Entangled Systems - New Directions in Quantum Physics. Wiley-VHC, 2007. ISBN 978-3-527-40684-5.">1</a>]</span>.</p>
+<section id="born-rule">
+<h2>Born rule<a class="headerlink" href="#born-rule" title="Permalink to this headline">#</a></h2>
+<p>In classical computer, readout processes determine the outcome of computation stored in bits.  That is to determine if the bits are <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>.<br />
+Similarly at the end of quantum computation, we want to know whether the qubits are in <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span>. However, there is a big problem here.  A qubit can be in a superposition state</p>
+<div class="math notranslate nohighlight">
+\[
+|\psi\rangle = c_0 |0\rangle + c_1 |1\rangle, 
+\]</div>
+<p>which is neither <span class="math notranslate nohighlight">\(|0\rangle\)</span> nor <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  Despite of it, quantum mechanics allows us to ask if the qubit is in <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span> and surprisingly the answer is one of <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span>. However, we cannot predict which one is obtained.  To make a story concete, let us assume that <span class="math notranslate nohighlight">\(|0\rangle\)</span> is detected. It does not mean that the qubit was in <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  The measurement process has transformed <span class="math notranslate nohighlight">\(|psi\rangle\)</span> to <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  Nearly 100 years after quantum mechanics was well established, we still don’t know how that happens.</p>
+<p>Furthermore, the outcome of the measurement is not unique.  Suppose that many qubits are prepared exactly in the same state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and exactly the same measurement process is applied to them. Some of them are transformed to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and others to <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  It seems that <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span> are obtained at random.  So, what is the physical meaning of the state vector <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>?</p>
+<p>The state vector is associated with each single qubit but its predicts only the behavior of an ensmble.  If the ensemble contains a large number of qubits in the same state, the probability to get <span class="math notranslate nohighlight">\(|0\rangle\)</span> is <span class="math notranslate nohighlight">\(|c_0|^2\)</span> and that of <span class="math notranslate nohighlight">\(|1\rangle\)</span> is <span class="math notranslate nohighlight">\(|c_1|^2\)</span>.  This is interpretation of quantum mechanics is known as the <em>Born rule</em>.</p>
+<p>In summary, the outcome of quantum computation is stochastic.  One need to repeat the same calculation many times.  The outcome we obtain is the probabilities to get <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  This is the huge difference between classical and quantum computation.</p>
+</section>
+<section id="quantum-coin-flipping">
+<span id="sec-qcoin"></span><h2>Quantum coin flipping<a class="headerlink" href="#quantum-coin-flipping" title="Permalink to this headline">#</a></h2>
+<p>As an example of the Born rule, we create a quantum coin.</p>
+<p>It is a common practice to pick one of two choices by tossing up a coin.  The classical motion of coin is chaotic and approximately the probability to get head and tail is equal. We can simulate the process on classical computer using a random number generator.  Such simulation is known as Monte Carlo simulation after the name of famous casino city.  One  can simulate the same process on a quantum computer without random numbers by exploiting the stochastic nature of quantum measurement.  In the following, both a classical and quantum simulation are shown.</p>
+<section id="classical-simulation">
+<h3>Classical simulation<a class="headerlink" href="#classical-simulation" title="Permalink to this headline">#</a></h3>
+<p>,
+Using <code class="docutils literal notranslate"><span class="pre">random.choice</span></code> function in numpy, we generate random choice of 0=head and 1=tail.  Then, count the number of head and tail.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Classical Monte Carlo simulation of coin tossing</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># coin is tossed 10000 times for statistical analysis</span>
+<span class="n">shots</span><span class="o">=</span><span class="mi">10000</span>
+
+<span class="c1"># generate random choice 0 or 1</span>
+<span class="c1"># head=0 and tail=1</span>
+<span class="n">face</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span>
+
+<span class="c1"># count number of heads and tails</span>
+<span class="c1"># if the random number is less than 0.5, it is head.</span>
+<span class="c1"># otherwise, it is tail.</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">face</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">tail</span> <span class="o">=</span> <span class="n">shots</span><span class="o">-</span><span class="n">head</span>
+
+<span class="c1"># print out the probabilities</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;head=&quot;</span><span class="p">,</span><span class="n">head</span><span class="o">/</span><span class="n">shots</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tail=&quot;</span><span class="p">,</span><span class="n">tail</span><span class="o">/</span><span class="n">shots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head= 0.4961
+tail= 0.5039
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="quantum-simulation">
+<h3>Quantum simulation<a class="headerlink" href="#quantum-simulation" title="Permalink to this headline">#</a></h3>
+<p>To demonstrate the stochastic nature of quantum measurement, we consider a quantum coin.  The quantum coin has two states, head and tail. We assign the head to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and the tail to <span class="math notranslate nohighlight">\(|1\rangle\)</span>  The superposition state <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right)\)</span> indicates that the state of the quantum coin is neither head nor tail.  Based on the Born rule, the chance to get head is 50% and tail 50%.  Since the outcome is completely random, measuring the state of the quantum coin is equivalent to tossing a classical coin.</p>
+<p>In the following qiskit code, the superposition state using a Hadamard gate (we will discuss this in next chapter) and then the state of the qubit is measured.  The result is stored in a classical bit. The quantum computation is simulated with <code class="docutils literal notranslate"><span class="pre">qasm_simulator</span></code> on your computer instead of sending the code to a real quantum computer. (We will send this to real quantum computer in a later chapter.) We repeat the simulation 10000 times and find the probabilities to find head and tail. Since the number of samplings is finite, the result is not exactly 50%-50% but close to  it.</p>
+<p>The quantum circuit shows two lines, one for quantum register and the other for classical register.  The classical register contains a bit.  Usually the outcome of measurement on a qubit is stored. The quantum register contains a qubit.  It is initially reset to <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  The diagram shows that a single-qubit gate <span class="math notranslate nohighlight">\(H\)</span> (Hadamard gate) is applied on the qubit.  The outcome is <span class="math notranslate nohighlight">\(H |0\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle \right)\)</span>.  The next gate shows that the state of the qubit is measured and the result, either <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>, is sent to the classical register.  In the current example, <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span> is obtained with the equal probability. First, we construct a quantum circuit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tossing Up Quantum Coin</span>
+
+<span class="c1"># import numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># import entire qiskit</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># set classical register (bit)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+
+<span class="c1"># set quantum register (qubit)</span>
+<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+
+<span class="c1"># reset the quantum circuit</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+
+<span class="c1"># construct quantum circuit</span>
+<span class="c1"># step 1: create the superposition state with Hardamard gate</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># measurement on qubit </span>
+<span class="c1"># output is stored in cllasical register</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+
+<span class="c1"># show the quantum circuit</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/measurement_8_0.png" src="../_images/measurement_8_0.png" />
+</div>
+</div>
+<p>Now we execute the circuit using a simulator of quantum computer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chose a general quantum simulator without noise.</span>
+<span class="c1"># The simulator behaves as an ideal quantum computer.</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+
+<span class="c1"># Execute the quantum circuit 10000 times</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="c1"># get the result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="c1"># Count the outcome</span>
+<span class="c1"># Numbers of |0&gt; and |1&gt;</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="c1"># Visualize the outcome</span>
+<span class="c1"># import histgram plotting function</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+<span class="c1"># The result should be close to 0.5 for both |0&gt; and |1&gt;.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/measurement_10_0.png" src="../_images/measurement_10_0.png" />
+</div>
+</div>
+<p>The outcome is not exactly 50%-50%.  This is because the simulation is executed with a finite shots and thus there is statistical error due to finite sampling.  Theoretically infinite sampling is required but practically it is not possible. However, this is not an issue of quantum computation.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -452,17 +670,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="qubit1.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="qubit.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.1. </span>Mathematical expression of a qubit</p>
+            <p class="prev-next-title"><span class="section-number">4.1. </span>Single qubit</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="blochsphere.html" title="next page">
+    <a class='right-next' id="next-link" href="../references.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>Bloch sphere</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>References</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

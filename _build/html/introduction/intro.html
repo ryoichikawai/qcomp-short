@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2. What is a Quantum Computer? &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>3. What is a Quantum Computer? &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,8 +50,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.1. Classical computation" href="ccomp.html" />
-    <link rel="prev" title="1.7. Mathematics" href="../prerequisites/math.html" />
+    <link rel="next" title="3.1. Classical computation" href="ccomp.html" />
+    <link rel="prev" title="2.4. Quantum measurement" href="../qmsummary/measurement.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -147,71 +147,88 @@ const thebe_selector_output = ".output, .cell_output"
      1.5. Cloud IDE
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/quantum.html">
-     1.6. Quantum Mechanics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/math.html">
-     1.7. Mathematics
-    </a>
-   </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   2. What is a Quantum Computer?
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qmsummary/intro.html">
+   2. Quantum Mechanics
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="ccomp.html">
-     2.1. Classical computation
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     2.1. State vectors
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="qcomp.html">
-     2.2. Quantum computation
+    <a class="reference internal" href="../qmsummary/operators.html">
+     2.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     2.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     2.4. Quantum measurement
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../qubit1/intro.html">
-   3. A Qubit
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   3. What is a Quantum Computer?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/qubit1.html">
-     3.1. Mathematical expression of a qubit
+    <a class="reference internal" href="ccomp.html">
+     3.1. Classical computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qcomp.html">
+     3.2. Quantum computation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qubit1/intro.html">
+   4. A Qubit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/qubit.html">
+     4.1. Single qubit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit1/measurement.html">
-     3.2. Qubit Measurement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/blochsphere.html">
-     3.3. Bloch sphere
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/qcoin.html">
-     3.4. Tossing a quantum coin
+     4.2. Qubit Measurement
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   5. References
+  </a>
  </li>
 </ul>
 
@@ -422,7 +439,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-a-quantum-computer">
-<span id="chap-whatisqcomp"></span><h1><span class="section-number">2. </span>What is a Quantum Computer?<a class="headerlink" href="#what-is-a-quantum-computer" title="Permalink to this headline">#</a></h1>
+<span id="chap-whatisqcomp"></span><h1><span class="section-number">3. </span>What is a Quantum Computer?<a class="headerlink" href="#what-is-a-quantum-computer" title="Permalink to this headline">#</a></h1>
 <p>In modern life style, computers are used everywhere, inside cars, TV sets, kitchen appliances and cell phones, to name a few.  They are all operated in the same way with classical <em>bits</em>.  The principles of computation are developed by major mathematicians such as Alan Turing (<a class="reference external" href="https://en.wikipedia.org/wiki/Turing_machine">universal Turing machine</a>) and von Neumann (<a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">von Neumann architecture</a>).  Furthermore, classical <a class="reference external" href="https://en.wikipedia.org/wiki/Information_theory">information theory</a> developed by another genius mathematician, Claude Shannon advanced the classical computation to a much higher level.</p>
 <p>While the classical computation technology is matured, the <a class="reference external" href="https://en.wikipedia.org/wiki/Computability_theory">computability theory</a> shows that there are many hard problems that cannot be solved by the classical computer. See for example <a class="reference external" href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">travelling salesman problem</a>.  The demands of new computers that can solve such hard problems keep rising.  On the other hand, the current encryption based on <a class="reference external" href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA keys</a> works precisely because classical computers have the limitation.  However, in 1994 Peter Shore found a <em>quantum algorithm</em> to breaking the RSA encryption.  If quantum computers should become available, data security based on the RSA keys would be obsolete. This is a national security problem (<a class="reference external" href="https://www.whitehouse.gov/briefing-room/statements-releases/2022/05/04/national-security-memorandum-on-promoting-united-states-leadership-in-quantum-computing-while-mitigating-risks-to-vulnerable-cryptographic-systems/">See this national security memorandom on May 4, 2022</a>)  and it is quickly becoming a real issue.  <a class="reference external" href="https://www.nature.com/articles/d41586-022-00339-5#:~:text=The%20quantum%20computer%20revolution%20could,secure%20algorithms%20can%20safeguard%20privacy.&amp;text=In%20cybersecurity%20circles%2C%20they%20call,relentless%20hum%20of%20cryptographic%20algorithms.">See “The race to save the Internet from quantum hackers”</a>.</p>
 <p>So, what is a quantum computer?  It is our current understanding that all physical phenomena are governed by quantum mechanics. The computer you are using is indeed built upon the laws of quantum mechanics. Electrons in the semiconductor chips must be treated as quantum particles.  Nevertheless, it is called classical computer.  The difference between classical and quantum computing is how <em>information</em> is stored and processed.  Information must be stored in certain <em>stable</em> physical states.  If they are unstable, information is lost quickly.  Information in classical devices is safely stored in  macroscopic states against disturbances from the environment but an important signature of quantum mechanical behavior, <em>coherence</em>, is completely abandoned.  On the other hand, quantum computers store in information in a microscopic state which is fragile and easily disturbed by the environmental noises but quantum mechanical coherence is used as computational resources.  The recent advances in quantum technology have made it possible to keep quantum information alive long enough to carry out computation.</p>
@@ -458,17 +475,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../prerequisites/math.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../qmsummary/measurement.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.7. </span>Mathematics</p>
+            <p class="prev-next-title"><span class="section-number">2.4. </span>Quantum measurement</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ccomp.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Classical computation</p>
+        <p class="prev-next-title"><span class="section-number">3.1. </span>Classical computation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

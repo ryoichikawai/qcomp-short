@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.2. Quantum computation &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>3.2. Quantum computation &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. A Qubit" href="../qubit1/intro.html" />
-    <link rel="prev" title="2.1. Classical computation" href="ccomp.html" />
+    <link rel="next" title="4. A Qubit" href="../qubit1/intro.html" />
+    <link rel="prev" title="3.1. Classical computation" href="ccomp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -149,71 +149,88 @@ const thebe_selector_output = ".output, .cell_output"
      1.5. Cloud IDE
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qmsummary/intro.html">
+   2. Quantum Mechanics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/quantum.html">
-     1.6. Quantum Mechanics
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     2.1. State vectors
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/math.html">
-     1.7. Mathematics
+    <a class="reference internal" href="../qmsummary/operators.html">
+     2.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     2.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     2.4. Quantum measurement
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   2. What is a Quantum Computer?
+   3. What is a Quantum Computer?
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="ccomp.html">
-     2.1. Classical computation
+     3.1. Classical computation
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.2. Quantum computation
+     3.2. Quantum computation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qubit1/intro.html">
-   3. A Qubit
+   4. A Qubit
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/qubit1.html">
-     3.1. Mathematical expression of a qubit
+    <a class="reference internal" href="../qubit1/qubit.html">
+     4.1. Single qubit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit1/measurement.html">
-     3.2. Qubit Measurement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/blochsphere.html">
-     3.3. Bloch sphere
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/qcoin.html">
-     3.4. Tossing a quantum coin
+     4.2. Qubit Measurement
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   5. References
+  </a>
  </li>
 </ul>
 
@@ -501,13 +518,13 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="quantum-computation">
-<span id="sec-qcomp"></span><h1><span class="section-number">2.2. </span>Quantum computation<a class="headerlink" href="#quantum-computation" title="Permalink to this headline">#</a></h1>
+<span id="sec-qcomp"></span><h1><span class="section-number">3.2. </span>Quantum computation<a class="headerlink" href="#quantum-computation" title="Permalink to this headline">#</a></h1>
 <p>Here is a brief description of quantum computer and the details will be discussed in this book.  It is necessary for you to understand the following at this stage.  Just read them and move on.</p>
 <section id="qubits">
 <h2>Qubits<a class="headerlink" href="#qubits" title="Permalink to this headline">#</a></h2>
 <p>Quantum computers are also made of many small building blocks but unlike classical computers we need to use quantum mechanics to describe their state. Current quantum computers use the smallest quantum system, that is a two-dimensional Hilbert space <span class="math notranslate nohighlight">\(\mathbb{C}_2\)</span> spanned by complex vectors <span class="math notranslate nohighlight">\(\ket{0}\)</span> and <span class="math notranslate nohighlight">\(\ket{1}\)</span>, known as <em>qubit</em>. These two basis states looks similar to <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> for a classical bit . However, unlike the classical bit,  the state of a qubit  can be in a superposition state</p>
 <div class="math notranslate nohighlight" id="equation-eqn-superposition">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-eqn-superposition" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-eqn-superposition" title="Permalink to this equation">#</a></span>\[
 \ket{\psi} = c_{0} \ket{0} + c_{1} \ket{1}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> are complex number satisfying <span class="math notranslate nohighlight">\(|c_0|^2+|c_1|^2=1\)</span> (normalization). Similarly to the classical bit, we obtain either <span class="math notranslate nohighlight">\(\ket{0}\)</span> or <span class="math notranslate nohighlight">\(\ket{1}\)</span>  when the superposition state is measured.   We shall call them <em>computational basis</em>. However,  the state of the qubit is neither <span class="math notranslate nohighlight">\(\ket{0}\)</span> nor <span class="math notranslate nohighlight">\(\ket{1}\)</span>  but  <span class="math notranslate nohighlight">\(\ket{0}\)</span> AND <span class="math notranslate nohighlight">\(\ket{1}\)</span> simultaneously. Hence, a qubit can compute two different cases at once (if a programmer is smart enough). Quantum computers exploit this superposition state.  Unlike the classical bit which has only two possible states, a qubit can take infinitely many different states since <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> can be any complex numbers satisfying the normalization condition.</p>
@@ -525,17 +542,17 @@ title="Print to PDF"
 <figure class="align-default" id="u1-gate">
 <img alt="../_images/u1-gate.png" src="../_images/u1-gate.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Action of one-qubit gate.</span><a class="headerlink" href="#u1-gate" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Action of one-qubit gate.</span><a class="headerlink" href="#u1-gate" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>As an example, consider a Pauli operator <span class="math notranslate nohighlight">\(X\equiv \sigma_x\)</span>.  When it acts on the computational basis, <span class="math notranslate nohighlight">\(X \ket{0}=\ket{1}\)</span> and <span class="math notranslate nohighlight">\(X \ket{1}=\ket{0}\)</span>.  Hence, it acts like <span class="math notranslate nohighlight">\(\texttt{NOT}\)</span> in the classical computation. See the <a class="reference internal" href="#quantum-gate-x"><span class="std std-numref">Table 2.3</span></a>. The qubit can be in a superposition state.  The  classical truth table is not enough. When it acts on a general state, we get</p>
+<p>As an example, consider a Pauli operator <span class="math notranslate nohighlight">\(X\equiv \sigma_x\)</span>.  When it acts on the computational basis, <span class="math notranslate nohighlight">\(X \ket{0}=\ket{1}\)</span> and <span class="math notranslate nohighlight">\(X \ket{1}=\ket{0}\)</span>.  Hence, it acts like <span class="math notranslate nohighlight">\(\texttt{NOT}\)</span> in the classical computation. See the <a class="reference internal" href="#quantum-gate-x"><span class="std std-numref">Table 3.3</span></a>. The qubit can be in a superposition state.  The  classical truth table is not enough. When it acts on a general state, we get</p>
 <div class="math notranslate nohighlight" id="equation-xgate">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-xgate" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-xgate" title="Permalink to this equation">#</a></span>\[
 X \ket{\psi} = c_0 X \ket{0} + c_1 X \ket{1} = c_0 \ket{1} + c_1 \ket{0} = c_1 \ket{0} + c_0\ket{1}
 \]</div>
-<p>which actually swaps the coefficients.  The first two rows in  <a class="reference internal" href="#quantum-gate-x"><span class="std std-numref">Table 2.3</span></a> is much like the classical truth <a class="reference internal" href="ccomp.html#classical-not"><span class="std std-numref">table 2.1</span></a>.  The third row makes quantum computers more powerful than the classical computers.</p>
+<p>which actually swaps the coefficients.  The first two rows in  <a class="reference internal" href="#quantum-gate-x"><span class="std std-numref">Table 3.3</span></a> is much like the classical truth <a class="reference internal" href="ccomp.html#classical-not"><span class="std std-numref">table 3.1</span></a>.  The third row makes quantum computers more powerful than the classical computers.</p>
 <table class="colwidths-auto table" id="quantum-gate-x">
-<caption><span class="caption-number">Table 2.3 </span><span class="caption-text">X Gate</span><a class="headerlink" href="#quantum-gate-x" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 3.3 </span><span class="caption-text">X Gate</span><a class="headerlink" href="#quantum-gate-x" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p> </p></th>
 <th class="text-align:center head"><p><span class="math notranslate nohighlight">\(i\)</span></p></th>
@@ -561,7 +578,7 @@ X \ket{\psi} = c_0 X \ket{0} + c_1 X \ket{1} = c_0 \ket{1} + c_1 \ket{0} = c_1 \
 <figure class="align-default" id="u2-gate">
 <img alt="../_images/u2-gate.png" src="../_images/u2-gate.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Action of two-qubit gate.</span><a class="headerlink" href="#u2-gate" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Action of two-qubit gate.</span><a class="headerlink" href="#u2-gate" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Logically, infinitely many 1-qubit and 2-qubits gates are possible but actual devices can understand only some of them. Depending on the underlying quantum systems, the available gates are different.  However, almost any gate can be expressed equivalently with a set of other gates in principle (gate <em>decomposition</em>).  So, if a desired gate is not available on the device you are using, you  must find a decomposition of the gate.  For IBM devices, <span class="math notranslate nohighlight">\(\texttt{Qiskit}\)</span> finds a decomposition suitable for them.</p>
@@ -588,7 +605,7 @@ X \ket{\psi} = c_0 X \ket{0} + c_1 X \ket{1} = c_0 \ket{1} + c_1 \ket{0} = c_1 \
 <figure class="align-default" id="qc-example">
 <img alt="../_images/qc.png" src="../_images/qc.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">An example of quantum circuit.</span><a class="headerlink" href="#qc-example" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">An example of quantum circuit.</span><a class="headerlink" href="#qc-example" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>which is known as quantum circuit.  Each object in the circuit is a unitary gate.</p>
@@ -596,7 +613,7 @@ X \ket{\psi} = c_0 X \ket{0} + c_1 X \ket{1} = c_0 \ket{1} + c_1 \ket{0} = c_1 \
 <figure class="align-default" id="quantum-x-y">
 <img alt="../_images/quantum_x+y.png" src="../_images/quantum_x+y.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Quantum computation of <span class="math notranslate nohighlight">\(x \oplus y\)</span>.</span><a class="headerlink" href="#quantum-x-y" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.6 </span><span class="caption-text">Quantum computation of <span class="math notranslate nohighlight">\(x \oplus y\)</span>.</span><a class="headerlink" href="#quantum-x-y" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The gate in the circuit is known as <em>controlled X</em> or <em>controlled NOT</em>.  It applies <span class="math notranslate nohighlight">\(X\)</span> on <span class="math notranslate nohighlight">\(q_0\)</span> only when <span class="math notranslate nohighlight">\(q_1 = \ket{1}\)</span>. This is equivalent to the classical computation with <span class="math notranslate nohighlight">\(\texttt{XOR}\)</span> gate if input qubits are either <span class="math notranslate nohighlight">\(\ket{0}\)</span> or <span class="math notranslate nohighlight">\(\ket{1}\)</span>.   We can see the difference between classical and quantum computation  when a superposition state is used as input. Consider a case where <span class="math notranslate nohighlight">\(q_0=\ket{0}\)</span> and <span class="math notranslate nohighlight">\(q_1=c_0 \ket{0} + c_1 \ket{1}\)</span>.  The state of the two qubits is</p>
@@ -613,7 +630,7 @@ X \ket{\psi} = c_0 X \ket{0} + c_1 X \ket{1} = c_0 \ket{1} + c_1 \ket{0} = c_1 \
 </section>
 <section id="readouts">
 <h2>Readouts<a class="headerlink" href="#readouts" title="Permalink to this headline">#</a></h2>
-<p>When a qubit is in <span class="math notranslate nohighlight">\(\ket{0}\)</span> or <span class="math notranslate nohighlight">\(\ket{1}\)</span>, readout is in principle accurate (not on current NISQ computers due to device errors). However, the outcome is completely uncertain if the qubit is in a superposition state <a class="reference internal" href="#equation-eqn-superposition">(2.1)</a>. We will obtain <span class="math notranslate nohighlight">\(\texttt{0}\)</span> or <span class="math notranslate nohighlight">\(\texttt{1}\)</span> at random.  If we prepare many qubits in the same superposition state, we obtain <span class="math notranslate nohighlight">\(\texttt{0}\)</span> from some and <span class="math notranslate nohighlight">\(\texttt{1}\)</span> from others. Hence, the readout of qubits is stochastic, from which we know that the qubits are in a superposition state but which one?  The principle of quantum mechanics tells us that the probability of getting <span class="math notranslate nohighlight">\(\texttt{0}\)</span> is given by <span class="math notranslate nohighlight">\(|c_0|^2\)</span> and <span class="math notranslate nohighlight">\(\texttt{1}\)</span> by <span class="math notranslate nohighlight">\(|c_1|^2\)</span>.  By measuring many qubits in the same state, we can calculate the probabilities from which <span class="math notranslate nohighlight">\(|c_0|^2\)</span> and <span class="math notranslate nohighlight">\(|c_1|^2\)</span> can be determined.  The phase of <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> are still missing.  There is a complicate procedure, known as <em>quantum tomography</em>, which can determine the superposition state if and only if sufficiently large number of the same superposition states are measured.  Therefore, it is necessary to repeat the same quantum computation many times if the final result is a superposition state.  Even when the result of the computation is designed to be <span class="math notranslate nohighlight">\(\ket{0}\)</span> or <span class="math notranslate nohighlight">\(\ket{1}\)</span> by the algorithm, the outcome can be a superposition state due to device errors.  Even worse, the final state can be so-called <em>mixed state</em>, which contains a mixture of classical and quantum uncertainties simultaneously.  A good quantum circuit avoids both classical and quantum uncertainties as much as possible.</p>
+<p>When a qubit is in <span class="math notranslate nohighlight">\(\ket{0}\)</span> or <span class="math notranslate nohighlight">\(\ket{1}\)</span>, readout is in principle accurate (not on current NISQ computers due to device errors). However, the outcome is completely uncertain if the qubit is in a superposition state <a class="reference internal" href="#equation-eqn-superposition">(3.1)</a>. We will obtain <span class="math notranslate nohighlight">\(\texttt{0}\)</span> or <span class="math notranslate nohighlight">\(\texttt{1}\)</span> at random.  If we prepare many qubits in the same superposition state, we obtain <span class="math notranslate nohighlight">\(\texttt{0}\)</span> from some and <span class="math notranslate nohighlight">\(\texttt{1}\)</span> from others. Hence, the readout of qubits is stochastic, from which we know that the qubits are in a superposition state but which one?  The principle of quantum mechanics tells us that the probability of getting <span class="math notranslate nohighlight">\(\texttt{0}\)</span> is given by <span class="math notranslate nohighlight">\(|c_0|^2\)</span> and <span class="math notranslate nohighlight">\(\texttt{1}\)</span> by <span class="math notranslate nohighlight">\(|c_1|^2\)</span>.  By measuring many qubits in the same state, we can calculate the probabilities from which <span class="math notranslate nohighlight">\(|c_0|^2\)</span> and <span class="math notranslate nohighlight">\(|c_1|^2\)</span> can be determined.  The phase of <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> are still missing.  There is a complicate procedure, known as <em>quantum tomography</em>, which can determine the superposition state if and only if sufficiently large number of the same superposition states are measured.  Therefore, it is necessary to repeat the same quantum computation many times if the final result is a superposition state.  Even when the result of the computation is designed to be <span class="math notranslate nohighlight">\(\ket{0}\)</span> or <span class="math notranslate nohighlight">\(\ket{1}\)</span> by the algorithm, the outcome can be a superposition state due to device errors.  Even worse, the final state can be so-called <em>mixed state</em>, which contains a mixture of classical and quantum uncertainties simultaneously.  A good quantum circuit avoids both classical and quantum uncertainties as much as possible.</p>
 </section>
 </section>
 
@@ -648,13 +665,13 @@ X \ket{\psi} = c_0 X \ket{0} + c_1 X \ket{1} = c_0 \ket{1} + c_1 \ket{0} = c_1 \
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2.1. </span>Classical computation</p>
+            <p class="prev-next-title"><span class="section-number">3.1. </span>Classical computation</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../qubit1/intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>A Qubit</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>A Qubit</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

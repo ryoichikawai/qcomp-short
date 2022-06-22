@@ -71,7 +71,7 @@
 
 # ___  
 # 
-# __Exercise__ {numref}`%s <chap-prerequisites>`.1 &nbsp;  Consider a superposition state $\alpha |a\rangle + e^{i \theta} \alpha |b\rangle$ where $\theta$ is real.  Find the corresponding bra vector.  
+# __Exercise__ {numref}`%s <sec-statevectors>`.1 &nbsp;  Consider a superposition state $\alpha |a\rangle + e^{i \theta} \alpha |b\rangle$ where $\theta$ is real.  Find the corresponding bra vector.  
 # 
 # ___
 
@@ -90,7 +90,7 @@
 # 
 
 # ___
-# __Exercise__ {numref}`%s <chap-prerequisites>`.2 &nbsp; 
+# __Exercise__ {numref}`%s <sec-statevectors>`.2 &nbsp; 
 # 1. In the above example of inner product, show that $\langle c|\psi \rangle^* = \langle \psi|c \rangle$. (otherwise, the distribution rule does not work.)  
 # 2.  Show that $\langle \psi|\psi \rangle$ is real  for any $|\psi\rangle$.
 # ___
@@ -115,9 +115,9 @@
 
 # ___
 # 
-# __Exercise__ {numref}`%s <chap-prerequisites>`.3 &nbsp;  Show that $|b\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}$ is normalized.     
+# __Exercise__ {numref}`%s <sec-statevectors>`.3 &nbsp;  Show that $|b\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}$ is normalized.     
 # 
-# __Exercise__ {numref}`%s <chap-prerequisites>`.4 &nbsp;   $|a\rangle$ and $|b\rangle$ are normalized and orthogonal to each other. Show that $|\psi\rangle = |a\rangle + i |b \rangle$ and $|\varphi\rangle = |a\rangle - i |b \rangle$ are orthogonal.  
+# __Exercise__ {numref}`%s <sec-statevectors>`.4 &nbsp;   $|a\rangle$ and $|b\rangle$ are normalized and orthogonal to each other. Show that $|\psi\rangle = |a\rangle + i |b \rangle$ and $|\varphi\rangle = |a\rangle - i |b \rangle$ are orthogonal.  
 # 
 # ___
 
@@ -173,6 +173,28 @@
 # (|e_i\rangle\langle e_i|)\, |\psi\rangle =  |e_i\rangle (\langle e_i|\psi\rangle) = c_i e_i\rangle 
 # $$
 # where $c_i = \langle e_i|\psi\rangle$.
+
+# ##  Two-dimensional Hilbert space
+# 
+# In the theory of quantum computation, a two-dimensional Hilbert space denoted as $\mathbb{C}^2$, appears quite often.  It is a convention to use a complete orthonormal basis set $\{|0\rangle, |1\rangle\}$ known as *computational basis*.  We use this basis set extensively through out the book.  The orthonormality of this basis set is given by
+# 
+# $$
+# \langle 0|0 \rangle = \langle 1|1 \rangle = 1, \quad \langle 0|1 \rangle = \langle 1|0 \rangle = 0 .
+# $$(eq-comp-basis)
+# 
+# Another basis set
+# 
+# $$
+# |+\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle + |1\rangle\right), \quad |-\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle - |1\rangle\right)
+# $$(eq-plusminus-basis)
+# 
+# is also regularly used.
+
+# ___
+# 
+# __Exercise__ {numref}`%s <sec-statevectors>`.5 &nbsp;  $|\pm\rangle$ are orthonormal.
+# 
+# ___
 
 # In[ ]:
 

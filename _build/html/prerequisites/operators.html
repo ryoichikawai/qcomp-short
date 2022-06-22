@@ -602,7 +602,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="operators">
-<span id="chap-operators"></span><h1><span class="section-number">1.8. </span>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">#</a></h1>
+<span id="sec-operators"></span><h1><span class="section-number">1.8. </span>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">#</a></h1>
 <p>An operator is defined on a Hilbert space and acts on a vector in the same Hilbert space.  More precisely, we use <em>linear</em> operators.  In this section, we learn the following mathematical operations associated with operators.  Physical interpretations will be followed after this section.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -675,9 +675,9 @@ title="Print to PDF"
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(A^\dagger\)</span> is <em>Hermite conjugate</em> or <em>adjoint</em> of <span class="math notranslate nohighlight">\(A\)</span>.  The adjoint of the adjoint operator is the original operator, that is  <span class="math notranslate nohighlight">\((A^\dagger)^\dagger = A\)</span>.</p>
 <p>It is wrong to think that <span class="math notranslate nohighlight">\(A^\dagger\)</span> always act on bra.  It can be applied to ket and <span class="math notranslate nohighlight">\(A^\dagger \ket{a}\)</span> is perfectly OK.  However, in general <span class="math notranslate nohighlight">\(A \ket{a} \ne A^\dagger \ket{A}\)</span>. Therefore <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(A^\dagger\)</span> are two different operators..  By definition, the adjoint expression of <span class="math notranslate nohighlight">\(A^\dagger \ket{A}\)</span> is <span class="math notranslate nohighlight">\(\bra{a} (A^\dagger)^\dagger = \bra{a} A\)</span>.</p>
-<p><strong>Example</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.1  Operator <span class="math notranslate nohighlight">\(X\)</span> transforms the basis vectors as <span class="math notranslate nohighlight">\(X\ket{0} \equiv \ket{1}\)</span> and <span class="math notranslate nohighlight">\(X\ket{1} \equiv \ket{0}\)</span>.</p>
-<p><strong>Example</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.2  Consider <span class="math notranslate nohighlight">\(H\)</span> transforms the basis vectors as <span class="math notranslate nohighlight">\(H\ket{0} \equiv \ket{+}\)</span> and <span class="math notranslate nohighlight">\(H\ket{1} \equiv \ket{-}\)</span>.
-(See <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec-basis-sets</span></code> for the definition of <span class="math notranslate nohighlight">\(\ket{\pm}\)</span>.)  <span class="math notranslate nohighlight">\(H\)</span> is known as <em>Hadamard</em> gate and one of the very important quantum gates.</p>
+<p><strong>Example</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.1  Operator <span class="math notranslate nohighlight">\(X\)</span> transforms the basis vectors as <span class="math notranslate nohighlight">\(X\ket{0} \equiv \ket{1}\)</span> and <span class="math notranslate nohighlight">\(X\ket{1} \equiv \ket{0}\)</span>.</p>
+<p><strong>Example</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.2  Consider <span class="math notranslate nohighlight">\(H\)</span> transforms the basis vectors as <span class="math notranslate nohighlight">\(H\ket{0} \equiv \ket{+}\)</span> and <span class="math notranslate nohighlight">\(H\ket{1} \equiv \ket{-}\)</span>.
+(See <a class="reference internal" href="vectors.html#equation-eq-plusminus-basis">(1.5)</a> for the definition of <span class="math notranslate nohighlight">\(\ket{\pm}\)</span>.)  <span class="math notranslate nohighlight">\(H\)</span> is known as <em>Hadamard</em> gate and one of the very important quantum gates.</p>
 </section>
 <section id="scalar-multiplication">
 <h2>Scalar multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline">#</a></h2>
@@ -692,7 +692,7 @@ title="Print to PDF"
 (\lambda \eta) A = \lambda (\eta A)
 \]</div>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.1     Find the adjoint of <span class="math notranslate nohighlight">\(\lambda A \ket{a}\)</span>.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.1     Find the adjoint of <span class="math notranslate nohighlight">\(\lambda A \ket{a}\)</span>.</p>
 </section>
 <hr class="docutils" />
 <section id="linearity">
@@ -704,7 +704,7 @@ A \left(\alpha \ket{\psi} + \beta\ket{\phi}\right) = \alpha A \ket{\psi} + \beta
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha, \beta \in \mathbb{C}\)</span>.</p>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.2     Show that <span class="math notranslate nohighlight">\(H\ket{+} = \ket{0}\)</span> and <span class="math notranslate nohighlight">\(H \ket{-} = \ket{1}\)</span> where <span class="math notranslate nohighlight">\(H\)</span> is the Hadamard gate.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.2     Show that <span class="math notranslate nohighlight">\(H\ket{+} = \ket{0}\)</span> and <span class="math notranslate nohighlight">\(H \ket{-} = \ket{1}\)</span> where <span class="math notranslate nohighlight">\(H\)</span> is the Hadamard gate.</p>
 </section>
 <hr class="docutils" />
 <section id="operator-sum">
@@ -743,10 +743,10 @@ In general the outcomes of these two operations are different and thus <span cla
 \]</div>
 <p>Using the associativity <span class="math notranslate nohighlight">\(PQ\)</span>, <span class="math notranslate nohighlight">\(\bra{c} = \bra{a} (PQ)^\dagger\)</span>.  By direct comparison, we find</p>
 <div class="math notranslate nohighlight" id="equation-pq-dagger">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-pq-dagger" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-pq-dagger" title="Permalink to this equation">#</a></span>\[
 (PQ)^\dagger = Q^\dagger P^\dagger.
 \]</div>
-<p>We learned a similar relation in a linear algebra course: <span class="math notranslate nohighlight">\((PQ)^T=Q^T P^T\)</span> where <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are matrices and <span class="math notranslate nohighlight">\(T\)</span> is transpose.  We will see that this equality is indeed equivalent to <a class="reference internal" href="#equation-pq-dagger">(1.4)</a>.</p>
+<p>We learned a similar relation in a linear algebra course: <span class="math notranslate nohighlight">\((PQ)^T=Q^T P^T\)</span> where <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are matrices and <span class="math notranslate nohighlight">\(T\)</span> is transpose.  We will see that this equality is indeed equivalent to <a class="reference internal" href="#equation-pq-dagger">(1.6)</a>.</p>
 </section>
 <section id="identity-operator-i">
 <h2>Identity operator <span class="math notranslate nohighlight">\(I\)</span><a class="headerlink" href="#identity-operator-i" title="Permalink to this headline">#</a></h2>
@@ -772,24 +772,24 @@ A^{-1} A = A A^{-1} = I.
 \]</div>
 <p>Not all operators have their inverse but most of operators we use in quantum computation do.</p>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.3     The identity operator <span class="math notranslate nohighlight">\(I\)</span> satisfies <span class="math notranslate nohighlight">\(I = I^{-1} = I^\dagger = I^2\)</span>.  Prove it.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.3     The identity operator <span class="math notranslate nohighlight">\(I\)</span> satisfies <span class="math notranslate nohighlight">\(I = I^{-1} = I^\dagger = I^2\)</span>.  Prove it.</p>
 </section>
 <hr class="docutils" />
 <section id="matrix-elements">
 <h2>Matrix elements<a class="headerlink" href="#matrix-elements" title="Permalink to this headline">#</a></h2>
 <p>Consider an expression <span class="math notranslate nohighlight">\(\langle a | A | b \rangle\)</span>.  It is not clear if <span class="math notranslate nohighlight">\(A\)</span> is acting on the ket or the bra. Let us assume that <span class="math notranslate nohighlight">\(A\)</span> acts on the ket as<span class="math notranslate nohighlight">\(\langle b | (A | a \rangle)\)</span>.  Then, it is a regular inner product.  If <span class="math notranslate nohighlight">\(A \ket{a}=\ket{c}\)</span>, it is indeed <span class="math notranslate nohighlight">\(\langle  b|c \rangle\)</span>.  It turns out that when <span class="math notranslate nohighlight">\(A\)</span> can act on the bra, the same inner product is obtained.  Therefore, we don’t have to specify which way the operator acts.  The quantity <span class="math notranslate nohighlight">\(\langle a | A | b \rangle\)</span> is called <em>matrix element</em> of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>Most of mathematical objects we encounter in quantum mechanics are defined in some abstract space and they are not directly connected to what we see in the real world.  The inner products and also matrix elements are numbers we are familiar with.  Hence, abstract expressions of quantum mechanics and physical values we experience in the real world are connected through the inner product.  In this sense, the inner product is very essential.  Without it, quantum mechanics is completely separated from the real world and would be useless.</p>
-<p><strong>Example</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.3     <span class="math notranslate nohighlight">\(\bra{0}X\ket{0} = 0\)</span>.</p>
+<p><strong>Example</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.3     <span class="math notranslate nohighlight">\(\bra{0}X\ket{0} = 0\)</span>.</p>
 <blockquote>
 <div><p>Calculation: <span class="math notranslate nohighlight">\(\bra{0}X\ket{0} = \langle 0 | 1 \rangle = 0\)</span> where <span class="math notranslate nohighlight">\(X\ket{0} = \ket{1}\)</span> is used.</p>
 </div></blockquote>
-<p><strong>Example</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.4     <span class="math notranslate nohighlight">\(\bra{+}H\ket{+} = \frac{1}{\sqrt{2}}\)</span>.</p>
+<p><strong>Example</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.4     <span class="math notranslate nohighlight">\(\bra{+}H\ket{+} = \frac{1}{\sqrt{2}}\)</span>.</p>
 <blockquote>
 <div><p>Calculation: <span class="math notranslate nohighlight">\(\bra{+}H\ket{+} = \langle + | 0 \rangle = \left(\frac{1}{\sqrt{2}}(\bra{0}+\bra{1}) \right) \ket{0} = \frac{1}{\sqrt{2}} \left(\langle 0|0 \rangle + \langle 1|0 \rangle \right)= \frac{1}{\sqrt{2}}.
 \)</span>.</p>
 </div></blockquote>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.4     Evaluate matrix element <span class="math notranslate nohighlight">\(\bra{+} H \ket{-}\)</span>.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.4     Evaluate matrix element <span class="math notranslate nohighlight">\(\bra{+} H \ket{-}\)</span>.</p>
 </section>
 <hr class="docutils" />
 <section id="dyads">
@@ -833,18 +833,18 @@ U^\dagger = e^{i \theta A^\dagger} = e^{i \theta A}
 <p>which leads to <span class="math notranslate nohighlight">\(U^\dagger U = I\)</span> and thus <span class="math notranslate nohighlight">\(U\)</span> is unitary.</p>
 <p>The operator exponential functions are used for time-evolution, space rotation, space translation, <span class="math notranslate nohighlight">\(\cdots\)</span> and they are a key mathematical component for symmetry groups and conservation laws.</p>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.5     Show that <span class="math notranslate nohighlight">\(U^\dagger U = e^{i \theta A^\dagger} e^{-i \theta A} = I\)</span> if <span class="math notranslate nohighlight">\(A\)</span> is self-adjoint.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.5     Show that <span class="math notranslate nohighlight">\(U^\dagger U = e^{i \theta A^\dagger} e^{-i \theta A} = I\)</span> if <span class="math notranslate nohighlight">\(A\)</span> is self-adjoint.</p>
 </section>
 <hr class="docutils" />
 <section id="eigenvalues-and-eigenvectors">
 <h2>Eigenvalues and eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Permalink to this headline">#</a></h2>
 <p>When an operator <span class="math notranslate nohighlight">\(A\)</span> and its adjoint <span class="math notranslate nohighlight">\(A^\dagger\)</span> commute, i.e. <span class="math notranslate nohighlight">\([A,A^\dagger]=0\)</span>, <span class="math notranslate nohighlight">\(A\)</span> is a <em>normal</em> operator and there are special kets which are transformed to “itself”  by <span class="math notranslate nohighlight">\(A\)</span>.  Mathematically, it is expressed by</p>
 <div class="math notranslate nohighlight" id="equation-eigeneq">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-eigeneq" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-eigeneq" title="Permalink to this equation">#</a></span>\[
 A \ket{a} = \lambda \ket{a}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda \in \mathbb{C}\)</span>.  The right hand side is not exactly the “itself” but multiplied by a constant <span class="math notranslate nohighlight">\(\lambda\)</span> which is called <em>eigenvalue</em>.  (In next section, we will see that <span class="math notranslate nohighlight">\(\ket{a}\)</span> and <span class="math notranslate nohighlight">\(\lambda \ket{a}\)</span> represent the same physical state.)  The ket <span class="math notranslate nohighlight">\(\ket{a}\)</span> is called <em>eigenvector</em> or <em>eigenket</em> of <span class="math notranslate nohighlight">\(A\)</span>.</p>
-<p>There are many such vectors.  More precisely, there are <span class="math notranslate nohighlight">\(N\)</span> eigenkets in <span class="math notranslate nohighlight">\(N\)</span>-dimensional Hilbert space.  Therefore, we write <a class="reference internal" href="#equation-eigeneq">(1.5)</a> as</p>
+<p>There are many such vectors.  More precisely, there are <span class="math notranslate nohighlight">\(N\)</span> eigenkets in <span class="math notranslate nohighlight">\(N\)</span>-dimensional Hilbert space.  Therefore, we write <a class="reference internal" href="#equation-eigeneq">(1.7)</a> as</p>
 <div class="math notranslate nohighlight">
 \[
 A \ket{a_i} = \lambda_i \ket{a_i}, \quad i=1,\cdots, N.
@@ -885,7 +885,7 @@ A \ket{a_i} = \lambda_i \ket{a_i}, \quad i=1,\cdots, N.
 <span class="math notranslate nohighlight">\(\text{tr}\left(A\ket{\varphi}\bra{\psi}\right) = \langle\psi|A|\varphi\rangle\)</span>.</p>
 </div></blockquote>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.6     Show that <span class="math notranslate nohighlight">\(\text{tr} \left([A,B]\right) = 0\)</span>,  even when <span class="math notranslate nohighlight">\([A,B]\ne 0\)</span>.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.6     Show that <span class="math notranslate nohighlight">\(\text{tr} \left([A,B]\right) = 0\)</span>,  even when <span class="math notranslate nohighlight">\([A,B]\ne 0\)</span>.</p>
 <hr class="docutils" />
 </section>
 <section id="pauli-operators">
@@ -929,14 +929,14 @@ A = c_0 I + c_1 X + c_2 Y + c_3 Z
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(c_0 = \text{tr}(I A)\)</span>, <span class="math notranslate nohighlight">\(c_1 = \text{tr}(X A)\)</span>, <span class="math notranslate nohighlight">\(c_2 = \text{tr}(Y A)\)</span>, and <span class="math notranslate nohighlight">\(c_3 = \text{tr}(Z A)\)</span>.  When <span class="math notranslate nohighlight">\(A\)</span> is self-adjoint, all the coefficients are real.</p>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.7     Using the properties given above</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.7     Using the properties given above</p>
 <ol class="simple">
 <li><p>Show that <span class="math notranslate nohighlight">\(X Y = i Z\)</span>,</p></li>
 <li><p>Show that <span class="math notranslate nohighlight">\(XYZ = i I\)</span>,</p></li>
 <li><p>Show that <span class="math notranslate nohighlight">\(\text{tr} X = \text{tr} Y = \text{tr} Z = 0\)</span>.</p></li>
 </ol>
 <hr class="docutils" />
-<p>Among the three Pauli operators, <span class="math notranslate nohighlight">\(X\)</span> is the most important for quantum computation.  We already encounter this operator in <code class="xref std std-numref docutils literal notranslate"><span class="pre">qmcomp</span></code>. Its main roles are:</p>
+<p>Among the three Pauli operators, <span class="math notranslate nohighlight">\(X\)</span> is the most important for quantum computation. Its main roles are:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(X\)</span> flips the computational basis.</p></li>
 </ul>
@@ -976,7 +976,7 @@ A = c_0 I + c_1 X + c_2 Y + c_3 Z
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(c_0 = \text{tr}(I A)\)</span>, <span class="math notranslate nohighlight">\(c_1 = \text{tr}(X A)\)</span>, <span class="math notranslate nohighlight">\(c_2 = \text{tr}(Y A)\)</span>, and <span class="math notranslate nohighlight">\(c_3 = \text{tr}(Z A)\)</span>.  This decomposition suggests that we need only <span class="math notranslate nohighlight">\(I\)</span> and the Pauli operators to transform a qubit.</p>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.8     Initially a qubit is in <span class="math notranslate nohighlight">\(\ket{0}\)</span>. We want to transform it to <span class="math notranslate nohighlight">\(\ket{-} = \frac{1}{\sqrt{2}} \left(\ket{0} - \ket{1}\right)\)</span>. In previous sections, we learn that the Hadamard gate transforms <span class="math notranslate nohighlight">\(\ket{1}\)</span> to <span class="math notranslate nohighlight">\(\ket{-}\)</span>. Pick two operators from <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(H\)</span>, and construct a quantum circuit that transforms <span class="math notranslate nohighlight">\(\ket{0}\)</span> to <span class="math notranslate nohighlight">\(\ket{-}\)</span>.  There are two possible combinations. Find both.  (The following Qiskit example veryify the solutions.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.8     Initially a qubit is in <span class="math notranslate nohighlight">\(\ket{0}\)</span>. We want to transform it to <span class="math notranslate nohighlight">\(\ket{-} = \frac{1}{\sqrt{2}} \left(\ket{0} - \ket{1}\right)\)</span>. In previous sections, we learn that the Hadamard gate transforms <span class="math notranslate nohighlight">\(\ket{1}\)</span> to <span class="math notranslate nohighlight">\(\ket{-}\)</span>. Pick two operators from <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(H\)</span>, and construct a quantum circuit that transforms <span class="math notranslate nohighlight">\(\ket{0}\)</span> to <span class="math notranslate nohighlight">\(\ket{-}\)</span>.  There are two possible combinations. Find both.  (The following Qiskit example veryify the solutions.</p>
 <p><strong>Qiskit Example</strong></p>
 <p>We shall demonstrate the two solution to the above exercise using Qiskit.  We use two qubits.  Initially they are both in <span class="math notranslate nohighlight">\(\ket{0}\)</span>.  Then, we apply different gates to them. At the end, both should be in <span class="math notranslate nohighlight">\(\ket{-}\)</span>.  In this example, we use <code class="docutils literal notranslate"><span class="pre">statevector_simulator</span></code> which calculate the transformation exactly.</p>
 <div class="cell docutils container">
@@ -1028,7 +1028,7 @@ A = c_0 I + c_1 X + c_2 Y + c_3 Z
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Qiskit note: Pauli Operators</p>
-<p>In <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec_qiskit_calc</span></code>, we calculated inner products of computational basis using <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> module.  The same module provides predefined Pauli operators  <code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, and <code class="docutils literal notranslate"><span class="pre">Z</span></code>.   Applying operator on ket is done with “&#64;”.  For example <span class="math notranslate nohighlight">\(X \ket{0}\)</span> is <code class="docutils literal notranslate"><span class="pre">(X&#64;One).eval()</span></code> in Qiskit.</p>
+<p>In <a class="reference internal" href="vectors.html#sec-statevectors"><span class="std std-numref">Section 1.7</span></a>, we calculated inner products of computational basis using <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> module.  The same module provides predefined Pauli operators  <code class="docutils literal notranslate"><span class="pre">I</span></code>, <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, and <code class="docutils literal notranslate"><span class="pre">Z</span></code>.   Applying operator on ket is done with “&#64;”.  For example <span class="math notranslate nohighlight">\(X \ket{0}\)</span> is <code class="docutils literal notranslate"><span class="pre">(X&#64;One).eval()</span></code> in Qiskit.</p>
 <p><a class="reference external" href="https://qiskit.org/documentation/apidoc/opflow.html">QIskit API Reference: qiskit.opflow</a></p>
 </div>
 <div class="cell docutils container">
@@ -1071,7 +1071,7 @@ X is unitary  True
 </div>
 </div>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.9     Demonstrate <span class="math notranslate nohighlight">\(Z\ket{0}=\ket{0}\)</span> and <span class="math notranslate nohighlight">\(Z\ket{1}=-\ket{1}\)</span> using the <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> module.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.9     Demonstrate <span class="math notranslate nohighlight">\(Z\ket{0}=\ket{0}\)</span> and <span class="math notranslate nohighlight">\(Z\ket{1}=-\ket{1}\)</span> using the <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> module.</p>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1110,7 +1110,7 @@ f(A) = I + c_1 A + c_2 A^2 + \cdot + c_n A^n + \cdots, \qquad \text{where  } c_n
 <p>We don’t consider a function singular at <span class="math notranslate nohighlight">\(x=0\)</span> like <span class="math notranslate nohighlight">\(\log{A}\)</span>.</p>
 <p>A special care is required for a function of multiple operators.  For example we are familiar with  <span class="math notranslate nohighlight">\(e^{x+y} = e^x e^y,\,\)</span> if <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are regular numbers.  In contrast,  <span class="math notranslate nohighlight">\(e^{A+B} \ne e^A e^B,\,\,\)</span> if <span class="math notranslate nohighlight">\([A,B]\ne 0\)</span>.</p>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="#chap-operators"><span class="std std-numref">1.8</span></a>.10     For Pauli operator <span class="math notranslate nohighlight">\(X\)</span>, show that <span class="math notranslate nohighlight">\(\,e^{i \theta X} = I \cos \theta - i X \sin \theta \,\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span> is a real number. Hint: Use <span class="math notranslate nohighlight">\(X^2=I\)</span> in the power series.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-operators"><span class="std std-numref">1.8</span></a>.10     For Pauli operator <span class="math notranslate nohighlight">\(X\)</span>, show that <span class="math notranslate nohighlight">\(\,e^{i \theta X} = I \cos \theta - i X \sin \theta \,\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span> is a real number. Hint: Use <span class="math notranslate nohighlight">\(X^2=I\)</span> in the power series.</p>
 <p>When <span class="math notranslate nohighlight">\(\theta=\frac{\pi}{4}\)</span>, the equality indicates that <span class="math notranslate nohighlight">\(e^{i \frac{\pi}{4} X} = \frac{1}{\sqrt{2}}  ( I - i X)\)</span>.  Applying the operator on <span class="math notranslate nohighlight">\(\ket{0}\)</span> we obtain <span class="math notranslate nohighlight">\(e^{i \frac{\pi}{4} X}\ket{0} = \frac{1}{\sqrt{2}} \left (\ket{0}  - i \ket{1} \right)\)</span>.
 In the following Qiskit example, we will check it using <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> module.</p>
 <hr class="docutils" />

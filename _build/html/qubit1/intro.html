@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. A Qubit &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>4. A Qubit &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.1. Mathematical expression of a qubit" href="qubit1.html" />
-    <link rel="prev" title="2.2. Quantum computation" href="../introduction/qcomp.html" />
+    <link rel="next" title="4.1. Single qubit" href="qubit.html" />
+    <link rel="prev" title="3.2. Quantum computation" href="../introduction/qcomp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -149,26 +149,11 @@ const thebe_selector_output = ".output, .cell_output"
      1.5. Cloud IDE
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/quantum.html">
-     1.6. Quantum Mechanics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/vectors.html">
-     1.7. State vectors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/operators.html">
-     1.8. Operators
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../introduction/intro.html">
-   2. What is a Quantum Computer?
+  <a class="reference internal" href="../qmsummary/intro.html">
+   2. Quantum Mechanics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -177,48 +162,75 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../introduction/ccomp.html">
-     2.1. Classical computation
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     2.1. State vectors
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../introduction/qcomp.html">
-     2.2. Quantum computation
+    <a class="reference internal" href="../qmsummary/operators.html">
+     2.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     2.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     2.4. Quantum measurement
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   3. A Qubit
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../introduction/intro.html">
+   3. What is a Quantum Computer?
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="qubit1.html">
-     3.1. Mathematical expression of a qubit
+    <a class="reference internal" href="../introduction/ccomp.html">
+     3.1. Classical computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/qcomp.html">
+     3.2. Quantum computation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   4. A Qubit
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qubit.html">
+     4.1. Single qubit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="measurement.html">
-     3.2. Qubit Measurement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="blochsphere.html">
-     3.3. Bloch sphere
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="qcoin.html">
-     3.4. Tossing a quantum coin
+     4.2. Qubit Measurement
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   5. References
+  </a>
  </li>
 </ul>
 
@@ -429,7 +441,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="a-qubit">
-<span id="chap-qubit1"></span><h1><span class="section-number">3. </span>A Qubit<a class="headerlink" href="#a-qubit" title="Permalink to this headline">#</a></h1>
+<span id="chap-qubit1"></span><h1><span class="section-number">4. </span>A Qubit<a class="headerlink" href="#a-qubit" title="Permalink to this headline">#</a></h1>
 <p>In quantum computer, information is encoded in a set of qubits.  Hence, understanding the properties of a single qubit is the first step to quantum computation. Mathematically, a qubit is the smallest meaningful Hilbert space, i.e., a two-dimensional Hilbert space. Physically, a qubit is realized in many different form.  A quantum system that has only two states is a good candidate of a qubit.  For example, the spin of an electron has two states, spin-up state <span class="math notranslate nohighlight">\(|\uparrow\rangle\)</span>  and spin-down state <span class="math notranslate nohighlight">\(|\downarrow\rangle\)</span>.  A photon has two directions of linear polarization.  The horizontal and vertical polarization are expressed as <span class="math notranslate nohighlight">\(|H\rangle\)</span> and <span class="math notranslate nohighlight">\(|V\rangle\)</span>, respectively.  Atoms have many energy levels and thus not exactly a qubit.  However, if two adjacent energy levels are far from other levels, they can be considered as a qubit.  Regardless its physical implementation, the same mathematical theory can be used for any form of a qubit.</p>
 <p>In this chapter, first mathematical expressions and properties of a single qubit are explained. It is very important for you to familiarize yourself with the notations and the rules of calculation since they are used through the book.  Secondly, the concept of quantum measurement is introduced.  As we discussed in the previous chapter, the quantum measurement is quite different from the classical measurement.  You must get rid of the classical intuition and believe in the principles of quantum mechanics.</p>
 <p>After the theory of a qubit, I explain how to create a qubit in Qiskit and how to visualize the state of the qubit.  At the end, you simulate quantum coin tossing using a quantum computer.</p>
@@ -468,13 +480,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2.2. </span>Quantum computation</p>
+            <p class="prev-next-title"><span class="section-number">3.2. </span>Quantum computation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="qubit1.html" title="next page">
+    <a class='right-next' id="next-link" href="qubit.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.1. </span>Mathematical expression of a qubit</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span>Single qubit</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

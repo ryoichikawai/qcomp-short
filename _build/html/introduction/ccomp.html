@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.1. Classical computation &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>3.1. Classical computation &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. Quantum computation" href="qcomp.html" />
-    <link rel="prev" title="2. What is a Quantum Computer?" href="intro.html" />
+    <link rel="next" title="3.2. Quantum computation" href="qcomp.html" />
+    <link rel="prev" title="3. What is a Quantum Computer?" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -149,71 +149,88 @@ const thebe_selector_output = ".output, .cell_output"
      1.5. Cloud IDE
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qmsummary/intro.html">
+   2. Quantum Mechanics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/quantum.html">
-     1.6. Quantum Mechanics
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     2.1. State vectors
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/math.html">
-     1.7. Mathematics
+    <a class="reference internal" href="../qmsummary/operators.html">
+     2.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     2.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     2.4. Quantum measurement
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   2. What is a Quantum Computer?
+   3. What is a Quantum Computer?
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.1. Classical computation
+     3.1. Classical computation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qcomp.html">
-     2.2. Quantum computation
+     3.2. Quantum computation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qubit1/intro.html">
-   3. A Qubit
+   4. A Qubit
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/qubit1.html">
-     3.1. Mathematical expression of a qubit
+    <a class="reference internal" href="../qubit1/qubit.html">
+     4.1. Single qubit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit1/measurement.html">
-     3.2. Qubit Measurement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/blochsphere.html">
-     3.3. Bloch sphere
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/qcoin.html">
-     3.4. Tossing a quantum coin
+     4.2. Qubit Measurement
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   5. References
+  </a>
  </li>
 </ul>
 
@@ -501,7 +518,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="classical-computation">
-<h1><span class="section-number">2.1. </span>Classical computation<a class="headerlink" href="#classical-computation" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.1. </span>Classical computation<a class="headerlink" href="#classical-computation" title="Permalink to this headline">#</a></h1>
 <p>Before going to quantum computation, let us briefly look at classical computation.</p>
 <section id="clcassical-information">
 <h2>Clcassical information<a class="headerlink" href="#clcassical-information" title="Permalink to this headline">#</a></h2>
@@ -509,9 +526,9 @@ title="Print to PDF"
 </section>
 <section id="gates">
 <h2>Gates<a class="headerlink" href="#gates" title="Permalink to this headline">#</a></h2>
-<p>The computer can change the state of any bit at our command.  A simple operation is to flip a bit, that is <span class="math notranslate nohighlight">\(0\rightarrow 1\)</span>  and <span class="math notranslate nohighlight">\(1 \rightarrow 0\)</span>.  We express it using a concept of <em>gate</em>.  A bit enters a gate and comes out with a different value.  In the classical computer, there are only two possibility,  no flip or flip.  “No flip” means nothing happens to the bit and thus we are not interesting it.  The gate that flips a bit is called <code class="docutils literal notranslate"><span class="pre">NOT</span></code> gate. (See <a class="reference internal" href="#classical-gates"><span class="std std-numref">Fig. 2.1</span></a>.)  This is the only gate acts on a single bit outputs a single bit.  The relation between the input and the output bit is given in the truth <a class="reference internal" href="#classical-not"><span class="std std-numref">table 2.1</span></a>.</p>
+<p>The computer can change the state of any bit at our command.  A simple operation is to flip a bit, that is <span class="math notranslate nohighlight">\(0\rightarrow 1\)</span>  and <span class="math notranslate nohighlight">\(1 \rightarrow 0\)</span>.  We express it using a concept of <em>gate</em>.  A bit enters a gate and comes out with a different value.  In the classical computer, there are only two possibility,  no flip or flip.  “No flip” means nothing happens to the bit and thus we are not interesting it.  The gate that flips a bit is called <code class="docutils literal notranslate"><span class="pre">NOT</span></code> gate. (See <a class="reference internal" href="#classical-gates"><span class="std std-numref">Fig. 3.1</span></a>.)  This is the only gate acts on a single bit outputs a single bit.  The relation between the input and the output bit is given in the truth <a class="reference internal" href="#classical-not"><span class="std std-numref">table 3.1</span></a>.</p>
 <table class="table" id="classical-not">
-<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">NOT Gate</span><a class="headerlink" href="#classical-not" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">NOT Gate</span><a class="headerlink" href="#classical-not" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 20%" />
@@ -542,10 +559,10 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>Classical computation uses various kind of gates which takes two input bits (<span class="math notranslate nohighlight">\(i_0\)</span> and <span class="math notranslate nohighlight">\(i_1\)</span>) and outputs one bit.  For example, <code class="docutils literal notranslate"><span class="pre">AND</span></code> gate outputs <span class="math notranslate nohighlight">\(i_0 \times i_1\)</span>.  (See <a class="reference internal" href="#classical-gates"><span class="std std-numref">Fig. 2.1</span></a>.)
-The corresponding truth table is given in <a class="reference internal" href="#classical-and"><span class="std std-numref">Table 2.2</span></a>.  Notice that this process is <em>irreversible</em>, meaning that we cannot recover the input information <span class="math notranslate nohighlight">\(i_0\)</span> and <span class="math notranslate nohighlight">\(i_1\)</span> from the output <span class="math notranslate nohighlight">\(o\)</span>.  Hence, we says that a bit of information is lost.  Two-bit classical gates  are in general irreversible and 1 bit of information is lost.</p>
+<p>Classical computation uses various kind of gates which takes two input bits (<span class="math notranslate nohighlight">\(i_0\)</span> and <span class="math notranslate nohighlight">\(i_1\)</span>) and outputs one bit.  For example, <code class="docutils literal notranslate"><span class="pre">AND</span></code> gate outputs <span class="math notranslate nohighlight">\(i_0 \times i_1\)</span>.  (See <a class="reference internal" href="#classical-gates"><span class="std std-numref">Fig. 3.1</span></a>.)
+The corresponding truth table is given in <a class="reference internal" href="#classical-and"><span class="std std-numref">Table 3.2</span></a>.  Notice that this process is <em>irreversible</em>, meaning that we cannot recover the input information <span class="math notranslate nohighlight">\(i_0\)</span> and <span class="math notranslate nohighlight">\(i_1\)</span> from the output <span class="math notranslate nohighlight">\(o\)</span>.  Hence, we says that a bit of information is lost.  Two-bit classical gates  are in general irreversible and 1 bit of information is lost.</p>
 <table class="table" id="classical-and">
-<caption><span class="caption-number">Table 2.2 </span><span class="caption-text">AND Gate</span><a class="headerlink" href="#classical-and" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">AND Gate</span><a class="headerlink" href="#classical-and" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 14%" />
@@ -603,7 +620,7 @@ The corresponding truth table is given in <a class="reference internal" href="#c
 <figure class="align-center" id="classical-gates">
 <a class="reference internal image-reference" href="../_images/classical-gate.png"><img alt="../_images/classical-gate.png" src="../_images/classical-gate.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">An example of classical gates. The <span class="math notranslate nohighlight">\(\texttt{NOT}\)</span> gate takes one bit and output one bit.</span><a class="headerlink" href="#classical-gates" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">An example of classical gates. The <span class="math notranslate nohighlight">\(\texttt{NOT}\)</span> gate takes one bit and output one bit.</span><a class="headerlink" href="#classical-gates" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In principle, classical computation needs only <span class="math notranslate nohighlight">\(\texttt{NOT}\)</span> and <span class="math notranslate nohighlight">\(\texttt{AND}\)</span> gates.  It is using other gates makes classical computing much more efficient.</p>
@@ -626,7 +643,7 @@ The corresponding truth table is given in <a class="reference internal" href="#c
 <figure class="align-center" id="classical-half-adder">
 <a class="reference internal image-reference" href="../_images/classical-half-adder.png"><img alt="../_images/classical-half-adder.png" src="../_images/classical-half-adder.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">An example of classical circuit.  This circuit computer <span class="math notranslate nohighlight">\(x \oplus y\)</span> using <span class="math notranslate nohighlight">\(\texttt{XOR}\)</span> and <span class="math notranslate nohighlight">\(\texttt{AND}\)</span>.  In addition to the answer, carry over bit</span><a class="headerlink" href="#classical-half-adder" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">An example of classical circuit.  This circuit computer <span class="math notranslate nohighlight">\(x \oplus y\)</span> using <span class="math notranslate nohighlight">\(\texttt{XOR}\)</span> and <span class="math notranslate nohighlight">\(\texttt{AND}\)</span>.  In addition to the answer, carry over bit</span><a class="headerlink" href="#classical-half-adder" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In real world applications, we don’t apply the gates by ourselves.  Instead, we use a programming language such as <code class="docutils literal notranslate"><span class="pre">python</span></code>. The language translates the mathematical  expression such as <span class="math notranslate nohighlight">\(x + y\)</span> into gate instructions. So, we really don’t need to know about the classical gate.  Quantum computation has not reached that level yet. Users must picks appropriate gates by themselves.</p>
@@ -668,13 +685,13 @@ The corresponding truth table is given in <a class="reference internal" href="#c
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>What is a Quantum Computer?</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>What is a Quantum Computer?</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="qcomp.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>Quantum computation</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Quantum computation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

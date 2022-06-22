@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2.4. Quantum measurement &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. What is a Quantum Computer?" href="../introduction/intro.html" />
+    <link rel="prev" title="2.3. Time-evolution" href="evolution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/me-tiny.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">A First Step to Quantum Computation with Qiskit.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../cover.html">
+                    A First Step to Quantum Computation with Qiskit
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../prerequisites/intro.html">
+   1. Prerequisites
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../prerequisites/thisbook.html">
+     1.1. About This Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../prerequisites/python.html">
+     1.2. Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../prerequisites/jupyter.html">
+     1.3. JupyterLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../prerequisites/qiskit.html">
+     1.4. Qiskit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../prerequisites/cloud.html">
+     1.5. Cloud IDE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   2. Quantum Mechanics
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="vectors.html">
+     2.1. State vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="operators.html">
+     2.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="evolution.html">
+     2.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.4. Quantum measurement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../introduction/intro.html">
+   3. What is a Quantum Computer?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/ccomp.html">
+     3.1. Classical computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../introduction/qcomp.html">
+     3.2. Quantum computation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qubit1/intro.html">
+   4. A Qubit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/qubit.html">
+     4.1. Single qubit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit1/measurement.html">
+     4.2. Qubit Measurement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   5. References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/qmsummary/measurement.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fqmsummary/measurement.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/qmsummary/measurement.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observables">
+   Observables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#outcomes-of-measurement">
+   Outcomes of measurement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projective-measurement">
+   Projective measurement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expectation-values">
+   Expectation values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uncertainty-principle">
+   Uncertainty principle
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Quantum measurement</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observables">
+   Observables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#outcomes-of-measurement">
+   Outcomes of measurement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projective-measurement">
+   Projective measurement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expectation-values">
+   Expectation values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uncertainty-principle">
+   Uncertainty principle
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="quantum-measurement">
+<span id="chap-measurement"></span><h1><span class="section-number">2.4. </span>Quantum measurement<a class="headerlink" href="#quantum-measurement" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Measurement_in_quantum_mechanics">Wikipedia: Measurement in quantum mechanics</a></p>
+<p>An important role of theoretical physics is to predict physical quantities such as energy and experimental physics tries to measure them.  Without measurement as accurate as possible.  Without measurement, there is no physics.</p>
+<p>In classical mechanics, we can obtain a precise value from any  physical quantity  upon measurement and we can predict it by solving the Newton equation.  If the same measurement is done on identical copies of the original system, the same value is always obtained. If the outcomes differ, then that must be due to measurement error (e.g., a bad measurement device).</p>
+<p>In quantum mechanics, as we already discussed in previous chapters, the outcomes of measurement is <em>stochastic</em> even when the measurement apparatus is perfect. The principle of quantum mechanics cannot predict the outcome of single measurement. Only we can predict is the probabilities.   In this chapter, we present a formal theory of quantum measurement.</p>
+<section id="observables">
+<h2>Observables<a class="headerlink" href="#observables" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Observable">Wikipedia: Observable</a></p>
+<p>We haven’t discussed how to describe physical quantities in quantum mechanics.  They are not number.  They are a special kind of operators in the Hilbert space of a quantum system. The operators corresponding to physical quantities are called <em>observable</em>.
+In order for operator <span class="math notranslate nohighlight">\(A\)</span> to be observable, it must be <em>Hermitian</em> (self-adjoint).  That is <span class="math notranslate nohighlight">\(A^\dagger = A\)</span>.  Since it satisfies <span class="math notranslate nohighlight">\([A^\dagger, A]=0\)</span>, the observable is also a <em>normal</em> operator,  which guarantees that the observable has eigenvalues <span class="math notranslate nohighlight">\(a_i\)</span> and eigenvectors <span class="math notranslate nohighlight">\(\ket{e_i}\)</span>.  Thus we have</p>
+<div class="math notranslate nohighlight">
+\[
+A \ket{a_i} = a_i \ket{a_i}, \quad i=1,\cdots,d
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(d\)</span> is the dimension of Hilbert space.  There are two important properties of the observable:</p>
+<blockquote>
+<div><ol class="simple">
+<li><p>all eigenvalues are real</p></li>
+<li><p>eigenvectors form a complete orthonormal basis</p></li>
+</ol>
+</div></blockquote>
+<p>which are essential to the quantum measurement.</p>
+<p>In quantum computation,  computational basis vectors <span class="math notranslate nohighlight">\(\ket{0}\)</span> and <span class="math notranslate nohighlight">\(\ket{1}\)</span> are the eigenvectors of a Pauli operator <span class="math notranslate nohighlight">\(Z\)</span>.  Hence, we measure <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+</section>
+<section id="outcomes-of-measurement">
+<h2>Outcomes of measurement<a class="headerlink" href="#outcomes-of-measurement" title="Permalink to this headline">#</a></h2>
+<p>When we measure a physical quantity, we expect that the outcome is a number, not an operator.  The role of operator (observable) is to determine possible outcome.  The outcome of the measurement must be an eigenvalue of the observable.  We obtain one of <span class="math notranslate nohighlight">\(a_i\)</span> when <span class="math notranslate nohighlight">\(A\)</span> is measured.  But there are many eigenvalues.  Which one are we going to obtain?   Quantum mechanics can’t tell us what precisely we get.  No one can predict it. Only we know the probability to obtain a particular eigenvalue.   If the state of the system is <span class="math notranslate nohighlight">\(\rho\)</span>, the probability of finding <span class="math notranslate nohighlight">\(a_i\)</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-born-rule-density">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-born-rule-density" title="Permalink to this equation">#</a></span>\[
+p_i = \bra{a_i} \rho \ket{a_i}.
+\]</div>
+<p>which is vaklid for both pure and mixed states.</p>
+<p>For pure state, we already use the probability.  Consider the system on a pure state <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, we expand it in basis <span class="math notranslate nohighlight">\(\{\ket{a_i}\}\)</span> (We can do so since the eigenvectors form a complete orthonormal basis):</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi} = c_1 \ket{a_1} + c_2 \ket{a_2} + \cdots + c_d \ket{a_d}
+\]</div>
+<p>The Born rule indicates that we obtain <span class="math notranslate nohighlight">\(a_i\)</span>  with probability <span class="math notranslate nohighlight">\(p_i= |c_i|^2 = |\langle a_i | \psi \rangle |^2\)</span>.  Recalling that the density operator of  the pure state is <span class="math notranslate nohighlight">\(\rho = \ket{\psi}\bra{\psi}\)</span>, Eq. <a class="reference internal" href="#equation-born-rule-density">(2.8)</a> gives the same probability.</p>
+<hr class="docutils" />
+<p><strong>Exercise</strong>  <a class="reference internal" href="#chap-measurement"><span class="std std-numref">2.4</span></a>.1   Show that <span class="math notranslate nohighlight">\(\bra{a_i} \rho \ket{a_i} =  |\langle a_i | \psi \rangle |^2\)</span> for the pure state <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="projective-measurement">
+<h2>Projective measurement<a class="headerlink" href="#projective-measurement" title="Permalink to this headline">#</a></h2>
+<p>In classical mechanics, we can measure a physical quantity without disturbing the system state.  That is not the case of quantum systems.  When  the measurement results in <span class="math notranslate nohighlight">\(a_i\)</span>, the state also is transformed to <span class="math notranslate nohighlight">\(\ket{a_i}\)</span> regardless of the original state before the measurement.  This transformation is known as <em>wave function collapse</em>.  The mechanism of the collapse is still not known but we are able to explain experiment results based on this postulate.  No exception has been reported since the inception of quantum mechanics 100 years ago.</p>
+<p>Recall that the quantum mechanics is is applied to an ensemble and measurement is needed to be repeated.  If we throw away other states and keep only <span class="math notranslate nohighlight">\(\ket{a_i}\)</span>, then the resulting state is a pure state <span class="math notranslate nohighlight">\(\ket{a_i}\)</span>.  This kind of measurement is called <em>selective measurement</em>.   On the other hand, if we keep all outcomes (<em>non-selective measurement</em>), we have a classical mixture of <span class="math notranslate nohighlight">\(\ket{a_i}\)</span> with probability <a class="reference internal" href="#equation-born-rule-density">(2.8)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-rho-out">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-rho-out" title="Permalink to this equation">#</a></span>\[
+\rho_\text{out} = \sum_i p_i \ket{a_i}\bra{a_i}  = \sum_i \ket{a_i}\bra{a_i} \rho_\text{in} \ket{a_i}\bra{a_i}.
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\rho_\text{in}\)</span> and <span class="math notranslate nohighlight">\(\rho_\text{out}\)</span> are the density operators before and after the measurement, respectively.   Noting that <span class="math notranslate nohighlight">\(\ket{a_i}\bra{a_i}\)</span> is a projection operator, we can interpret Eq. <a class="reference internal" href="#equation-rho-out">(2.9)</a> as a projection of the state to <span class="math notranslate nohighlight">\(\ket{a_i}\)</span> and this type of measurement is called <em>projective measurement</em>.</p>
+</section>
+<section id="expectation-values">
+<h2>Expectation values<a class="headerlink" href="#expectation-values" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="uncertainty-principle">
+<h2>Uncertainty principle<a class="headerlink" href="#uncertainty-principle" title="Permalink to this headline">#</a></h2>
+<p>In classical mechanics, we can obtain a precise value from any  physical quantity  upon measurement and we can predict it by solving the Newton equation.  If the same measurement is done on indentical copies of the original system, the same value is always obtained. If the outcomes differ, then tha must be due to measurement error (e.g., a bad measurement device).</p>
+<p>In quantum mechanics, as we already discussed in previous chapters, the outcomes of measurement is <em>stochastic</em> even when the measurement apparatus is perfect. The principle of quantum mechanics cannot predict the outcome of single measurement. Only we can predict is the probabilities.   In this chapter, we present a formal theory of quantum measurement.</p>
+<p>When we have many copies of the identical quantum states, the outcomes of measurement are usually different.  What quantum mechanics can tell us is a <em>probability</em> of finding a particular value.  That means that the outcome of  measurement is randomly chosen according to the probability.  Only in special cases, we can get the same value from the all copies,  which we can predict from the state vector.</p>
+<p>When the outcome is stochastic, we need to resort to the methods of statistics. Computing expectation value and standard deviation is essential since we can predict them based on the current theory of quantum mechanics.</p>
+<p>Furthermore, the measurement changes the state and the new state depends on the value of the outcome.  When the measurement picked an eigenvalue of the observable, the state jumps to the corresponding eigenvector. This jump cannot be described by the current theory of quantum mechanics.  <em>Decoherence</em> may explain a part of this process but the detail remains unclear.</p>
+<p>In addition to the stochastic nature of quantum measurement, there is another notable difference between classical and quantum measurements.  In classical mechanics,  we can determine the precise values of two or more physical quantities simultaneously by measurement. That may not be possible in quantum mechanics depending on what you measures.  For example, the position and momentum of a classical particle can be precisely determined. In quatum mechanics, on the other hand, if both quantities are measured from many identical copies, it is impossible to have the same outcome from the all copies.  If all copies have the same position, then every copy has very different value of momentum.  In typical cases, each copy results in a pair of different values from other copies, hence there are uncertainties in both quantities.</p>
+<p>The interpretation of quantum measurement is very counter intuitive. We still don’t know  how quantum measurement takes place.  Many physicists are not fully convinced by the current theory of quantum mechanics and believe that the theory of quantum mechanics is still incomplete.   There are other interpretation of quantum mechanics such as the pilot wave theory. However, all experimental results agree with the probabilities computed from the state vector.  Therefore, we adopt the standard theory of quantum mechanics in this book.</p>
+<p>Finding the state of a system is not necessarily the final goal of physics.  We want to know the  values of other quantities such as  energy  In classical mechanics, physical quantities are naturally defined as number and the measurement of a physical quantity produces a unique value.  On contrary to our intuition, physical quantities in quantum mechanics are not number.  They are <em>self-adjoint operator</em> in the Hilbert space.  The outcome of a measurement is one of the <em>eigenvalues</em> of the operator and we don’t know which one will be the result of the measurement.  This strange behaviors are the next topics.</p>
+<p><strong>Related topics in Wikipedia</strong></p>
+<ul class="simple">
+<li><p><a href="https://en.wikipedia.org/wiki/Measurement_in_quantum_mechanics" target="_blank"> Measurement in quantum mechanics</a></p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Observable"  target="_blank">Observable</a></p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Born_rule"  target="_blank">Born rule</a></p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Wave_function_collapsee"  target="_blank">Wave function collapse</a></p></li>
+</ul>
+<hr class="docutils" />
+<p>Version 0.1.0:   Last modified on May 3, 2022</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./qmsummary"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="evolution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.3. </span>Time-evolution</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../introduction/intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>What is a Quantum Computer?</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ryoichi Kawai<br/>
+  
+      &copy; Copyright Ryoichi Kawai 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

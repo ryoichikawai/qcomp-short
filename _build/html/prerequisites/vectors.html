@@ -200,7 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit1/qubit1.html">
-     3.1. Mathematical expression of a qubit
+     3.1. Single qubit
     </a>
    </li>
    <li class="toctree-l2">
@@ -209,13 +209,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../qubit1/blochsphere.html">
-     3.3. Bloch sphere
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../qubit1/qcoin.html">
-     3.4. Tossing a quantum coin
+     3.3. Tossing a quantum coin
     </a>
    </li>
   </ul>
@@ -476,6 +471,11 @@ title="Print to PDF"
    Completeness
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-dimensional-hilbert-space">
+   Two-dimensional Hilbert space
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -543,6 +543,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#completeness">
    Completeness
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-dimensional-hilbert-space">
+   Two-dimensional Hilbert space
   </a>
  </li>
 </ul>
@@ -648,7 +653,7 @@ The same rules are applied to bra vectors.</p>
 \]</div>
 <p>Notice that the coefficients are complex conjugate of the original ones in the ket.</p>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="intro.html#chap-prerequisites"><span class="std std-numref">1</span></a>.1    Consider a superposition state <span class="math notranslate nohighlight">\(\alpha |a\rangle + e^{i \theta} \alpha |b\rangle\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span> is real.  Find the corresponding bra vector.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">1.7</span></a>.1    Consider a superposition state <span class="math notranslate nohighlight">\(\alpha |a\rangle + e^{i \theta} \alpha |b\rangle\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span> is real.  Find the corresponding bra vector.</p>
 <hr class="docutils" />
 </section>
 <section id="inner-product">
@@ -662,7 +667,7 @@ The same rules are applied to bra vectors.</p>
 \end{eqnarray}
 \end{split}\]</div>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="intro.html#chap-prerequisites"><span class="std std-numref">1</span></a>.2  </p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">1.7</span></a>.2  </p>
 <ol class="simple">
 <li><p>In the above example of inner product, show that <span class="math notranslate nohighlight">\(\langle c|\psi \rangle^* = \langle \psi|c \rangle\)</span>. (otherwise, the distribution rule does not work.)</p></li>
 <li><p>Show that <span class="math notranslate nohighlight">\(\langle \psi|\psi \rangle\)</span> is real  for any <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.</p></li>
@@ -685,8 +690,8 @@ The norm of <span class="math notranslate nohighlight">\(\ket{a}\)</span> is def
 \]</div>
 <p>When <span class="math notranslate nohighlight">\(\langle a|a \rangle = 1\)</span>, the ket is said to be <em>normalized</em>.  Although we cannot express the ket as an arrow, physicists often use an imaginary arrow to represent a ket and the norm can be viewed as the length of the imaginary arrow.  This analogy works quite well.  So, the normalized ket is much like a unit vector.</p>
 <hr class="docutils" />
-<p><strong>Exercise</strong> <a class="reference internal" href="intro.html#chap-prerequisites"><span class="std std-numref">1</span></a>.3    Show that <span class="math notranslate nohighlight">\(|b\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}\)</span> is normalized.</p>
-<p><strong>Exercise</strong> <a class="reference internal" href="intro.html#chap-prerequisites"><span class="std std-numref">1</span></a>.4     <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|b\rangle\)</span> are normalized and orthogonal to each other. Show that <span class="math notranslate nohighlight">\(|\psi\rangle = |a\rangle + i |b \rangle\)</span> and <span class="math notranslate nohighlight">\(|\varphi\rangle = |a\rangle - i |b \rangle\)</span> are orthogonal.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">1.7</span></a>.3    Show that <span class="math notranslate nohighlight">\(|b\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}\)</span> is normalized.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">1.7</span></a>.4     <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|b\rangle\)</span> are normalized and orthogonal to each other. Show that <span class="math notranslate nohighlight">\(|\psi\rangle = |a\rangle + i |b \rangle\)</span> and <span class="math notranslate nohighlight">\(|\varphi\rangle = |a\rangle - i |b \rangle\)</span> are orthogonal.</p>
 </section>
 <hr class="docutils" />
 <section id="global-phase">
@@ -731,6 +736,23 @@ Using the orthonormality condition <a class="reference internal" href="#equation
 (|e_i\rangle\langle e_i|)\, |\psi\rangle =  |e_i\rangle (\langle e_i|\psi\rangle) = c_i e_i\rangle 
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(c_i = \langle e_i|\psi\rangle\)</span>.</p>
+</section>
+<section id="two-dimensional-hilbert-space">
+<h2>Two-dimensional Hilbert space<a class="headerlink" href="#two-dimensional-hilbert-space" title="Permalink to this headline">#</a></h2>
+<p>In the theory of quantum computation, a two-dimensional Hilbert space denoted as <span class="math notranslate nohighlight">\(\mathbb{C}^2\)</span>, appears quite often.  It is a convention to use a complete orthonormal basis set <span class="math notranslate nohighlight">\(\{|0\rangle, |1\rangle\}\)</span> known as <em>computational basis</em>.  We use this basis set extensively through out the book.  The orthonormality of this basis set is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-comp-basis">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-comp-basis" title="Permalink to this equation">#</a></span>\[
+\langle 0|0 \rangle = \langle 1|1 \rangle = 1, \quad \langle 0|1 \rangle = \langle 1|0 \rangle = 0 .
+\]</div>
+<p>Another basis set</p>
+<div class="math notranslate nohighlight" id="equation-eq-plusminus-basis">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-plusminus-basis" title="Permalink to this equation">#</a></span>\[
+|+\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle + |1\rangle\right), \quad |-\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle - |1\rangle\right)
+\]</div>
+<p>is also regularly used.</p>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">1.7</span></a>.5    <span class="math notranslate nohighlight">\(|\pm\rangle\)</span> are orthonormal.</p>
+<hr class="docutils" />
 </section>
 </section>
 

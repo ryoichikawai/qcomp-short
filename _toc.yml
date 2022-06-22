@@ -13,19 +13,20 @@ chapters:
    -  file: prerequisites/jupyter
    -  file: prerequisites/qiskit
    -  file: prerequisites/cloud
-   -  file: prerequisites/quantum
-   -  file: prerequisites/vectors
-   -  file: prerequisites/operators
+-  file: qmsummary/intro
+   sections:
+   -  file: qmsummary/vectors
+   -  file: qmsummary/operators
+   -  file: qmsummary/evolution
+   -  file: qmsummary/measurement
 -  file: introduction/intro
    sections:
    -  file: introduction/ccomp
    -  file: introduction/qcomp
 -  file: qubit1/intro
    sections:
-   -  file: qubit1/qubit1
+   -  file: qubit1/qubit
    -  file: qubit1/measurement
-   -  file: qubit1/blochsphere
-   -  file: qubit1/qcoin
 #-  file: qgate1/intro
 #sections:
 #-  file: qgate1/operators
@@ -65,6 +66,6 @@ chapters:
 #-  file: noises/mixed-states
 #-  file: noises/noisy-simulation
 #-  file: noises/error-correction
-
+-  file: references.md
 
 
