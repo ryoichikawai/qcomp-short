@@ -38,6 +38,7 @@ parts:
    -  file: qubit/intro
       sections:
       -  file: qubit/single-qubit
+      -  file: qubit/bloch
       -  file: qubit/measurement
    -  file: q1gates/intro
       sections:
