@@ -23,11 +23,17 @@ chapters:
    sections:
    -  file: introduction/ccomp
    -  file: introduction/qcomp
--  file: qubit1/intro
+-  file: qubit/intro
    sections:
-   -  file: qubit1/qubit
-   -  file: qubit1/measurement
-#-  file: qgate1/intro
+   -  file: qubit/single-qubit
+   -  file: qubit/measurement
+-  file: q1gates/intro
+   sections:
+   -  file: q1gates/x
+   -  file: q1gates/y
+   -  file: q1gates/z
+   -  file: q1gates/h
+   -  file: q1gates/s
 #sections:
 #-  file: qgate1/operators
 #-  file: qgate1/pauli
