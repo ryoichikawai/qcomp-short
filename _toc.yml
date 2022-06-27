@@ -3,37 +3,49 @@
 
 format: jb-book
 root: cover
-options:
+parts:
+-  caption: Preface
+   numbered: true
+   chapters:
+   -  file: preface
+-  caption: Preparation
    numbered: 2
-chapters:
--  file: prerequisites/intro
-   sections:
-   -  file: prerequisites/thisbook
-   -  file: prerequisites/python
-   -  file: prerequisites/jupyter
-   -  file: prerequisites/qiskit
-   -  file: prerequisites/cloud
--  file: qmsummary/intro
-   sections:
-   -  file: qmsummary/vectors
-   -  file: qmsummary/operators
-   -  file: qmsummary/evolution
-   -  file: qmsummary/measurement
--  file: introduction/intro
-   sections:
-   -  file: introduction/ccomp
-   -  file: introduction/qcomp
--  file: qubit/intro
-   sections:
-   -  file: qubit/single-qubit
-   -  file: qubit/measurement
--  file: q1gates/intro
-   sections:
-   -  file: q1gates/x
-   -  file: q1gates/y
-   -  file: q1gates/z
-   -  file: q1gates/h
-   -  file: q1gates/s
+   chapters:
+   -  file: preparation/intro
+      sections:
+      -  file: preparation/thisbook
+      -  file: preparation/python
+      -  file: preparation/jupyter
+      -  file: preparation/qiskit
+      -  file: preparation/cloud
+   -  file: qmsummary/intro
+      sections:
+      -  file: qmsummary/vectors
+      -  file: qmsummary/operators
+      -  file: qmsummary/evolution
+      -  file: qmsummary/measurement
+-  caption: Introduction
+   numbered: 2
+   chapters:
+   -  file: computation/intro
+      sections:
+#     -  file: computation/information
+      -  file: computation/ccomp
+      -  file: computation/qcomp
+-  caption: Single qubit
+   numbered: 2
+   chapters:
+   -  file: qubit/intro
+      sections:
+      -  file: qubit/single-qubit
+      -  file: qubit/measurement
+   -  file: q1gates/intro
+      sections:
+      -  file: q1gates/x
+      -  file: q1gates/y
+      -  file: q1gates/z
+      -  file: q1gates/h
+      -  file: q1gates/s
 #sections:
 #-  file: qgate1/operators
 #-  file: qgate1/pauli
@@ -72,6 +84,8 @@ chapters:
 #-  file: noises/mixed-states
 #-  file: noises/noisy-simulation
 #-  file: noises/error-correction
--  file: references.md
+-  caption: Backmatters
+   chapters:
+   -  file: references.md
 
 
