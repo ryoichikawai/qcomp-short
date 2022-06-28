@@ -47,6 +47,7 @@ parts:
       -  file: q1gates/z
       -  file: q1gates/h
       -  file: q1gates/s
+      -  file: q1gates/sx
       -  file: q1gates/changing-basis
 #sections:
 #-  file: qgate1/operators

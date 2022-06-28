@@ -7,11 +7,16 @@ Not only physics students are interested in quantum information theory and quant
 
 Furthremore, it is desired to use a computer programming language to exercise quantum computation.  In particular, python is apparently the preferred language in quantum computing.  Not all students have epxerience in python coding.
 
-At the end, I must teach quantum mechanics, mathematics, and programming language along with quatum compuation.  Then, I found Jupyter Book.  If I write lecture notes in Jupyter Book, students can self-teach *prerequisites* through interactive online lecture notes.  So, my course is entirely written in Jupyter Book.
+At the end, I found myself teaching quantum mechanics, mathematics, and programming language along with quatum compuation.  The contents of main topics, quantum computation, was necessarily squeezed into a very limited time.  
+
+Then, I found Jupyter Book.  If I write lecture notes in Jupyter Book, students can self-teach *prerequisites* through interactive online lecture notes.  So, my course is entirely written in Jupyter Book.  A problem is solved.
 
 Since I do not assume prior experience in quamtum mechanics nor python language, the course can be taken by students outside of physics. I hope I can expose students in many different fields to quantum computation.
 
-*Ryoichi Kawai* (the author of this book)
+Another problem is what topics in quantum computation should be covered.  Despite that the quantum computation is rather young topics, it has made huge progresses and our knowledge still expanding rapidly.  Most of introductory level textbooks explain mostly famous alfgorithms such as the Shor's algorithm, Grover's algorithm, and Fourier Transforms.  However, I found very littel information about how to make your own algorithms.  Perhaps we can talk about simpler problems and solve them using quantum computers for the sake of learning how quantum gates work.  So, I put off discussion on *quantum supremacy* until students become familiar with quantum operations.  Due to the lack of my experience, I could not find small but interesting problems.  Nevertheless, you will find a few quantum computation with only a singe or two qubits.  I hope they help students gain 
+aptite to go further into quantum computation.
+
+*Ryoichi Kawai, July 30, 2022*
 
 
 
