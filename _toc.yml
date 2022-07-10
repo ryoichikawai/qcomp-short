@@ -37,9 +37,10 @@ parts:
    chapters:
    -  file: qubit/intro
       sections:
-      -  file: qubit/single-qubit
+      -  file: qubit/purestates
       -  file: qubit/bloch
       -  file: qubit/measurement
+      -  file: qubit/mixedstates
    -  file: q1gates/intro
       sections:
       -  file: q1gates/x
