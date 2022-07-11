@@ -9,7 +9,7 @@ parts:
    chapters:
    -  file: preface
 -  caption: Preparation
-   numbered: 2
+   numbered: 3
    chapters:
    -  file: preparation/intro
       sections:
@@ -25,7 +25,7 @@ parts:
       -  file: qmsummary/evolution
       -  file: qmsummary/measurement
 -  caption: Introduction
-   numbered: 2
+   numbered: 3
    chapters:
    -  file: computation/intro
       sections:
@@ -33,7 +33,7 @@ parts:
       -  file: computation/ccomp
       -  file: computation/qcomp
 -  caption: Single qubit
-   numbered: 2
+   numbered: 3
    chapters:
    -  file: qubit/intro
       sections:
@@ -49,7 +49,8 @@ parts:
       -  file: q1gates/h
       -  file: q1gates/s
       -  file: q1gates/sx
-      -  file: q1gates/changing-basis
+      -  file: q1gates/change-basis
+      -  file: q1gates/tomography
 #sections:
 #-  file: qgate1/operators
 #-  file: qgate1/pauli
