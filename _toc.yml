@@ -43,12 +43,15 @@ parts:
       -  file: qubit/mixedstates
    -  file: q1gates/intro
       sections:
+      -  file: q1gates/u
+      -  file: q1gates/r
       -  file: q1gates/x
       -  file: q1gates/y
       -  file: q1gates/z
       -  file: q1gates/h
-      -  file: q1gates/s
       -  file: q1gates/sx
+      -  file: q1gates/s
+      -  file: q1gates/p
       -  file: q1gates/change-basis
       -  file: q1gates/tomography
 #sections:
@@ -89,6 +92,12 @@ parts:
 #-  file: noises/mixed-states
 #-  file: noises/noisy-simulation
 #-  file: noises/error-correction
+-  caption: Algorithms
+   numbered: 3
+   chapters:
+   -  file: algorithms/intro
+      sections:
+      -  file: algorithms/deutsch
 -  caption: Backmatters
    chapters:
    -  file: references.md
