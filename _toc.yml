@@ -98,6 +98,8 @@ parts:
    -  file: algorithms/intro
       sections:
       -  file: algorithms/deutsch
+      -  file: algorithms/qft
+      -  file: algorithms/qpe
 -  caption: Backmatters
    chapters:
    -  file: references.md
