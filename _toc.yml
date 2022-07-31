@@ -54,6 +54,12 @@ parts:
       -  file: q1gates/p
       -  file: q1gates/change-basis
       -  file: q1gates/tomography
+-  caption: Composite Systems
+   numbered: 3
+   chapters:
+   -  file: composites/intro
+      sections:
+      -  file: composites/2qubit
 #sections:
 #-  file: qgate1/operators
 #-  file: qgate1/pauli
