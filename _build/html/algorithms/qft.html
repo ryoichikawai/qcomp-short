@@ -1,0 +1,1076 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>8.3. Quantum Fourier Transform &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.4. Quantum Phase Estimation" href="qpe.html" />
+    <link rel="prev" title="8.2. Walsh-Hadamard Transformation" href="walshhadamard.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/me-tiny.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">A First Step to Quantum Computation with Qiskit.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../cover.html">
+                    A First Step to Quantum Computation with Qiskit
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preface
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preface.html">
+   1. Preface
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../preparation/intro.html">
+   2. Preparation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/thisbook.html">
+     2.1. About This Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/python.html">
+     2.2. Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/jupyter.html">
+     2.3. JupyterLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/qiskit.html">
+     2.4. Qiskit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/cloud.html">
+     2.5. Cloud IDE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qmsummary/intro.html">
+   3. Quantum Mechanics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     3.1. State vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/operators.html">
+     3.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     3.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     3.4. Quantum measurement
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../computation/intro.html">
+   4. What is a Quantum Computer?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/ccomp.html">
+     4.1. Classical computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/qcomp.html">
+     4.2. Quantum computation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Single qubit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qubit/intro.html">
+   5. Single qubit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/purestates.html">
+     5.1. Pure states
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/bloch.html">
+     5.2. Bloch sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/measurement.html">
+     5.3. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/mixedstates.html">
+     5.4. Mixed states
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../q1gates/intro.html">
+   6. One-qubit gates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/u.html">
+     6.4. U Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/r.html">
+     6.5. Rotation Gates, RX, RY, RZ
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/x.html">
+     6.6. XGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/y.html">
+     6.7. YGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/z.html">
+     6.8. ZGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/h.html">
+     6.9. Hadamard gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/sx.html">
+     6.10. SX and SXdg Gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/s.html">
+     6.11. S Gate and S
+     <span class="math notranslate nohighlight">
+      \(^\dagger\)
+     </span>
+     Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/p.html">
+     6.12. P Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/change-basis.html">
+     6.13. Change of basis sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/tomography.html">
+     6.14. State tomography
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Composite Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../composites/intro.html">
+   7. Composite Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composites/2qubit.html">
+     7.1. Two qubits
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Algorithms
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   8. Algorithms
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="deutsch.html">
+     8.1. The Deutsch problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="walshhadamard.html">
+     8.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     8.3. Quantum Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qpe.html">
+     8.4. Quantum Phase Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Backmatters
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/algorithms/qft.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Falgorithms/qft.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/algorithms/qft.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-fourier-transform">
+   8.3.1. Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-qft-algorithm">
+   8.3.2. The QFT algorithm
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Quantum Fourier Transform</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discrete-fourier-transform">
+   8.3.1. Discrete Fourier Transform
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-qft-algorithm">
+   8.3.2. The QFT algorithm
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="quantum-fourier-transform">
+<span id="sec-qft"></span><h1><span class="section-number">8.3. </span>Quantum Fourier Transform<a class="headerlink" href="#quantum-fourier-transform" title="Permalink to this headline">#</a></h1>
+<p>Fourier transform (FT) is a ubiquitous mathematical tool used in science, engineering and beyond and we are using it every day without knowing it. Whenever digital signals are processed, the Fourier transform is most likely used including WiFi, cell phone, digital music, digital picture, …, to name a few.  We wish to calculate the Fourier transform on a quantum computer.  It turns out that quantum computers are not good at calculating general Fourier transform as explained below.  We will focus on a very special case not for the sake of Fourier transform but for other quantum algorithms such as phase estimation.</p>
+<section id="discrete-fourier-transform">
+<h2><span class="section-number">8.3.1. </span>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this headline">#</a></h2>
+<p>The digital signal processes use a particular form  of Fourier transform known as <em>discrete Fourier transform</em> defined by</p>
+<div class="math notranslate nohighlight" id="equation-dft">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-dft" title="Permalink to this equation">#</a></span>\[
+y_n = \frac{1}{\sqrt{N}} \sum_{m=0}^{N-1} x_m e^{2\pi i\, n\, m/N}
+\]</div>
+<p>or writing ti in a matrix from</p>
+<div class="math notranslate nohighlight" id="equation-dft-as-matrix">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-dft-as-matrix" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{bmatrix}y_0\\y_1\\ \vdots \\ y_{N-1}\end{bmatrix} = \frac{1}{\sqrt{N}} 
+\begin{bmatrix} 1 &amp; 1 &amp; \cdots &amp; 1 \\ 1 &amp; e^{2\pi i/N} &amp; \cdots &amp; e^{2\pi i (N-1)/N} \\
+\vdots &amp; \vdots &amp; \cdots &amp;\vdots \\ 1 &amp; e^{2\pi i (N-1)/N} &amp;\cdots &amp; e^{2\pi i (N-1)^2/N}
+\end{bmatrix}
+\begin{bmatrix}x_0\\x_1\\ \vdots \\ x_{N-1}\end{bmatrix}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_m \in \mathbb{C}\)</span> is the original signal and <span class="math notranslate nohighlight">\(y_n \in \mathbb{C}\)</span> is its Fourier transform.</p>
+<p>Writing the column vectors in kets as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+|x\rangle \doteq \begin{bmatrix}x_0\\x_1\\ \vdots \\ x_{N-1}\end{bmatrix}, \qquad
+|y\rangle \doteq \begin{bmatrix}y_0\\y_1\\ \vdots \\ y_{N-1}\end{bmatrix}
+\end{split}\]</div>
+<p>and the matrix as an operator</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathcal{F}_N \doteq \frac{1}{\sqrt{N}} \begin{bmatrix} 1 &amp; 1 &amp; \cdots &amp; 1 \\ 1 &amp; e^{2\pi i/N} &amp; \cdots &amp; e^{2\pi i (N-1)/N} \\
+\vdots &amp; \vdots &amp; \cdots &amp;\vdots \\ 1 &amp; e^{2\pi i (N-1)/N} &amp;\cdots &amp; e^{2\pi i (N-1)^2/N}
+\end{bmatrix}
+\end{split}\]</div>
+<p>which we shall call <em>Fourier operator</em> or <em>Fourier gate</em>. Now, the Fourier transform can be written in an abstract form</p>
+<div class="math notranslate nohighlight" id="equation-dft-as-operator">
+<span class="eqno">(8.7)<a class="headerlink" href="#equation-dft-as-operator" title="Permalink to this equation">#</a></span>\[
+|y\rangle = \mathcal{F}_N |x\rangle .
+\]</div>
+<p>It is easy to check that <span class="math notranslate nohighlight">\(\mathcal{F}_N \mathcal{F}_N^\dagger = 1\)</span> and thus <span class="math notranslate nohighlight">\(\mathcal{F}_N\)</span> is unitary. The inverse Fourier transform is done by <span class="math notranslate nohighlight">\(\mathcal{F}^\dagger\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-dft-inverse">
+<span class="eqno">(8.8)<a class="headerlink" href="#equation-dft-inverse" title="Permalink to this equation">#</a></span>\[
+|x\rangle = \mathcal{F}_N^\dagger |y\rangle .
+\]</div>
+<p>A unitary transformation in <span class="math notranslate nohighlight">\(N\)</span>-dimensional Hilbert space can be implemented as a quantum transformation by 1) preparing a quantum state <span class="math notranslate nohighlight">\(|x\rangle\)</span> using a certain basis set, 2) constructing the unitary operator, and 3) reading out <span class="math notranslate nohighlight">\(|y\rangle\)</span>.<br />
+However, we have a couple of issues here.  First of all,  quantum measurement only gives us <span class="math notranslate nohighlight">\(|y_n|\)</span> through the Born rule.  This is not necessarily a fatal limitation since many applications need only the modulus such as power spectrum. Secondly, when <span class="math notranslate nohighlight">\(N\)</span> is very large as in the engineering applications, there is no good way to prepare <span class="math notranslate nohighlight">\(|x\rangle\)</span>  and also finding all <span class="math notranslate nohighlight">\(|y_n|\)</span> requires a huge number of quantum measurement.   Unfortunately, the quantum version of DFT seems not feasible for traditional applications.</p>
+<p>Nevertheless, the quantum Fourier transform has several useful application such as phase estimation and period finding. It is worth developing a quantum algorithm for <span class="math notranslate nohighlight">\(\mathcal{F}_N\)</span>.  To do so, we consider the Fourier transform of the computational basis <span class="math notranslate nohighlight">\(|u_j\rangle ,\,  j=0,\cdots 2^{n-1}\)</span> where <span class="math notranslate nohighlight">\(n\)</span> is the number of qubits.  Writing them  explicitly in the computational bases,</p>
+<div class="math notranslate nohighlight">
+\[
+|u_j\rangle=|j_n\, j_{n-1}\, \cdots\, j_1\rangle \equiv  |j_n\rangle \otimes |j_{n-1}\rangle \otimes \cdots \otimes |j_1\rangle
+\]</div>
+<p>where the individual qubit takes values <span class="math notranslate nohighlight">\(j_i \in \{0,1\}\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is decimal expression of the binary string <span class="math notranslate nohighlight">\(j_1\, j_2,\cdots\, j_n\)</span>, that is</p>
+<div class="math notranslate nohighlight" id="equation-decimal-binary">
+<span class="eqno">(8.9)<a class="headerlink" href="#equation-decimal-binary" title="Permalink to this equation">#</a></span>\[
+j=2^{n-1} j_{n} + 2^{n-2} j_{n-1} +\cdots+ j_1 = \sum_{\ell=1}^{n} 2^{\ell-1} j_\ell
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(n=2\)</span>, there are four basis kets <span class="math notranslate nohighlight">\(|u_0\rangle=|00\rangle,\, |u_1\rangle=|01\rangle,\,  |u_2\rangle=|10\rangle,\, |u_3\rangle=|11\rangle\)</span>.</p>
+<p>When the Fourier operator is applied to the computational basis we obtain a new basis</p>
+<div class="math notranslate nohighlight" id="equation-qft">
+<span class="eqno">(8.10)<a class="headerlink" href="#equation-qft" title="Permalink to this equation">#</a></span>\[
+|w_j\rangle = \mathcal{F}_N |u_j\rangle .
+\]</div>
+<p>We can construct a quantum circuit for the Fourier operator <span class="math notranslate nohighlight">\(\mathcal{F}_N\)</span> from Eq.  <a class="reference internal" href="#equation-qft">(8.10)</a>.  Once we obtained the circuit or the Fourier gate, we can apply it to other states.<br />
+In literature  “quantum Fourier transform” often means  Eq.<a class="reference internal" href="#equation-qft">(8.10)</a> or the Fourier gate <span class="math notranslate nohighlight">\(\mathcal{F}_N\)</span> rather than the general Fourier transform <a class="reference internal" href="#equation-dft-as-operator">(8.7)</a>.</p>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-qft"><span class="std std-numref">8.3</span></a>.1   Show that <span class="math notranslate nohighlight">\(|k_j\rangle\)</span> forms an orthonormal basis set.</p>
+</section>
+<section id="the-qft-algorithm">
+<h2><span class="section-number">8.3.2. </span>The QFT algorithm<a class="headerlink" href="#the-qft-algorithm" title="Permalink to this headline">#</a></h2>
+<p>Now we construct the Foureir operator.
+First, we compute Eq. <a class="reference internal" href="#equation-qft">(8.10)</a> explicitly in the computational basis.</p>
+<p><strong>N=2</strong><br />
+Let us consider <span class="math notranslate nohighlight">\(n=1\)</span>, the simplest QFT transforms the computational basis <span class="math notranslate nohighlight">\(0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-qft2">
+<span class="eqno">(8.11)<a class="headerlink" href="#equation-qft2" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+\mathcal{F}_2 |u_0\rangle &amp;= \mathcal{F}_2 |0\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle +  e^{i 0} |1\rangle\right) = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right)\\
+\mathcal{F}_2 |u_1\rangle &amp;= \mathcal{F}_2 |1\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle + e^{i \pi}|1\rangle\right) = \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right).
+\end{align}
+\end{split}\]</div>
+<p>We want to find a quantum circuit that does the same transformation. Recalling that</p>
+<div class="math notranslate nohighlight" id="equation-hgate-as-qft2">
+<span class="eqno">(8.12)<a class="headerlink" href="#equation-hgate-as-qft2" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+H |0\rangle &amp;= \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
+H |1\rangle &amp;= \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) 
+\end{align}
+\end{split}\]</div>
+<p>By direct comparison between Eqs. <a class="reference internal" href="#equation-qft2">(8.11)</a> and <a class="reference internal" href="#equation-hgate-as-qft2">(8.12)</a>, it is clear that <span class="math notranslate nohighlight">\(\mathcal{F}_2 = H\)</span>. We learned in <a class="reference internal" href="../q1gates/h.html#sec-hgate"><span class="std std-numref">Section 6.9</span></a> that the Hadamard gate transforms the computational basis to the <span class="math notranslate nohighlight">\(x\)</span>-basis. That transformation turned out to be the lowest order QFT and  we have already computed it.   See <a class="reference internal" href="../q1gates/h.html#sec-hgate-qft"><span class="std std-numref">Section 6.9.2</span></a>.</p>
+<p><strong>N=4</strong></p>
+<p>We need more examples to get an idea of <span class="math notranslate nohighlight">\(\mathcal{F}_N\)</span>..  Let us try <span class="math notranslate nohighlight">\(n=2\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-qft4">
+<span class="eqno">(8.13)<a class="headerlink" href="#equation-qft4" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+\mathcal{F}_2 |u_0\rangle &amp;=\mathcal{F}_2 |00\rangle = \frac{1}{2} \left(|00\rangle + |01\rangle  +|10\rangle + |11\rangle\right)\\ &amp;= \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \otimes
+\frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
+\mathcal{F}_2 |u_1\rangle &amp;= \mathcal{F}_2 |01\rangle = \frac{1}{2} \left(|00\rangle + e^{i \pi/2}|01\rangle + e^{i \pi}|10\rangle + e^{i 3\pi/2}|11\rangle \right)\\
+&amp;= \frac{1}{2} \left(|00\rangle + i |01\rangle  - |10\rangle  -i |11\rangle \right)\\&amp; = \frac{1}{\sqrt{2}} \left(|0\rangle -  |1\rangle\right) \otimes \frac{1}{\sqrt{2}} \left(|0\rangle + i |1\rangle\right) \\
+\mathcal{F}_2 |u_2\rangle &amp;= \mathcal{F}_2 |10\rangle = \frac{1}{2} \left(|00\rangle + e^{i \pi}|01\rangle + e^{2 i \pi}|10\rangle + e^{i 3 \pi}|11\rangle \right) \\
+&amp;= \frac{1}{2} \left(|00\rangle - |01\rangle +|10\rangle - |11\rangle \right) \\
+&amp;=  \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \otimes \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right)\\
+\mathcal{F}_2 |u_3\rangle &amp;= \mathcal{F}_2 |11\rangle = \frac{1}{2} \left(|00\rangle + e^{i 3\pi/2}|01\rangle + e^{3 i \pi}|10\rangle + e^{i 9 \pi/2} |11\rangle \right) \\
+&amp;= \frac{1}{2} \left(|00\rangle - i|01\rangle - |10\rangle + i |11\rangle \right) \\
+&amp;=  \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) \otimes \frac{1}{\sqrt{2}} \left(|0\rangle -i |1\rangle\right)
+\end{align}
+\end{split}\]</div>
+<p>The corresponding quantum circuit seems complicated since phase factor <span class="math notranslate nohighlight">\(\pm i\)</span> are now involved.  We recall that <span class="math notranslate nohighlight">\(S\)</span> gate does the job.</p>
+<div class="math notranslate nohighlight" id="equation-s-h-gates">
+<span class="eqno">(8.14)<a class="headerlink" href="#equation-s-h-gates" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+S \cdot H |0\rangle &amp;= \frac{1}{\sqrt{2}}\left(|0\rangle + i |1\rangle\right) \\
+S \cdot H |1\rangle &amp;= \frac{1}{\sqrt{2}}\left(|0\rangle - i |1\rangle\right) 
+\end{align}
+\end{split}\]</div>
+<p>Using eqs. <a class="reference internal" href="#equation-hgate-as-qft2">(8.12)</a> and <a class="reference internal" href="#equation-s-h-gates">(8.14)</a>, we try the following transformations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+H \otimes H |00\rangle &amp; = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \otimes
+\frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
+(S\cdot H) \otimes H |01\rangle &amp; = \frac{1}{\sqrt{2}}\left(|0\rangle + i |1\rangle\right)  \otimes
+ \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) \\
+H \otimes H |10\rangle &amp; = \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) \otimes
+\frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
+(S\cdot H) \otimes H |11\rangle &amp; = \frac{1}{\sqrt{2}}\left(|0\rangle - i |1\rangle\right)  \otimes
+ \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) 
+\end{align}
+\end{split}\]</div>
+<p>The results are close to the Fourier transform but the order of the output bits are wrong.  We need to swap the qubits.  Another issue is that <span class="math notranslate nohighlight">\(S\)</span> gates is applied to <span class="math notranslate nohighlight">\(|01\rangle\)</span> and <span class="math notranslate nohighlight">\(|11\rangle\)</span>.  Noting that the second qubit is <span class="math notranslate nohighlight">\(1\rangle\)</span>.  Hence, we can use the controlled-S gate with the second qubit as the control.</p>
+<div class="math notranslate nohighlight" id="equation-qft4-gates">
+<span class="eqno">(8.15)<a class="headerlink" href="#equation-qft4-gates" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H) |00\rangle &amp; = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \otimes
+\frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
+SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H)  |01\rangle &amp; = \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) \otimes  \frac{1} {\sqrt{2}}\left(|0\rangle + i |1\rangle\right) 
+ \\
+SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H) |10\rangle  &amp; = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right)  \otimes
+ \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) \\
+SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H) |11\rangle &amp; =  \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right)   \otimes
+\frac{1}{\sqrt{2}}\left(|0\rangle - i |1\rangle\right)
+\end{align}
+\end{split}\]</div>
+<p>Now, the Fourier transform <a class="reference internal" href="#equation-qft4">(8.13)</a> and The circhuit <a class="reference internal" href="#equation-qft4-gates">(8.15)</a> produces the same outputs.  Hence, <span class="math notranslate nohighlight">\(\mathcal{F}_4 = SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H)\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit.library.standard_gates</span> <span class="kn">import</span> <span class="n">SGate</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+<span class="n">cs</span><span class="o">=</span><span class="n">SGate</span><span class="p">()</span><span class="o">.</span><span class="n">control</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cs</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">               ┌───┐   
+q_0: ───────■──┤ H ├─X─
+     ┌───┐┌─┴─┐└───┘ │ 
+q_1: ┤ H ├┤ S ├──────X─
+     └───┘└───┘        </pre></div></div>
+</div>
+<p>In the following example, all four transformations <a class="reference internal" href="#equation-qft2">(8.11)</a> are computed using Qiskit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># qiskit does not have predefined controlled-S gate</span>
+<span class="c1"># In this application we use an equivalent gate controlled-P gate.</span>
+
+<span class="k">def</span> <span class="nf">QFT</span><span class="p">():</span>
+    <span class="c1"># define the Fourier gate    </span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for |00&gt;</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+    
+<span class="c1"># apply the Fourier gate</span>
+<span class="n">QFT</span><span class="p">()</span>
+
+<span class="c1"># Show the Fourier transform</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="n">psi</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fourier transform of |00&gt;&quot;</span><span class="p">)</span>
+<span class="n">psi</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fourier transform of |00&gt;
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{1}{2} |00\rangle+\frac{1}{2} |01\rangle+\frac{1}{2} |10\rangle+\frac{1}{2} |11\rangle\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for |01&gt;</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+    
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">QFT</span><span class="p">()</span>
+<span class="n">psi</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fourier transform of |01&gt;&quot;</span><span class="p">)</span>
+<span class="n">psi</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fourier transform of |01&gt;
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{1}{2} |00\rangle+\frac{i}{2} |01\rangle- \frac{1}{2} |10\rangle- \frac{i}{2} |11\rangle\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for |10&gt;</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+    
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">QFT</span><span class="p">()</span>
+<span class="n">psi</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fourier transform of |10&gt;&quot;</span><span class="p">)</span>
+<span class="n">psi</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fourier transform of |10&gt;
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{1}{2} |00\rangle- \frac{1}{2} |01\rangle+\frac{1}{2} |10\rangle- \frac{1}{2} |11\rangle\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for |11&gt;</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+    
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">QFT</span><span class="p">()</span>
+<span class="n">psi</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fourier transform of |10&gt;&quot;</span><span class="p">)</span>
+<span class="n">psi</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fourier transform of |10&gt;
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{1}{2} |00\rangle- \frac{i}{2} |01\rangle- \frac{1}{2} |10\rangle+\frac{i}{2} |11\rangle\]</div>
+</div>
+</div>
+<p><strong>Higher order QFT</strong></p>
+<p>Now we have some good idea about QFT. Now, we try to find <span class="math notranslate nohighlight">\(\mathcal{F}_N\)</span>.  The derivation is a bit complicated but the extension of the <span class="math notranslate nohighlight">\(N=4\)</span> case.  First, we evaluate <span class="math notranslate nohighlight">\(\mathcal{F}_N |j\rangle\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathcal{F}_N |j\rangle  = \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} e^{2\pi i\, j\, k /2^n} |k\rangle \\
+&amp; = \sum_{k=0}^{N-1} e^{2\pi i\, j\,\sum_{\ell=1}^{n} k_\ell/2^\ell} |k_1\, k_2\, \cdots\, k_n \rangle \\
+&amp; = \left (\sum_{k_1=0}^1 e^{2 \pi i\, j\, k_1/2} |k_1\rangle\right) \otimes \left (\sum_{k_2=0}^1 e^{2 \pi i\, j, k_2/2^2} |k_2\rangle\right)\otimes \cdots \otimes \left (\sum_{k_n=0}^1 e^{2 \pi i\,j\' k_n/2^n} |k_n\rangle\right) \\
+&amp; = \left(|0\rangle + e^{2 \pi i\, j /2} |1\rangle \right) \otimes \left(|0\rangle + e^{2 \pi i\, j /2^2 } |1\rangle \right) \otimes \cdots \otimes \left(|0\rangle + e^{2 \pi i\, j /2^n}|1\rangle \right) 
+\end{align}
+\end{split}\]</div>
+<p>The results look quite similar to Eq. <a class="reference internal" href="#equation-qft4">(8.13)</a>.  Only the difference is the phase angles.  The question is how we calculate the phase angle. Let us take a closer look at a phase factor <span class="math notranslate nohighlight">\(e^{2 \pi i\, j /2^k},\, 1 \le k \le n\)</span>.  Using Eq. <a class="reference internal" href="#equation-decimal-binary">(8.9)</a>,</p>
+<div class="math notranslate nohighlight">
+\[
+e^{2\pi i\, j /2^k} = e^{2 \pi i\, \sum_{\ell=1}^{n} 2^{\ell-1-k} j_\ell } = e^{2\pi i , j_1 /2^k} e^{2\pi i\,j_2/2^{k-1}} \cdots e^{2\pi i\, j_k/2} e^{2 \pi i j_{k+1}} \cdots e^{2\pi i\, j_{n} (n-1-k)} = e^{2\pi i\, j_1/2^k} e^{2\pi i\, j_2 /2^{k-1}} \cdots e^{2\pi i\, j_k/2}
+\]</div>
+<p>We need to apply the phase rotation of angle <span class="math notranslate nohighlight">\(k\)</span> different phase angle <span class="math notranslate nohighlight">\(2\pi j_\ell /2^{ell-1-k},\, 1 \le \ell \le k\)</span>.  No rotation is needed when <span class="math notranslate nohighlight">\(\ell &gt; k\)</span> or <span class="math notranslate nohighlight">\(j_\ell=0\)</span>.  Hence, we apply the controlled phase gate <span class="math notranslate nohighlight">\(CP(2\pi/2^{\ell-1-k})\)</span> only when <span class="math notranslate nohighlight">\(j_\ell=0\)</span>.  In conclusion, apply <span class="math notranslate nohighlight">\(H\)</span> to <span class="math notranslate nohighlight">\(k\)</span>-th qubit and apply controlled-<span class="math notranslate nohighlight">\(P\)</span> gate  <span class="math notranslate nohighlight">\(k\)</span> times with appropriate angles.  Repeat this from <span class="math notranslate nohighlight">\(k=n\)</span> to <span class="math notranslate nohighlight">\(k=1\)</span> in the backward so that source qubits of controlled <span class="math notranslate nohighlight">\(P\)</span> gate is not modified before the controlled operation.  As you saw in <span class="math notranslate nohighlight">\(\mathcal{F}_4\)</span>, the order of the qubits is wrong after these operations.  Hence, we reverse the order by applying swap gates.</p>
+<p>The following circuit is equivalent to <span class="math notranslate nohighlight">\(\mathcal{F}_8\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="c1"># qubit 3</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># qubit 2</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># qubit 1</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># qubit 0</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># reordering</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/qft_13_0.png" src="../_images/qft_13_0.png" />
+</div>
+</div>
+<hr class="docutils" />
+<p>Last modified: 07-19-2022</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./algorithms"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="walshhadamard.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8.2. </span>Walsh-Hadamard Transformation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="qpe.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.4. </span>Quantum Phase Estimation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ryoichi Kawai<br/>
+  
+      &copy; Copyright Ryoichi Kawai 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

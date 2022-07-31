@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.1. State vectors &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>3.1. State vectors &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -36,10 +36,13 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -48,12 +51,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. Operators" href="operators.html" />
-    <link rel="prev" title="2. Quantum Mechanics" href="intro.html" />
+    <link rel="next" title="3.2. Operators" href="operators.html" />
+    <link rel="prev" title="3. Quantum Mechanics" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -113,10 +118,27 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preface
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preface.html">
+   1. Preface
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../prerequisites/intro.html">
-   1. Prerequisites
+  <a class="reference internal" href="../preparation/intro.html">
+   2. Preparation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -125,35 +147,35 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/thisbook.html">
-     1.1. About This Book
+    <a class="reference internal" href="../preparation/thisbook.html">
+     2.1. About This Book
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/python.html">
-     1.2. Python
+    <a class="reference internal" href="../preparation/python.html">
+     2.2. Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/jupyter.html">
-     1.3. JupyterLab
+    <a class="reference internal" href="../preparation/jupyter.html">
+     2.3. JupyterLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/qiskit.html">
-     1.4. Qiskit
+    <a class="reference internal" href="../preparation/qiskit.html">
+     2.4. Qiskit
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/cloud.html">
-     1.5. Cloud IDE
+    <a class="reference internal" href="../preparation/cloud.html">
+     2.5. Cloud IDE
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   2. Quantum Mechanics
+   3. Quantum Mechanics
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -163,29 +185,36 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.1. State vectors
+     3.1. State vectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="operators.html">
-     2.2. Operators
+     3.2. Operators
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="evolution.html">
-     2.3. Time-evolution
+     3.3. Time-evolution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="measurement.html">
-     2.4. Quantum measurement
+     3.4. Quantum measurement
     </a>
    </li>
   </ul>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../introduction/intro.html">
-   3. What is a Quantum Computer?
+  <a class="reference internal" href="../computation/intro.html">
+   4. What is a Quantum Computer?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -194,20 +223,27 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../introduction/ccomp.html">
-     3.1. Classical computation
+    <a class="reference internal" href="../computation/ccomp.html">
+     4.1. Classical computation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../introduction/qcomp.html">
-     3.2. Quantum computation
+    <a class="reference internal" href="../computation/qcomp.html">
+     4.2. Quantum computation
     </a>
    </li>
   </ul>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Single qubit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qubit/intro.html">
-   4. A Qubit
+   5. Single qubit
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -216,20 +252,30 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../qubit/single-qubit.html">
-     4.1. Single qubit
+    <a class="reference internal" href="../qubit/purestates.html">
+     5.1. Pure states
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/bloch.html">
+     5.2. Bloch sphere
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/measurement.html">
-     4.2. Qubit Measurement
+     5.3. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/mixedstates.html">
+     5.4. Mixed states
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../q1gates/intro.html">
-   5. One-qubit gates
+   6. One-qubit gates
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -238,39 +284,132 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/u.html">
+     6.4. U Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/r.html">
+     6.5. Rotation Gates, RX, RY, RZ
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/x.html">
-     5.2. XGate
+     6.6. XGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/y.html">
-     5.3. YGate
+     6.7. YGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/z.html">
-     5.4. ZGate
+     6.8. ZGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/h.html">
-     5.5. Hadamard gate
+     6.9. Hadamard gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/sx.html">
+     6.10. SX and SXdg Gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/s.html">
-     5.6. S Gate and S
+     6.11. S Gate and S
      <span class="math notranslate nohighlight">
       \(^\dagger\)
      </span>
      Gate
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/p.html">
+     6.12. P Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/change-basis.html">
+     6.13. Change of basis sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/tomography.html">
+     6.14. State tomography
+    </a>
+   </li>
   </ul>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Composite Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../composites/intro.html">
+   7. Composite Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../composites/2qubit.html">
+   8. Two qubits
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../algorithms/intro.html">
+   9. Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/deutsch.html">
+     9.1. The Deutsch problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/walshhadamard.html">
+     9.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qft.html">
+     9.3. Quantum Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qpe.html">
+     9.4. Quantum Phase Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Backmatters
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../references.html">
-   6. References
+   References
   </a>
  </li>
 </ul>
@@ -481,57 +620,57 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ket-and-bra">
-   Ket and bra
+   3.1.1. Ket and bra
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#addition">
-   Addition
+   3.1.2. Addition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#scalar-multiplication">
-   Scalar multiplication
+   3.1.3. Scalar multiplication
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#superposition">
-   Superposition
+   3.1.4. Superposition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inner-product">
-   Inner product
+   3.1.5. Inner product
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#orthogonality">
-   Orthogonality
+   3.1.6. Orthogonality
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#norm-and-normarization">
-   Norm and normarization
+   3.1.7. Norm and normarization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#global-phase">
-   Global phase
+   3.1.8. Global phase
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basis-sets">
-   Basis sets
+   3.1.9. Basis sets
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#completeness">
-   Completeness
+   3.1.10. Completeness
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#two-dimensional-hilbert-space">
-   Two-dimensional Hilbert space
+   3.1.11. Two-dimensional Hilbert space
   </a>
  </li>
 </ul>
@@ -555,57 +694,57 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ket-and-bra">
-   Ket and bra
+   3.1.1. Ket and bra
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#addition">
-   Addition
+   3.1.2. Addition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#scalar-multiplication">
-   Scalar multiplication
+   3.1.3. Scalar multiplication
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#superposition">
-   Superposition
+   3.1.4. Superposition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inner-product">
-   Inner product
+   3.1.5. Inner product
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#orthogonality">
-   Orthogonality
+   3.1.6. Orthogonality
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#norm-and-normarization">
-   Norm and normarization
+   3.1.7. Norm and normarization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#global-phase">
-   Global phase
+   3.1.8. Global phase
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basis-sets">
-   Basis sets
+   3.1.9. Basis sets
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#completeness">
-   Completeness
+   3.1.10. Completeness
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#two-dimensional-hilbert-space">
-   Two-dimensional Hilbert space
+   3.1.11. Two-dimensional Hilbert space
   </a>
  </li>
 </ul>
@@ -619,7 +758,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="state-vectors">
-<span id="sec-statevectors"></span><h1><span class="section-number">2.1. </span>State vectors<a class="headerlink" href="#state-vectors" title="Permalink to this headline">#</a></h1>
+<span id="sec-statevectors"></span><h1><span class="section-number">3.1. </span>State vectors<a class="headerlink" href="#state-vectors" title="Permalink to this headline">#</a></h1>
 <p>The theory of quantum mechanics is built on linear algebra.  I hope that you have studied elementary linear algebra prior to this book.  While I briefly introduce necessary mathematics, I expect you to review the theory of complex vector spaces (Hilbert spaces).  You can find a good summary of mathematics is also given in this book</p>
 <ul class="simple">
 <li><p>J. Audretsch: <em>Entangled Systems - New Directions in Quantum Physics</em> (Wiley-VCH, 2007)</p></li>
@@ -631,7 +770,7 @@ title="Print to PDF"
 </ul>
 <p>The following is a summary of Hilbert space using abstract mathematical expressions.  The ket and bra notation of vectors may be new to you.  Otherwise, it is just a standard linear algebra.  I will discuss each item in later chapters with practical examples for quantum computation.  For now, refresh your understanding of linear algebra.</p>
 <section id="ket-and-bra">
-<h2>Ket and bra<a class="headerlink" href="#ket-and-bra" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.1. </span>Ket and bra<a class="headerlink" href="#ket-and-bra" title="Permalink to this headline">#</a></h2>
 <p>The state of a quantum object is mathematically described by a complex vector in a <em>Hilbert space</em>, which is called <em>state vector</em>. The state vector is denoted as <span class="math notranslate nohighlight">\(|\bullet\rangle\)</span>, which is called <em>ket vector</em> or simply <em>ket</em>.  “<span class="math notranslate nohighlight">\(\bullet\)</span>” in the ket can be any symbol representing the state.  For example, an electron in a spin-up state is commonly expressed by <span class="math notranslate nohighlight">\(\ket{\uparrow}\)</span>. We could use <span class="math notranslate nohighlight">\(|\)</span>♥ <span class="math notranslate nohighlight">\(\rangle\)</span>, <span class="math notranslate nohighlight">\(|\)</span>♠<span class="math notranslate nohighlight">\(\rangle\)</span>, <span class="math notranslate nohighlight">\(|\)</span>♦<span class="math notranslate nohighlight">\(\rangle\)</span>, <span class="math notranslate nohighlight">\(|\)</span>♣<span class="math notranslate nohighlight">\(\rangle\)</span> to express the states of quantum cards (if they exist.)  We often write an arbitrary state as <span class="math notranslate nohighlight">\(| \psi\rangle\)</span>.</p>
 <p>For every ket <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>, there is a corresponding complex vector <span class="math notranslate nohighlight">\(\langle\psi|\)</span>, which is known as <em>bra vector</em> or just <em>bra</em>. Mathematically, <span class="math notranslate nohighlight">\(\langle\psi|\)</span> is the <em>adjoint</em> or <em>dual</em> of <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.
 The corresponding bra with the same symbol as a ket represents the same state of the qubit.  For example, both <span class="math notranslate nohighlight">\(|\uparrow\rangle\)</span> and <span class="math notranslate nohighlight">\(\langle\uparrow|\)</span> represent the same spin-up state.
@@ -640,7 +779,7 @@ We need bra vectors to compute inner products (See subsection <a class="referenc
 Since kets and bras are vectors, they share the same mathematical operations with the Euclidean vectors, namely two basic mathematical operations, <em>addition</em> <span class="math notranslate nohighlight">\(|a\rangle+|b\rangle\)</span> and <em>scalar mulitplication</em> <span class="math notranslate nohighlight">\(\lambda |a\rangle\)</span> (<span class="math notranslate nohighlight">\(\lambda\)</span> is a complex number).  The regular rules of calculation are listed below.  The dual of the operations are <span class="math notranslate nohighlight">\(\langle a| + \langle b|\)</span> and <span class="math notranslate nohighlight">\(\langle a | \lambda^*\)</span> where <span class="math notranslate nohighlight">\(\lambda^*\)</span> is a complex conjugate of <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 </section>
 <section id="addition">
-<h2>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.2. </span>Addition<a class="headerlink" href="#addition" title="Permalink to this headline">#</a></h2>
 <p>The following statements are valid for any <span class="math notranslate nohighlight">\(|a\rangle\)</span>, <span class="math notranslate nohighlight">\(|b\rangle\)</span>, <span class="math notranslate nohighlight">\(|c\rangle\)</span> in the same vector space.
 The same rules are applied to bra vectors.</p>
 <table class="colwidths-auto table">
@@ -669,7 +808,7 @@ The same rules are applied to bra vectors.</p>
 </table>
 </section>
 <section id="scalar-multiplication">
-<h2>Scalar multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.3. </span>Scalar multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline">#</a></h2>
 <p>The following statements are valid for any <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|b\rangle\)</span> in the same vector space and any complex numbers <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>.
 The same rules are applied to bra vectors.</p>
 <table class="colwidths-auto table">
@@ -698,7 +837,7 @@ The same rules are applied to bra vectors.</p>
 </table>
 </section>
 <section id="superposition">
-<h2>Superposition<a class="headerlink" href="#superposition" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.4. </span>Superposition<a class="headerlink" href="#superposition" title="Permalink to this headline">#</a></h2>
 <p>Combining addition and scalar multiplication, we can construct a superposition of vectors,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -711,12 +850,12 @@ The same rules are applied to bra vectors.</p>
 \]</div>
 <p>Notice that the coefficients are complex conjugate of the original ones in the ket.</p>
 <blockquote>
-<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">2.1</span></a>.1  <br />
+<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">3.1</span></a>.1  <br />
 Consider a superposition state <span class="math notranslate nohighlight">\(\alpha |a\rangle + e^{i \theta} \alpha |b\rangle\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span> is real.  Find the corresponding bra vector.</p>
 </div></blockquote>
 </section>
 <section id="inner-product">
-<span id="subsec-innerproduct"></span><h2>Inner product<a class="headerlink" href="#inner-product" title="Permalink to this headline">#</a></h2>
+<span id="subsec-innerproduct"></span><h2><span class="section-number">3.1.5. </span>Inner product<a class="headerlink" href="#inner-product" title="Permalink to this headline">#</a></h2>
 <p>In the Euclidean vector space, an inner product (dot product) <span class="math notranslate nohighlight">\(\,\vec{a} \cdot \vec{b}\,\)</span> is real and <span class="math notranslate nohighlight">\(\,\vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}\)</span>. The inner product in a Hilbert space differs in two points. Firstly, the inner product in a Hilbert space <span class="math notranslate nohighlight">\(\langle a|b \rangle\)</span> is complex.  Secondly, the inner product is not symmetric between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, that is <span class="math notranslate nohighlight">\(\langle a|b \rangle \ne \langle b|a \rangle\)</span>. Instead, the two inner products are complex conjugate to each other as <span class="math notranslate nohighlight">\(\langle a|b \rangle^* = \langle b|a \rangle\)</span>.</p>
 <p>The inner product between <span class="math notranslate nohighlight">\(|c \rangle\)</span> and a superposition state <span class="math notranslate nohighlight">\(|\psi \rangle = \alpha |a \rangle + \beta |b \rangle\)</span> can be computed with the distribution rule</p>
 <div class="math notranslate nohighlight">
@@ -726,7 +865,7 @@ Consider a superposition state <span class="math notranslate nohighlight">\(\alp
 \end{eqnarray}
 \end{split}\]</div>
 <blockquote>
-<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">2.1</span></a>.2  </p>
+<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">3.1</span></a>.2  </p>
 <ol class="simple">
 <li><p>In the above example of inner product, show that <span class="math notranslate nohighlight">\(\langle c|\psi \rangle^* = \langle \psi|c \rangle\)</span>. (otherwise, the distribution rule does not work.)</p></li>
 <li><p>Show that <span class="math notranslate nohighlight">\(\langle \psi|\psi \rangle\)</span> is real  for any <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.</p></li>
@@ -734,11 +873,11 @@ Consider a superposition state <span class="math notranslate nohighlight">\(\alp
 </div></blockquote>
 </section>
 <section id="orthogonality">
-<h2>Orthogonality<a class="headerlink" href="#orthogonality" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.6. </span>Orthogonality<a class="headerlink" href="#orthogonality" title="Permalink to this headline">#</a></h2>
 <p>The inner product of two Euclidean vectors <span class="math notranslate nohighlight">\(\vec{a}\)</span> and <span class="math notranslate nohighlight">\(\vec{b}\)</span> may be expressed as <span class="math notranslate nohighlight">\(\vec{a}\cdot\vec{b} = a b \cos\theta\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span> is the angle between the two vectors. When <span class="math notranslate nohighlight">\(\theta = \pm \frac{\pi}{2}\)</span>, the inner product vanishes.  Then, the two vectors are said to be orthogonal. Although no such angle can be defined between two kets, we say that <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|a\rangle\)</span> are <em>orthogonal</em> if <span class="math notranslate nohighlight">\(\langle a | b \rangle = 0\)</span>.</p>
 </section>
 <section id="norm-and-normarization">
-<h2>Norm and normarization<a class="headerlink" href="#norm-and-normarization" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.7. </span>Norm and normarization<a class="headerlink" href="#norm-and-normarization" title="Permalink to this headline">#</a></h2>
 <p>Recall that the norm (magnitude) of an Euclidean vector is defined by <span class="math notranslate nohighlight">\(\|\vec{a}\| = \sqrt{\vec{a}\cdot\vec{a}}\)</span>.
 The norm of <span class="math notranslate nohighlight">\(\ket{a}\)</span> is defined in the same way.  Replacing the dot product with inner product, we have the norm of <span class="math notranslate nohighlight">\(|a\rangle\)</span> as</p>
 <div class="math notranslate nohighlight">
@@ -747,33 +886,33 @@ The norm of <span class="math notranslate nohighlight">\(\ket{a}\)</span> is def
 \]</div>
 <p>When <span class="math notranslate nohighlight">\(\langle a|a \rangle = 1\)</span>, the ket is said to be <em>normalized</em>.  Although we cannot express the ket as an arrow, physicists often use an imaginary arrow to represent a ket and the norm can be viewed as the length of the imaginary arrow.  This analogy works quite well.  So, the normalized ket is much like a unit vector.</p>
 <blockquote>
-<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">2.1</span></a>.3    Show that <span class="math notranslate nohighlight">\(|b\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}\)</span> is normalized.</p>
+<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">3.1</span></a>.3    Show that <span class="math notranslate nohighlight">\(|b\rangle = \frac{|a\rangle}{\sqrt{\langle a|a \rangle}}\)</span> is normalized.</p>
 </div></blockquote>
 <blockquote>
-<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">2.1</span></a>.4     <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|b\rangle\)</span> are normalized and orthogonal to each other. Show that <span class="math notranslate nohighlight">\(|\psi\rangle = |a\rangle + i |b \rangle\)</span> and <span class="math notranslate nohighlight">\(|\varphi\rangle = |a\rangle - i |b \rangle\)</span> are orthogonal.</p>
+<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">3.1</span></a>.4     <span class="math notranslate nohighlight">\(|a\rangle\)</span> and <span class="math notranslate nohighlight">\(|b\rangle\)</span> are normalized and orthogonal to each other. Show that <span class="math notranslate nohighlight">\(|\psi\rangle = |a\rangle + i |b \rangle\)</span> and <span class="math notranslate nohighlight">\(|\varphi\rangle = |a\rangle - i |b \rangle\)</span> are orthogonal.</p>
 </div></blockquote>
 </section>
 <section id="global-phase">
-<h2>Global phase<a class="headerlink" href="#global-phase" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.8. </span>Global phase<a class="headerlink" href="#global-phase" title="Permalink to this headline">#</a></h2>
 <p>It is easy to show that if <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> is normalized, <span class="math notranslate nohighlight">\(e^{i \theta}|\psi\rangle,\,\theta \in \mathbb{R}\)</span> is also normalized.
 Although they are mathematically different, the two kets corresponds to the same physical state.  The factor <span class="math notranslate nohighlight">\(e^{i \theta}\)</span> is known as global phase and does not play any significant role in physics.  Hence, we can ignore it.  Quantum computation can be simplified by utilizing the freedom to chose any global phase.</p>
 </section>
 <section id="basis-sets">
-<h2>Basis sets<a class="headerlink" href="#basis-sets" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.9. </span>Basis sets<a class="headerlink" href="#basis-sets" title="Permalink to this headline">#</a></h2>
 <p>In a freshman physics course, perhaps you expressed a force vector in the three-dimensional Euclidean space as <span class="math notranslate nohighlight">\(\vec{F} = F_x \vec{i} + F_y \vec{j} + F_z \vec{k}\)</span>.  In fact, any vector can be expressed in the same way using the basis vectors  <span class="math notranslate nohighlight">\(\vec{i}\)</span>, <span class="math notranslate nohighlight">\(\vec{j}\)</span> and <span class="math notranslate nohighlight">\(\vec{k}\)</span>.  These three vectors are orthogonal to each other and their magnitude is 1.  Hence they are <em>orthonormal basis</em>.</p>
 <p>Similarly, a <span class="math notranslate nohighlight">\(n\)</span>-dimensional Hilbert space is <em>spanned</em> by a basis set <span class="math notranslate nohighlight">\(\{\ket{e_0}, \ket{e_1}, \cdots, \ket{e_{n-1}}\}\)</span>.  We assume that the basis vectors are normized and orthogonal to each other.  Such basis set is called <em>orthonormal basis</em> and the basis vectors satisfy</p>
 <div class="math notranslate nohighlight" id="equation-orthonormal">
-<span class="eqno">(2.1)<a class="headerlink" href="#equation-orthonormal" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-orthonormal" title="Permalink to this equation">#</a></span>\[
 \langle e_i | e_j \rangle = \delta_{ij}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> is the usual Kronecker’s delta.</p>
 <p>The basis vectors are <em>linearly independent</em> and <em>complete</em>.  That means that any ket vector  can be expressed as a linear combination of the base vectors as</p>
 <div class="math notranslate nohighlight" id="equation-basis-expansion">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-basis-expansion" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-basis-expansion" title="Permalink to this equation">#</a></span>\[
 |\psi\rangle = c_0 |e_0\rangle + c_1 |e_1\rangle  \cdots c_{n-1} |e_{n-1}\rangle = \sum_{i=0}^{n-1} c_i |e_i\rangle
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(c_i\)</span> is complex.
-Using the orthonormality condition <a class="reference internal" href="#equation-orthonormal">(2.1)</a> , we can find the expansion coefficient as <span class="math notranslate nohighlight">\(c_i=\langle  e_i|\psi \rangle\)</span> which is a crucial quantity in quantum mechanics.</p>
+Using the orthonormality condition <a class="reference internal" href="#equation-orthonormal">(3.1)</a> , we can find the expansion coefficient as <span class="math notranslate nohighlight">\(c_i=\langle  e_i|\psi \rangle\)</span> which is a crucial quantity in quantum mechanics.</p>
 <p>The corresponding bra vector are expressed as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -783,10 +922,10 @@ Using the orthonormality condition <a class="reference internal" href="#equation
 <p>If <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> is normalized, the coefficients is normalized as <span class="math notranslate nohighlight">\(\sum_j |c_j|^2 = 1\)</span>.</p>
 </section>
 <section id="completeness">
-<h2>Completeness<a class="headerlink" href="#completeness" title="Permalink to this headline">#</a></h2>
-<p>In Equation <a class="reference internal" href="#equation-basis-expansion">(2.2)</a> we expanded an arbitrary vector in a complete basis set.  The following <em>closure relation</em> guarantees the completeness.</p>
+<h2><span class="section-number">3.1.10. </span>Completeness<a class="headerlink" href="#completeness" title="Permalink to this headline">#</a></h2>
+<p>In Equation <a class="reference internal" href="#equation-basis-expansion">(3.2)</a> we expanded an arbitrary vector in a complete basis set.  The following <em>closure relation</em> guarantees the completeness.</p>
 <div class="math notranslate nohighlight" id="equation-completeness">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-completeness" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-completeness" title="Permalink to this equation">#</a></span>\[
 |e_0\rangle\langle e_0| + |e_1\rangle\langle e_1| + \cdots + |e_{n-1}\rangle\langle e_{n-1}| = I
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\{|e_i\rangle\}\)</span> is an orthonormal basis.  <span class="math notranslate nohighlight">\(|e_i\rangle\langle e_i|\)</span> is a kind of operator called <em>projection operator</em>, which we study in XXX.  It acts on a ket as follows:</p>
@@ -797,20 +936,20 @@ Using the orthonormality condition <a class="reference internal" href="#equation
 <p>where <span class="math notranslate nohighlight">\(c_i = \langle e_i|\psi\rangle\)</span>.</p>
 </section>
 <section id="two-dimensional-hilbert-space">
-<h2>Two-dimensional Hilbert space<a class="headerlink" href="#two-dimensional-hilbert-space" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.11. </span>Two-dimensional Hilbert space<a class="headerlink" href="#two-dimensional-hilbert-space" title="Permalink to this headline">#</a></h2>
 <p>In the theory of quantum computation, a two-dimensional Hilbert space denoted as <span class="math notranslate nohighlight">\(\mathbb{C}^2\)</span>, appears quite often.  It is a convention to use a complete orthonormal basis set <span class="math notranslate nohighlight">\(\{|0\rangle, |1\rangle\}\)</span> known as <em>computational basis</em>.  We use this basis set extensively through out the book.  The orthonormality of this basis set is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-comp-basis">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-eq-comp-basis" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-eq-comp-basis" title="Permalink to this equation">#</a></span>\[
 \langle 0|0 \rangle = \langle 1|1 \rangle = 1, \quad \langle 0|1 \rangle = \langle 1|0 \rangle = 0 
 \]</div>
 <p>Another basis set</p>
 <div class="math notranslate nohighlight" id="equation-eq-plusminus-basis">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-eq-plusminus-basis" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-eq-plusminus-basis" title="Permalink to this equation">#</a></span>\[
 |+\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle + |1\rangle\right), \quad |-\rangle = \frac{1}{\sqrt{2}} \left( |0\rangle - |1\rangle\right)
 \]</div>
 <p>is also regularly used.</p>
 <blockquote>
-<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">2.1</span></a>.5    <span class="math notranslate nohighlight">\(|\pm\rangle\)</span> are orthonormal.</p>
+<div><p><strong>Exercise</strong> <a class="reference internal" href="#sec-statevectors"><span class="std std-numref">3.1</span></a>.5    <span class="math notranslate nohighlight">\(|\pm\rangle\)</span> are orthonormal.</p>
 </div></blockquote>
 </section>
 </section>
@@ -846,13 +985,13 @@ Using the orthonormality condition <a class="reference internal" href="#equation
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Quantum Mechanics</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Quantum Mechanics</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="operators.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>Operators</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Operators</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

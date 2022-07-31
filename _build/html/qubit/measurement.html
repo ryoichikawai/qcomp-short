@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>4.2. Qubit Measurement &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>5.3. Qubit Measurement &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -36,10 +36,13 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -48,12 +51,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. One-qubit gates" href="../q1gates/intro.html" />
-    <link rel="prev" title="4.1. Single qubit" href="single-qubit.html" />
+    <link rel="next" title="5.4. Mixed states" href="mixedstates.html" />
+    <link rel="prev" title="5.2. Bloch sphere" href="bloch.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -113,10 +118,27 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preface
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preface.html">
+   1. Preface
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../prerequisites/intro.html">
-   1. Prerequisites
+  <a class="reference internal" href="../preparation/intro.html">
+   2. Preparation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -125,35 +147,35 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/thisbook.html">
-     1.1. About This Book
+    <a class="reference internal" href="../preparation/thisbook.html">
+     2.1. About This Book
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/python.html">
-     1.2. Python
+    <a class="reference internal" href="../preparation/python.html">
+     2.2. Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/jupyter.html">
-     1.3. JupyterLab
+    <a class="reference internal" href="../preparation/jupyter.html">
+     2.3. JupyterLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/qiskit.html">
-     1.4. Qiskit
+    <a class="reference internal" href="../preparation/qiskit.html">
+     2.4. Qiskit
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../prerequisites/cloud.html">
-     1.5. Cloud IDE
+    <a class="reference internal" href="../preparation/cloud.html">
+     2.5. Cloud IDE
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qmsummary/intro.html">
-   2. Quantum Mechanics
+   3. Quantum Mechanics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -163,29 +185,36 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/vectors.html">
-     2.1. State vectors
+     3.1. State vectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/operators.html">
-     2.2. Operators
+     3.2. Operators
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/evolution.html">
-     2.3. Time-evolution
+     3.3. Time-evolution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/measurement.html">
-     2.4. Quantum measurement
+     3.4. Quantum measurement
     </a>
    </li>
   </ul>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../introduction/intro.html">
-   3. What is a Quantum Computer?
+  <a class="reference internal" href="../computation/intro.html">
+   4. What is a Quantum Computer?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -194,20 +223,27 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../introduction/ccomp.html">
-     3.1. Classical computation
+    <a class="reference internal" href="../computation/ccomp.html">
+     4.1. Classical computation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../introduction/qcomp.html">
-     3.2. Quantum computation
+    <a class="reference internal" href="../computation/qcomp.html">
+     4.2. Quantum computation
     </a>
    </li>
   </ul>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Single qubit
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   4. A Qubit
+   5. Single qubit
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -216,20 +252,30 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="single-qubit.html">
-     4.1. Single qubit
+    <a class="reference internal" href="purestates.html">
+     5.1. Pure states
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bloch.html">
+     5.2. Bloch sphere
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4.2. Qubit Measurement
+     5.3. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixedstates.html">
+     5.4. Mixed states
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../q1gates/intro.html">
-   5. One-qubit gates
+   6. One-qubit gates
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -238,39 +284,132 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/u.html">
+     6.4. U Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/r.html">
+     6.5. Rotation Gates, RX, RY, RZ
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/x.html">
-     5.2. XGate
+     6.6. XGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/y.html">
-     5.3. YGate
+     6.7. YGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/z.html">
-     5.4. ZGate
+     6.8. ZGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/h.html">
-     5.5. Hadamard gate
+     6.9. Hadamard gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/sx.html">
+     6.10. SX and SXdg Gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/s.html">
-     5.6. S Gate and S
+     6.11. S Gate and S
      <span class="math notranslate nohighlight">
       \(^\dagger\)
      </span>
      Gate
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/p.html">
+     6.12. P Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/change-basis.html">
+     6.13. Change of basis sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/tomography.html">
+     6.14. State tomography
+    </a>
+   </li>
   </ul>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Composite Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../composites/intro.html">
+   7. Composite Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../composites/2qubit.html">
+   8. Two qubits
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../algorithms/intro.html">
+   9. Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/deutsch.html">
+     9.1. The Deutsch problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/walshhadamard.html">
+     9.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qft.html">
+     9.3. Quantum Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qpe.html">
+     9.4. Quantum Phase Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Backmatters
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../references.html">
-   6. References
+   References
   </a>
  </li>
 </ul>
@@ -480,8 +619,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projective-measurement">
+   5.3.1. Projective measurement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#born-rule">
-   Born rule
+   5.3.2. Born rule
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantum-coin-flipping">
+   5.3.3. Quantum coin flipping
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -516,8 +665,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projective-measurement">
+   5.3.1. Projective measurement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#born-rule">
-   Born rule
+   5.3.2. Born rule
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantum-coin-flipping">
+   5.3.3. Quantum coin flipping
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -543,29 +702,32 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="qubit-measurement">
-<span id="sec-qubit-measurement"></span><h1><span class="section-number">4.2. </span>Qubit Measurement<a class="headerlink" href="#qubit-measurement" title="Permalink to this headline">#</a></h1>
+<span id="sec-qubit-measurement"></span><h1><span class="section-number">5.3. </span>Qubit Measurement<a class="headerlink" href="#qubit-measurement" title="Permalink to this headline">#</a></h1>
 <p>Measuring a physical quantity in quantum mechanics is a bit weird.  I am not going to present a full theory of measurement. If you are interested in it, read Ref. <span id="id1">[<a class="reference internal" href="../references.html#id4" title="Jürgen Audretsch. Entangled Systems - New Directions in Quantum Physics. Wiley-VHC, 2007. ISBN 978-3-527-40684-5.">1</a>]</span>. See also <a class="reference external" href="https://en.wikipedia.org/wiki/Measurement_in_quantum_mechanics">wikipedia</a>.</p>
+<section id="projective-measurement">
+<h2><span class="section-number">5.3.1. </span>Projective measurement<a class="headerlink" href="#projective-measurement" title="Permalink to this headline">#</a></h2>
+<p>In classical computer, readout processes determine the outcome of computation stored in each bit.  That is to determine if the state of each bit is <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>. The readout can be done at any time without disturbing the state of the bit.  If you repeat the same measurement, the same outcome is obtained.</p>
+<p>Similarly, we want to know whether each qubit is in <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span>. However, if a qubit is in a superposition state, we have a big problem.  Equation <a class="reference internal" href="purestates.html#equation-qubit-purestate">(5.1)</a> indicates that the state of the qubit is neither <span class="math notranslate nohighlight">\(|0\rangle\)</span> nor <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  Despite of it, quantum mechanics allows us to ask if the qubit is in <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span> and surprisingly the answer is one of <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span> even it is in the superposition state. Suppose that the outcome of the measurement is <span class="math notranslate nohighlight">\(|0\rangle\)</span>, it does not mean that the qubit was in <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  The measurement process has transformed <span class="math notranslate nohighlight">\(|psi\rangle\)</span> to <span class="math notranslate nohighlight">\(|0\rangle\)</span>. This transition is referred as the <em>collapse of wavefunction</em>. Mathematically, we say that the state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> is projected to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and thus it is called <em>projective measurement</em>. See Fig. <a class="reference internal" href="#measurement-purestate"><span class="std std-numref">Fig. 5.1</span></a>.   You may obtain <span class="math notranslate nohighlight">\(|1\rangle\)</span> from the same superposition state. Then, <span class="math notranslate nohighlight">\(\psi\rangle\)</span> is projected to <span class="math notranslate nohighlight">\(|1\rangle\)</span>. The measurement of a single qubit seems suggesting that the outcome is not related to the state of the qubit. We never be able to determine the superposition from the outcome. Then, what is the purpose of the measurement?   Even worse, the measurement destroys the superposition state.</p>
+<figure class="align-center" id="measurement-purestate">
+<a class="reference internal image-reference" href="../_images/measurement-purestate.png"><img alt="../_images/measurement-purestate.png" src="../_images/measurement-purestate.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Measurement of a superposition state.  Before measurement, every qubit in the ensemble is in the same superposition state <a class="reference internal" href="purestates.html#equation-qubit-purestate">(5.1)</a>.  It is known as a purestate ensemble  The measurement selects one of <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  As the result, some qubits in the ensemble are in <span class="math notranslate nohighlight">\(|0\rangle\)</span> and others in <span class="math notranslate nohighlight">\(\1\rangle\)</span>. After the measurement, we have a mixed state ensemble.</span><a class="headerlink" href="#measurement-purestate" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 <section id="born-rule">
-<h2>Born rule<a class="headerlink" href="#born-rule" title="Permalink to this headline">#</a></h2>
-<p>In classical computer, readout processes determine the outcome of computation stored in each bit.  That is to determine if the state of bit is <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>. The readout can be done at any time without disturbing the state of the bit.</p>
-<p>Similarly, we want to know whether each qubit is in <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span>. However, there is a big problem here.  A qubit can be in a superposition state</p>
-<div class="math notranslate nohighlight">
-\[
-|\psi\rangle = c_0 |0\rangle + c_1 |1\rangle, 
-\]</div>
-<p>which is neither <span class="math notranslate nohighlight">\(|0\rangle\)</span> nor <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  Despite of it, quantum mechanics allows us to ask if the qubit is in <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span> and surprisingly the answer is one of <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span> even it is in the superposition state. However, we cannot predict which one is obtained.  To make a story concrete, let us assume that <span class="math notranslate nohighlight">\(|0\rangle\)</span> is detected. It does not mean that the qubit was in <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  The measurement process has transformed <span class="math notranslate nohighlight">\(|psi\rangle\)</span> to <span class="math notranslate nohighlight">\(|0\rangle\)</span>. Mathematically, we say that the state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> is projected to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and thus it is called <em>projective measurement</em>.</p>
-<p>Furthermore, the outcome of the measurement is not unique.  Suppose that many qubits are prepared exactly in the same state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and exactly the same measurement process is applied to them. Some of them are transformed to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and others to <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  It seems that <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span> are obtained at random.  So, what is the physical meaning of the state vector <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>?</p>
-<p>The state vector is associated with each single qubit but its predicts only the behavior of an ensemble.  If the ensemble contains a large number of qubits in the same state, the probability to get <span class="math notranslate nohighlight">\(|0\rangle\)</span> is <span class="math notranslate nohighlight">\(|c_0|^2\)</span> and that of <span class="math notranslate nohighlight">\(|1\rangle\)</span> is <span class="math notranslate nohighlight">\(|c_1|^2\)</span>.  This is interpretation of quantum mechanics is known as the <em>Born rule</em>.</p>
-<p>Nearly 100 years after quantum mechanics was well established, we still don’t know how that happens but so far the postulate of projective measurement and the Born rule are fully consistent with experimental observation.</p>
-<p>In summary, the outcome of quantum computation is stochastic and the theory of quantum mechanics predicts only statistical properties of an ensemble consisting of identical quantum objects in an identical state.  One need to repeat the same measurement on many copies of the same state in the ensemble.  Upon the measurement, each outcome is either <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span> even if the system is in a superposition state.  The Born rule predicts the probabilities to get <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span>.</p>
+<h2><span class="section-number">5.3.2. </span>Born rule<a class="headerlink" href="#born-rule" title="Permalink to this headline">#</a></h2>
+<p>It seems that the outcome is picked at random. The theory of quantum mechanics is powerless if we measure a single qubit.  So, what is the physical meaning of the state vector <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>?  A resolution was offered by Born. Consider an ensemble of qubits. All qubits in the ensemble are prepared exactly in the same state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and exactly the same measurement process is applied to them. Some of them are transformed to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and others to <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  It turns out that the probability to obtain <span class="math notranslate nohighlight">\(0\rangle\)</span> is <span class="math notranslate nohighlight">\(|c_0|^2\)</span> and that of <span class="math notranslate nohighlight">\(|1\rangle\)</span> is <span class="math notranslate nohighlight">\(|c_1|^2\)</span>. This interpretation of the superposition state is known as <em>Born</em> rule.  Since we will obtain one of them from each measurement, <span class="math notranslate nohighlight">\(|c_0|^2+|c_1|^2=1\)</span>, which is satisfied by the normalization condition.</p>
+</section>
 <hr class="docutils" />
-<p><strong>Qiskit Example</strong>  <a class="reference internal" href="#sec-qubit-measurement"><span class="std std-numref">4.2</span></a>.1    Quantum coin flipping</p>
+<section id="quantum-coin-flipping">
+<h2><span class="section-number">5.3.3. </span>Quantum coin flipping<a class="headerlink" href="#quantum-coin-flipping" title="Permalink to this headline">#</a></h2>
 <p>As an example of the Born rule, we simulate quantum coin flipping.</p>
-<p>It is a common practice to pick one of two choices by tossing up a coin.  The classical motion of coin is chaotic and approximately the probability to get head and tail is equal. We can simulate the process on classical computer using a random number generator.  Such simulation is known as Monte Carlo simulation after the name of famous casino city.  One can simulate the same process on a quantum computer without random numbers by exploiting the stochastic nature of quantum measurement.  For comparison, both a classical and quantum simulation are presented below.</p>
+<p>It is a common practice to pick one of two choices by tossing up a coin.  The classical motion of coin is chaotic and the probability to get head and tail is approximately equal. We can simulate the process on a classical computer using a random number generator.  Such simulation is known as Monte Carlo simulation after the name of the famous casino city.  One can simulate the same process on a quantum computer without random number generator by exploiting the stochastic nature of quantum measurement.  For comparison, both a classical and quantum simulation are presented below.</p>
 <section id="classical-simulation">
 <h3>Classical simulation<a class="headerlink" href="#classical-simulation" title="Permalink to this headline">#</a></h3>
 <p>Using <code class="docutils literal notranslate"><span class="pre">random.choice</span></code> function in numpy, we generate random choice of 0=head and 1=tail.  Then, count the number of head and tail.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Classical Monte Carlo simulation of coin tossing</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -590,8 +752,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head= 0.5022
-tail= 0.4978
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>head= 0.508
+tail= 0.492
 </pre></div>
 </div>
 </div>
@@ -602,7 +764,7 @@ tail= 0.4978
 <p>To demonstrate the stochastic nature of quantum measurement, we consider a quantum coin.  The quantum coin has two states, head and tail. We assign the head to <span class="math notranslate nohighlight">\(|0\rangle\)</span> and the tail to <span class="math notranslate nohighlight">\(|1\rangle\)</span>  The superposition state <span class="math notranslate nohighlight">\(|\psi\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right)\)</span> indicates that the state of the quantum coin is neither head nor tail.  Based on the Born rule, the chance to get head is 50% and tail 50%.  Since the outcome is completely random, measuring the state of the quantum coin is equivalent to tossing a classical coin.</p>
 <p>In the following qiskit code, the superposition state using a Hadamard gate (we will discuss this in next chapter) and then the state of the qubit is measured.  The result is stored in a classical bit. The quantum computation is simulated with <code class="docutils literal notranslate"><span class="pre">qasm_simulator</span></code> on your computer instead of sending the code to a real quantum computer. (We will send this to real quantum computer in a later chapter.) We repeat the simulation 10000 times and find the probabilities to find head and tail. Since the number of samplings is finite, the result is not exactly 50%-50% but close to  it.</p>
 <p>The quantum circuit shows two lines, one for quantum register and the other for classical register.  The classical register contains a bit.  Usually the outcome of measurement on a qubit is stored. The quantum register contains a qubit.  It is initially reset to <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  The diagram shows that a single-qubit gate <span class="math notranslate nohighlight">\(H\)</span> (Hadamard gate) is applied on the qubit.  The outcome is <span class="math notranslate nohighlight">\(H |0\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle \right)\)</span>.  The next gate shows that the state of the qubit is measured and the result, either <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>, is sent to the classical register.  In the current example, <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span> is obtained with the equal probability. First, we construct a quantum circuit.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tossing Up Quantum Coin</span>
 
@@ -635,14 +797,15 @@ tail= 0.4978
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/measurement_8_0.png" src="../_images/measurement_8_0.png" />
+<img alt="../_images/measurement_10_0.png" src="../_images/measurement_10_0.png" />
 </div>
 </div>
 <p>Now we execute the circuit using a simulator of quantum computer.</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chose a general quantum simulator without noise.</span>
 <span class="c1"># The simulator behaves as an ideal quantum computer.</span>
+
 <span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
 
 <span class="c1"># Execute the quantum circuit 10000 times</span>
@@ -665,7 +828,7 @@ tail= 0.4978
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/measurement_10_0.png" src="../_images/measurement_10_0.png" />
+<img alt="../_images/measurement_12_0.png" src="../_images/measurement_12_0.png" />
 </div>
 </div>
 <p>The outcome is not exactly 50%-50%.  This is because the simulation is executed with a finite shots and thus there is statistical error due to finite sampling.  Theoretically infinite sampling is required but practically it is not possible. However, this is not an issue of quantum computation.</p>
@@ -700,17 +863,17 @@ tail= 0.4978
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="single-qubit.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="bloch.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.1. </span>Single qubit</p>
+            <p class="prev-next-title"><span class="section-number">5.2. </span>Bloch sphere</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../q1gates/intro.html" title="next page">
+    <a class='right-next' id="next-link" href="mixedstates.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>One-qubit gates</p>
+        <p class="prev-next-title"><span class="section-number">5.4. </span>Mixed states</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

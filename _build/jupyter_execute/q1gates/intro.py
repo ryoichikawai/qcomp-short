@@ -4,81 +4,74 @@
 # (chap-one-qubit-gates)=
 # # One-qubit gates
 
-# In quantum computing, we manipulate the state of qubits by applying a series of gates on qubits. In this chapter, I introduce various single-qubit gates commonly used in quantum computing. They are unitary operators in $\mathbb{C}^2$. Some are Hermitian and others are not.  Some are parameter-free and others require parameter values.   {numref}`tbl-q1gates` lists commonly used single-qubit gates.  I explain some the most important ones in the following section.  See also Qiskit documentation
+# In quantum computing, we manipulate the state of qubits by applying a series of gates on qubits. In this chapter, I introduce various one-qubit gates commonly used in quantum computing. When a one-qubit gate acts on a single qubit, the Bloch vector of the qubit rotates around a certain axis by a certain angle.  The most general rotation is [*Euler rotation*](https://en.wikipedia.org/wiki/Euler_angles), which is done by $U$ gate.  In theory, we need only this gate. However, it is not convenient since we have to figure out three parameters (angles) for each operation.  Furthermore, in actual quantum computing devices, the general gate may not be available.   In practice, we use parameter-free gates with predefined rotation axes and angles, and a few others that require a single parameter.
+# 
+# Mathematically, the gates are unitary operators in $\mathbb{C}^2$. Some are Hermitian and others are not.  {numref}`tbl-q1gates` lists commonly used single-qubit gates.  I explain some the most important ones in the following section.  See also Qiskit documentation:
+# 
+# [Qiskit Circuit Library](https://qiskit.org/documentation/apidoc/circuit_library.html).
 
 # ```{table} Commonly used single-qubit gates
 # :name: tbl-q1gates
 # 
 # 
-# | Generaic Name | Qiskit Class Name |  Qiskit Ciruit Name  | Symbols |
-# | :-----------: | :---------------: | :------------------: | :-----: |
-# | Pauli X       | XGate             | x                    |  `X`    |
-# | Pauli Y       | YGate             | y                    |  `Y`    |
-# | Pauli Z       | ZGate             | z                    |  `Z`    |
-# | Hadamard      | HGate             | h                    |  `H`    |
-# | Sqrt X        | SXGate            | sx                   | `SX`    |
-# | Inverse sqrt X | SXdgGate         | sxdg                 | `SX`$^\dagger$ |
-# | Sqrt Z        | SGate             | s                    | `S`     |
-# | Inverse sqrt Z | SdgGate          | sdg                  |`S`$^\dagger$ |
-# | 4th root Z    | TGate             | t                    | `T`     |
-# | Inverse 4th root Z | TdgGate      | tdg                  | `T`$^\dagger$ |
-# | Phase         | PhaseGate         | p                    | `P`     |
-# | Rotation X    | RXGate            | rx                   | `R`$_x$ |
-# | Rotation Y    | RYGate            | ry                   | `R`$_y$ |
-# | Rotation Z    | RZGate            | rz                   | `R`$_z$ |
-# | Unitary 2     | U2Gate            | u2                   | `U`$_2$ |
-# | Unitary 3     | UGate             | u                    | `U`|
+# | Generaic Name      |  Qiskit Ciruit Name  | # of Parameters | Symbols |
+# | :-----------:      | :------------------: | :-------------: | :-----: |
+# | Unitary            |  u                   |         3       |  $U$    |
+# | Rotation X         |  rx                  |         1       |  $R_x$  |
+# | Rotation Y         |  ry                  |         1       |  $R_y$  |
+# | Rotation Z         |  rz                  |         1       |  $R_z$  |
+# | Pauli X            |  x                   |         0       |  $X$    |
+# | Pauli Y            |  y                   |         0       |  $Y$    |
+# | Pauli Z            |  z                   |         0       |  $Z$    |
+# | Hadamard           |  h                   |         0       |  $H$    |
+# | Sqrt X             |  sx                  |         0       |  $SX$   |
+# | Inverse sqrt X     |  sxdg                |         0       |  $SX^\dagger$ |
+# | Sqrt Z             |  s                   |         0       |  $S$     |
+# | Inverse sqrt Z     |  sdg                 |         0       |  $S^\dagger$ |
+# | 4th root Z         |  t                   |         0       |  $T$     |
+# | Inverse 4th root Z |  tdg                 |         0       |  $T^\dagger$ |
+# | Phase              |  p                   |         1       |  $P$     |
+# 
+# 
 # ```
 
 # Their definition and typical usage of those gates are explained in the following sections.
 
-# ## Testing quantum circuits using Qiskit
+# ## Mathematical expressions
 # 
-# When we develop a quantum computing algorithm, it will be nice if we can test various idea before executing the code on a real quantum computer.  WE create a quantum circuit and check how the state vector evolve along the circuit.  Note that you cannot do it on a real quantum computer since quantum mechanics odes not allow us to determine the state vector.  However, mathematically we can compute it.  Qiskit provides tools to do so.  `Statevector` function is particularly handy since we can see the state vector in the middle of the quantum circuit.
+# There are several ways to define the gates. In the following sections, the gates are defined in four different ways but they  are mathematically all equivalent.  In one definition, a gate is defined by how the computational basis kets are transformed by the gate.  This definition is practical.  For computational purpose, the matrix expression of the gate is more convenient.  The matrix expression assumes the computational basis. Since every gate is a special case of the general $U$ gate, the gate can be expressed with $U$, which is the third definition.
+# 
 
-# **Qiskit example** 
+# ## Transformation of general superposition states
 # 
-# We construct a simplest quantum circuit which apply a $X$ gate (which we discuss in next page). Then find the state vector generated by the gate.  Again, this is not a simulation of quantum computing. We just want to check if the quantum circuit works as designed by looking at how the state vector changed.  This is only possible in the mathematical world but not in the real quantum world!
+# The definitions do not give you a clear idea on the operational functionality of a gate.  It is important to understand how a superposition state is transformed by the gate. Pay attention to how the coefficients are transformed.
+
+# ## Combination of gates
+# 
+# When gate $Y$ is applied after $X$, we write it $Y \cdot X$. We can think of a gate $(Y \cdot X)$  acts on a state vector as
+# 
+# $$
+# Y (X |\psi\rangle) = (Y \cdot X) |\psi\rangle
+# $$
+# 
+# We put "$\cdot$" between the gates to avoid confusion.  For example $SX$ is a single gate and $S \cdot X$ is a product of $S$ and $X$.
+# 
+# The order is important.  $Y \cdot X$ is not necessarily equal to $X \cdot Y$.
+# 
+# In quantum circuit, the gates act from left to right.  For example,  $Y\cdot X |0\rangle$ becomes
 
 # In[1]:
 
 
-# import QuatumCircuit and QuantumRegister classes.
-from qiskit import QuantumCircuit, QuantumRegister   # import QuatumCircuit class
-from qiskit.quantum_info import Statevector  # load statevector class
+from qiskit import QuantumCircuit
 
-# Preparation
-qr=QuantumRegister(1,'q') # create a single qubit with name 'q'.
-qc=QuantumCircuit(qr)  # create a quantum circuit
-
-# Intial state
-psi0 = Statevector(qc)
-
-#  apply Xgate to 0-th qubit
+qc=QuantumCircuit(1)
 qc.x(0)
-
-# Final state
-psi1 = Statevector(qc)
-
-# Format ket vector with LaTeX.
-x = psi0.draw('latex')
-y = psi1.draw('latex')
-
-# Show the result using display function
-from IPython.display import display, Math
-display("Quantum circuit",qc.draw('mpl'),"State vector before the gate",x,"State vector after the gate",y)
+qc.y(0)
+qc.draw()
 
 
-# :::{admonition} Python note: Displaying non-text items
 # 
-# In python, we create many different objects including images.  Usual `print` function can show only texts.   Non-text objects can be shown using `display` function in `Ipaython.display` package.
+# ---
 # 
-# In the above example, the image of quantum circuit and LaTeX output are created by `Statevector` class methods and the results are shown with `display` function. 
-# 
-# :::
-
-# In[ ]:
-
-
-
-
+# Last modified: 07/09/2022

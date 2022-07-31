@@ -10,9 +10,29 @@
 
 # ## Definition
 # 
-# > $Z |0\rangle = |0\rangle, \qquad Z |1\rangle = -|1\rangle$
+# **Transformation**
 # 
-# $Z$ gate preserves $|0\rangle$ but flips the phase of $|1\rangle$.  Since it changes the relative phase, $Z$ plays important role when it is applied to superposition states.
+# >$$
+# Z |0\rangle = |0\rangle, \qquad Z |1\rangle = -|1\rangle
+# $$
+# 
+# $Z$ gate preserves $|0\rangle$ but flips the phase of $|1\rangle$.  This is a phase gate with prefixed phase change, "-1".
+# 
+# **U gate expression**
+# 
+# >$$
+# Z = U\left(0,\frac{\pi}{2},\frac{\pi}{2}\right)
+# $$(ZGate-U)
+# 
+# 
+# **R gate expression**
+# 
+# >$$
+# z = i R_z(\pi)
+# $$
+# 
+# The Qiskit circuit symbol is `z` and it appears in quantum circuit as
+# 
 # 
 # The standard symbol is $Z$ and it appears in quantum circuit as
 
@@ -93,6 +113,8 @@ from IPython.display import display
 # Compare |psi> and Z|psi>.  They are equivalent in the Bloch sphere.
 display("Original |psi>",bloch0,"Z|psi>",bloch1)
 
+
+# When ZGate acts on a superposition state in $\{|+\rangle,|-\rangle\}$, what will be the outcome?
 
 # ## Important Properties
 # 

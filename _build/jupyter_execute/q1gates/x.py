@@ -4,17 +4,40 @@
 # (sec-xgate)=
 # # XGate
 # 
-# This is one of the most important one-qubit gates.  Hence, this section covers its properties at depth.
+# This is a Pauli operator and one of the most important one-qubit gates.  Hence, this section covers its properties at depth.
 
-# [API References: XGate](https://qiskit.org/documentation/stubs/qiskit.circuit.library.XGate.html#qiskit.circuit.library.XGate)
+# [Qiskit API References: XGate](https://qiskit.org/documentation/stubs/qiskit.circuit.library.XGate.html#qiskit.circuit.library.XGate)
 
 # ## Definition
 # 
-# > $X |0\rangle = |1\rangle, \qquad X |1\rangle = |0\rangle$
+# **Transformation**  
+# 
+# >$$
+# X |0\rangle = |1\rangle, \qquad X |1\rangle = |0\rangle
+# $$(XGate)
 # 
 # $X$ gate flips the computational basis, which resembles to the $NOT$ gate for classical computation.   However, when it acts on superposition states, the state does not flip (the Bloch vector does not inverted).
 # 
-# The standard symbol is $X$ and it appears in quantum circuit as
+# **Matrix expression**
+# 
+# >$$
+# X \doteq \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
+# $$(XGate-matrix)
+# 
+# 
+# **U gate expression**
+# 
+# >$$
+# X = U(\pi,0,\pi)
+# $$(XGate-U)
+# 
+# **R gate expression**
+# 
+# >$$
+# X = i R_x(\pi)
+# $$
+# 
+# The qiskit circuit symbol is `x` and it appears in quantum circuit as
 
 # In[1]:
 
@@ -177,6 +200,10 @@ display("Original |R>",R_bloch,"X|L>",final_bloch)
 # 3.  $X$ is self-adjoint ($X^\dagger = X$) since $X$ is unitary ($X^\dagger = X^{-1}$) by definition.
 # 
 # Property 1 was deomnstrated in Qiskit Example {numref}`%s <sec-xgate>`.1.
+
+# 
+# ---
+# Last modified: 07/09/2022
 
 # In[ ]:
 

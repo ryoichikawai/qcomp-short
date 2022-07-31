@@ -1,0 +1,1056 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>8.1. The Deutsch problem &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.2. Walsh-Hadamard Transformation" href="walshhadamard.html" />
+    <link rel="prev" title="8. Algorithms" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/me-tiny.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">A First Step to Quantum Computation with Qiskit.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../cover.html">
+                    A First Step to Quantum Computation with Qiskit
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preface
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preface.html">
+   1. Preface
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../preparation/intro.html">
+   2. Preparation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/thisbook.html">
+     2.1. About This Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/python.html">
+     2.2. Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/jupyter.html">
+     2.3. JupyterLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/qiskit.html">
+     2.4. Qiskit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/cloud.html">
+     2.5. Cloud IDE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qmsummary/intro.html">
+   3. Quantum Mechanics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     3.1. State vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/operators.html">
+     3.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     3.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     3.4. Quantum measurement
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../computation/intro.html">
+   4. What is a Quantum Computer?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/ccomp.html">
+     4.1. Classical computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/qcomp.html">
+     4.2. Quantum computation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Single qubit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qubit/intro.html">
+   5. Single qubit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/purestates.html">
+     5.1. Pure states
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/bloch.html">
+     5.2. Bloch sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/measurement.html">
+     5.3. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/mixedstates.html">
+     5.4. Mixed states
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../q1gates/intro.html">
+   6. One-qubit gates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/u.html">
+     6.4. U Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/r.html">
+     6.5. Rotation Gates, RX, RY, RZ
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/x.html">
+     6.6. XGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/y.html">
+     6.7. YGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/z.html">
+     6.8. ZGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/h.html">
+     6.9. Hadamard gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/sx.html">
+     6.10. SX and SXdg Gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/s.html">
+     6.11. S Gate and S
+     <span class="math notranslate nohighlight">
+      \(^\dagger\)
+     </span>
+     Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/p.html">
+     6.12. P Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/change-basis.html">
+     6.13. Change of basis sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/tomography.html">
+     6.14. State tomography
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Composite Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../composites/intro.html">
+   7. Composite Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composites/2qubit.html">
+     7.1. Two qubits
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Algorithms
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   8. Algorithms
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     8.1. The Deutsch problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="walshhadamard.html">
+     8.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qft.html">
+     8.3. Quantum Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qpe.html">
+     8.4. Quantum Phase Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Backmatters
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/algorithms/deutsch.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Falgorithms/deutsch.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/algorithms/deutsch.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem">
+   8.1.1. The problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encoding-the-functions">
+   8.1.2. Encoding the functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#no-so-smart-algorithm">
+   8.1.3. No-so smart algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-deutsch-s-algorithm">
+   8.1.4. The Deutsch’s algorithm
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The Deutsch problem</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem">
+   8.1.1. The problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encoding-the-functions">
+   8.1.2. Encoding the functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#no-so-smart-algorithm">
+   8.1.3. No-so smart algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-deutsch-s-algorithm">
+   8.1.4. The Deutsch’s algorithm
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="the-deutsch-problem">
+<span id="sec-deustch"></span><h1><span class="section-number">8.1. </span>The Deutsch problem<a class="headerlink" href="#the-deutsch-problem" title="Permalink to this headline">#</a></h1>
+<p>We are going to solve a kind of classification problem discussed originally by Deutsch <span id="id1">[<a class="reference internal" href="../references.html#id17" title="David Deutsch and Roger Penrose. Quantum theory, the church-turing principle and the universal quantum computer. Proceedings of the Royal Society of London. A. Mathematical and Physical Sciences, 400(1818):97–117, July 1985. URL: https://doi.org/10.1098/rspa.1985.0070, doi:10.1098/rspa.1985.0070.">3</a>]</span>.   The problem itself is rather trivial and not really useful. However, it demonstrates an advantage of quantum computation over classical computation.</p>
+<section id="the-problem">
+<h2><span class="section-number">8.1.1. </span>The problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">#</a></h2>
+<p>Consider a binary function <span class="math notranslate nohighlight">\(x \mapsto f(x)\)</span> where <span class="math notranslate nohighlight">\(x \in \{0,1\}\)</span> and <span class="math notranslate nohighlight">\(f(x)  \in \{0,1\}\)</span>. There are only four possible functions, <span class="math notranslate nohighlight">\(f_1,\, f_2,\, f_3,\, f_4\)</span>.</p>
+<table>
+    <thead>
+        <th><i>x</i></th><th><i>f</i><sub>1</sub></th><th><i>f</i><sub>2</sub></th><th><i>f</i><sub>3</sub></th><th><i>f</i><sub>4</sub></th>
+    </thead>
+    <tr>
+        <td>0</td><td>0</td><td>1</td><td>0</td><td>1</td>
+    </tr>
+    <tr>
+        <td>1</td><td>0</td><td>1</td><td>1</td><td>0</td>
+    </tr>
+</table>
+<p>An oracle possess one of these functions.  We can ask it questions like “what is the value of <span class="math notranslate nohighlight">\(f(1)\)</span>?”  To find what function it has, we need to ask two questions, “what are <span class="math notranslate nohighlight">\(f(0)\)</span> and <span class="math notranslate nohighlight">\(f(1)\)</span>?”.  Now, let us try a simpler problem.  The outputs of <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> are always the same regardless of the input values.  So, we call them <em>constant</em> function.  On the other hand, the outputs of <span class="math notranslate nohighlight">\(f_3\)</span> and <span class="math notranslate nohighlight">\(f_4\)</span> contain both <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>.  We shall call them <em>balanced</em> function.  Now, our task is to determine which type of the functions the oracle possess, constant or balanced. Hence, this is a classification task. Only we need to find out is if <span class="math notranslate nohighlight">\(f(0)=f(1)\)</span> or <span class="math notranslate nohighlight">\(f(0)\ne f(1)\)</span>.  How many questions do we need to ask?  Although we don’t have to identify the function, it seems that we still need to ask two questions. It turns out that the Deutsch’s quantum algorithm requires only one question.</p>
+</section>
+<section id="encoding-the-functions">
+<h2><span class="section-number">8.1.2. </span>Encoding the functions<a class="headerlink" href="#encoding-the-functions" title="Permalink to this headline">#</a></h2>
+<p>Before solving the problem, we need to find out how to express a function using gates.  Every gate is a unitary operator and thus the operation is reversible.  While <span class="math notranslate nohighlight">\(f_3\)</span> and <span class="math notranslate nohighlight">\(f_4\)</span> are bijective (invertible), <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> are even not surjective  and thus not invertible.  Here we use a two-qubit gate <span class="math notranslate nohighlight">\(U_f\)</span> acting on <span class="math notranslate nohighlight">\(|q_0\rangle \otimes |q_1\rangle\)</span> as defined by</p>
+<div class="math notranslate nohighlight">
+\[
+U_f |x\rangle \otimes  |y\rangle = |x\rangle \otimes |y \oplus f(x)\rangle
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\oplus\)</span> is modulo-2 addition.  The qubit <span class="math notranslate nohighlight">\(q_0\)</span> contains the value of <span class="math notranslate nohighlight">\(x\)</span> and its value is not affected by the gate.  The second qubit <span class="math notranslate nohighlight">\(q_1\)</span> is transformed from <span class="math notranslate nohighlight">\(y\)</span> to <span class="math notranslate nohighlight">\(y \otimes f(x)\)</span>.  When <span class="math notranslate nohighlight">\(y=0\)</span>, the output is simply the function value <span class="math notranslate nohighlight">\(f(x)\)</span>.  When <span class="math notranslate nohighlight">\(y=1\)</span>, <span class="math notranslate nohighlight">\(1 \oplus f(x) = 1 - f(x)\)</span>.   By knowing the value of <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(y \oplus f(x)\)</span>, we can find <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
+<p>Does such a gate exist?  If the gate is invertible, we can construct a unitary operator. Noting that <span class="math notranslate nohighlight">\(z \oplus z = 0\)</span> for any <span class="math notranslate nohighlight">\(z\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+U_f |x\rangle \otimes |y \oplus f(x)\rangle = |x\rangle \otimes |y \oplus f(x) \oplus f(x)\rangle = |x\rangle \otimes |y \rangle
+\]</div>
+<p>indicating that <span class="math notranslate nohighlight">\(U_f^{-1} = U_f\)</span>.  We just make it sure that <span class="math notranslate nohighlight">\(U_f\)</span> is self-adjoint.  Here we show the actual gates:</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_1(x)\)</span></p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\(f(x)=0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+U_{f_1} |x\rangle \otimes |y\rangle =  |x\rangle \otimes |y \oplus 0\rangle = |x\rangle \otimes |y\rangle
+\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(U_{f_1} = I\)</span>  (identity operator).</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_2(x)\)</span></p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\(f(x) =1\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+U_{f_2} |x\rangle \otimes |y\rangle =  |x\rangle \otimes |y \oplus 1\rangle = |x\rangle \otimes (X|y\rangle)
+= (I \otimes X)  |x\rangle \otimes |y\rangle
+\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(U_{f_2} = I \otimes X\)</span>.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_3(x)\)</span></p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\(f(x) = x\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+U_{f_3} |x\rangle \otimes |y\rangle =  |x\rangle \otimes |y \oplus x\rangle 
+\]</div>
+<p>The output is <span class="math notranslate nohighlight">\(|0\rangle \otimes |y\rangle\)</span> if <span class="math notranslate nohighlight">\(x=0\)</span> and  <span class="math notranslate nohighlight">\(|1\rangle \otimes X|y\rangle&gt;\)</span> if <span class="math notranslate nohighlight">\(x=1\)</span>.  Hence <span class="math notranslate nohighlight">\(x\)</span> is a control bit and <span class="math notranslate nohighlight">\(y\)</span> flips only when <span class="math notranslate nohighlight">\(x=1\)</span>.  This is not the standard control gate.  We need to flip <span class="math notranslate nohighlight">\(q_0\)</span> before  and after applying the control-<span class="math notranslate nohighlight">\(X\)</span>, which is  <span class="math notranslate nohighlight">\(U_{f_3} = (X \otimes I) \cdot CX_{q_0,q_1} \cdot (X \otimes I)\)</span>.</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f_4(x)\)</span></p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\(f(x) = 1-x\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+U_{f_4} |x\rangle \otimes |y\rangle =  |x\rangle \otimes |y \oplus (1-x) \rangle 
+\]</div>
+<p>The output is <span class="math notranslate nohighlight">\(0\rangle \otimes X|y\rangle\)</span> if <span class="math notranslate nohighlight">\(x=0\)</span> and  <span class="math notranslate nohighlight">\(|0\rangle \otimes |y\rangle&gt;\)</span> if <span class="math notranslate nohighlight">\(x=1\)</span>.  Hence <span class="math notranslate nohighlight">\(x\)</span> is a control bit and <span class="math notranslate nohighlight">\(y\)</span> flips only when <span class="math notranslate nohighlight">\(x=0\)</span>.  Thus,  <span class="math notranslate nohighlight">\(U_{f_4} = CX_{q_0,q_1}\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="no-so-smart-algorithm">
+<h2><span class="section-number">8.1.3. </span>No-so smart algorithm<a class="headerlink" href="#no-so-smart-algorithm" title="Permalink to this headline">#</a></h2>
+<p>We just showed that how to encode the functions.  However, that is not our task.  The oracle has one of the above gates <span class="math notranslate nohighlight">\(U_{f_i}\)</span>.  We want to know if it is constant or balanced.</p>
+<p>Let’s us begin with a not-so-smart method.  We just ask two questions.  That is to apply <span class="math notranslate nohighlight">\(U_f\)</span> twice, the first one for <span class="math notranslate nohighlight">\(x=0\)</span> and the second for <span class="math notranslate nohighlight">\(x=1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+|0\rangle \otimes |0 \rangle \xrightarrow{U_f} |0\rangle \otimes |f(0)\rangle \xrightarrow{X\otimes I} |1\rangle \otimes |f(0)\rangle  \rangle \xrightarrow{U_f} |1\rangle \otimes |f(0) \oplus f(1)\rangle 
+\]</div>
+<p>Now, we measure <span class="math notranslate nohighlight">\(q_1\)</span>.  The outcome is <span class="math notranslate nohighlight">\(f(0)\oplus f(1)\)</span> with probability 1 (no error). The oracle has a constant function if the <span class="math notranslate nohighlight">\(f(0)\oplus f(1) = 0\)</span> and a balanced function if  <span class="math notranslate nohighlight">\(f(0)\oplus f(1) = 1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define functions</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">cr</span><span class="o">=</span><span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+
+<span class="c1">#chose a function at random</span>
+<span class="n">k</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">k</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="n">oracle</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span>
+<span class="k">elif</span> <span class="n">k</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+    <span class="n">oracle</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span>        
+<span class="k">elif</span> <span class="n">k</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
+    <span class="n">oracle</span> <span class="o">=</span> <span class="s2">&quot;balanced&quot;</span>        
+<span class="k">elif</span> <span class="n">k</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
+    <span class="n">oracle</span> <span class="o">=</span> <span class="s2">&quot;balanced&quot;</span>
+    
+<span class="c1"># Define Uf (Only Oracle knows it)</span>
+<span class="k">def</span> <span class="nf">Uf</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    
+    <span class="c1"># Uf appears between barriers</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">([</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+    
+    <span class="k">if</span> <span class="n">k</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">i</span><span class="p">([</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="n">oracle</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span>
+    <span class="k">elif</span> <span class="n">k</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">oracle</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span>        
+    <span class="k">elif</span> <span class="n">k</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">oracle</span> <span class="o">=</span> <span class="s2">&quot;balanced&quot;</span>        
+    <span class="k">elif</span> <span class="n">k</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qr</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">oracle</span> <span class="o">=</span> <span class="s2">&quot;balanced&quot;</span>
+        
+    <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">([</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+    
+    
+<span class="c1"># Consturct circuit</span>
+
+<span class="n">Uf</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">Uf</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">cr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">      ░ ┌───┐ ░ ┌───┐ ░ ┌───┐ ░    
+q_0: ─░─┤ I ├─░─┤ X ├─░─┤ I ├─░────
+      ░ ├───┤ ░ └───┘ ░ ├───┤ ░ ┌─┐
+q_1: ─░─┤ I ├─░───────░─┤ I ├─░─┤M├
+      ░ └───┘ ░       ░ └───┘ ░ └╥┘
+c: 1/════════════════════════════╩═
+                                 0 </pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chose a general quantum simulator without noise.</span>
+<span class="c1"># The simulator behaves as an ideal quantum computer.</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+
+<span class="c1"># set number of tries</span>
+<span class="n">nshots</span><span class="o">=</span><span class="mi">8192</span>
+
+<span class="c1"># execute the quantum circuit and store the outcome</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span>
+
+<span class="c1"># extract the result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="c1"># count the outcome</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="c1"># evaluate the probability</span>
+<span class="n">p0</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">nshots</span>
+<span class="n">p1</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">nshots</span>
+
+<span class="k">if</span> <span class="n">p0</span> <span class="o">&gt;</span> <span class="n">p1</span><span class="p">:</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span>
+<span class="k">elif</span> <span class="n">p0</span> <span class="o">&lt;</span> <span class="n">p1</span><span class="p">:</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;balanced&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;unknown&quot;</span>
+       
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quantum computer has found that the function is&quot;</span><span class="p">,</span><span class="n">answer</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">oracle</span><span class="o">==</span><span class="n">answer</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Correct! Oracle has&quot;</span><span class="p">,</span><span class="n">oracle</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wrong! Oracle has&quot;</span><span class="p">,</span><span class="n">oracle</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantum computer has found that the function is constant .
+Correct! Oracle has constant .
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-deutsch-s-algorithm">
+<h2><span class="section-number">8.1.4. </span>The Deutsch’s algorithm<a class="headerlink" href="#the-deutsch-s-algorithm" title="Permalink to this headline">#</a></h2>
+<p>Here is a challenge.  Can we solve the problem using <span class="math notranslate nohighlight">\(U_f\)</span> only once? In the previous algorithm, we use <span class="math notranslate nohighlight">\(U_f\)</span> twice, first for <span class="math notranslate nohighlight">\(x=0\)</span> and second for <span class="math notranslate nohighlight">\(x=1\)</span>.  The key idea is that <span class="math notranslate nohighlight">\(y\)</span> can be in a superposition state.  If <span class="math notranslate nohighlight">\(|y\rangle = |-\rangle\)</span>, what would be the answer from the oracle?</p>
+<p>Let us try to find how the oracle responds.</p>
+<div class="math notranslate nohighlight">
+\[
+U_f |x\rangle \otimes |-\rangle = |x \rangle \otimes \frac{1}{\sqrt{2}} \left( |f(x)\rangle - |1\oplus f(x)\rangle\right) = (-1)^{f(x)} |x\rangle \otimes |-\rangle
+\]</div>
+<p>Depending on the value of <span class="math notranslate nohighlight">\(f(x)\)</span>, the gate does nothing or changes the phase.  This trick is known as <em>phase kickback</em>.</p>
+<p>Now, we replace <span class="math notranslate nohighlight">\(|x\rangle\)</span> with another superposition state <span class="math notranslate nohighlight">\(|+\rangle\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-uf">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-uf" title="Permalink to this equation">#</a></span>\[
+U_f |+\rangle \otimes |-\rangle = \frac{1}{\sqrt{2}} \left [ (-1)^{f(0)} |0\rangle \otimes -\rangle + (-1)^{f(1)} | 1 \rangle \otimes |-\rangle \right ]
+\]</div>
+<p>If the function is constant, <span class="math notranslate nohighlight">\(f(0)=f(1)\)</span>.  Then, Eq. <a class="reference internal" href="#equation-uf">(8.1)</a> becomes</p>
+<div class="math notranslate nohighlight" id="equation-uf-constant">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-uf-constant" title="Permalink to this equation">#</a></span>\[
+U_f |+\rangle \otimes |-\rangle = (-1)^{f(0)} |+\rangle \otimes |-\rangle
+\]</div>
+<p>In it is balanced, <span class="math notranslate nohighlight">\(f(0)\ne f(1)\)</span>, then we have</p>
+<div class="math notranslate nohighlight" id="equation-uf-balanced">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-uf-balanced" title="Permalink to this equation">#</a></span>\[
+U_f |+\rangle \otimes |-\rangle = \pm |-\rangle \otimes |-\rangle
+\]</div>
+<p>Apart from the global phase, the difference between Eqs. <a class="reference internal" href="#equation-uf-constant">(8.2)</a> and <a class="reference internal" href="#equation-uf-balanced">(8.3)</a> is the state of <span class="math notranslate nohighlight">\(q_0\)</span>.  If it is <span class="math notranslate nohighlight">\(+\rangle\)</span>, then the answer is constant. If it is <span class="math notranslate nohighlight">\(|-\rangle\)</span> then, the answer is balanced.  Since we can measure only in the computational basis, we transofrm <span class="math notranslate nohighlight">\(\pm\rangle\)</span> by a Hadamard gate.</p>
+<p>Here is the summary of the Deustch’s algorithm.</p>
+<ol class="simple">
+<li><p>Prepare <span class="math notranslate nohighlight">\(|+\rangle \otimes |-\rangle\)</span>.</p></li>
+<li><p>Apply <span class="math notranslate nohighlight">\(U_f\)</span>.</p></li>
+<li><p>Apply <span class="math notranslate nohighlight">\(H \otimes I\)</span></p></li>
+<li><p>Measure <span class="math notranslate nohighlight">\(q_0\)</span></p></li>
+</ol>
+<p>We use <span class="math notranslate nohighlight">\(U_f\)</span> only once!   Notice that we calculate <span class="math notranslate nohighlight">\(x=0\)</span> and <span class="math notranslate nohighlight">\(x=1\)</span> simultaneously using the super position state.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cr</span><span class="o">=</span><span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">([</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qr</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">Uf</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">cr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐      ░ ┌───┐ ░ ┌───┐┌─┐
+q_0: ┤ H ├──────░─┤ I ├─░─┤ H ├┤M├
+     ├───┤┌───┐ ░ ├───┤ ░ └───┘└╥┘
+q_1: ┤ X ├┤ H ├─░─┤ I ├─░───────╫─
+     └───┘└───┘ ░ └───┘ ░       ║ 
+c: 1/═══════════════════════════╩═
+                                0 </pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chose a general quantum simulator without noise.</span>
+<span class="c1"># The simulator behaves as an ideal quantum computer.</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+
+<span class="c1"># set number of tries</span>
+<span class="n">nshots</span><span class="o">=</span><span class="mi">8192</span>
+
+<span class="c1"># execute the quantum circuit and store the outcome</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span>
+
+<span class="c1"># extract the result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="c1"># count the outcome</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="n">p0</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">nshots</span>
+<span class="n">p1</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">nshots</span>
+
+<span class="k">if</span> <span class="n">p0</span> <span class="o">&gt;</span> <span class="n">p1</span><span class="p">:</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;constant&quot;</span>
+<span class="k">elif</span> <span class="n">p0</span> <span class="o">&lt;</span> <span class="n">p1</span><span class="p">:</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;balanced&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="s2">&quot;unknown&quot;</span>
+       
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The function is found to be&quot;</span><span class="p">,</span><span class="n">answer</span><span class="p">,</span> <span class="s2">&quot;( oracle actually has&quot;</span><span class="p">,</span><span class="n">oracle</span><span class="p">,</span><span class="s2">&quot;)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The function is found to be constant ( oracle actually has constant )
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./algorithms"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>Algorithms</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="walshhadamard.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>Walsh-Hadamard Transformation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ryoichi Kawai<br/>
+  
+      &copy; Copyright Ryoichi Kawai 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

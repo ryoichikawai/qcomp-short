@@ -10,9 +10,33 @@
 
 # ## Definition
 # 
-# > $Y |0\rangle = i|1\rangle, \qquad Y |1\rangle = -i |0\rangle$
+# **Transformation**
 # 
-# The standard symbol is $Y$ and it appears in quantum circuit as
+# >$$
+# Y |0\rangle = i|1\rangle, \qquad Y |1\rangle = -i |0\rangle
+# $$
+# 
+# 
+# **Matrix expression**
+# 
+# >$$
+# Y \doteq \begin{bmatrix} 0 & -i \\ i & 0 \end{bmatrix}
+# $$(YGate-matrix)
+# 
+# 
+# **U gate expression**
+# 
+# >$$
+# Y = U\left(\pi,\frac{\pi}{2},\frac{\pi}{2}\right)
+# $$(YGate-U)
+# 
+# **R gate expression**
+# 
+# >$$
+# Y = i R_y(\pi)
+# $$
+# 
+# The qiskit circuit symbol is `y` and it appears in quantum circuit as
 
 # In[1]:
 
@@ -55,9 +79,6 @@ qc.draw()
 # Apart from the phase factor, $Y$ flips $|\pm\rangle$.
 # 
 # ---
+# 
 
-# In[ ]:
-
-
-
-
+# Late modified xxx

@@ -1,0 +1,1034 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>7.1. Two qubits &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Algorithms" href="../algorithms/intro.html" />
+    <link rel="prev" title="7. Composite Systems" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/me-tiny.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">A First Step to Quantum Computation with Qiskit.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../cover.html">
+                    A First Step to Quantum Computation with Qiskit
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preface
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preface.html">
+   1. Preface
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../preparation/intro.html">
+   2. Preparation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/thisbook.html">
+     2.1. About This Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/python.html">
+     2.2. Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/jupyter.html">
+     2.3. JupyterLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/qiskit.html">
+     2.4. Qiskit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/cloud.html">
+     2.5. Cloud IDE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qmsummary/intro.html">
+   3. Quantum Mechanics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     3.1. State vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/operators.html">
+     3.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     3.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     3.4. Quantum measurement
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../computation/intro.html">
+   4. What is a Quantum Computer?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/ccomp.html">
+     4.1. Classical computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/qcomp.html">
+     4.2. Quantum computation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Single qubit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qubit/intro.html">
+   5. Single qubit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/purestates.html">
+     5.1. Pure states
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/bloch.html">
+     5.2. Bloch sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/measurement.html">
+     5.3. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/mixedstates.html">
+     5.4. Mixed states
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../q1gates/intro.html">
+   6. One-qubit gates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/u.html">
+     6.4. U Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/r.html">
+     6.5. Rotation Gates, RX, RY, RZ
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/x.html">
+     6.6. XGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/y.html">
+     6.7. YGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/z.html">
+     6.8. ZGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/h.html">
+     6.9. Hadamard gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/sx.html">
+     6.10. SX and SXdg Gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/s.html">
+     6.11. S Gate and S
+     <span class="math notranslate nohighlight">
+      \(^\dagger\)
+     </span>
+     Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/p.html">
+     6.12. P Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/change-basis.html">
+     6.13. Change of basis sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/tomography.html">
+     6.14. State tomography
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Composite Systems
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   7. Composite Systems
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.1. Two qubits
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../algorithms/intro.html">
+   8. Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/deutsch.html">
+     8.1. The Deutsch problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/walshhadamard.html">
+     8.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qft.html">
+     8.3. Quantum Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qpe.html">
+     8.4. Quantum Phase Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Backmatters
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/composites/2qubit.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fcomposites/2qubit.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/composites/2qubit.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hilbert-space-and-computational-basis">
+   7.1.1. Hilbert space and computational basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#superposition-states">
+   7.1.2. Superposition states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#product-states">
+   7.1.3. Product states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entangled-states">
+   7.1.4. Entangled states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bell-basis">
+   7.1.5. Bell basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-qubit-measurements-in-computational-basis">
+   7.1.6. Two-qubit measurements in computational basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bell-state-measurement">
+   7.1.7. Bell state measurement
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Two qubits</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hilbert-space-and-computational-basis">
+   7.1.1. Hilbert space and computational basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#superposition-states">
+   7.1.2. Superposition states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#product-states">
+   7.1.3. Product states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entangled-states">
+   7.1.4. Entangled states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bell-basis">
+   7.1.5. Bell basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-qubit-measurements-in-computational-basis">
+   7.1.6. Two-qubit measurements in computational basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bell-state-measurement">
+   7.1.7. Bell state measurement
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="two-qubits">
+<span id="sec-2qubits"></span><h1><span class="section-number">7.1. </span>Two qubits<a class="headerlink" href="#two-qubits" title="Permalink to this headline">#</a></h1>
+<section id="hilbert-space-and-computational-basis">
+<h2><span class="section-number">7.1.1. </span>Hilbert space and computational basis<a class="headerlink" href="#hilbert-space-and-computational-basis" title="Permalink to this headline">#</a></h2>
+<p>First, let us recall that a single qubit is in a two-dimensional Hilbert space <span class="math notranslate nohighlight">\(\mathbb{C}^2\)</span> and the computational basis vectors <span class="math notranslate nohighlight">\(0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span> span the space. Now we consider two qubits <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span>. The composite system lives in a four-dimensional Hilbert space.  The dimension <span class="math notranslate nohighlight">\(4\)</span> is not <span class="math notranslate nohighlight">\(2+2\)</span> but <span class="math notranslate nohighlight">\(2 \times 2\)</span>.  We write it <span class="math notranslate nohighlight">\(\mathbb{C}^2 \otimes \mathbb{C}^2\)</span> where <span class="math notranslate nohighlight">\(\otimes\)</span> indicates <em>tensor product</em>.  This mathematical structure is very important. Using the computational basis of each <span class="math notranslate nohighlight">\(\mathbb{C}^2\)</span>, we can construct four <em>computational basis</em> vectors for the composite system as products <span class="math notranslate nohighlight">\(|q_1\rangle \otimes |q_0\rangle\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-computational-basis-q2">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-computational-basis-q2" title="Permalink to this equation">#</a></span>\[
+|00\rangle \equiv |0\rangle \otimes |0\rangle, \quad |01\rangle \equiv |0\rangle \otimes |1\rangle, \quad |10\rangle \equiv |1\rangle \otimes |0\rangle, \quad |11\rangle \equiv |0\rangle \otimes |0\rangle.
+\]</div>
+<p>The physical meaning of each basis vector is clear. For example, <span class="math notranslate nohighlight">\(|01\rangle\)</span> means <span class="math notranslate nohighlight">\(q_0\)</span> is in <span class="math notranslate nohighlight">\(\rangle\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> in <span class="math notranslate nohighlight">\(|0\rangle\)</span>.</p>
+<p>Other basis sets are also used.  The <span class="math notranslate nohighlight">\(xx\)</span> basis uses <span class="math notranslate nohighlight">\(|\pm\rangle\)</span> for both qubits</p>
+<div class="math notranslate nohighlight">
+\[
+|++\rangle \equiv |+\rangle \otimes |+\rangle, \quad |+-\rangle \equiv |+\rangle \otimes |-\rangle, \quad |-+\rangle \equiv |-\rangle \otimes |+\rangle, \quad |--\rangle \equiv |-\rangle \otimes |-\rangle
+\]</div>
+<p>The mixed basis in which <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> use different basis kets is also allowed.</p>
+<div class="math notranslate nohighlight">
+\[
+|0+\rangle \equiv |0\rangle \otimes |+\rangle, \quad |0-\rangle \equiv |0\rangle \otimes |-\rangle, \quad |1+\rangle \equiv |1\rangle \otimes |+\rangle, \quad |1-\rangle \equiv |1\rangle \otimes |-\rangle
+\]</div>
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-2qubits"><span class="std std-numref">7.1</span></a>.1    Show that the above basis sets are all orthonormal.</p>
+</section>
+<section id="superposition-states">
+<h2><span class="section-number">7.1.2. </span>Superposition states<a class="headerlink" href="#superposition-states" title="Permalink to this headline">#</a></h2>
+<p>The state of two-qubit system is expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+c_{00} |00\rangle + c_{01} |01\rangle + c_{10} |10\rangle + c_{11} |11\rangle.
+\]</div>
+<p>What does this state physically means?  To see that, we assume that Alice has qubit <span class="math notranslate nohighlight">\(q_0\)</span> and Bob has <span class="math notranslate nohighlight">\(q_1\)</span>.  They are separated by a large distance.  Even when they are far apart, the above state is still valid. Alice can measure her qubit but not Bob’s qubit.  Similarly, Bob can measure his qubit but not Alice’s.  This type of measurement is known as <em>local measurement</em>.  Now Alice measures her qubit <span class="math notranslate nohighlight">\(q_0\)</span> before Bob measures <span class="math notranslate nohighlight">\(q_1\)</span>.  Suppose that the outcome is <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  The state now collapses to</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{N} (c_{00} |00\rangle + c_{10} |10\rangle) = \left(c_0 |0\rangle + c_1|1\rangle\right) \otimes |0\rangle .
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(N = \sqrt{|c_{00}|^2 + |c_{01}|^2}\)</span>, <span class="math notranslate nohighlight">\(c_0=c_{00}/N\)</span>, and <span class="math notranslate nohighlight">\(c_1=c_{10}/N\)</span>.  After the measurement, Alice’s qubit is now in  definite state <span class="math notranslate nohighlight">\(0\rangle\)</span> but Bob’s qubit remains in a superposition state.  Next, Bob measures his qubit and found it in <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  Then, the state further collapses to <span class="math notranslate nohighlight">\(|1\rangle \otimes |0\rangle\)</span>.</p>
+<p>Recall that the outcome of quantum measurement is completely random and there is no way to predict it.  You can calculate the probability to find each state based on the Born rule.  The probability that Alice obtain <span class="math notranslate nohighlight">\(|0\rangle\)</span> is <span class="math notranslate nohighlight">\(p_A(0) = |c_{00}|^2 + |c_{10}|^2\)</span> because Alices qubit is <span class="math notranslate nohighlight">\(|0\rangle\)</span> in <span class="math notranslate nohighlight">\(|00\rangle = |0\rangle \otimes |0\rangle\)</span> and <span class="math notranslate nohighlight">\(|10\rangle = |1\rangle \otimes |0\rangle\)</span>. In other words, when Alice obtained <span class="math notranslate nohighlight">\(|0\rangle\)</span>, Bob’s qubit can be still <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span>, hence we need to take into account both.</p>
+<p>The probability that Bob gets <span class="math notranslate nohighlight">\(|1\rangle\)</span> after Alice get <span class="math notranslate nohighlight">\(|0\rangle\)</span> is <span class="math notranslate nohighlight">\(p_B(1|0)=|c_1|^2\)</span>, which is the <a class="reference external" href="https://en.wikipedia.org/wiki/Conditional_probability"><em>conditional probability</em></a> after Alice gets <span class="math notranslate nohighlight">\(|0\rangle\)</span>. The net probability to find <span class="math notranslate nohighlight">\(|10\rangle\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+p_A(0) p_B(1|0) = \left(|c_{00}|^2 + |c_{01}|^2)\right) |c_1|^2 = |c_{10}|^2
+\]</div>
+<p>which is the probability to obtain <span class="math notranslate nohighlight">\(|10\rangle\)</span>.  , The Born rule worked well for the composite case.</p>
+<p><strong>Exercise</strong>  <a class="reference internal" href="#sec-2qubits"><span class="std std-numref">7.1</span></a>.1 Suppose that Alice measured her qubit before Bob did and got <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  Bob measured his qubit after Alice and obtained <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  What is the state after their measurement and what is the probability to get it?</p>
+<p>Now an important question arises. If Bob measures before Alice, does the probability remain the same?</p>
+<p>Suppose that Bob measured before Alice and got <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  The probability that happens is <span class="math notranslate nohighlight">\(p_B(1)=|c_{10}|^2 + |c_{11}|^2\)</span>, which is different from the previous case despite that Bob gets the same outcome.   This is weird but let us move on.  After Bob’s measurement the state collapse to</p>
+<div class="math notranslate nohighlight" id="equation-superposition-q2">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-superposition-q2" title="Permalink to this equation">#</a></span>\[
+\frac{1}{N} (c_{10} |10\rangle + c_{11} |11\rangle) = |1\rangle \otimes \left(c_0 |0\rangle + c_1|1\rangle\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(N = \sqrt{|c_{10}|^2 + |c_{11}|^2}\)</span>, <span class="math notranslate nohighlight">\(c_0=c_{10}/N\)</span>, and <span class="math notranslate nohighlight">\(c_1=c_{11}/N\)</span>.
+Next, Alice measured her qubit and obtained <span class="math notranslate nohighlight">\(0\rangle\)</span> with the probability <span class="math notranslate nohighlight">\(p_A(0|1)=|c_0|^2\)</span>.  The final state is <span class="math notranslate nohighlight">\(|10\rangle\)</span>.  The net probability is</p>
+<div class="math notranslate nohighlight">
+\[
+p_B(1) p_A(0|1) = \left(|c_{10}|^2 + |c_{11}|^2)\right) |c_1|^2 = |c_{10}|^2
+\]</div>
+<p>in agreement with the previous case.  This agreement is guaranteed by the <a class="reference external" href="https://en.wikipedia.org/wiki/Bayes%27_theorem"><em>Bayes’ theorem</em></a> <span class="math notranslate nohighlight">\(p_A(x)p_B(y|x) = p_B(y) p_A(x|y)\)</span>.</p>
+<p>While the net probability does not depend on the order of the measurement, the probabilities of individual observers experience depend on it. Despite that Alice and Bob are separated by a far distance, the act of Alice on her qubit changed the state of Bob’s qubit instantaneously.  This conclusion is quite counter intuitive and needs to be examined more carefully.</p>
+</section>
+<section id="product-states">
+<h2><span class="section-number">7.1.3. </span>Product states<a class="headerlink" href="#product-states" title="Permalink to this headline">#</a></h2>
+<p>Let us consider a special case where the two qubit state is</p>
+<div class="math notranslate nohighlight" id="equation-product10">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-product10" title="Permalink to this equation">#</a></span>\[
+|10\rangle = |1\rangle \otimes |0\rangle
+\]</div>
+<p>that is <span class="math notranslate nohighlight">\(c_{00}=c_{01}=c_{11}=0\)</span> and <span class="math notranslate nohighlight">\(c_{10}=1\)</span> in Eq <a class="reference internal" href="#equation-superposition-q2">(7.2)</a>.  Alice always finds her qubit in <span class="math notranslate nohighlight">\(|0\rangle\)</span> (probability=1) and Bob always find his in <span class="math notranslate nohighlight">\(|1\rangle\)</span> without exception (probability=1).   In this case, the order of measurement does not affect the individual measurements. There seems no controversy.</p>
+<p>Next we consider</p>
+<div class="math notranslate nohighlight" id="equation-product">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-product" title="Permalink to this equation">#</a></span>\[
+|+-\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right ) \otimes \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right ) = \frac{1}{2} \left(|00\rangle - |01\rangle + |10\rangle - |11\rangle \right).
+\]</div>
+<p>This state is closer to the general case <a class="reference internal" href="#equation-superposition-q2">(7.2)</a>.  However, the probability that Alice gets <span class="math notranslate nohighlight">\(|0\rangle\)</span> is <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> and the probability Bob gets <span class="math notranslate nohighlight">\(|1\rangle\)</span> is also <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> regardless of who measures first.</p>
+<p>The state of the composite systems in these two examples can be written as <em>product state</em> <span class="math notranslate nohighlight">\(|q_1\rangle \otimes |q_0\rangle\)</span>.  In Eq. <a class="reference internal" href="#equation-product10">(7.3)</a>, <span class="math notranslate nohighlight">\(|q_0\rangle = |0\rangle\)</span> and <span class="math notranslate nohighlight">\(|q_1\rangle = |1\rangle\)</span>.  In Eq. <a class="reference internal" href="#equation-product">(7.4)</a>, <span class="math notranslate nohighlight">\(|q_0\rangle = |-\rangle\)</span> and <span class="math notranslate nohighlight">\(|q_1\rangle = |+\rangle\)</span>.  When a composite system is in a product state, the measurements of <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> are completely independent and thus the order does not matter.</p>
+</section>
+<section id="entangled-states">
+<h2><span class="section-number">7.1.4. </span>Entangled states<a class="headerlink" href="#entangled-states" title="Permalink to this headline">#</a></h2>
+<p>When the state of a composite system cannot be written in a form of product <span class="math notranslate nohighlight">\(|q_1\rangle \otimes |q_0\rangle\)</span>, we say that the system is <em>entangled</em>.  <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_entanglement"><em>Quantum entanglement</em></a> is unique to quantum systems.
+When the qubits are entangled, they are not independent. Measurement on one qubit change the state of the other qubit.</p>
+<p>A pair of qubits interact at a certain place and an entangle state</p>
+<div class="math notranslate nohighlight" id="equation-01-10">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-01-10" title="Permalink to this equation">#</a></span>\[
+\frac{1}{\sqrt{2}} \left(|01\rangle + |10\rangle\right)
+\]</div>
+<p>is formed.  Alice takes <span class="math notranslate nohighlight">\(q_0\)</span> and travels to a distant place with it. Bob takes the other qubit and travels in the opposite direction.  Alice and Bob are separated by a large distance.</p>
+<p>The entangled state <a class="reference internal" href="#equation-01-10">(7.5)</a> indicates that Alice’s qubit is either <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span> and so is Bob’s.  When Alice’s measurement results in <span class="math notranslate nohighlight">\(|0\rangle\)</span>, then Bob’s qubit necessarily in <span class="math notranslate nohighlight">\(|1\rangle\)</span> since <span class="math notranslate nohighlight">\(|00\rangle\)</span> is absent.  On the other hand, if Alice finds <span class="math notranslate nohighlight">\(|1\rangle\)</span> then Bob’s qubit must be in <span class="math notranslate nohighlight">\(|0\rangle\)</span>.   Alice immediately knows what Bob’s will find.  Hence, their measurement is perfectly correlated.</p>
+<p>This correlation is not necessarily controversial since classical correlation exits.  Consider a pair of grabs.  Each side of the grab is placed in a separate box.  Alice took a box and Bob the other.  They don’t know which side of the grab is in their of box.  They open the box at their home.  When Alice finds the left grab, the Bob must find the right grab.  This is an example of perfect classical correlation.  When Bob opened the box before Alice, the outcome remain the same.</p>
+<p>The quantum correlation by entanglement seems the same as the classical case but it is actually quite different. Before measurement neither spin has a definite state.  Both qubits are mixture of <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  Alice’s measurement destroys the mixture of Bob’s qubit <em>instantaneously</em> over <em>distance</em>.  How can Alice’s action on her qubit changes the state of Bob’s qubit instantaneously over an arbitrarily long distance?   This is known as <a class="reference external" href="https://en.wikipedia.org/wiki/EPR_paradox"><em>EPR paradox</em></a>.  Einstein called it “Spooky action at a distance” and claimed that the theory of quantum mechanics is incomplete.  However, every experimental observation is found to be consistent with the standard theory of quantum mechanics.  In the next section, we discuss more about it.</p>
+<p>Once David Mermin explained the common attitude toward the theory of quantum mechanics as “Shut up and calculate”. <span id="id1">[<a class="reference internal" href="../references.html#id19" title="N. David Mermin. What's wrong with this pillow? Physics Today, 42(4):9–11, April 1989. URL: https://doi.org/10.1063/1.2810963, doi:10.1063/1.2810963.">2</a>]</span>.   For the moment, we set aside the incomprehensible aspect of quantum entanglement and just accept the extraordinary properties of quantum entanglement.  It turns out that entanglement carries very useful properties that classical physics cannot offer. We exploit them in quantum computation.  In fact, the success of quantum computation relies on quantum entanglement.</p>
+</section>
+<section id="bell-basis">
+<h2><span class="section-number">7.1.5. </span>Bell basis<a class="headerlink" href="#bell-basis" title="Permalink to this headline">#</a></h2>
+<p>The Hilbert space of two qubits is four-dimensional and spanned by four basis vectors.  The computational basis <a class="reference internal" href="#equation-computational-basis-q2">(7.1)</a> is based on the product states.  In many cases, basis set based on entangled states is desired.  The most popular entangled basis is <em>Bell basis</em> defined by four Bell states:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+|\Phi^{\pm}\rangle &amp;= \frac{1}{\sqrt{2}} \left(|00\rangle \pm |11\rangle\right) \\
+|\Psi^{\pm}\rangle &amp;= \frac{1}{\sqrt{2}} \left(|01\rangle \pm |10\rangle\right)
+\end{align}
+\end{split}\]</div>
+<p>Among them, <span class="math notranslate nohighlight">\(|\Psi^{-}\rangle\)</span>, known as <em>singlet state</em>, plays an important role in quantum information theory.</p>
+<p>No entangled state can be created by local transformation (one-qubit gates). We must use a two-qubits gate such as controlled-<span class="math notranslate nohighlight">\(X\)</span>. The following Qiskit example generates <span class="math notranslate nohighlight">\(\Phi^+\rangle\)</span> and |\Pis^+\rangle$.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="c1"># generate |00&gt;+|11&gt;</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐     
+q_0: ┤ H ├──■──
+     └───┘┌─┴─┐
+q_1: ─────┤ X ├
+          └───┘</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{\sqrt{2}}{2} |00\rangle+\frac{\sqrt{2}}{2} |11\rangle\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate |01&gt;+|10&gt; by flipping q_0 or q_1</span>
+<span class="c1"># either works.</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐          
+q_0: ┤ H ├──■───────
+     └───┘┌─┴─┐┌───┐
+q_1: ─────┤ X ├┤ X ├
+          └───┘└───┘</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{\sqrt{2}}{2} |01\rangle+\frac{\sqrt{2}}{2} |10\rangle\]</div>
+</div>
+</div>
+<p><strong>Exercise</strong>  <a class="reference internal" href="#sec-2qubits"><span class="std std-numref">7.1</span></a>.2  Generate <span class="math notranslate nohighlight">\(|\Phi^{-}\rangle\)</span> and <span class="math notranslate nohighlight">\(|\Psi^{-}\rangle\)</span> using Qiskit.  (There are several different ways. A simple one uses the <span class="math notranslate nohighlight">\(Z\)</span> gate.  You can also apply <span class="math notranslate nohighlight">\(H\)</span> to both qubits.  Find where to put these gates.)</p>
+</section>
+<section id="two-qubit-measurements-in-computational-basis">
+<h2><span class="section-number">7.1.6. </span>Two-qubit measurements in computational basis<a class="headerlink" href="#two-qubit-measurements-in-computational-basis" title="Permalink to this headline">#</a></h2>
+<p>We want to determine <span class="math notranslate nohighlight">\(|c_{ij}|\)</span> in  <a class="reference internal" href="#equation-superposition-q2">(7.2)</a> by measurement.  It can be done easily in Qiskit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">cr</span><span class="o">=</span><span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐     ┌─────────┐┌─────────┐ ░ ┌─┐   
+q_0: ┤ H ├──■──┤ Ry(π/5) ├┤ Rx(π/3) ├─░─┤M├───
+     └───┘┌─┴─┐└─────────┘└─────────┘ ░ └╥┘┌─┐
+q_1: ─────┤ X ├───────────────────────░──╫─┤M├
+          └───┘                       ░  ║ └╥┘
+c: 2/════════════════════════════════════╩══╩═
+                                         0  1 </pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chose a general quantum simulator without noise.</span>
+<span class="c1"># The simulator behaves as an ideal quantum computer.</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+
+<span class="c1"># set number of tries</span>
+<span class="n">nshots</span><span class="o">=</span><span class="mi">8192</span>
+
+<span class="c1"># execute the quantum circuit and store the outcome</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span>
+
+<span class="c1"># extract the result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="c1"># count the outcome</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2qubit_17_0.png" src="../_images/2qubit_17_0.png" />
+</div>
+</div>
+</section>
+<section id="bell-state-measurement">
+<h2><span class="section-number">7.1.7. </span>Bell state measurement<a class="headerlink" href="#bell-state-measurement" title="Permalink to this headline">#</a></h2>
+<p>We can expand any two qubit states in the Bell basis as</p>
+<div class="math notranslate nohighlight" id="equation-bell-expansion">
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-bell-expansion" title="Permalink to this equation">#</a></span>\[
+\ket{\psi} = c_{\Phi^+} |\Phi^{+}\rangle + c_{\Phi^-} |\Phi^{-}\rangle + c_{\Psi^+} |\Psi^{+}\rangle + c_{\Psi^-} |\Phi^{-}\rangle .
+\]</div>
+<p>Now, we want find the probabilities to find the Bell states.  Since the Bell states are all entangled, standard measurement based on the computational basis does not help.  Applying <span class="math notranslate nohighlight">\((H \otimes I)\cdot CX\)</span> transforms the basis to the computational basis without changing the coefficients:</p>
+<div class="math notranslate nohighlight" id="equation-comp-expansion">
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-comp-expansion" title="Permalink to this equation">#</a></span>\[
+(H \otimes I)\cdot CX \ket{\psi} = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle + c_{\Psi^-} |11\rangle .
+\]</div>
+<p>Now, the standard measurement in the computational basis determine the probabilities.</p>
+<p><strong>Exercise</strong>  <a class="reference internal" href="#sec-2qubits"><span class="std std-numref">7.1</span></a>.3  Derive <a class="reference internal" href="#equation-comp-expansion">(7.7)</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./composites"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Composite Systems</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../algorithms/intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Algorithms</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ryoichi Kawai<br/>
+  
+      &copy; Copyright Ryoichi Kawai 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

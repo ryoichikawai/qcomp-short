@@ -1,0 +1,894 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5.1. Pure states &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.2. Bloch sphere" href="bloch.html" />
+    <link rel="prev" title="5. Single qubit" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/me-tiny.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">A First Step to Quantum Computation with Qiskit.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../cover.html">
+                    A First Step to Quantum Computation with Qiskit
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preface
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preface.html">
+   1. Preface
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../preparation/intro.html">
+   2. Preparation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/thisbook.html">
+     2.1. About This Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/python.html">
+     2.2. Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/jupyter.html">
+     2.3. JupyterLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/qiskit.html">
+     2.4. Qiskit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/cloud.html">
+     2.5. Cloud IDE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qmsummary/intro.html">
+   3. Quantum Mechanics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     3.1. State vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/operators.html">
+     3.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     3.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     3.4. Quantum measurement
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../computation/intro.html">
+   4. What is a Quantum Computer?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/ccomp.html">
+     4.1. Classical computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/qcomp.html">
+     4.2. Quantum computation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Single qubit
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   5. Single qubit
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.1. Pure states
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bloch.html">
+     5.2. Bloch sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="measurement.html">
+     5.3. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixedstates.html">
+     5.4. Mixed states
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../q1gates/intro.html">
+   6. One-qubit gates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/u.html">
+     6.4. U Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/r.html">
+     6.5. Rotation Gates, RX, RY, RZ
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/x.html">
+     6.6. XGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/y.html">
+     6.7. YGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/z.html">
+     6.8. ZGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/h.html">
+     6.9. Hadamard gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/sx.html">
+     6.10. SX and SXdg Gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/s.html">
+     6.11. S Gate and S
+     <span class="math notranslate nohighlight">
+      \(^\dagger\)
+     </span>
+     Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/p.html">
+     6.12. P Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/change-basis.html">
+     6.13. Change of basis sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/tomography.html">
+     6.14. State tomography
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Composite Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../composites/intro.html">
+   7. Composite Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../composites/2qubit.html">
+   8. Two qubits
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../algorithms/intro.html">
+   9. Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/deutsch.html">
+     9.1. The Deutsch problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/walshhadamard.html">
+     9.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qft.html">
+     9.3. Quantum Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qpe.html">
+     9.4. Quantum Phase Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Backmatters
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/qubit/purestates.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fqubit/purestates.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/qubit/purestates.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   5.1.1. Pure states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-basis-sets">
+   5.1.2. Standard Basis sets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-basis-sets-in-qiskit">
+   5.1.3. The basis sets in Qiskit
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Pure states</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   5.1.1. Pure states
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-basis-sets">
+   5.1.2. Standard Basis sets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-basis-sets-in-qiskit">
+   5.1.3. The basis sets in Qiskit
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="pure-states">
+<span id="sec-purestates"></span><h1><span class="section-number">5.1. </span>Pure states<a class="headerlink" href="#pure-states" title="Permalink to this headline">#</a></h1>
+<p>Quantum computers store information in a two-dimensional Hilbert space called a qubit.   In this section, I will introduce mathematical description of a single qubit.</p>
+<section id="id1">
+<h2><span class="section-number">5.1.1. </span>Pure states<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>In ideal situations, the state of a qubit is specified by a single ket vector in a two-dimensional Hilbert space.  We call the ket <em>state vector</em> and the ideal state <em>pure state</em>.  Unless otherwise is specified, the state vectors are assumed to be normalized. That is <span class="math notranslate nohighlight">\(\langle \psi | \psi \rangle = 1\)</span> (See <a class="reference internal" href="../qmsummary/vectors.html#sec-statevectors"><span class="std std-numref">Section 3.1</span></a>).
+In less ideal situations, a qubit is in a <em>mix state</em> involving multiple pure states, which will be discussed in a later chapter.  In this chapter, we focus on pure states.</p>
+<p>Any qubit state can be written as</p>
+<div class="math notranslate nohighlight" id="equation-qubit-purestate">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-qubit-purestate" title="Permalink to this equation">#</a></span>\[
+| \psi \rangle = c_0 | 0 \rangle + c_1 | 1 \rangle
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(| 0 \rangle \)</span> and <span class="math notranslate nohighlight">\(| 1 \rangle\)</span> are orthonormal basis vectors satisfying <span class="math notranslate nohighlight">\(\langle 0 | 0 \rangle = \langle 1 | 1 \rangle = 1\)</span> and <span class="math notranslate nohighlight">\(\langle 0 | 1 \rangle = \langle 1 | 0 \rangle = 0\)</span>.  The coefficients <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> are complex numbers. The normalization requirement is satisfied if <span class="math notranslate nohighlight">\(|c_0|^2 + |c_1|^2 = 1\)</span>.</p>
+<p>This orthonormal complete basis set <span class="math notranslate nohighlight">\(\{|0\rangle, |1\rangle\}\)</span> is known as <em>computational basis</em> which is the default basis in quantum computing.  However, this basis set do not represent any particular physical basis set.  In real quantum computers,  a qubit can be realized, for example, by an electron spin, <span class="math notranslate nohighlight">\(|0\rangle \equiv | \uparrow \rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle \equiv |\downarrow \rangle\)</span> or the polarization of a photon, <span class="math notranslate nohighlight">\(|0\rangle \equiv | H \rangle\)</span> (horizontal polarization) and <span class="math notranslate nohighlight">\(|1\rangle \equiv | V \rangle\)</span> (vertical polarization).  By using the computational basis set, we don’t have to worry about what type of hardware is used.  The mathematical expression based on the computational basis can be applied to all of qubit-based quantum computers.</p>
+</section>
+<section id="standard-basis-sets">
+<h2><span class="section-number">5.1.2. </span>Standard Basis sets<a class="headerlink" href="#standard-basis-sets" title="Permalink to this headline">#</a></h2>
+<p>In addition to the computational basis (also known as <em>z-basis</em>) <span class="math notranslate nohighlight">\(\{|0\rangle,|1\rangle\}\)</span>, we often use other orthonormal basis set, namely <em>x-basis</em> <span class="math notranslate nohighlight">\(\{|+\rangle, |-\rangle\}\)</span> and <em>y-basis</em> <span class="math notranslate nohighlight">\(\{|L\rangle,|R\rangle\}\)</span>.
+They are related to the computational basis as follows:</p>
+<div class="math notranslate nohighlight" id="equation-xbasis">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-xbasis" title="Permalink to this equation">#</a></span>\[
+|+\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle + |1\rangle\right), \quad
+|-\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle - |1\rangle\right)
+\]</div>
+<div class="math notranslate nohighlight" id="equation-ybasis">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-ybasis" title="Permalink to this equation">#</a></span>\[
+|L\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle + i |1\rangle\right), \quad
+|R\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle - i |1\rangle\right)
+\]</div>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-purestates"><span class="std std-numref">5.1</span></a>.1    Assuming that the computational basis is orthonormal, show that the x-basis and the y-basis are orthonormal.</p>
+</section>
+<hr class="docutils" />
+<section id="the-basis-sets-in-qiskit">
+<h2><span class="section-number">5.1.3. </span>The basis sets in Qiskit<a class="headerlink" href="#the-basis-sets-in-qiskit" title="Permalink to this headline">#</a></h2>
+<p>In Qiskit, the computatioal basis kets <span class="math notranslate nohighlight">\(\{|0\rangle, |1\rangle\}\)</span> and x-basis kets <span class="math notranslate nohighlight">\(\{|+\rangle, |-\rangle\}\)</span> are predefined.  See the following Qiskit note.</p>
+<div class="tip admonition">
+<p class="admonition-title">Qiskit note: Computational Basis</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> library provides us with basic tools to describe quantum mechanics using expressions very similar to the original methematical expressions.  Here are the correspondence between mathematical expressions and <code class="docutils literal notranslate"><span class="pre">opflow</span></code> expressions.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\ket{0} \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Zero</span></code><br />
+<span class="math notranslate nohighlight">\(\ket{1} \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">One</span></code><br />
+<span class="math notranslate nohighlight">\(\ket{+} \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Plus</span></code><br />
+<span class="math notranslate nohighlight">\(\ket{-} \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Minus</span></code></p>
+</div></blockquote>
+<p>The vector with “~” indicates bra.  For example,</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\bra{0} \quad  \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">~One</span></code></p>
+</div></blockquote>
+<p>The regular addition works.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\ket{0} + \ket{1} \quad \Rightarrow \quad\)</span>  <code class="docutils literal notranslate"><span class="pre">Zero</span> <span class="pre">+</span> <span class="pre">One</span></code></p>
+</div></blockquote>
+<p>The operator for inner product is “&#64;”. You need to evalute it with <code class="docutils literal notranslate"><span class="pre">.eval()</span></code>.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\langle 0 | + \rangle \quad \Rightarrow \quad\)</span>  <code class="docutils literal notranslate"><span class="pre">(~Zero</span> <span class="pre">&#64;</span> <span class="pre">Plus).eval()</span></code></p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">eval</span></code> is a method associated with <code class="docutils literal notranslate"><span class="pre">OperatorBase</span></code> class in <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code>.</p>
+<p>For more detail, see <a class="reference external" href="https://qiskit.org/documentation/apidoc/opflow.html">Qiskit API Document: qiskit.opflow</a></p>
+</div>
+<hr class="docutils" />
+<p><strong>Qiskit Example</strong> <a class="reference internal" href="#sec-purestates"><span class="std std-numref">5.1</span></a>.1   Let us check the orthonormality of the computational basis set in Qiskit.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import numpy (for sqrt)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Import the base vectors from qiskit.opflow library</span>
+<span class="kn">from</span> <span class="nn">qiskit.opflow</span> <span class="kn">import</span> <span class="n">Zero</span><span class="p">,</span> <span class="n">One</span><span class="p">,</span> <span class="n">Plus</span><span class="p">,</span> <span class="n">Minus</span>
+
+<span class="c1"># Example of inner product calculation with qiskit</span>
+
+<span class="c1"># First example calculate the norm of |0&gt; and |1&gt;</span>
+<span class="c1"># Zero and One are ket</span>
+<span class="c1"># ~Zero and ~One are corresponding bra</span>
+<span class="c1"># @ product between bra and ket, that is inner product</span>
+<span class="c1"># To complete the operation @, we must evaluate it by .eval()</span>
+
+<span class="n">Norm_of_Zero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="o">~</span><span class="n">Zero</span> <span class="o">@</span> <span class="n">Zero</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
+<span class="n">Norm_of_One</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="o">~</span><span class="n">One</span> <span class="o">@</span> <span class="n">One</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
+
+<span class="c1"># Show the reults</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Norm of |0&gt; =&quot;</span><span class="p">,</span> <span class="n">Norm_of_Zero</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Norm of |1&gt; =&quot;</span><span class="p">,</span> <span class="n">Norm_of_One</span><span class="p">)</span>
+
+<span class="c1"># Next we check the orthogonality between |0&gt; and |1&gt;</span>
+<span class="n">Inner_Product</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">Zero</span> <span class="o">@</span> <span class="n">One</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="c1"># Show the result.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&lt;0|1&gt; =&quot;</span><span class="p">,</span> <span class="n">Inner_Product</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Norm of |0&gt; = 1.0
+Norm of |1&gt; = 1.0
+&lt;0|1&gt; = 0.0
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Qiskit Example</strong> <a class="reference internal" href="#sec-purestates"><span class="std std-numref">5.1</span></a>.2    Let us construct another orthonormal basis set <span class="math notranslate nohighlight">\(|L\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle + i |1\rangle\right)\)</span> and <span class="math notranslate nohighlight">\(|R\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle - i |1\rangle\right)\)</span>.  Notice the complex unit <span class="math notranslate nohighlight">\(i\)</span> on <span class="math notranslate nohighlight">\(|1\rangle\)</span>.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let us try more complicated case.</span>
+<span class="c1"># we will solve the above exercise problem using Qiskit</span>
+
+<span class="c1"># import numpy </span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># imaginary unit &quot;i&quot; is &quot;1j&quot; in python.</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">(</span><span class="n">Zero</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span> <span class="n">One</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="p">(</span><span class="n">Zero</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span> <span class="n">One</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&lt;L|L&gt; =&quot;</span><span class="p">,(</span><span class="o">~</span><span class="n">L</span><span class="nd">@L</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&lt;R|R&gt; =&quot;</span><span class="p">,(</span><span class="o">~</span><span class="n">R</span><span class="nd">@R</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&lt;L|R&gt; =&quot;</span><span class="p">,(</span><span class="o">~</span><span class="n">L</span> <span class="o">@</span> <span class="n">R</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="p">)</span>
+
+<span class="c1"># Anser should be 0 since they are orthogonal.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;L|L&gt; = (0.9999999999999998+0j)
+&lt;R|R&gt; = (0.9999999999999998+0j)
+&lt;L|R&gt; = 0j
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-python-note-complex-numbers admonition">
+<p class="admonition-title">Python note: Complex numbers</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">python</span></code>, a complex number is expressed as <span class="math notranslate nohighlight">\(2 + 3j\)</span>.  Note that symbol <span class="math notranslate nohighlight">\(j\)</span> is used instead of <span class="math notranslate nohighlight">\(i\)</span>.  The imaginary unit <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(1j\)</span>.  Notice <span class="math notranslate nohighlight">\(1\)</span> in from of <span class="math notranslate nohighlight">\(j\)</span>.  <span class="math notranslate nohighlight">\(j\)</span> must be used with a regular number.  <span class="math notranslate nohighlight">\(j\)</span> alone causes an error.</p>
+</div>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-purestates"><span class="std std-numref">5.1</span></a>.2  </p>
+<ol class="simple">
+<li><p>Confirm that base vectors <code class="docutils literal notranslate"><span class="pre">Plus</span></code> and <code class="docutils literal notranslate"><span class="pre">Minus</span></code> are orthonormal using Qiskit.</p></li>
+<li><p>Calculate the inner product between <code class="docutils literal notranslate"><span class="pre">One</span></code> and <code class="docutils literal notranslate"><span class="pre">Minus</span></code> by hand and confirm your answer using Qiskit.</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Exercise</strong> <a class="reference internal" href="#sec-purestates"><span class="std std-numref">5.1</span></a>.2    In the previous example, change the order of rotations to <code class="docutils literal notranslate"><span class="pre">rx</span></code>, <code class="docutils literal notranslate"><span class="pre">rz</span></code>, <code class="docutils literal notranslate"><span class="pre">ry</span></code>.  Does it come back to the initial state?</p>
+<hr class="docutils" />
+<p>Last modified: 07/09/2022</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./qubit"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Single qubit</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="bloch.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Bloch sphere</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ryoichi Kawai<br/>
+  
+      &copy; Copyright Ryoichi Kawai 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

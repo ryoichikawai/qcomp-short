@@ -6,33 +6,32 @@
 
 # Measuring a physical quantity in quantum mechanics is a bit weird.  I am not going to present a full theory of measurement. If you are interested in it, read Ref. {cite:p}`Audretsch2007`. See also [wikipedia](https://en.wikipedia.org/wiki/Measurement_in_quantum_mechanics).
 
+# ## Projective measurement
+# 
+# In classical computer, readout processes determine the outcome of computation stored in each bit.  That is to determine if the state of each bit is $0$ or $1$. The readout can be done at any time without disturbing the state of the bit.  If you repeat the same measurement, the same outcome is obtained.
+# 
+# Similarly, we want to know whether each qubit is in $|0\rangle$ or $|1\rangle$. However, if a qubit is in a superposition state, we have a big problem.  Equation {eq}`qubit-purestate` indicates that the state of the qubit is neither $|0\rangle$ nor $|1\rangle$.  Despite of it, quantum mechanics allows us to ask if the qubit is in $|0\rangle$ or $|1\rangle$ and surprisingly the answer is one of $|0\rangle$ and $|1\rangle$ even it is in the superposition state. Suppose that the outcome of the measurement is $|0\rangle$, it does not mean that the qubit was in $|0\rangle$.  The measurement process has transformed $|psi\rangle$ to $|0\rangle$. This transition is referred as the *collapse of wavefunction*. Mathematically, we say that the state $|\psi\rangle$ is projected to $|0\rangle$ and thus it is called *projective measurement*. See Fig. {numref}`measurement-purestate`.   You may obtain $|1\rangle$ from the same superposition state. Then, $\psi\rangle$ is projected to $|1\rangle$. The measurement of a single qubit seems suggesting that the outcome is not related to the state of the qubit. We never be able to determine the superposition from the outcome. Then, what is the purpose of the measurement?   Even worse, the measurement destroys the superposition state.
+# 
+
+# ```{figure} ./measurement-purestate.png
+# :name: measurement-purestate
+# :align: center
+# :width: 400px
+# 
+# Measurement of a superposition state.  Before measurement, every qubit in the ensemble is in the same superposition state {eq}`qubit-purestate`.  It is known as a purestate ensemble  The measurement selects one of $|0\rangle$ and $|1\rangle$.  As the result, some qubits in the ensemble are in $|0\rangle$ and others in $\1\rangle$. After the measurement, we have a mixed state ensemble.
+# ```
+
 # ## Born rule
 # 
-# In classical computer, readout processes determine the outcome of computation stored in each bit.  That is to determine if the state of bit is $0$ or $1$. The readout can be done at any time without disturbing the state of the bit.
-# 
-# Similarly, we want to know whether each qubit is in $|0\rangle$ or $|1\rangle$. However, there is a big problem here.  A qubit can be in a superposition state
-# 
-# $$
-# |\psi\rangle = c_0 |0\rangle + c_1 |1\rangle, 
-# $$
-# 
-# which is neither $|0\rangle$ nor $|1\rangle$.  Despite of it, quantum mechanics allows us to ask if the qubit is in $|0\rangle$ or $|1\rangle$ and surprisingly the answer is one of $|0\rangle$ and $|1\rangle$ even it is in the superposition state. However, we cannot predict which one is obtained.  To make a story concrete, let us assume that $|0\rangle$ is detected. It does not mean that the qubit was in $|0\rangle$.  The measurement process has transformed $|psi\rangle$ to $|0\rangle$. Mathematically, we say that the state $|\psi\rangle$ is projected to $|0\rangle$ and thus it is called *projective measurement*.  
-# 
-# Furthermore, the outcome of the measurement is not unique.  Suppose that many qubits are prepared exactly in the same state $|\psi\rangle$ and exactly the same measurement process is applied to them. Some of them are transformed to $|0\rangle$ and others to $|1\rangle$.  It seems that $|0\rangle$ and $|1\rangle$ are obtained at random.  So, what is the physical meaning of the state vector $|\psi\rangle$?
-# 
-# The state vector is associated with each single qubit but its predicts only the behavior of an ensemble.  If the ensemble contains a large number of qubits in the same state, the probability to get $|0\rangle$ is $|c_0|^2$ and that of $|1\rangle$ is $|c_1|^2$.  This is interpretation of quantum mechanics is known as the *Born rule*. 
-# 
-# Nearly 100 years after quantum mechanics was well established, we still don't know how that happens but so far the postulate of projective measurement and the Born rule are fully consistent with experimental observation.
-# 
-# In summary, the outcome of quantum computation is stochastic and the theory of quantum mechanics predicts only statistical properties of an ensemble consisting of identical quantum objects in an identical state.  One need to repeat the same measurement on many copies of the same state in the ensemble.  Upon the measurement, each outcome is either $|0\rangle$ or $|1\rangle$ even if the system is in a superposition state.  The Born rule predicts the probabilities to get $|0\rangle$ and $|1\rangle$.
+# It seems that the outcome is picked at random. The theory of quantum mechanics is powerless if we measure a single qubit.  So, what is the physical meaning of the state vector $|\psi\rangle$?  A resolution was offered by Born. Consider an ensemble of qubits. All qubits in the ensemble are prepared exactly in the same state $|\psi\rangle$ and exactly the same measurement process is applied to them. Some of them are transformed to $|0\rangle$ and others to $|1\rangle$.  It turns out that the probability to obtain $0\rangle$ is $|c_0|^2$ and that of $|1\rangle$ is $|c_1|^2$. This interpretation of the superposition state is known as *Born* rule.  Since we will obtain one of them from each measurement, $|c_0|^2+|c_1|^2=1$, which is satisfied by the normalization condition.
 
 # 
 # ---
-# **Qiskit Example**  {numref}`%s <sec-qubit-measurement>`.1 &nbsp;  Quantum coin flipping
+# ## Quantum coin flipping
 # 
 # As an example of the Born rule, we simulate quantum coin flipping.
 # 
-# It is a common practice to pick one of two choices by tossing up a coin.  The classical motion of coin is chaotic and approximately the probability to get head and tail is equal. We can simulate the process on classical computer using a random number generator.  Such simulation is known as Monte Carlo simulation after the name of famous casino city.  One can simulate the same process on a quantum computer without random numbers by exploiting the stochastic nature of quantum measurement.  For comparison, both a classical and quantum simulation are presented below.
+# It is a common practice to pick one of two choices by tossing up a coin.  The classical motion of coin is chaotic and the probability to get head and tail is approximately equal. We can simulate the process on a classical computer using a random number generator.  Such simulation is known as Monte Carlo simulation after the name of the famous casino city.  One can simulate the same process on a quantum computer without random number generator by exploiting the stochastic nature of quantum measurement.  For comparison, both a classical and quantum simulation are presented below.
 
 # ### Classical simulation
 # 
@@ -109,6 +108,7 @@ qc.draw('mpl')
 
 # Chose a general quantum simulator without noise.
 # The simulator behaves as an ideal quantum computer.
+
 backend = Aer.get_backend('qasm_simulator')
 
 # Execute the quantum circuit 10000 times
