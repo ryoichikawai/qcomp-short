@@ -60,6 +60,8 @@ parts:
    -  file: composites/intro
       sections:
       -  file: composites/2qubit
+      -  file: composites/morequbits
+      -  file: composites/numbers
    -  file: q2gates/intro
       sections:
       -  file: q2gates/cx
