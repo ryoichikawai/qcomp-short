@@ -29,7 +29,6 @@ parts:
    chapters:
    -  file: computation/intro
       sections:
-#     -  file: computation/information
       -  file: computation/ccomp
       -  file: computation/qcomp
 -  caption: Single qubit
