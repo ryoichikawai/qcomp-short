@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>8.1. The Deutsch problem &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>9.4. The Deutsch problem &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,12 +51,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.2. Walsh-Hadamard Transformation" href="walshhadamard.html" />
-    <link rel="prev" title="8. Algorithms" href="intro.html" />
+    <link rel="next" title="9.5. Quantum Fourier Transform" href="qft.html" />
+    <link rel="prev" title="9.3. A little example of quantum parallelism" href="qparallel.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -364,6 +366,43 @@ const thebe_selector_output = ".output, .cell_output"
      7.1. Two qubits
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composites/morequbits.html">
+     7.2. More qubits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composites/numbers.html">
+     7.3. Encoding numbers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../q2gates/intro.html">
+   8. Two-qubits Gates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q2gates/cx.html">
+     8.1. CX gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q2gates/cp.html">
+     8.2. Controlled- Z, S, T, P gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q2gates/swap.html">
+     8.3. SWAP
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -375,32 +414,42 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   8. Algorithms
+   9. Algorithms
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     8.1. The Deutsch problem
+   <li class="toctree-l2">
+    <a class="reference internal" href="teleportation.html">
+     9.1. Quantum Teleportation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="walshhadamard.html">
-     8.2. Walsh-Hadamard Transformation
+     9.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qparallel.html">
+     9.3. A little example of quantum parallelism
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     9.4. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qft.html">
-     8.3. Quantum Fourier Transform
+     9.5. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qpe.html">
-     8.4. Quantum Phase Estimation
+     9.6. Quantum Phase Estimation
     </a>
    </li>
   </ul>
@@ -625,22 +674,22 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-problem">
-   8.1.1. The problem
+   9.4.1. The problem
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#encoding-the-functions">
-   8.1.2. Encoding the functions
+   9.4.2. Encoding the functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#no-so-smart-algorithm">
-   8.1.3. No-so smart algorithm
+   9.4.3. No-so smart algorithm
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-deutsch-s-algorithm">
-   8.1.4. The Deutsch’s algorithm
+   9.4.4. The Deutsch’s algorithm
   </a>
  </li>
 </ul>
@@ -664,22 +713,22 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-problem">
-   8.1.1. The problem
+   9.4.1. The problem
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#encoding-the-functions">
-   8.1.2. Encoding the functions
+   9.4.2. Encoding the functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#no-so-smart-algorithm">
-   8.1.3. No-so smart algorithm
+   9.4.3. No-so smart algorithm
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-deutsch-s-algorithm">
-   8.1.4. The Deutsch’s algorithm
+   9.4.4. The Deutsch’s algorithm
   </a>
  </li>
 </ul>
@@ -693,10 +742,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="the-deutsch-problem">
-<span id="sec-deustch"></span><h1><span class="section-number">8.1. </span>The Deutsch problem<a class="headerlink" href="#the-deutsch-problem" title="Permalink to this headline">#</a></h1>
-<p>We are going to solve a kind of classification problem discussed originally by Deutsch <span id="id1">[<a class="reference internal" href="../references.html#id17" title="David Deutsch and Roger Penrose. Quantum theory, the church-turing principle and the universal quantum computer. Proceedings of the Royal Society of London. A. Mathematical and Physical Sciences, 400(1818):97–117, July 1985. URL: https://doi.org/10.1098/rspa.1985.0070, doi:10.1098/rspa.1985.0070.">3</a>]</span>.   The problem itself is rather trivial and not really useful. However, it demonstrates an advantage of quantum computation over classical computation.</p>
+<span id="sec-deustch"></span><h1><span class="section-number">9.4. </span>The Deutsch problem<a class="headerlink" href="#the-deutsch-problem" title="Permalink to this headline">#</a></h1>
+<p>We are going to solve a kind of classification problem discussed originally by Deutsch <span id="id1">[<a class="reference internal" href="../references.html#id17" title="David Deutsch and Roger Penrose. Quantum theory, the church-turing principle and the universal quantum computer. Proceedings of the Royal Society of London. A. Mathematical and Physical Sciences, 400(1818):97–117, July 1985. URL: https://doi.org/10.1098/rspa.1985.0070, doi:10.1098/rspa.1985.0070.">4</a>]</span>.   The problem itself is rather trivial and not really useful. However, it demonstrates an advantage of quantum computation over classical computation.</p>
 <section id="the-problem">
-<h2><span class="section-number">8.1.1. </span>The problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.4.1. </span>The problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">#</a></h2>
 <p>Consider a binary function <span class="math notranslate nohighlight">\(x \mapsto f(x)\)</span> where <span class="math notranslate nohighlight">\(x \in \{0,1\}\)</span> and <span class="math notranslate nohighlight">\(f(x)  \in \{0,1\}\)</span>. There are only four possible functions, <span class="math notranslate nohighlight">\(f_1,\, f_2,\, f_3,\, f_4\)</span>.</p>
 <table>
     <thead>
@@ -712,7 +761,7 @@ title="Print to PDF"
 <p>An oracle possess one of these functions.  We can ask it questions like “what is the value of <span class="math notranslate nohighlight">\(f(1)\)</span>?”  To find what function it has, we need to ask two questions, “what are <span class="math notranslate nohighlight">\(f(0)\)</span> and <span class="math notranslate nohighlight">\(f(1)\)</span>?”.  Now, let us try a simpler problem.  The outputs of <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> are always the same regardless of the input values.  So, we call them <em>constant</em> function.  On the other hand, the outputs of <span class="math notranslate nohighlight">\(f_3\)</span> and <span class="math notranslate nohighlight">\(f_4\)</span> contain both <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>.  We shall call them <em>balanced</em> function.  Now, our task is to determine which type of the functions the oracle possess, constant or balanced. Hence, this is a classification task. Only we need to find out is if <span class="math notranslate nohighlight">\(f(0)=f(1)\)</span> or <span class="math notranslate nohighlight">\(f(0)\ne f(1)\)</span>.  How many questions do we need to ask?  Although we don’t have to identify the function, it seems that we still need to ask two questions. It turns out that the Deutsch’s quantum algorithm requires only one question.</p>
 </section>
 <section id="encoding-the-functions">
-<h2><span class="section-number">8.1.2. </span>Encoding the functions<a class="headerlink" href="#encoding-the-functions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.4.2. </span>Encoding the functions<a class="headerlink" href="#encoding-the-functions" title="Permalink to this headline">#</a></h2>
 <p>Before solving the problem, we need to find out how to express a function using gates.  Every gate is a unitary operator and thus the operation is reversible.  While <span class="math notranslate nohighlight">\(f_3\)</span> and <span class="math notranslate nohighlight">\(f_4\)</span> are bijective (invertible), <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> are even not surjective  and thus not invertible.  Here we use a two-qubit gate <span class="math notranslate nohighlight">\(U_f\)</span> acting on <span class="math notranslate nohighlight">\(|q_0\rangle \otimes |q_1\rangle\)</span> as defined by</p>
 <div class="math notranslate nohighlight">
 \[
@@ -769,7 +818,7 @@ U_{f_4} |x\rangle \otimes |y\rangle =  |x\rangle \otimes |y \oplus (1-x) \rangle
 </section>
 <hr class="docutils" />
 <section id="no-so-smart-algorithm">
-<h2><span class="section-number">8.1.3. </span>No-so smart algorithm<a class="headerlink" href="#no-so-smart-algorithm" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.4.3. </span>No-so smart algorithm<a class="headerlink" href="#no-so-smart-algorithm" title="Permalink to this headline">#</a></h2>
 <p>We just showed that how to encode the functions.  However, that is not our task.  The oracle has one of the above gates <span class="math notranslate nohighlight">\(U_{f_i}\)</span>.  We want to know if it is constant or balanced.</p>
 <p>Let’s us begin with a not-so-smart method.  We just ask two questions.  That is to apply <span class="math notranslate nohighlight">\(U_f\)</span> twice, the first one for <span class="math notranslate nohighlight">\(x=0\)</span> and the second for <span class="math notranslate nohighlight">\(x=1\)</span>.</p>
 <div class="math notranslate nohighlight">
@@ -889,7 +938,7 @@ Correct! Oracle has constant .
 </div>
 </section>
 <section id="the-deutsch-s-algorithm">
-<h2><span class="section-number">8.1.4. </span>The Deutsch’s algorithm<a class="headerlink" href="#the-deutsch-s-algorithm" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.4.4. </span>The Deutsch’s algorithm<a class="headerlink" href="#the-deutsch-s-algorithm" title="Permalink to this headline">#</a></h2>
 <p>Here is a challenge.  Can we solve the problem using <span class="math notranslate nohighlight">\(U_f\)</span> only once? In the previous algorithm, we use <span class="math notranslate nohighlight">\(U_f\)</span> twice, first for <span class="math notranslate nohighlight">\(x=0\)</span> and second for <span class="math notranslate nohighlight">\(x=1\)</span>.  The key idea is that <span class="math notranslate nohighlight">\(y\)</span> can be in a superposition state.  If <span class="math notranslate nohighlight">\(|y\rangle = |-\rangle\)</span>, what would be the answer from the oracle?</p>
 <p>Let us try to find how the oracle responds.</p>
 <div class="math notranslate nohighlight">
@@ -899,20 +948,20 @@ U_f |x\rangle \otimes |-\rangle = |x \rangle \otimes \frac{1}{\sqrt{2}} \left( |
 <p>Depending on the value of <span class="math notranslate nohighlight">\(f(x)\)</span>, the gate does nothing or changes the phase.  This trick is known as <em>phase kickback</em>.</p>
 <p>Now, we replace <span class="math notranslate nohighlight">\(|x\rangle\)</span> with another superposition state <span class="math notranslate nohighlight">\(|+\rangle\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-uf">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-uf" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-uf" title="Permalink to this equation">#</a></span>\[
 U_f |+\rangle \otimes |-\rangle = \frac{1}{\sqrt{2}} \left [ (-1)^{f(0)} |0\rangle \otimes -\rangle + (-1)^{f(1)} | 1 \rangle \otimes |-\rangle \right ]
 \]</div>
-<p>If the function is constant, <span class="math notranslate nohighlight">\(f(0)=f(1)\)</span>.  Then, Eq. <a class="reference internal" href="#equation-uf">(8.1)</a> becomes</p>
+<p>If the function is constant, <span class="math notranslate nohighlight">\(f(0)=f(1)\)</span>.  Then, Eq. <a class="reference internal" href="#equation-uf">(9.2)</a> becomes</p>
 <div class="math notranslate nohighlight" id="equation-uf-constant">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-uf-constant" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(9.3)<a class="headerlink" href="#equation-uf-constant" title="Permalink to this equation">#</a></span>\[
 U_f |+\rangle \otimes |-\rangle = (-1)^{f(0)} |+\rangle \otimes |-\rangle
 \]</div>
 <p>In it is balanced, <span class="math notranslate nohighlight">\(f(0)\ne f(1)\)</span>, then we have</p>
 <div class="math notranslate nohighlight" id="equation-uf-balanced">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-uf-balanced" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(9.4)<a class="headerlink" href="#equation-uf-balanced" title="Permalink to this equation">#</a></span>\[
 U_f |+\rangle \otimes |-\rangle = \pm |-\rangle \otimes |-\rangle
 \]</div>
-<p>Apart from the global phase, the difference between Eqs. <a class="reference internal" href="#equation-uf-constant">(8.2)</a> and <a class="reference internal" href="#equation-uf-balanced">(8.3)</a> is the state of <span class="math notranslate nohighlight">\(q_0\)</span>.  If it is <span class="math notranslate nohighlight">\(+\rangle\)</span>, then the answer is constant. If it is <span class="math notranslate nohighlight">\(|-\rangle\)</span> then, the answer is balanced.  Since we can measure only in the computational basis, we transofrm <span class="math notranslate nohighlight">\(\pm\rangle\)</span> by a Hadamard gate.</p>
+<p>Apart from the global phase, the difference between Eqs. <a class="reference internal" href="#equation-uf-constant">(9.3)</a> and <a class="reference internal" href="#equation-uf-balanced">(9.4)</a> is the state of <span class="math notranslate nohighlight">\(q_0\)</span>.  If it is <span class="math notranslate nohighlight">\(+\rangle\)</span>, then the answer is constant. If it is <span class="math notranslate nohighlight">\(|-\rangle\)</span> then, the answer is balanced.  Since we can measure only in the computational basis, we transofrm <span class="math notranslate nohighlight">\(\pm\rangle\)</span> by a Hadamard gate.</p>
 <p>Here is the summary of the Deustch’s algorithm.</p>
 <ol class="simple">
 <li><p>Prepare <span class="math notranslate nohighlight">\(|+\rangle \otimes |-\rangle\)</span>.</p></li>
@@ -1014,17 +1063,17 @@ c: 1/═════════════════════════
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="qparallel.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8. </span>Algorithms</p>
+            <p class="prev-next-title"><span class="section-number">9.3. </span>A little example of quantum parallelism</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="walshhadamard.html" title="next page">
+    <a class='right-next' id="next-link" href="qft.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8.2. </span>Walsh-Hadamard Transformation</p>
+        <p class="prev-next-title"><span class="section-number">9.5. </span>Quantum Fourier Transform</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

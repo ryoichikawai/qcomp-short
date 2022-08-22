@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>8.4. Quantum Phase Estimation &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>9.6. Quantum Phase Estimation &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,12 +51,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="References" href="../references.html" />
-    <link rel="prev" title="8.3. Quantum Fourier Transform" href="qft.html" />
+    <link rel="prev" title="9.5. Quantum Fourier Transform" href="qft.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -364,6 +366,43 @@ const thebe_selector_output = ".output, .cell_output"
      7.1. Two qubits
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composites/morequbits.html">
+     7.2. More qubits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composites/numbers.html">
+     7.3. Encoding numbers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../q2gates/intro.html">
+   8. Two-qubits Gates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q2gates/cx.html">
+     8.1. CX gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q2gates/cp.html">
+     8.2. Controlled- Z, S, T, P gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q2gates/swap.html">
+     8.3. SWAP
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -375,32 +414,42 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   8. Algorithms
+   9. Algorithms
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="deutsch.html">
-     8.1. The Deutsch problem
+    <a class="reference internal" href="teleportation.html">
+     9.1. Quantum Teleportation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="walshhadamard.html">
-     8.2. Walsh-Hadamard Transformation
+     9.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qparallel.html">
+     9.3. A little example of quantum parallelism
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deutsch.html">
+     9.4. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qft.html">
-     8.3. Quantum Fourier Transform
+     9.5. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     8.4. Quantum Phase Estimation
+     9.6. Quantum Phase Estimation
     </a>
    </li>
   </ul>
@@ -625,39 +674,39 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   8.4. Quantum Phase Estimation
+   9.6. Quantum Phase Estimation
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-problem">
-     8.4.1. The problem
+     9.6.1. The problem
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#encoding-a-continuous-number-between-0-and-1">
-     8.4.2. Encoding a continuous number between 0 and 1
+     9.6.2. Encoding a continuous number between 0 and 1
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   8.5.
+   9.7.
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-algorithm">
-     8.5.1. The algorithm
+     9.7.1. The algorithm
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example">
-     8.5.2. Example
+     9.7.2. Example
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#irrational-value">
-     8.5.3. Irrational value
+     9.7.3. Irrational value
     </a>
    </li>
   </ul>
@@ -683,39 +732,39 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   8.4. Quantum Phase Estimation
+   9.6. Quantum Phase Estimation
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-problem">
-     8.4.1. The problem
+     9.6.1. The problem
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#encoding-a-continuous-number-between-0-and-1">
-     8.4.2. Encoding a continuous number between 0 and 1
+     9.6.2. Encoding a continuous number between 0 and 1
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   8.5.
+   9.7.
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-algorithm">
-     8.5.1. The algorithm
+     9.7.1. The algorithm
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example">
-     8.5.2. Example
+     9.7.2. Example
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#irrational-value">
-     8.5.3. Irrational value
+     9.7.3. Irrational value
     </a>
    </li>
   </ul>
@@ -731,10 +780,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="quantum-phase-estimation">
-<span id="sec-qpe"></span><h1><span class="section-number">8.4. </span>Quantum Phase Estimation<a class="headerlink" href="#quantum-phase-estimation" title="Permalink to this headline">#</a></h1>
+<span id="sec-qpe"></span><h1><span class="section-number">9.6. </span>Quantum Phase Estimation<a class="headerlink" href="#quantum-phase-estimation" title="Permalink to this headline">#</a></h1>
 <p>The problem of quantum phase estimation (QPE) is just a special kind of eigenvalue problem.  However, it plays a quite important role in quantum computation.  It can be considered as a subroutine used in many useful quantum algorithms such as factorization, quantum walks, … So, we need to learn it before other quantum algorithms.</p>
 <section id="the-problem">
-<h2><span class="section-number">8.4.1. </span>The problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.6.1. </span>The problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">#</a></h2>
 <p>Consider a unitary operator <span class="math notranslate nohighlight">\(U\)</span> in a <span class="math notranslate nohighlight">\(2n\)</span>-dimension Hilbert space <span class="math notranslate nohighlight">\((\mathbb{C}_2)^{\otimes n}\)</span>.  Its eigenvector <span class="math notranslate nohighlight">\(|psi_\lambda\rangle\)</span> satisfies the eigenvalue equation <span class="math notranslate nohighlight">\(U |\psi_\lambda\rangle = \lambda |\psi_\lambda\rangle\)</span> where <span class="math notranslate nohighlight">\(\lambda\)</span> is the eigenvalue. The adjoint of the eigenvalue equation is <span class="math notranslate nohighlight">\(\langle \psi_\lambda| U^\dagger = \langle \psi_\lambda| \lambda^*\)</span>. The inner product of the two eigenvalue equations is <span class="math notranslate nohighlight">\(\langle \psi_\lambda| U^\dagger U |\psi_\lambda\rangle = |\lambda|^2 \langle\psi_\lambda|\psi_\lambda\rangle\)</span>.  Since <span class="math notranslate nohighlight">\(U\)</span> is unitary, <span class="math notranslate nohighlight">\(U\dagger U = I\)</span> and thus <span class="math notranslate nohighlight">\(|\lambda|=1\)</span>. So, the eigenvalue equation can be written as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -743,24 +792,24 @@ U|\psi_\theta\rangle = e^{2 \pi i\theta} |\psi_\theta\rangle
 <p>where <span class="math notranslate nohighlight">\(|\psi_\theta\rangle\)</span> is the eigenvector and the corresponding eigenvalue is <span class="math notranslate nohighlight">\(e^{2\pi i\theta}\)</span>. Our task is to find the phase variable  <span class="math notranslate nohighlight">\(\theta \in [0,1)\)</span> for a given <span class="math notranslate nohighlight">\(|\psi_\theta\)</span>.  Mathematically, it is a trivial problem. Assuming <span class="math notranslate nohighlight">\(|\psi_\theta\rangle\)</span> is normalized, <span class="math notranslate nohighlight">\(e^{2\pi i \theta} =  \langle \psi_\theta | U | \psi_\theta \rangle\)</span>, which current quantum computer cannot compute.  Can we find <span class="math notranslate nohighlight">\(\theta\)</span> without computing the inner product?</p>
 </section>
 <section id="encoding-a-continuous-number-between-0-and-1">
-<span id="ssec-binary-fraction"></span><h2><span class="section-number">8.4.2. </span>Encoding a continuous number between 0 and 1<a class="headerlink" href="#encoding-a-continuous-number-between-0-and-1" title="Permalink to this headline">#</a></h2>
-<p>The value we want to find is not integer.  How can we encode a continuous number between 0 and 1 in qubits? Since it is not possible to encode a true continuous number in digital computers, we approximate it.  In <a class="reference internal" href="walshhadamard.html#sec-walsh-hadamard"><span class="std std-numref">Section 8.2</span></a> we encoded integers between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2^n-1\)</span> in <span class="math notranslate nohighlight">\(n\)</span> qubits as <span class="math notranslate nohighlight">\(|j\rangle_n = |j_{n-1}\,j_{n-2}\,\cdots\,j_{0} \rangle\)</span>.  Noting that <span class="math notranslate nohighlight">\( 0 \le 2^n \theta &lt; 2^n\)</span>, we can encode <span class="math notranslate nohighlight">\(2^n \theta\)</span> as an integer state <span class="math notranslate nohighlight">\(|j\rangle_n\)</span>.  Then, <span class="math notranslate nohighlight">\(\theta = j/2^n\)</span>, which is not continuous and there is a gap of <span class="math notranslate nohighlight">\(2^{-n}\)</span>.  The gap decreases quickly as <span class="math notranslate nohighlight">\(n\)</span> increases.  If an accurate value of <span class="math notranslate nohighlight">\(\theta\)</span> is needed, we must use a large number of qubits.</p>
+<span id="ssec-binary-fraction"></span><h2><span class="section-number">9.6.2. </span>Encoding a continuous number between 0 and 1<a class="headerlink" href="#encoding-a-continuous-number-between-0-and-1" title="Permalink to this headline">#</a></h2>
+<p>The value we want to find is not integer.  How can we encode a continuous number between 0 and 1 in qubits? Since it is not possible to encode a true continuous number in digital computers, we approximate it.  In <a class="reference internal" href="walshhadamard.html#sec-walsh-hadamard"><span class="std std-numref">Section 9.2</span></a> we encoded integers between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2^n-1\)</span> in <span class="math notranslate nohighlight">\(n\)</span> qubits as <span class="math notranslate nohighlight">\(|j\rangle_n = |j_{n-1}\,j_{n-2}\,\cdots\,j_{0} \rangle\)</span>.  Noting that <span class="math notranslate nohighlight">\( 0 \le 2^n \theta &lt; 2^n\)</span>, we can encode <span class="math notranslate nohighlight">\(2^n \theta\)</span> as an integer state <span class="math notranslate nohighlight">\(|j\rangle_n\)</span>.  Then, <span class="math notranslate nohighlight">\(\theta = j/2^n\)</span>, which is not continuous and there is a gap of <span class="math notranslate nohighlight">\(2^{-n}\)</span>.  The gap decreases quickly as <span class="math notranslate nohighlight">\(n\)</span> increases.  If an accurate value of <span class="math notranslate nohighlight">\(\theta\)</span> is needed, we must use a large number of qubits.</p>
 <p>Our task is now to find the integer state <span class="math notranslate nohighlight">\(|j\rangle_n\)</span> corresponding to <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">8.5. </span><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">9.7. </span><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <section id="the-algorithm">
-<h2><span class="section-number">8.5.1. </span>The algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this headline">#</a></h2>
-<p>The QPE algorithm was developed by Kitaev in 1995 <span id="id2">[<a class="reference internal" href="../references.html#id18" title="A. Yu. Kitaev. Quantum measurements and the abelian stabilizer problem. arxiv, pages quant-ph/9511026, 1995. doi:10.48550/ARXIV.QUANT-PH/9511026.">4</a>]</span>.</p>
+<h2><span class="section-number">9.7.1. </span>The algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this headline">#</a></h2>
+<p>The QPE algorithm was developed by Kitaev in 1995 <span id="id2">[<a class="reference internal" href="../references.html#id18" title="A. Yu. Kitaev. Quantum measurements and the abelian stabilizer problem. arXiv, pages quant-ph/9511026, 1995. doi:10.48550/ARXIV.QUANT-PH/9511026.">5</a>]</span>.</p>
 <p>We use <span class="math notranslate nohighlight">\(n+1\)</span> qubits.  The first <span class="math notranslate nohighlight">\(n\)</span> qubits are used to from  the computational basis <span class="math notranslate nohighlight">\(\ell\rangle_n\, \ell=0,\cdots, n-1\)</span> and <span class="math notranslate nohighlight">\(the remaining qubit stores \)</span>|psi\rangle$.
 The first step of our strategy is to create the following state:</p>
 <div class="math notranslate nohighlight" id="equation-qpe-step1">
-<span class="eqno">(8.16)<a class="headerlink" href="#equation-qpe-step1" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(9.16)<a class="headerlink" href="#equation-qpe-step1" title="Permalink to this equation">#</a></span>\[
 |\Phi\rangle_{n+1} = \frac{1}{\sqrt{2^n}} \left (|0\rangle_n  + |1\rangle_n + \cdots |n-1\rangle_n \right) \otimes |\psi\rangle = \sum_{\ell=0}^{n-1} |\ell\rangle_n \otimes |\psi\rangle
 \]</div>
 <p>We try to find a quantum algorithm that transforms it to <span class="math notranslate nohighlight">\(|j\rangle_n \otimes |\psi\rangle\)</span>.  In other words, the algorithm eliminates the integer states expect for <span class="math notranslate nohighlight">\(|j\rangle_n\)</span>.  Since there is one term at the end, measurement detects <span class="math notranslate nohighlight">\(|j\rangle_n\)</span> with high certainty.</p>
-<p>We can generate <a class="reference internal" href="#equation-qpe-step1">(8.16)</a> using the Walsh-Hadamard transformation discussed in <a class="reference internal" href="walshhadamard.html#sec-walsh-hadamard"><span class="std std-numref">Section 8.2</span></a>.  Furthermore, we know that Eq. <a class="reference internal" href="#equation-qpe-step1">(8.16)</a> is equivalent to</p>
+<p>We can generate <a class="reference internal" href="#equation-qpe-step1">(9.16)</a> using the Walsh-Hadamard transformation discussed in <a class="reference internal" href="walshhadamard.html#sec-walsh-hadamard"><span class="std std-numref">Section 9.2</span></a>.  Furthermore, we know that Eq. <a class="reference internal" href="#equation-qpe-step1">(9.16)</a> is equivalent to</p>
 <div class="math notranslate nohighlight">
 \[
 |\Phi\rangle_{n+1} = \frac{1}{\sqrt{2^{n+1}}} \left(|0\rangle + |1\rangle\right) \otimes \cdots \otimes \left(|0\rangle + |1\rangle\right) \otimes |\psi\rangle
@@ -785,17 +834,17 @@ CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;=
 &amp;= \mathcal{F}_{n} |2^n \theta\rangle \otimes |\psi\rangle
 \end{align}
 \end{split}\]</div>
-<p>Recall that <span class="math notranslate nohighlight">\(2^n \theta\)</span> is an integer as discussed in <a class="reference internal" href="#ssec-binary-fraction"><span class="std std-numref">Section 8.4.2</span></a>.  Hence, we have Fourier transform of a computational basis.</p>
+<p>Recall that <span class="math notranslate nohighlight">\(2^n \theta\)</span> is an integer as discussed in <a class="reference internal" href="#ssec-binary-fraction"><span class="std std-numref">Section 9.6.2</span></a>.  Hence, we have Fourier transform of a computational basis.</p>
 <p>The final step is to apply inverse Fourier transform.</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal{F}^\dagger_{n} \cdot \overset{n-1}{\underset{i=0}{\Large\otimes}} CU^{2^i} |\Psi\rangle_{n+1} = \mathcal{F}^\dagger _{n} \mathcal{F}_{n} |2^n \theta\rangle \otimes |\psi\rangle =  |2^n \theta\rangle \otimes |\psi\rangle.
 \]</div>
 <p>We have obtained a desired state.  Suppose that we obtain <span class="math notranslate nohighlight">\(|j\rangle\)</span> up on the measurement with high probability, then <span class="math notranslate nohighlight">\(\theta = j/2^n\)</span>.</p>
-<p>If the number of qubits is not big enough, <span class="math notranslate nohighlight">\(2^n \theta\)</span> can deviate from any integer.  Nevertheless, the chance to find the nearest integer <span class="math notranslate nohighlight">\(j\)</span> is much high than other integers.  Thence, this algorithm gives us a good estimate of <span class="math notranslate nohighlight">\(\theta\)</span>.  See the discussion of the error in <span id="id3">[<a class="reference internal" href="../references.html#id5" title="M. A. Nielsen and I. L. Chuang. Quantum Computation and Quantum Information. Cambridge University Press, 2000. ISBN 0-521-63503-9.">5</a>]</span>.</p>
+<p>If the number of qubits is not big enough, <span class="math notranslate nohighlight">\(2^n \theta\)</span> can deviate from any integer.  Nevertheless, the chance to find the nearest integer <span class="math notranslate nohighlight">\(j\)</span> is much high than other integers.  Thence, this algorithm gives us a good estimate of <span class="math notranslate nohighlight">\(\theta\)</span>.  See the discussion of the error in <span id="id3">[<a class="reference internal" href="../references.html#id5" title="M. A. Nielsen and I. L. Chuang. Quantum Computation and Quantum Information. Cambridge University Press, 2000. ISBN 0-521-63503-9.">6</a>]</span>.</p>
 </section>
 <section id="example">
-<h2><span class="section-number">8.5.2. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.7.2. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
 <p>Consider a unitary operator <span class="math notranslate nohighlight">\(U = T^3\)</span>. <span class="math notranslate nohighlight">\(|1\rangle\)</span> is known to be its eigenket.  We want to find the phase of angle <span class="math notranslate nohighlight">\(\theta\)</span> of the corresponding eigenvalue.  Since the value of <span class="math notranslate nohighlight">\(\theta\)</span> is not known, we don’t know how many qubits are needed.  Let us try three qubits for the expression of <span class="math notranslate nohighlight">\(\theta\)</span> and another qubit for <span class="math notranslate nohighlight">\(|psi\rangle\)</span>.  We need also three classical bits for measurement. <span class="math notranslate nohighlight">\(T^3\)</span> can be realized by the pase gate <span class="math notranslate nohighlight">\(P(3\pi/4)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1021,7 +1070,7 @@ c: 3/═════════════════════════
 <p>Now we got <span class="math notranslate nohighlight">\(|0110\rangle = |6\rangle\)</span> from which we find <span class="math notranslate nohighlight">\(\theta = 6/2^4 = 3/8\)</span>.  The result does not change.</p>
 </section>
 <section id="irrational-value">
-<h2><span class="section-number">8.5.3. </span>Irrational value<a class="headerlink" href="#irrational-value" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.7.3. </span>Irrational value<a class="headerlink" href="#irrational-value" title="Permalink to this headline">#</a></h2>
 <p>If the eigenvalue is <span class="math notranslate nohighlight">\(e^{2\pi i /3}\)</span>, <span class="math notranslate nohighlight">\(theta=1/3\)</span> cannot be expressed by the finite binary fractions and thus it is not possible to get the perfect answer using the current algorithm.  Let us consider <span class="math notranslate nohighlight">\(U=P(2\pi/3)\)</span> and <span class="math notranslate nohighlight">\(\psi\rangle=|1\rangle\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1139,7 +1188,7 @@ c: 3/═════════════════════════
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8.3. </span>Quantum Fourier Transform</p>
+            <p class="prev-next-title"><span class="section-number">9.5. </span>Quantum Fourier Transform</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../references.html" title="next page">

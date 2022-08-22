@@ -64,7 +64,6 @@ parts:
    -  file: q2gates/intro
       sections:
       -  file: q2gates/cx
-      -  file: q2gates/cz
       -  file: q2gates/cp
       -  file: q2gates/swap
 #sections:
@@ -110,6 +109,7 @@ parts:
    chapters:
    -  file: algorithms/intro
       sections:
+      -  file: algorithms/teleportation
       -  file: algorithms/walshhadamard
       -  file: algorithms/qparallel
       -  file: algorithms/deutsch

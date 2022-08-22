@@ -1,0 +1,1494 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>8.1. CX gate &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.2. Controlled- Z, S, T, P gates" href="cp.html" />
+    <link rel="prev" title="8. Two-qubits Gates" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/me-tiny.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">A First Step to Quantum Computation with Qiskit.</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../cover.html">
+                    A First Step to Quantum Computation with Qiskit
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preface
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preface.html">
+   1. Preface
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preparation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../preparation/intro.html">
+   2. Preparation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/thisbook.html">
+     2.1. About This Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/python.html">
+     2.2. Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/jupyter.html">
+     2.3. JupyterLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/qiskit.html">
+     2.4. Qiskit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../preparation/cloud.html">
+     2.5. Cloud IDE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qmsummary/intro.html">
+   3. Quantum Mechanics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/vectors.html">
+     3.1. State vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/operators.html">
+     3.2. Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/evolution.html">
+     3.3. Time-evolution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qmsummary/measurement.html">
+     3.4. Quantum measurement
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../computation/intro.html">
+   4. What is a Quantum Computer?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/ccomp.html">
+     4.1. Classical computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/qcomp.html">
+     4.2. Quantum computation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Single qubit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../qubit/intro.html">
+   5. Single qubit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/purestates.html">
+     5.1. Pure states
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/bloch.html">
+     5.2. Bloch sphere
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/measurement.html">
+     5.3. Qubit Measurement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../qubit/mixedstates.html">
+     5.4. Mixed states
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../q1gates/intro.html">
+   6. One-qubit gates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/u.html">
+     6.4. U Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/r.html">
+     6.5. Rotation Gates, RX, RY, RZ
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/x.html">
+     6.6. XGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/y.html">
+     6.7. YGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/z.html">
+     6.8. ZGate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/h.html">
+     6.9. Hadamard gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/sx.html">
+     6.10. SX and SXdg Gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/s.html">
+     6.11. S Gate and S
+     <span class="math notranslate nohighlight">
+      \(^\dagger\)
+     </span>
+     Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/p.html">
+     6.12. P Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/change-basis.html">
+     6.13. Change of basis sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q1gates/tomography.html">
+     6.14. State tomography
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Composite Systems
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../composites/intro.html">
+   7. Composite Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composites/2qubit.html">
+     7.1. Two qubits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composites/morequbits.html">
+     7.2. More qubits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../composites/numbers.html">
+     7.3. Encoding numbers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   8. Two-qubits Gates
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     8.1. CX gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cp.html">
+     8.2. Controlled- Z, S, T, P gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="swap.html">
+     8.3. SWAP
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../algorithms/intro.html">
+   9. Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/teleportation.html">
+     9.1. Quantum Teleportation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/walshhadamard.html">
+     9.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qparallel.html">
+     9.3. A little example of quantum parallelism
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/deutsch.html">
+     9.4. The Deutsch problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qft.html">
+     9.5. Quantum Fourier Transform
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qpe.html">
+     9.6. Quantum Phase Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Backmatters
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/q2gates/cx.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fq2gates/cx.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/q2gates/cx.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   8.1.1. Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acting-on-superposition-state">
+   8.1.2. Acting on superposition state
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#phase-kickback">
+   8.1.3. Phase kickback
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#change-of-basis">
+   8.1.4. Change of basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-applications">
+   8.1.5. Simple applications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-bell-states">
+     Generating Bell states
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bell-state-measurement">
+     Bell state measurement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#addition-modulo-2">
+     Addition modulo 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#swapping-qubits">
+     Swapping qubits
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>CX gate</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   8.1.1. Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acting-on-superposition-state">
+   8.1.2. Acting on superposition state
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#phase-kickback">
+   8.1.3. Phase kickback
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#change-of-basis">
+   8.1.4. Change of basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-applications">
+   8.1.5. Simple applications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-bell-states">
+     Generating Bell states
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bell-state-measurement">
+     Bell state measurement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#addition-modulo-2">
+     Addition modulo 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#swapping-qubits">
+     Swapping qubits
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="cx-gate">
+<span id="sec-cxgate"></span><h1><span class="section-number">8.1. </span>CX gate<a class="headerlink" href="#cx-gate" title="Permalink to this headline">#</a></h1>
+<p>CX (Controlled-X), known also as <code class="docutils literal notranslate"><span class="pre">CNOT</span></code>, is one of the most essential gates for quantum computation.</p>
+<section id="definition">
+<h2><span class="section-number">8.1.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<p><strong>Operational Definition</strong></p>
+<p>When gate CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> acts on <span class="math notranslate nohighlight">\(|q_1\, q_0\rangle\)</span>, X is applied to <span class="math notranslate nohighlight">\(q_1\)</span> if <span class="math notranslate nohighlight">\(q_0=1\)</span> and nothing is done otherwise.<a class="footnote-reference brackets" href="#symb-cx" id="id1">1</a> Qubit <span class="math notranslate nohighlight">\(q_0\)</span> serves as source and <span class="math notranslate nohighlight">\(q_1\)</span> as target. Mathematically, it is expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+\text{CX}_{q_0}^{q_1} = \text{I} \otimes |0\rangle\langle 0| + \text{X} \otimes |1\rangle\langle 1|
+\]</div>
+<p>Switching source and target qubits,</p>
+<p>CX<span class="math notranslate nohighlight">\(_{q_1}^{q_0}|q_1\, q_0\rangle\)</span> means “Apply X to <span class="math notranslate nohighlight">\(q_0\)</span> if <span class="math notranslate nohighlight">\(q_1=1\)</span> and do nothing otherwise.”  Mathematically, it is expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+\text{CX}_{q_1}^{q_0} = |0\rangle\langle 0| \otimes \text{I}   +   |1\rangle\langle 1| \otimes \text{X}
+\]</div>
+<p><strong>Transformation</strong></p>
+<p>CX transforms computational basis as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{CX}_{q_0}^{q_1} \lvert 00\rangle &amp;= \lvert 00\rangle \\
+\text{CX}_{q_0}^{q_1} \lvert 01\rangle &amp;= \lvert 11\rangle \\
+\text{CX}_{q_0}^{q_1} \lvert 10\rangle &amp;= \lvert 10\rangle \\
+\text{CX}_{q_0}^{q_1} \lvert 11\rangle &amp;= \lvert 01\rangle 
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{CX}_{q_0}^{q_1} \lvert 00\rangle &amp;= \lvert 00\rangle \\
+\text{CX}_{q_1}^{q_0} \lvert 01\rangle &amp;= \lvert 01\rangle \\
+\text{CX}_{q_1}^{q_0} \lvert 10\rangle &amp;= \lvert 11\rangle \\
+\text{CX}_{q_1}^{q_0} \lvert 11\rangle &amp;= \lvert 10\rangle 
+\end{align}
+\end{split}\]</div>
+<p><strong>Matrix representation</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{CX}_{q_0}^{q_1} = \begin{bmatrix} 1&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;1\\0&amp;0&amp;1&amp;0\\0&amp;1&amp;0&amp;0\end{bmatrix}
+\end{split}\]</div>
+<p>which is default CX in Qiskit.  In many literature, <code class="docutils literal notranslate"><span class="pre">CX</span></code> corresponds to:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{CX}_{q_1}^{q_0} = \begin{bmatrix} 1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;1\\0&amp;0&amp;1&amp;0\end{bmatrix}
+\end{split}\]</div>
+<p>Don’t get confused. Our notation avoids the confusion.</p>
+<p>The Qiskit circuit symbol is <code class="docutils literal notranslate"><span class="pre">cx</span></code> and it appears in circuit as:</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># CX_{q0,q1}</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># CX_{q1,q0}</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          ┌───┐
+q_0: ──■──┤ X ├
+     ┌─┴─┐└─┬─┘
+q_1: ┤ X ├──■──
+     └───┘     
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="acting-on-superposition-state">
+<h2><span class="section-number">8.1.2. </span>Acting on superposition state<a class="headerlink" href="#acting-on-superposition-state" title="Permalink to this headline">#</a></h2>
+<p>CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> swaps the coefficients of <span class="math notranslate nohighlight">\(|01\rangle\)</span> and <span class="math notranslate nohighlight">\(|11\rangle\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{CX}_{q_0}^{q_1} \left (c_{00} |00\rangle + c_{01} |01\rangle + c_{10} |10\rangle + c_{11} |11\rangle \right ) =
+c_{00} |00\rangle + c_{11} |01\rangle + c_{10} |10\rangle + c_{01} |11\rangle
+\]</div>
+<p>Similarly, CX<span class="math notranslate nohighlight">\(_{q_1}^{q_0}\)</span> swaps the coefficients of <span class="math notranslate nohighlight">\(|10\rangle\)</span> and <span class="math notranslate nohighlight">\(|11\rangle\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{CX}_{q_1}^{q_0} \left (c_{00} |00\rangle + c_{01} |01\rangle + c_{10} |10\rangle + c_{11} |11\rangle \right ) =
+c_{00} |00\rangle + c_{01} |01\rangle + c_{11} |10\rangle + c_{10} |11\rangle
+\]</div>
+<p>The following Qiskit example demonstrates it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐┌───┐
+q_0: ┤ X ├┤ H ├
+     ├───┤├───┤
+q_1: ┤ X ├┤ H ├
+     └───┘└───┘</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="c1"># state before applying CX</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State before applying CX.&quot;</span><span class="p">)</span>
+<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>State before applying CX.
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{1}{2} |00\rangle- \frac{1}{2} |01\rangle- \frac{1}{2} |10\rangle+\frac{1}{2} |11\rangle\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐┌───┐     
+q_0: ┤ X ├┤ H ├──■──
+     ├───┤├───┤┌─┴─┐
+q_1: ┤ X ├┤ H ├┤ X ├
+     └───┘└───┘└───┘</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># state after applyiong CX</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State after applying CX.&quot;</span><span class="p">)</span>
+<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>State after applying CX.
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{1}{2} |00\rangle+\frac{1}{2} |01\rangle- \frac{1}{2} |10\rangle- \frac{1}{2} |11\rangle\]</div>
+</div>
+</div>
+<p>Compare the states before and after applying <code class="docutils literal notranslate"><span class="pre">CX</span></code> and find how the coefficients changed.</p>
+<div class="warning admonition">
+<p class="admonition-title">Source qubit not necessarily preserved by control gates</p>
+<p>The definition of CX seems indicating that only the state of the target qubit is modified and the state of the source qubit remains the same.  Surprisingly, that is not true.  In some cases, the state of the source qubit also changes.</p>
+<p>Let us look at the above example more carefully.  The state before applying CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2}\left(|00\rangle - |01\rangle - |10\rangle + |11\rangle\right) = 
+\frac{1}{\sqrt{2}}\left(|0\rangle - |1\rangle\right) \otimes \frac{1}{\sqrt{2}}\left(|0\rangle - |1\rangle\right) = |-\rangle\otimes |-\rangle
+\]</div>
+<p>and after applying <code class="docutils literal notranslate"><span class="pre">CX</span></code><span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> ,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2}\left(|00\rangle + |01\rangle - |10\rangle - |11\rangle\right) = 
+\frac{1}{\sqrt{2}}\left(|0\rangle - |1\rangle\right) \otimes \frac{1}{\sqrt{2}}\left(|0\rangle + |1\rangle\right) = |-\rangle\otimes |+\rangle
+\]</div>
+<p>Notice that the source qubit is transformed from <span class="math notranslate nohighlight">\(|-\rangle\)</span> to <span class="math notranslate nohighlight">\(|+\rangle\)</span>.  This kind of transformation is called <em>phase kickback</em> since the phase of the source qubit changed.  The phase kickback is a ubiquitous strategy in quantum algorithms.  See the next subsection.</p>
+</div>
+</section>
+<section id="phase-kickback">
+<span id="ssec-cx-kickback"></span><h2><span class="section-number">8.1.3. </span>Phase kickback<a class="headerlink" href="#phase-kickback" title="Permalink to this headline">#</a></h2>
+<p>Let us look at the action of CX on z-basis <span class="math notranslate nohighlight">\(|\pm\pm\rangle\)</span>.  We assume that <span class="math notranslate nohighlight">\(q_0\)</span> is the control qubit and <span class="math notranslate nohighlight">\(q_1\)</span> is the target.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{CX}_{q_0}^{q_1} |++\rangle &amp;= \frac{1}{2} \text{CX}_{q_0}^{q_1} \left(|00\rangle + |01\rangle  + |10\rangle + |11\rangle \right)
+&amp;&amp;=  \frac{1}{2} \left(|00\rangle + |11\rangle  + |10\rangle + |01\rangle \right) &amp;= |++\rangle \\
+\text{CX}_{q_0}^{q_1} |+-\rangle &amp;= \frac{1}{2} \text{CX}_{q_0}^{q_1} \left(|00\rangle - |01\rangle  + |10\rangle - |11\rangle \right)
+&amp;&amp;=  \frac{1}{2} \left(|00\rangle - |11\rangle  + |10\rangle - |11\rangle \right) &amp;= |+-\rangle \\
+\text{CX}_{q_0}^{q_1} |-+\rangle &amp;= \frac{1}{2} \text{CX}_{q_0}^{q_1} \left(|00\rangle + |01\rangle  - |10\rangle - |11\rangle \right)
+&amp;&amp;=  \frac{1}{2} \left(|00\rangle + |11\rangle  - |10\rangle - |01\rangle \right) &amp;= |--\rangle \\
+\text{CX}_{q_0}^{q_1} |--\rangle &amp;= \frac{1}{2} \text{CX}_{q_0}^{q_1} \left(|00\rangle - |01\rangle  - |10\rangle + |11\rangle \right)
+&amp;&amp;=  \frac{1}{2} \left(|00\rangle - |11\rangle  - |10\rangle + |01\rangle \right) &amp;= |-+\rangle
+\end{align}
+\end{split}\]</div>
+<p>This transformation can be described as “Apply Z to <span class="math notranslate nohighlight">\(q_0\)</span> if <span class="math notranslate nohighlight">\(q_1=-\)</span> and do nothing otherwise.” Interestingly, now <span class="math notranslate nohighlight">\(q_1\)</span> is the control qubit and <span class="math notranslate nohighlight">\(q_0\)</span> is the target.  The gate has not change and  this operation is still “Apply X to <span class="math notranslate nohighlight">\(q_1\)</span> if <span class="math notranslate nohighlight">\(q_0=1\)</span> and do nothing otherwise.”  The two operations are equivalent. The reversal of control-target relation is known as signature of <em>phase kickback</em>.  Other controlled gates also show phase kickback.</p>
+<p>Remembering that the Hadamard gate changes basis set from z-basis to x-basis and vice versa. Applying H gate before CX we can realize the phase kickback shown above. After the kickback, we can go back to z-basis by another H gate. Then, we have reversed CX.</p>
+<p>In the following example, we start with an initial state <span class="math notranslate nohighlight">\(|10\rangle\)</span>. In the first example, the basis is switched to x-basis by H gate and apply CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span>. In the second computation, CX<span class="math notranslate nohighlight">\(_{q_1}^{q_0}\)</span> is directly applied. Both get the same result. Try other initial conditions and confirm that the two circuits do the same transformation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">           ░ ┌───┐     ┌───┐
+q_0: ──────░─┤ H ├──■──┤ H ├
+     ┌───┐ ░ ├───┤┌─┴─┐├───┤
+q_1: ┤ X ├─░─┤ H ├┤ X ├┤ H ├
+     └───┘ ░ └───┘└───┘└───┘</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[None |01\rangle |11\rangle\]</div>
+</div>
+</div>
+<p>However, this must be equivalent to</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>   
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">           ░ ┌───┐
+q_0: ──────░─┤ X ├
+     ┌───┐ ░ └─┬─┘
+q_1: ┤ X ├─░───■──
+     └───┘ ░      </pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[ |11\rangle\]</div>
+</div>
+</div>
+</section>
+<section id="change-of-basis">
+<h2><span class="section-number">8.1.4. </span>Change of basis<a class="headerlink" href="#change-of-basis" title="Permalink to this headline">#</a></h2>
+<p>Suppose that we want to flip <span class="math notranslate nohighlight">\(q_1\)</span>  if <span class="math notranslate nohighlight">\(q_0\)</span> is <span class="math notranslate nohighlight">\(|-\rangle\)</span> and do nothing otherwise.  We change the basis of <span class="math notranslate nohighlight">\(q_0\)</span> using H gate, apply CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span>, and apply H again to <span class="math notranslate nohighlight">\(q_0\)</span>.  Note that the third step bring <span class="math notranslate nohighlight">\(q_0\)</span> back to the original state.  We can generate superposition of Bell states using the circuit.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} \cdot \text{H}_{q_0} |00\rangle &amp;= \frac{1}{2}\left(|00\rangle + |01\rangle + |10\rangle - |11\rangle \right) = \frac{1}{\sqrt{2}} \left( \Phi^{-} + \Psi^{+} \right) \\
+\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} \cdot \text{H}_{q_0} |01\rangle &amp;= \frac{1}{2}\left(|00\rangle - |01\rangle + |10\rangle + |11\rangle \right) = \frac{1}{\sqrt{2}} \left( \Phi^{+} - \Psi^{-} \right) \\
+\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} \cdot \text{H}_{q_0} |10\rangle &amp;= \frac{1}{2}\left(|00\rangle + |01\rangle - |10\rangle + |11\rangle \right) = \frac{1}{\sqrt{2}} \left( \Phi^{+} + \Psi^{-} \right) \\
+\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} \cdot \text{H}_{q_0} |11\rangle &amp;= \frac{1}{2}\left(-|00\rangle + |01\rangle + |10\rangle + |11\rangle \right) = \frac{1}{\sqrt{2}} \left( -\Phi^{-} + \Psi^{+} \right)
+\end{align}
+\end{split}\]</div>
+<p>If we want to flip the target qubit also in x-basis, H gate is applied on <span class="math notranslate nohighlight">\(q_1\)</span> before and after CX. as well.  However, this circuit is identical to just a single CX since it does the same transformation simply in a different basis.</p>
+<p>The following example generates <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2}} \left( \Phi^{-} + \Psi^{+} \right)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐     ┌───┐
+q_0: ┤ H ├──■──┤ H ├
+     └───┘┌─┴─┐└───┘
+q_1: ─────┤ X ├─────
+          └───┘     </pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+
+<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{1}{2} |00\rangle+\frac{1}{2} |01\rangle+\frac{1}{2} |10\rangle- \frac{1}{2} |11\rangle\]</div>
+</div>
+</div>
+</section>
+<section id="simple-applications">
+<h2><span class="section-number">8.1.5. </span>Simple applications<a class="headerlink" href="#simple-applications" title="Permalink to this headline">#</a></h2>
+<p>As the above example shows, CX gate is used to create Bell states.  In <a class="reference internal" href="../algorithms/intro.html#chap-algorithms"><span class="std std-numref">Section 9</span></a>, many quantum strategies that use CX extensively will be discussed.  Here are a few small applications.</p>
+<section id="generating-bell-states">
+<h3>Generating Bell states<a class="headerlink" href="#generating-bell-states" title="Permalink to this headline">#</a></h3>
+<p>The
+No one-qubit gate can generate an entangled state.  The CX gate is commonly used to generate entangled states from product states.  As discussed in <a class="reference internal" href="../composites/2qubit.html#sec-2qubits"><span class="std std-numref">Section 7.1</span></a>, Bell states play important roles in quantum computation. We can generate all Bell states by by applying CX_{q_0}^{q_1} \cdot H_{q_0}$ to the computational basis vectors.</p>
+<div class="math notranslate nohighlight" id="equation-cbase-bell">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-cbase-bell" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+CX_{q_0}^{q_1} \cdot H_{q_0} |00\rangle &amp;= |\Phi^{+}\rangle \\
+CX_{q_0}^{q_1} \cdot H_{q_0} |01\rangle &amp;= |\Phi^{-}\rangle \\
+CX_{q_0}^{q_1} \cdot H_{q_0} |10\rangle &amp;= |\Psi^{+}\rangle \\
+CX_{q_0}^{q_1} \cdot H_{q_0} |11\rangle &amp;= -|\Psi^{-}\rangle
+\end{align}
+\end{split}\]</div>
+<p>The last one has unwanted phase “-”.  We can get rid of it by applying Z on both qubits.  In the following Qiskit code, we generate the singlet state <span class="math notranslate nohighlight">\(|\Psi^{-}\)</span>.</p>
+<p><strong>Exercise</strong>  <a class="reference internal" href="#sec-cxgate"><span class="std std-numref">8.1</span></a>.1  Generate <span class="math notranslate nohighlight">\(|\Psi^{\pm}\rangle\)</span> and visualize the results using Qiskit. (HINT: You can flip one of qubits by X gate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="c1"># generate |11&gt;</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># apply CX*H</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># adjust phase</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">z</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">psi</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="n">psi</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{\sqrt{2}}{2} |01\rangle- \frac{\sqrt{2}}{2} |10\rangle\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_state_qsphere</span>
+<span class="c1"># it&#39;s an entangled state.  Use qsphere.</span>
+<span class="n">plot_state_qsphere</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cx_24_0.png" src="../_images/cx_24_0.png" />
+</div>
+</div>
+<p><strong>Exercise</strong>  <a class="reference internal" href="cp.html#sec-cpgate"><span class="std std-numref">8.2</span></a>.1  Generate <span class="math notranslate nohighlight">\(|\Phi^{\pm}\rangle\)</span> and visualize the results using Qiskit.</p>
+</section>
+<section id="bell-state-measurement">
+<h3>Bell state measurement<a class="headerlink" href="#bell-state-measurement" title="Permalink to this headline">#</a></h3>
+<p>We can expand any two qubit states in the Bell basis as</p>
+<div class="math notranslate nohighlight" id="equation-bell-expansion">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-bell-expansion" title="Permalink to this equation">#</a></span>\[
+\ket{\psi} = c_{\Phi^+} |\Phi^{+}\rangle + c_{\Phi^-} |\Phi^{-}\rangle + c_{\Psi^+} |\Psi^{+}\rangle + c_{\Psi^-} |\Phi^{-}\rangle .
+\]</div>
+<p>Now, we want find the probabilities to find the Bell states. The process is called <em>Bell measurement</em>.  After the measurement, the state collapses to a Bell state depending on the outcome of the measurement.  The Bell measurement is commonly used in quantum information processes, such as <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_teleportation"><em>quantum teleportation</em></a>.  However, the Bell measurement is not trivial.  Any local measurement fails and thus the standard measurement based on the computational basis does not help.</p>
+<p>In the example above, we transformed the computational basis vectors to the Bell states using CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1} \cdot\)</span> H<span class="math notranslate nohighlight">\(_{q_0}\)</span>.  By inverting the transformation, we can convert the Bell states to the computational basis.  That is applying H<span class="math notranslate nohighlight">\(_{q_0} \cdot\)</span> CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> to the Bell states</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{+}\rangle &amp;= |00\rangle \\
+\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{-}\rangle &amp;= |01\rangle \\
+\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Psi^{+}\rangle &amp;= |10\rangle \\
+\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{-}\rangle &amp;= -|11\rangle
+\end{align}
+\end{split}\]</div>
+<p>Applying <span class="math notranslate nohighlight">\((H \otimes I)\cdot CX\)</span> to the superposition <a class="reference internal" href="#equation-bell-expansion">(8.2)</a>, we obtain</p>
+<div class="math notranslate nohighlight" id="equation-comp-expansion">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-comp-expansion" title="Permalink to this equation">#</a></span>\[
+(H \otimes I)\cdot CX \ket{\psi} = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle - c_{\Psi^-} |11\rangle .
+\]</div>
+<p>The resulting state is a superposition in computational basis but the expansion coefficients are the same as before the transformation.
+Now, the standard measurement in the computational basis determine the probabilities of finding the corresponding Bell state.  The actual measurement collapses the state to one of computational basis vectors but the Bell measurement should result in one of the Bell state.
+The computational basis vector obtained from the measurement can be transformed back to the corresponding Bell state.</p>
+</section>
+<section id="addition-modulo-2">
+<h3>Addition modulo 2<a class="headerlink" href="#addition-modulo-2" title="Permalink to this headline">#</a></h3>
+<p>We want to compute modulo-2 addition of two bits <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. We write it <span class="math notranslate nohighlight">\(x \otimes y\)</span>.  Its truth table is</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(y\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(x\oplus y\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>In classical computer, XOR gate calculate it. Unlike classical XOR, quantum computation must be reversible.  Thus we need to retain the values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. The out needs one qubit.  In total, we need three qubits
+<span class="math notranslate nohighlight">\(|z\,y\,x\rangle = |z\rangle \otimes |y\rangle \otimes |x\rangle\)</span> where <span class="math notranslate nohighlight">\(z\)</span> contains <span class="math notranslate nohighlight">\(x \oplus y\)</span> at the end.  We assume that <span class="math notranslate nohighlight">\(z=0\)</span> initially.  We want to construct a quantum circuit which transforms <span class="math notranslate nohighlight">\(|0\,y,x\rangle\)</span> to <span class="math notranslate nohighlight">\(|(x \oplus y)\, y\, x\rangle\)</span>.  Writing it explicitly.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+|000\rangle \quad &amp;\Rightarrow \quad |000\rangle \\
+|001\rangle \quad &amp;\Rightarrow \quad |101\rangle \\
+|010\rangle \quad &amp;\Rightarrow \quad |110\rangle \\
+|011\rangle \quad &amp;\Rightarrow \quad |011\rangle
+\end{align}
+\end{split}\]</div>
+<p>The second transformation can be done by CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> and the third transformation can be done by a CX<span class="math notranslate nohighlight">\(_{q_1}^{q_2}\)</span>. These two gates also works for the first transformation.  However, it does not work for the last transformation.  It takes more than one step.  It would be nice if <span class="math notranslate nohighlight">\(z\)</span> is directly correlated to <span class="math notranslate nohighlight">\(y\)</span> or <span class="math notranslate nohighlight">\(x\)</span>. Let us try CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{CX}_{q_0}^{q_1}|000\rangle = |000\rangle \\
+\text{CX}_{q_0}^{q_1}|001\rangle = |011\rangle \\
+\text{CX}_{q_0}^{q_1}|010\rangle = |010\rangle \\
+\text{CX}_{q_0}^{q_1}|011\rangle = |001\rangle
+\end{align}
+\end{split}\]</div>
+<p>Now , the output <span class="math notranslate nohighlight">\(z\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are perfectly correlated.  We can now apply CX<span class="math notranslate nohighlight">\(_{q_1}^{q_2}\)</span> to find <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|000\rangle = \text{CX}_{q_1}^{q_2}|000\rangle = |000\rangle  \\
+\text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|001\rangle = \text{CX}_{q_1}^{q_2}|011\rangle = |111\rangle \\
+\text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|010\rangle = \text{CX}_{q_1}^{q_2}|010\rangle = |110\rangle \\
+\text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|011\rangle = \text{CX}_{q_1}^{q_2}|001\rangle = |001\rangle 
+\end{align}
+\end{split}\]</div>
+<p>The value of <span class="math notranslate nohighlight">\(z\)</span> is correct but <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are not preserved.  That is not good. Next,we try to recover them by
+X<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{CX}_{q_0}^{q_1} \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|000\rangle = \text{CX}_{q_0}^{q_1}|000\rangle = |000\rangle  \\
+\text{CX}_{q_0}^{q_1} \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|001\rangle = \text{CX}_{q_0}^{q_1}|111\rangle = |101\rangle \\
+\text{CX}_{q_0}^{q_1} \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|010\rangle = \text{CX}_{q_0}^{q_1}|110\rangle = |110\rangle \\
+\text{CX}_{q_0}^{q_1} \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|011\rangle = \text{CX}_{q_0}^{q_1}|001\rangle =|011\rangle 
+\end{align}
+\end{split}\]</div>
+<p>Now we have the desired output.  Three CX gates calculate <span class="math notranslate nohighlight">\(x \oplus y\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="c1"># loop over all inputs</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+
+        <span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+        <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+ 
+        <span class="c1"># generate input state</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>     
+        <span class="k">if</span> <span class="n">y</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># compute x \oplus y</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># extract output</span>
+        <span class="n">psi</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="n">psi</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">psi</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x=</span><span class="si">{0:d}</span><span class="s2">, y=</span><span class="si">{1:d}</span><span class="s2">, x+y=</span><span class="si">{2:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">psi</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=0, y=0, x+y=0
+x=0, y=1, x+y=1
+x=1, y=0, x+y=1
+x=1, y=1, x+y=0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="swapping-qubits">
+<h3>Swapping qubits<a class="headerlink" href="#swapping-qubits" title="Permalink to this headline">#</a></h3>
+<p>Swap gate SWAP is defined by SWAP<span class="math notranslate nohighlight">\(|q_1\, q_0\rangle = |q_0\, q_1\rangle\)</span>.  When it acts on a superposition state, the coefficients of <span class="math notranslate nohighlight">\(|01\rangle\)</span> and <span class="math notranslate nohighlight">\(|10\rangle\)</span> is swapped.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{SWAP} \left (c_{00} |00\rangle + c_{01} |01\rangle + c_{10} |10\rangle + c_{11} |11\rangle \right ) =
+c_{00} |00\rangle + c_{10} |01\rangle + c_{01} |10\rangle + c_{11} |11\rangle
+\]</div>
+<p>Recall that CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> swaps the coefficients of <span class="math notranslate nohighlight">\(|01\rangle\)</span> and <span class="math notranslate nohighlight">\(|11\rangle\)</span>, and  CX<span class="math notranslate nohighlight">\(_{q_1}^{q_0}\)</span> swaps the coefficients of <span class="math notranslate nohighlight">\(|10\rangle\)</span> and <span class="math notranslate nohighlight">\(|11\rangle\)</span>.  Using these gates in series, we can create SWAP.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;\text{CX}_{q_0}^{q_1} \cdot \text{CX}_{q_1}^{q_0} \cdot \text{CX}_{q_0}^{q_1} \left(c_{00} |00\rangle + c_{01} |01\rangle + c_{10} |10\rangle + c_{11} |11\rangle \right)\\ 
+= &amp;\text{CX}_{q_0}^{q_1} \cdot \text{CX}_{q_1}^{q_0} \left(c_{00} |00\rangle + c_{11} |01\rangle + c_{10} |10\rangle + c_{01} |11\rangle \right) \\
+= &amp;\text{CX}_{q_0}^{q_1}  \left(c_{00} |00\rangle + c_{11} |01\rangle + c_{01} |10\rangle + c_{10} |11\rangle \right)\\
+= &amp; c_{00} |00\rangle + c_{10} |01\rangle + c_{01} |10\rangle + c_{11} |11\rangle
+\end{align}
+\end{split}\]</div>
+<p>which indicates SWAP=<span class="math notranslate nohighlight">\(\text{CX}_{q_0}^{q_1} \cdot  \text{CX}_{q_1}^{q_0} \cdot \text{CX}_{q_0}^{q_1}\)</span>. (See the following circuit.)</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sawpping qubits&quot;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sawpping qubits
+</pre></div>
+</div>
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">          ┌───┐     
+q_0: ──■──┤ X ├──■──
+     ┌─┴─┐└─┬─┘┌─┴─┐
+q_1: ┤ X ├──■──┤ X ├
+     └───┘     └───┘</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="c1"># randomly oriented qubits</span>
+<span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">u</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">u</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># get the statevector in dict format</span>
+<span class="n">psi</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+<span class="c1"># evaluate of probabilities</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">psi</span><span class="p">:</span>
+    <span class="n">p0</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">psi</span><span class="p">[</span><span class="n">k</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;probability distribution before swap&quot;</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">p0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probability distribution before swap
+</pre></div>
+</div>
+<img alt="../_images/cx_32_1.png" src="../_images/cx_32_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">psi</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">psi</span><span class="p">:</span>
+    <span class="n">p1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">psi</span><span class="p">[</span><span class="n">k</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;probability distribution after swapping.&quot;</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probability distribution after swapping.
+</pre></div>
+</div>
+<img alt="../_images/cx_33_1.png" src="../_images/cx_33_1.png" />
+</div>
+</div>
+<hr class="docutils" />
+<p>Last Modified on 08/19/2022.</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="symb-cx"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>The notation <code class="docutils literal notranslate"><span class="pre">CX</span></code><span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> is not commonly used.  In many literature, simply <code class="docutils literal notranslate"><span class="pre">CX</span></code> is used without specifying which qubit is source, causing confusion. If you are confused, see the corresponding circuit diagram.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./q2gates"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>Two-qubits Gates</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="cp.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>Controlled- Z, S, T, P gates</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Ryoichi Kawai<br/>
+  
+      &copy; Copyright Ryoichi Kawai 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

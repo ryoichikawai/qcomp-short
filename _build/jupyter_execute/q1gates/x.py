@@ -13,7 +13,10 @@
 # **Transformation**  
 # 
 # >$$
-# X |0\rangle = |1\rangle, \qquad X |1\rangle = |0\rangle
+# \begin{align}
+# X |0\rangle &= |1\rangle\\
+# X |1\rangle &= |0\rangle
+# \end{align}
 # $$(XGate)
 # 
 # $X$ gate flips the computational basis, which resembles to the $NOT$ gate for classical computation.   However, when it acts on superposition states, the state does not flip (the Bloch vector does not inverted).

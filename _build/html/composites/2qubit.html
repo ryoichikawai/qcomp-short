@@ -51,11 +51,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Algorithms" href="../algorithms/intro.html" />
+    <link rel="next" title="7.2. More qubits" href="morequbits.html" />
     <link rel="prev" title="7. Composite Systems" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -364,6 +366,43 @@ const thebe_selector_output = ".output, .cell_output"
      7.1. Two qubits
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="morequbits.html">
+     7.2. More qubits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="numbers.html">
+     7.3. Encoding numbers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../q2gates/intro.html">
+   8. Two-qubits Gates
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q2gates/cx.html">
+     8.1. CX gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q2gates/cp.html">
+     8.2. Controlled- Z, S, T, P gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../q2gates/swap.html">
+     8.3. SWAP
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -375,32 +414,42 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../algorithms/intro.html">
-   8. Algorithms
+   9. Algorithms
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../algorithms/deutsch.html">
-     8.1. The Deutsch problem
+    <a class="reference internal" href="../algorithms/teleportation.html">
+     9.1. Quantum Teleportation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/walshhadamard.html">
-     8.2. Walsh-Hadamard Transformation
+     9.2. Walsh-Hadamard Transformation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/qparallel.html">
+     9.3. A little example of quantum parallelism
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/deutsch.html">
+     9.4. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qft.html">
-     8.3. Quantum Fourier Transform
+     9.5. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qpe.html">
-     8.4. Quantum Phase Estimation
+     9.6. Quantum Phase Estimation
     </a>
    </li>
   </ul>
@@ -654,8 +703,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bell-state-measurement">
-   7.1.7. Bell state measurement
+  <a class="reference internal nav-link" href="#entanglement-measure">
+   7.1.7. Entanglement Measure
   </a>
  </li>
 </ul>
@@ -708,8 +757,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bell-state-measurement">
-   7.1.7. Bell state measurement
+  <a class="reference internal nav-link" href="#entanglement-measure">
+   7.1.7. Entanglement Measure
   </a>
  </li>
 </ul>
@@ -808,8 +857,8 @@ When the qubits are entangled, they are not independent. Measurement on one qubi
 <p>is formed.  Alice takes <span class="math notranslate nohighlight">\(q_0\)</span> and travels to a distant place with it. Bob takes the other qubit and travels in the opposite direction.  Alice and Bob are separated by a large distance.</p>
 <p>The entangled state <a class="reference internal" href="#equation-01-10">(7.5)</a> indicates that Alice’s qubit is either <span class="math notranslate nohighlight">\(|0\rangle\)</span> or <span class="math notranslate nohighlight">\(|1\rangle\)</span> and so is Bob’s.  When Alice’s measurement results in <span class="math notranslate nohighlight">\(|0\rangle\)</span>, then Bob’s qubit necessarily in <span class="math notranslate nohighlight">\(|1\rangle\)</span> since <span class="math notranslate nohighlight">\(|00\rangle\)</span> is absent.  On the other hand, if Alice finds <span class="math notranslate nohighlight">\(|1\rangle\)</span> then Bob’s qubit must be in <span class="math notranslate nohighlight">\(|0\rangle\)</span>.   Alice immediately knows what Bob’s will find.  Hence, their measurement is perfectly correlated.</p>
 <p>This correlation is not necessarily controversial since classical correlation exits.  Consider a pair of grabs.  Each side of the grab is placed in a separate box.  Alice took a box and Bob the other.  They don’t know which side of the grab is in their of box.  They open the box at their home.  When Alice finds the left grab, the Bob must find the right grab.  This is an example of perfect classical correlation.  When Bob opened the box before Alice, the outcome remain the same.</p>
-<p>The quantum correlation by entanglement seems the same as the classical case but it is actually quite different. Before measurement neither spin has a definite state.  Both qubits are mixture of <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  Alice’s measurement destroys the mixture of Bob’s qubit <em>instantaneously</em> over <em>distance</em>.  How can Alice’s action on her qubit changes the state of Bob’s qubit instantaneously over an arbitrarily long distance?   This is known as <a class="reference external" href="https://en.wikipedia.org/wiki/EPR_paradox"><em>EPR paradox</em></a>.  Einstein called it “Spooky action at a distance” and claimed that the theory of quantum mechanics is incomplete.  However, every experimental observation is found to be consistent with the standard theory of quantum mechanics.  In the next section, we discuss more about it.</p>
-<p>Once David Mermin explained the common attitude toward the theory of quantum mechanics as “Shut up and calculate”. <span id="id1">[<a class="reference internal" href="../references.html#id19" title="N. David Mermin. What's wrong with this pillow? Physics Today, 42(4):9–11, April 1989. URL: https://doi.org/10.1063/1.2810963, doi:10.1063/1.2810963.">2</a>]</span>.   For the moment, we set aside the incomprehensible aspect of quantum entanglement and just accept the extraordinary properties of quantum entanglement.  It turns out that entanglement carries very useful properties that classical physics cannot offer. We exploit them in quantum computation.  In fact, the success of quantum computation relies on quantum entanglement.</p>
+<p>The quantum correlation by entanglement seems the same as the classical case but it is actually quite different. Before measurement neither spin has a definite state.  Both qubits are mixture of <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span>.  Alice’s measurement destroys the mixture of Bob’s qubit <em>instantaneously</em> over <em>distance</em>.  How can Alice’s action on her qubit changes the state of Bob’s qubit instantaneously over an arbitrarily long distance?   This is known as <a class="reference external" href="https://en.wikipedia.org/wiki/EPR_paradox"><em>EPR paradox</em></a>.  Einstein called it “Spooky action at a distance” and claimed that the theory of quantum mechanics is incomplete.  However, every experimental observation is found to be consistent with the standard theory of quantum mechanics. Nicolas Gisin’s book <span id="id1">[<a class="reference internal" href="../references.html#id20" title="Nicolas Gisin. Quantum Chance. Springer International Publishing, 2014. doi:10.1007/978-3-319-05473-5.">2</a>]</span> explains the issue nicely without complicated mathematics. Anyone interested in the quantum correlation, the book is highly recommended.</p>
+<p>Once David Mermin explained the common attitude toward the theory of quantum mechanics as “Shut up and calculate”. <span id="id2">[<a class="reference internal" href="../references.html#id19" title="N. David Mermin. What's wrong with this pillow? Physics Today, 42(4):9–11, April 1989. URL: https://doi.org/10.1063/1.2810963, doi:10.1063/1.2810963.">3</a>]</span>.   For the moment, we set aside the incomprehensible aspect of quantum entanglement and just accept its extraordinary properties.  It turns out that entanglement carries very useful properties that classical physics cannot offer. We exploit them in quantum computation.  In fact, the success of quantum computation relies on quantum entanglement.</p>
 </section>
 <section id="bell-basis">
 <h2><span class="section-number">7.1.5. </span>Bell basis<a class="headerlink" href="#bell-basis" title="Permalink to this headline">#</a></h2>
@@ -821,70 +870,12 @@ When the qubits are entangled, they are not independent. Measurement on one qubi
 |\Psi^{\pm}\rangle &amp;= \frac{1}{\sqrt{2}} \left(|01\rangle \pm |10\rangle\right)
 \end{align}
 \end{split}\]</div>
-<p>Among them, <span class="math notranslate nohighlight">\(|\Psi^{-}\rangle\)</span>, known as <em>singlet state</em>, plays an important role in quantum information theory.</p>
-<p>No entangled state can be created by local transformation (one-qubit gates). We must use a two-qubits gate such as controlled-<span class="math notranslate nohighlight">\(X\)</span>. The following Qiskit example generates <span class="math notranslate nohighlight">\(\Phi^+\rangle\)</span> and |\Pis^+\rangle$.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
-
-<span class="c1"># generate |00&gt;+|11&gt;</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-</pre></div>
+<p>Among them, <span class="math notranslate nohighlight">\(|\Psi^{-}\rangle\)</span>, known as <em>singlet state</em>, plays a particularly important role in quantum information theory.</p>
+<div class="tip admonition">
+<p class="admonition-title">Qiskit note: Visualizing two-qubit states</p>
+<p>Visualizing the state of composite systems is challenging.  For small composite systems, <code class="docutils literal notranslate"><span class="pre">plot_state_qsphere</span></code> draw a sphere and places the computational basis vectors on it as small circles. See the above example.  The size of each circle represents the magnitude of coefficient to the basis such as <span class="math notranslate nohighlight">\(|c_{00}|\)</span>. In the above example, <span class="math notranslate nohighlight">\(|01\rangle\)</span> and <span class="math notranslate nohighlight">\(|10\rangle\)</span> are not shown because <span class="math notranslate nohighlight">\(c_{01}=c_{10}=0\)</span>. The color of the circle show the phase <span class="math notranslate nohighlight">\(e^{i \theta}\)</span>, blue for <span class="math notranslate nohighlight">\(\theta=0\)</span> and yellow for <span class="math notranslate nohighlight">\(\theta=\pi\)</span>.</p>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐     
-q_0: ┤ H ├──■──
-     └───┘┌─┴─┐
-q_1: ─────┤ X ├
-          └───┘</pre></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
-<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\frac{\sqrt{2}}{2} |00\rangle+\frac{\sqrt{2}}{2} |11\rangle\]</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate |01&gt;+|10&gt; by flipping q_0 or q_1</span>
-<span class="c1"># either works.</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐          
-q_0: ┤ H ├──■───────
-     └───┘┌─┴─┐┌───┐
-q_1: ─────┤ X ├┤ X ├
-          └───┘└───┘</pre></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\frac{\sqrt{2}}{2} |01\rangle+\frac{\sqrt{2}}{2} |10\rangle\]</div>
-</div>
-</div>
-<p><strong>Exercise</strong>  <a class="reference internal" href="#sec-2qubits"><span class="std std-numref">7.1</span></a>.2  Generate <span class="math notranslate nohighlight">\(|\Phi^{-}\rangle\)</span> and <span class="math notranslate nohighlight">\(|\Psi^{-}\rangle\)</span> using Qiskit.  (There are several different ways. A simple one uses the <span class="math notranslate nohighlight">\(Z\)</span> gate.  You can also apply <span class="math notranslate nohighlight">\(H\)</span> to both qubits.  Find where to put these gates.)</p>
+<p><strong>Exercise</strong>  <a class="reference internal" href="#sec-2qubits"><span class="std std-numref">7.1</span></a>.2  Generate <span class="math notranslate nohighlight">\(|\Psi^{\pm}\rangle\)</span> and visualize the results using Qiskit. (HINT: You can filp one of qubits by <code class="docutils literal notranslate"><span class="pre">X</span></code> gate.</p>
 </section>
 <section id="two-qubit-measurements-in-computational-basis">
 <h2><span class="section-number">7.1.6. </span>Two-qubit measurements in computational basis<a class="headerlink" href="#two-qubit-measurements-in-computational-basis" title="Permalink to this headline">#</a></h2>
@@ -898,10 +889,15 @@ q_1: ─────┤ X ├┤ X ├
 <span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
 
-<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># randomly oriented qubits</span>
+<span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">u</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">u</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
@@ -912,13 +908,13 @@ q_1: ─────┤ X ├┤ X ├
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐     ┌─────────┐┌─────────┐ ░ ┌─┐   
-q_0: ┤ H ├──■──┤ Ry(π/5) ├┤ Rx(π/3) ├─░─┤M├───
-     └───┘┌─┴─┐└─────────┘└─────────┘ ░ └╥┘┌─┐
-q_1: ─────┤ X ├───────────────────────░──╫─┤M├
-          └───┘                       ░  ║ └╥┘
-c: 2/════════════════════════════════════╩══╩═
-                                         0  1 </pre></div></div>
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌─────────────────────────┐ ░ ┌─┐   
+q_0: ┤ U(1.2759,1.7262,1.9598) ├─░─┤M├───
+     ├─────────────────────────┤ ░ └╥┘┌─┐
+q_1: ┤ U(2.418,2.8657,0.40626) ├─░──╫─┤M├
+     └─────────────────────────┘ ░  ║ └╥┘
+c: 2/═══════════════════════════════╩══╩═
+                                    0  1 </pre></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -944,24 +940,57 @@ c: 2/═════════════════════════
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2qubit_17_0.png" src="../_images/2qubit_17_0.png" />
+<img alt="../_images/2qubit_14_0.png" src="../_images/2qubit_14_0.png" />
 </div>
 </div>
 </section>
-<section id="bell-state-measurement">
-<h2><span class="section-number">7.1.7. </span>Bell state measurement<a class="headerlink" href="#bell-state-measurement" title="Permalink to this headline">#</a></h2>
-<p>We can expand any two qubit states in the Bell basis as</p>
-<div class="math notranslate nohighlight" id="equation-bell-expansion">
-<span class="eqno">(7.6)<a class="headerlink" href="#equation-bell-expansion" title="Permalink to this equation">#</a></span>\[
-\ket{\psi} = c_{\Phi^+} |\Phi^{+}\rangle + c_{\Phi^-} |\Phi^{-}\rangle + c_{\Psi^+} |\Psi^{+}\rangle + c_{\Psi^-} |\Phi^{-}\rangle .
+<section id="entanglement-measure">
+<h2><span class="section-number">7.1.7. </span>Entanglement Measure<a class="headerlink" href="#entanglement-measure" title="Permalink to this headline">#</a></h2>
+<p>How do you know that a given state is entangled or not?  It is not a trivial question and  no simple method is known at present.  However, the the state  is pure (expressed as a state vector),  the presence of bipartite entanglement can be determined by a rather simple method.</p>
+<p>Consider a bipartite system of <span class="math notranslate nohighlight">\(\mathcal{H}_A \otimes \mathcal{H}_B\)</span>. The system is in a pure state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.</p>
+<ol class="simple">
+<li><p>Write the state in a form of density matrix:  <span class="math notranslate nohighlight">\(\qquad \rho = |\psi\rangle\langle \psi |\)</span>.</p></li>
+<li><p>Take partial trace of <span class="math notranslate nohighlight">\(\rho\)</span> over the subspace <span class="math notranslate nohighlight">\(\mathcal{H}_B\)</span>.   <span class="math notranslate nohighlight">\(\qquad \rho_A = = \text{Tr}_B \rho\)</span>.</p></li>
+<li><p>Evaluate the von Neumann entropy of the reduced density.  <span class="math notranslate nohighlight">\(\qquad S_A = - \text{Tr}_A \left( \rho_A \ln \rho_A\right)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(S_A=0\)</span>, then there is no entanglement.  Otherwise, there is entanglement.</p></li>
+</ol>
+<p><strong>EXample</strong></p>
+<p>Let us try to find if a <span class="math notranslate nohighlight">\(\psi\rangle = \frac{1}{2}\left(|00\rangle + |01\rangle + |10\rangle + |11\rangle \right)\)</span> is entangled or not. WE use matrix representation.</p>
+<p>Step 1:
+$<span class="math notranslate nohighlight">\(
+\rho = \begin{bmatrix} \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} \end{bmatrix}
+\)</span>$</p>
+<p>Step 2:
+$<span class="math notranslate nohighlight">\(
+\rho_A = \begin{bmatrix} \frac{1}{2} &amp; \frac{1}{2} \\ \frac{1}{2} &amp; \frac{1}{2} \end{bmatrix}
+\)</span>$</p>
+<p>Step 3:<br />
+To evalue the von Neumann entropy, we need to find the eigenvalues of <span class="math notranslate nohighlight">\(\rho_A\)</span>.  They are <span class="math notranslate nohighlight">\(\lambda_1 = 0\)</span> and <span class="math notranslate nohighlight">\(\lambda_2=1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+S_A = - \lambda_0 \ln \lambda_0 + \lambda_1 \ln \lambda_1 = - 0 \ln 0 = -1 \ln 1 = 0
 \]</div>
-<p>Now, we want find the probabilities to find the Bell states.  Since the Bell states are all entangled, standard measurement based on the computational basis does not help.  Applying <span class="math notranslate nohighlight">\((H \otimes I)\cdot CX\)</span> transforms the basis to the computational basis without changing the coefficients:</p>
-<div class="math notranslate nohighlight" id="equation-comp-expansion">
-<span class="eqno">(7.7)<a class="headerlink" href="#equation-comp-expansion" title="Permalink to this equation">#</a></span>\[
-(H \otimes I)\cdot CX \ket{\psi} = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle + c_{\Psi^-} |11\rangle .
+<p>Remember that <span class="math notranslate nohighlight">\(0 \ln 0 = 0 \times \infty = 0\)</span>.</p>
+<p>Step 4:  Since <span class="math notranslate nohighlight">\(S_A=0\)</span>, there is no entanglement.  In fact, the state can be written as a product <span class="math notranslate nohighlight">\(|\psi\rangle = |+\rangle \otimes |+\rangle\)</span>.</p>
+<p>Consider another state <span class="math notranslate nohighlight">\(|\phi \rangle = \frac{1}{2}\left(|00\rangle + |01\rangle + |10\rangle + i |11\rangle \right)\)</span> which is quite similar to the previous case but notice “i” on the last term.</p>
+<p>Step 1:
+$<span class="math notranslate nohighlight">\(
+\rho = \begin{bmatrix} \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{i}{4} \\ \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{i}{4} \\ \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{1}{4} &amp; \frac{i}{4} \\ \frac{-i}{4} &amp; \frac{-i}{4} &amp; \frac{-i}{4} &amp; \frac{1}{4} \end{bmatrix}
+\)</span>$</p>
+<p>Step 2:
+$<span class="math notranslate nohighlight">\(
+\rho_A = \begin{bmatrix} \frac{1}{2} &amp; \frac{1+i}{4} \\ \frac{1-i}{4} &amp; \frac{1}{2} \end{bmatrix}
+\)</span>$</p>
+<p>Step 3:<br />
+$<span class="math notranslate nohighlight">\(
+\lambda_1 = \frac{1}{4}\left(2-\sqrt{2}\right), \quad \lambda_2=\frac{1}{4}\left(2-\sqrt{2}\right)
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+S_A = - \lambda_0 \ln \lambda_0 + \lambda_1 \ln \lambda_1 \approx 0.416
 \]</div>
-<p>Now, the standard measurement in the computational basis determine the probabilities.</p>
-<p><strong>Exercise</strong>  <a class="reference internal" href="#sec-2qubits"><span class="std std-numref">7.1</span></a>.3  Derive <a class="reference internal" href="#equation-comp-expansion">(7.7)</a>.</p>
+<p>Step 4.
+<span class="math notranslate nohighlight">\(S_A &gt; 0\)</span>, thus the state is entangled.</p>
 </section>
 </section>
 
@@ -999,10 +1028,10 @@ c: 2/═════════════════════════
             <p class="prev-next-title"><span class="section-number">7. </span>Composite Systems</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../algorithms/intro.html" title="next page">
+    <a class='right-next' id="next-link" href="morequbits.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Algorithms</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>More qubits</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

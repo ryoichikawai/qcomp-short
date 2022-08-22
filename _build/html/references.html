@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="9.4. Quantum Phase Estimation" href="algorithms/qpe.html" />
+    <link rel="prev" title="9.6. Quantum Phase Estimation" href="algorithms/qpe.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -348,15 +348,59 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="composites/intro.html">
    7. Composite Systems
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="composites/2qubit.html">
+     7.1. Two qubits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="composites/morequbits.html">
+     7.2. More qubits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="composites/numbers.html">
+     7.3. Encoding numbers
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="composites/2qubit.html">
-   8. Two qubits
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="q2gates/intro.html">
+   8. Two-qubits Gates
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="q2gates/cx.html">
+     8.1. CX gate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="q2gates/cp.html">
+     8.2. Controlled- Z, S, T, P gates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="q2gates/swap.html">
+     8.3. SWAP
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -369,15 +413,15 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="algorithms/intro.html">
    9. Algorithms
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="algorithms/deutsch.html">
-     9.1. The Deutsch problem
+    <a class="reference internal" href="algorithms/teleportation.html">
+     9.1. Quantum Teleportation
     </a>
    </li>
    <li class="toctree-l2">
@@ -386,13 +430,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="algorithms/qparallel.html">
+     9.3. A little example of quantum parallelism
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="algorithms/deutsch.html">
+     9.4. The Deutsch problem
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="algorithms/qft.html">
-     9.3. Quantum Fourier Transform
+     9.5. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="algorithms/qpe.html">
-     9.4. Quantum Phase Estimation
+     9.6. Quantum Phase Estimation
     </a>
    </li>
   </ul>
@@ -595,16 +649,19 @@ title="Print to PDF"
 <dt class="label" id="id4"><span class="brackets">1</span></dt>
 <dd><p>Jürgen Audretsch. <em>Entangled Systems - New Directions in Quantum Physics</em>. Wiley-VHC, 2007. ISBN 978-3-527-40684-5.</p>
 </dd>
-<dt class="label" id="id19"><span class="brackets">2</span></dt>
+<dt class="label" id="id20"><span class="brackets">2</span></dt>
+<dd><p>Nicolas Gisin. <em>Quantum Chance</em>. Springer International Publishing, 2014. <a class="reference external" href="https://doi.org/10.1007/978-3-319-05473-5">doi:10.1007/978-3-319-05473-5</a>.</p>
+</dd>
+<dt class="label" id="id19"><span class="brackets">3</span></dt>
 <dd><p>N. David Mermin. What's wrong with this pillow? <em>Physics Today</em>, 42(4):9–11, April 1989. URL: <a class="reference external" href="https://doi.org/10.1063/1.2810963">https://doi.org/10.1063/1.2810963</a>, <a class="reference external" href="https://doi.org/10.1063/1.2810963">doi:10.1063/1.2810963</a>.</p>
 </dd>
-<dt class="label" id="id17"><span class="brackets">3</span></dt>
+<dt class="label" id="id17"><span class="brackets">4</span></dt>
 <dd><p>David Deutsch and Roger Penrose. Quantum theory, the church-turing principle and the universal quantum computer. <em>Proceedings of the Royal Society of London. A. Mathematical and Physical Sciences</em>, 400(1818):97–117, July 1985. URL: <a class="reference external" href="https://doi.org/10.1098/rspa.1985.0070">https://doi.org/10.1098/rspa.1985.0070</a>, <a class="reference external" href="https://doi.org/10.1098/rspa.1985.0070">doi:10.1098/rspa.1985.0070</a>.</p>
 </dd>
-<dt class="label" id="id18"><span class="brackets">4</span></dt>
-<dd><p>A. Yu. Kitaev. Quantum measurements and the abelian stabilizer problem. <em>arxiv</em>, pages quant–ph/9511026, 1995. <a class="reference external" href="https://doi.org/10.48550/ARXIV.QUANT-PH/9511026">doi:10.48550/ARXIV.QUANT-PH/9511026</a>.</p>
+<dt class="label" id="id18"><span class="brackets">5</span></dt>
+<dd><p>A. Yu. Kitaev. Quantum measurements and the abelian stabilizer problem. <em>arXiv</em>, pages quant–ph/9511026, 1995. <a class="reference external" href="https://doi.org/10.48550/ARXIV.QUANT-PH/9511026">doi:10.48550/ARXIV.QUANT-PH/9511026</a>.</p>
 </dd>
-<dt class="label" id="id5"><span class="brackets">5</span></dt>
+<dt class="label" id="id5"><span class="brackets">6</span></dt>
 <dd><p>M. A. Nielsen and I. L. Chuang. <em>Quantum Computation and Quantum Information</em>. Cambridge University Press, 2000. ISBN 0-521-63503-9.</p>
 </dd>
 </dl>
@@ -642,7 +699,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9.4. </span>Quantum Phase Estimation</p>
+            <p class="prev-next-title"><span class="section-number">9.6. </span>Quantum Phase Estimation</p>
         </div>
     </a>
 </div>

@@ -114,9 +114,9 @@
 # 
 # This correlation is not necessarily controversial since classical correlation exits.  Consider a pair of grabs.  Each side of the grab is placed in a separate box.  Alice took a box and Bob the other.  They don't know which side of the grab is in their of box.  They open the box at their home.  When Alice finds the left grab, the Bob must find the right grab.  This is an example of perfect classical correlation.  When Bob opened the box before Alice, the outcome remain the same.
 # 
-# The quantum correlation by entanglement seems the same as the classical case but it is actually quite different. Before measurement neither spin has a definite state.  Both qubits are mixture of $|0\rangle$ and $|1\rangle$.  Alice's measurement destroys the mixture of Bob's qubit *instantaneously* over *distance*.  How can Alice's action on her qubit changes the state of Bob's qubit instantaneously over an arbitrarily long distance?   This is known as [*EPR paradox*](https://en.wikipedia.org/wiki/EPR_paradox).  Einstein called it "Spooky action at a distance" and claimed that the theory of quantum mechanics is incomplete.  However, every experimental observation is found to be consistent with the standard theory of quantum mechanics.  In the next section, we discuss more about it. 
+# The quantum correlation by entanglement seems the same as the classical case but it is actually quite different. Before measurement neither spin has a definite state.  Both qubits are mixture of $|0\rangle$ and $|1\rangle$.  Alice's measurement destroys the mixture of Bob's qubit *instantaneously* over *distance*.  How can Alice's action on her qubit changes the state of Bob's qubit instantaneously over an arbitrarily long distance?   This is known as [*EPR paradox*](https://en.wikipedia.org/wiki/EPR_paradox).  Einstein called it "Spooky action at a distance" and claimed that the theory of quantum mechanics is incomplete.  However, every experimental observation is found to be consistent with the standard theory of quantum mechanics. Nicolas Gisin's book {cite}`Gisin2014` explains the issue nicely without complicated mathematics. Anyone interested in the quantum correlation, the book is highly recommended.
 # 
-# Once David Mermin explained the common attitude toward the theory of quantum mechanics as "Shut up and calculate". {cite}`Mermin1989`.   For the moment, we set aside the incomprehensible aspect of quantum entanglement and just accept the extraordinary properties of quantum entanglement.  It turns out that entanglement carries very useful properties that classical physics cannot offer. We exploit them in quantum computation.  In fact, the success of quantum computation relies on quantum entanglement.
+# Once David Mermin explained the common attitude toward the theory of quantum mechanics as "Shut up and calculate". {cite}`Mermin1989`.   For the moment, we set aside the incomprehensible aspect of quantum entanglement and just accept its extraordinary properties.  It turns out that entanglement carries very useful properties that classical physics cannot offer. We exploit them in quantum computation.  In fact, the success of quantum computation relies on quantum entanglement.
 
 # ## Bell basis
 # 
@@ -129,48 +129,16 @@
 # \end{align}
 # $$
 # 
-# Among them, $|\Psi^{-}\rangle$, known as *singlet state*, plays an important role in quantum information theory. 
+# Among them, $|\Psi^{-}\rangle$, known as *singlet state*, plays a particularly important role in quantum information theory. 
+
+# :::{admonition} Qiskit note: Visualizing two-qubit states
+# :class: tip
 # 
-# No entangled state can be created by local transformation (one-qubit gates). We must use a two-qubits gate such as controlled-$X$. The following Qiskit example generates $\Phi^+\rangle$ and |\Pis^+\rangle$.
+# Visualizing the state of composite systems is challenging.  For small composite systems, `plot_state_qsphere` draw a sphere and places the computational basis vectors on it as small circles. See the above example.  The size of each circle represents the magnitude of coefficient to the basis such as $|c_{00}|$. In the above example, $|01\rangle$ and $|10\rangle$ are not shown because $c_{01}=c_{10}=0$. The color of the circle show the phase $e^{i \theta}$, blue for $\theta=0$ and yellow for $\theta=\pi$.
+# 
+# :::
 
-# In[1]:
-
-
-from qiskit import *
-
-qr=QuantumRegister(2,'q')
-qc=QuantumCircuit(qr)
-
-# generate |00>+|11>
-qc.h(0)
-qc.cx(0,1)
-
-qc.draw()
-
-
-# In[2]:
-
-
-from qiskit.quantum_info import Statevector
-Statevector(qc).draw('latex')
-
-
-# In[3]:
-
-
-# generate |01>+|10> by flipping q_0 or q_1
-# either works.
-qc.x(1)
-qc.draw()
-
-
-# In[4]:
-
-
-Statevector(qc).draw('latex')
-
-
-# **Exercise**  {numref}`%s <sec-2qubits>`.2  Generate $|\Phi^{-}\rangle$ and $|\Psi^{-}\rangle$ using Qiskit.  (There are several different ways. A simple one uses the $Z$ gate.  You can also apply $H$ to both qubits.  Find where to put these gates.)
+# **Exercise**  {numref}`%s <sec-2qubits>`.2  Generate $|\Psi^{\pm}\rangle$ and visualize the results using Qiskit. (HINT: You can filp one of qubits by `X` gate.
 
 # [^neg]: Symbol $\neg$ means negation.
 
@@ -180,7 +148,7 @@ Statevector(qc).draw('latex')
 # 
 # 
 
-# In[5]:
+# In[30]:
 
 
 from qiskit import *
@@ -190,10 +158,15 @@ cr=ClassicalRegister(2,'c')
 qr=QuantumRegister(2,'q')
 qc=QuantumCircuit(qr,cr)
 
-qc.h(0)
-qc.cx(0,1)
-qc.ry(np.pi/5,0)
-qc.rx(np.pi/3,0)
+# randomly oriented qubits
+a=np.pi*np.random.rand()
+b=np.pi*np.random.rand()
+c=np.pi*np.random.rand()
+qc.u(a,b,c,0)
+a=np.pi*np.random.rand()
+b=np.pi*np.random.rand()
+c=np.pi*np.random.rand()
+qc.u(a,b,c,1)
 
 qc.barrier()
 qc.measure(0,0)
@@ -202,7 +175,7 @@ qc.measure(1,1)
 qc.draw()
 
 
-# In[6]:
+# In[ ]:
 
 
 # Chose a general quantum simulator without noise.
@@ -225,26 +198,64 @@ from qiskit.visualization import plot_histogram
 plot_histogram(counts)
 
 
-# ## Bell state measurement
+# ## Entanglement Measure
 # 
-# We can expand any two qubit states in the Bell basis as
+# How do you know that a given state is entangled or not?  It is not a trivial question and  no simple method is known at present.  However, the the state  is pure (expressed as a state vector),  the presence of bipartite entanglement can be determined by a rather simple method.
+# 
+# Consider a bipartite system of $\mathcal{H}_A \otimes \mathcal{H}_B$. The system is in a pure state $|\psi\rangle$.
+# 
+# 1. Write the state in a form of density matrix:  $\qquad \rho = |\psi\rangle\langle \psi |$.
+# 2. Take partial trace of $\rho$ over the subspace $\mathcal{H}_B$.   $\qquad \rho_A = = \text{Tr}_B \rho$.
+# 3. Evaluate the von Neumann entropy of the reduced density.  $\qquad S_A = - \text{Tr}_A \left( \rho_A \ln \rho_A\right)$.
+# 4. If $S_A=0$, then there is no entanglement.  Otherwise, there is entanglement.
+# 
+# **EXample**
+# 
+# Let us try to find if a $\psi\rangle = \frac{1}{2}\left(|00\rangle + |01\rangle + |10\rangle + |11\rangle \right)$ is entangled or not. WE use matrix representation.
+# 
+# Step 1:
+# $$
+# \rho = \begin{bmatrix} \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\ \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\ \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \\ \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4} \end{bmatrix}
+# $$
+# 
+# Step 2:
+# $$
+# \rho_A = \begin{bmatrix} \frac{1}{2} & \frac{1}{2} \\ \frac{1}{2} & \frac{1}{2} \end{bmatrix}
+# $$
+# 
+# Step 3:  
+# To evalue the von Neumann entropy, we need to find the eigenvalues of $\rho_A$.  They are $\lambda_1 = 0$ and $\lambda_2=1$.
 # 
 # $$
-# \ket{\psi} = c_{\Phi^+} |\Phi^{+}\rangle + c_{\Phi^-} |\Phi^{-}\rangle + c_{\Psi^+} |\Psi^{+}\rangle + c_{\Psi^-} |\Phi^{-}\rangle .
-# $$(bell-expansion)
+# S_A = - \lambda_0 \ln \lambda_0 + \lambda_1 \ln \lambda_1 = - 0 \ln 0 = -1 \ln 1 = 0
+# $$
 # 
-# Now, we want find the probabilities to find the Bell states.  Since the Bell states are all entangled, standard measurement based on the computational basis does not help.  Applying $(H \otimes I)\cdot CX$ transforms the basis to the computational basis without changing the coefficients:
+# Remember that $0 \ln 0 = 0 \times \infty = 0$.
+# 
+# Step 4:  Since $S_A=0$, there is no entanglement.  In fact, the state can be written as a product $|\psi\rangle = |+\rangle \otimes |+\rangle$.
+# 
+# 
+# Consider another state $|\phi \rangle = \frac{1}{2}\left(|00\rangle + |01\rangle + |10\rangle + i |11\rangle \right)$ which is quite similar to the previous case but notice "i" on the last term.
+# 
+# Step 1:
+# $$
+# \rho = \begin{bmatrix} \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{i}{4} \\ \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{i}{4} \\ \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{i}{4} \\ \frac{-i}{4} & \frac{-i}{4} & \frac{-i}{4} & \frac{1}{4} \end{bmatrix}
+# $$
+# 
+# Step 2:
+# $$
+# \rho_A = \begin{bmatrix} \frac{1}{2} & \frac{1+i}{4} \\ \frac{1-i}{4} & \frac{1}{2} \end{bmatrix}
+# $$
+# 
+# Step 3:  
+# $$
+# \lambda_1 = \frac{1}{4}\left(2-\sqrt{2}\right), \quad \lambda_2=\frac{1}{4}\left(2-\sqrt{2}\right)
+# $$
 # 
 # $$
-# (H \otimes I)\cdot CX \ket{\psi} = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle + c_{\Psi^-} |11\rangle .
-# $$(comp-expansion)
+# S_A = - \lambda_0 \ln \lambda_0 + \lambda_1 \ln \lambda_1 \approx 0.416
+# $$
 # 
-# Now, the standard measurement in the computational basis determine the probabilities.
-
-# **Exercise**  {numref}`%s <sec-2qubits>`.3  Derive {eq}`comp-expansion`.
-
-# In[ ]:
-
-
-
-
+# Step 4.
+# $S_A > 0$, thus the state is entangled.
+# 
