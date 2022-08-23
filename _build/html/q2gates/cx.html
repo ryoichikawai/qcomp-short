@@ -51,8 +51,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -424,7 +422,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/teleportation.html">
-     9.1. Quantum Teleportation
+     9.1. Quantum teleportation
     </a>
    </li>
    <li class="toctree-l2">
@@ -713,6 +711,16 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#long-distance-cx">
+     Long distance CX
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-way-information-transfer">
+     One-way information transfer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#swapping-qubits">
      Swapping qubits
     </a>
@@ -776,6 +784,16 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#addition-modulo-2">
      Addition modulo 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#long-distance-cx">
+     Long distance CX
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-way-information-transfer">
+     One-way information transfer
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -1306,9 +1324,158 @@ x=1, y=1, x+y=0
 </div>
 </div>
 </section>
+<section id="long-distance-cx">
+<h3>Long distance CX<a class="headerlink" href="#long-distance-cx" title="Permalink to this headline">#</a></h3>
+<p>Constructing devices with controlled gates is not trivial at all.  Controlled gates can be directly applied on two qubits if they are close to each other.  Let us consider a linear chain of qubits and assume that CX can be applied only on the nearest neighbor pair.  For example, a device allows CX on pairs <span class="math notranslate nohighlight">\((q_0, q_1)\)</span> and <span class="math notranslate nohighlight">\((q_1, q_2)\)</span> but not on <span class="math notranslate nohighlight">\((q_0, q_2)\)</span>.  What can we do if we want to use CX on <span class="math notranslate nohighlight">\((q_0,q_2)\)</span>?   Fortunately, we can create a circuit that acts like CX over a distance.  Let us create a Bell state between <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_2\)</span> using CX<span class="math notranslate nohighlight">\(_{q_0}^{q_2} \cdot\)</span> H<span class="math notranslate nohighlight">\(_{q_0}\)</span>.  In the following Qiskit example, CX<span class="math notranslate nohighlight">\(_{q_0}^{q_2}\)</span> is realized by four CX on the nearest neighbors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐                    
+q_0: ┤ H ├──■─────────■───────
+     └───┘┌─┴─┐     ┌─┴─┐     
+q_1: ─────┤ X ├──■──┤ X ├──■──
+          └───┘┌─┴─┐└───┘┌─┴─┐
+q_2: ──────────┤ X ├─────┤ X ├
+               └───┘     └───┘</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span><span class="p">,</span> <span class="n">partial_trace</span>
+<span class="n">fullpsi</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="n">fullpsi</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{\sqrt{2}}{2} |000\rangle+\frac{\sqrt{2}}{2} |101\rangle\]</div>
+</div>
+</div>
+<p>Note that <span class="math notranslate nohighlight">\(q_1\)</span> is still 0 but <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_2\)</span> are entangled.  Removing the middle qubit, we should have Bell state <span class="math notranslate nohighlight">\(|\Phi^{+}\rangle\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>  <span class="k">as</span> <span class="nn">np</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span><span class="n">fullpsi</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">psi</span> <span class="o">=</span> <span class="n">Statevector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">rho</span><span class="p">)))</span>
+<span class="n">psi</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{\sqrt{2}}{2} |00\rangle+\frac{\sqrt{2}}{2} |11\rangle\]</div>
+</div>
+</div>
+<p>The above circuit is equivalent to the following with a long distance CX.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐     
+q_0: ┤ H ├──■──
+     └───┘  │  
+q_1: ───────┼──
+          ┌─┴─┐
+q_2: ─────┤ X ├
+          └───┘</pre></div></div>
+</div>
+</section>
+<section id="one-way-information-transfer">
+<h3>One-way information transfer<a class="headerlink" href="#one-way-information-transfer" title="Permalink to this headline">#</a></h3>
+<p>Qubit <span class="math notranslate nohighlight">\(q_0\)</span> is in an arbitrary state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> and another qubit <span class="math notranslate nohighlight">\(q_1\)</span> in a reset state <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  We can transfer the state of <span class="math notranslate nohighlight">\(q_0\)</span> to <span class="math notranslate nohighlight">\(q_1\)</span> using CX gates.  However, the state of <span class="math notranslate nohighlight">\(q_0\)</span> is necessarily destroyed due to the no-cloning theorem.  In the following Qiskit example, <span class="math notranslate nohighlight">\(q_0\)</span> is initially in a superposition state <span class="math notranslate nohighlight">\(\cos(\theta) | 0\rangle + \sin(\theta)|1\rangle\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> in <span class="math notranslate nohighlight">\(|0\rangle\)</span>.  Thus the total state vector is initially</p>
+<div class="math notranslate nohighlight">
+\[
+|\psi_0\rangle = |0\rangle \otimes \left[\cos(\theta)|0\rangle + \sin(\theta)|1\rangle \right] = \cos(\theta) |00\rangle + \sin(\theta) |01\rangle
+\]</div>
+<p>After transformation, <span class="math notranslate nohighlight">\(q_0\)</span> is <span class="math notranslate nohighlight">\(|0\rangle\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> is now in the superposition state,  The outcome should be</p>
+<div class="math notranslate nohighlight">
+\[
+|\psi_1\rangle = \left[\cos(\theta)|0\rangle + \sin(\theta)|1\rangle \right] \otimes |0\rangle = \cos(\theta) |00\rangle + \sin(\theta) |10\rangle
+\]</div>
+<p>This method works only when <span class="math notranslate nohighlight">\(q_1\)</span> is initially in <span class="math notranslate nohighlight">\(|0\rangle\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="c1"># Generate a state to be transfer</span>
+<span class="n">theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">phi</span><span class="o">=</span><span class="mf">0.0</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">u</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">phi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">psi0</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># transfer the state</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">psi1</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initial state&quot;</span><span class="p">)</span>
+<span class="n">psi0</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial state
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{\sqrt{3}}{2} |00\rangle+\frac{1}{2} |01\rangle\]</div>
+</div>
+</div>
+<p>The above equation is a product state <span class="math notranslate nohighlight">\(|0\rangle \otimes \left(\frac{\sqrt{3}}{2}|0\rangle + \frac{1}{2}|1\rangle\right)\)</span>.</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final state&quot;</span><span class="p">)</span>
+<span class="n">psi1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final state
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{\sqrt{3}}{2} |00\rangle+\frac{1}{2} |10\rangle\]</div>
+</div>
+</div>
+<p>Writing the above state in a product form,  <span class="math notranslate nohighlight">\(\left(\frac{\sqrt{3}}{2}|0\rangle + \frac{1}{2}|1\rangle\right) \otimes |0\rangle\)</span>.  Notice that the superposition state moved from a quibit to the other.</p>
+</section>
 <section id="swapping-qubits">
 <h3>Swapping qubits<a class="headerlink" href="#swapping-qubits" title="Permalink to this headline">#</a></h3>
-<p>Swap gate SWAP is defined by SWAP<span class="math notranslate nohighlight">\(|q_1\, q_0\rangle = |q_0\, q_1\rangle\)</span>.  When it acts on a superposition state, the coefficients of <span class="math notranslate nohighlight">\(|01\rangle\)</span> and <span class="math notranslate nohighlight">\(|10\rangle\)</span> is swapped.</p>
+<p>Inthe previous example, the information is trasferred in one direction from <span class="math notranslate nohighlight">\(q_0\)</span> to <span class="math notranslate nohighlight">\(q_1\)</span>.  The SWAP operation transfers information in both direction.
+Swap gate SWAP is defined by SWAP<span class="math notranslate nohighlight">\(|q_1\, q_0\rangle = |q_0\, q_1\rangle\)</span>.  When it acts on a superposition state, the coefficients of <span class="math notranslate nohighlight">\(|01\rangle\)</span> and <span class="math notranslate nohighlight">\(|10\rangle\)</span> is swapped.</p>
 <div class="math notranslate nohighlight">
 \[
 \text{SWAP} \left (c_{00} |00\rangle + c_{01} |01\rangle + c_{10} |10\rangle + c_{11} |11\rangle \right ) =
@@ -1386,7 +1553,7 @@ q_1: ┤ X ├──■──┤ X ├
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probability distribution before swap
 </pre></div>
 </div>
-<img alt="../_images/cx_32_1.png" src="../_images/cx_32_1.png" />
+<img alt="../_images/cx_44_1.png" src="../_images/cx_44_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1410,11 +1577,11 @@ q_1: ┤ X ├──■──┤ X ├
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probability distribution after swapping.
 </pre></div>
 </div>
-<img alt="../_images/cx_33_1.png" src="../_images/cx_33_1.png" />
+<img alt="../_images/cx_45_1.png" src="../_images/cx_45_1.png" />
 </div>
 </div>
 <hr class="docutils" />
-<p>Last Modified on 08/19/2022.</p>
+<p>Last Modified on 08/22/2022.</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="symb-cx"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>

@@ -51,8 +51,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -424,7 +422,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="teleportation.html">
-     9.1. Quantum Teleportation
+     9.1. Quantum teleportation
     </a>
    </li>
    <li class="toctree-l2">
@@ -883,10 +881,10 @@ U_{f_4} |x\rangle \otimes |y\rangle =  |x\rangle \otimes |y \oplus (1-x) \rangle
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">      ░ ┌───┐ ░ ┌───┐ ░ ┌───┐ ░    
-q_0: ─░─┤ I ├─░─┤ X ├─░─┤ I ├─░────
-      ░ ├───┤ ░ └───┘ ░ ├───┤ ░ ┌─┐
-q_1: ─░─┤ I ├─░───────░─┤ I ├─░─┤M├
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">      ░       ░ ┌───┐ ░       ░    
+q_0: ─░───────░─┤ X ├─░───────░────
+      ░ ┌───┐ ░ └───┘ ░ ┌───┐ ░ ┌─┐
+q_1: ─░─┤ X ├─░───────░─┤ X ├─░─┤M├
       ░ └───┘ ░       ░ └───┘ ░ └╥┘
 c: 1/════════════════════════════╩═
                                  0 </pre></div></div>
@@ -987,10 +985,10 @@ U_f |+\rangle \otimes |-\rangle = \pm |-\rangle \otimes |-\rangle
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐      ░ ┌───┐ ░ ┌───┐┌─┐
-q_0: ┤ H ├──────░─┤ I ├─░─┤ H ├┤M├
-     ├───┤┌───┐ ░ ├───┤ ░ └───┘└╥┘
-q_1: ┤ X ├┤ H ├─░─┤ I ├─░───────╫─
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐      ░       ░ ┌───┐┌─┐
+q_0: ┤ H ├──────░───────░─┤ H ├┤M├
+     ├───┤┌───┐ ░ ┌───┐ ░ └───┘└╥┘
+q_1: ┤ X ├┤ H ├─░─┤ X ├─░───────╫─
      └───┘└───┘ ░ └───┘ ░       ║ 
 c: 1/═══════════════════════════╩═
                                 0 </pre></div></div>

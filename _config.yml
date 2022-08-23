@@ -55,6 +55,8 @@ sphinx:
 #         use_edit_page_button: true
    bibtex_reference_style: label
    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+   extra_extensions:
+   -  sphinx_jupyterbook_latex
 
 
 launch_buttons:

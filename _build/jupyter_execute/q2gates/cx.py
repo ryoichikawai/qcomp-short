@@ -439,13 +439,119 @@ for x in range(2):
         print("x={0:d}, y={1:d}, x+y={2:s}".format(x,y,psi[0]))
 
 
+# ### Long distance CX
 # 
-# [^symb-cx]: The notation `CX`$_{q_0}^{q_1}$ is not commonly used.  In many literature, simply `CX` is used without specifying which qubit is source, causing confusion. If you are confused, see the corresponding circuit diagram.
+# Constructing devices with controlled gates is not trivial at all.  Controlled gates can be directly applied on two qubits if they are close to each other.  Let us consider a linear chain of qubits and assume that CX can be applied only on the nearest neighbor pair.  For example, a device allows CX on pairs $(q_0, q_1)$ and $(q_1, q_2)$ but not on $(q_0, q_2)$.  What can we do if we want to use CX on $(q_0,q_2)$?   Fortunately, we can create a circuit that acts like CX over a distance.  Let us create a Bell state between $q_0$ and $q_2$ using CX$_{q_0}^{q_2} \cdot$ H$_{q_0}$.  In the following Qiskit example, CX$_{q_0}^{q_2}$ is realized by four CX on the nearest neighbors.
 # 
+
+# In[15]:
+
+
+from qiskit import *
+qr=QuantumRegister(3,'q')
+qc=QuantumCircuit(qr)
+
+qc.h(0)
+qc.cx(0,1)
+qc.cx(1,2)
+qc.cx(0,1)
+qc.cx(1,2)
+
+qc.draw()
+
+
+# In[16]:
+
+
+from qiskit.quantum_info import Statevector, partial_trace
+fullpsi=Statevector(qc)
+fullpsi.draw('latex')
+
+
+# Note that $q_1$ is still 0 but $q_0$ and $q_2$ are entangled.  Removing the middle qubit, we should have Bell state $|\Phi^{+}\rangle$.
+
+# In[17]:
+
+
+import numpy  as np
+rho = partial_trace(fullpsi, [1])
+psi = Statevector(np.sqrt(np.diagonal(rho)))
+psi.draw('latex')
+
+
+# The above circuit is equivalent to the following with a long distance CX.
+
+# In[18]:
+
+
+qr=QuantumRegister(3,'q')
+qc=QuantumCircuit(qr)
+qc.h(0)
+qc.cx(0,2)
+qc.draw()
+
+
+# ### One-way information transfer
 # 
+# Qubit $q_0$ is in an arbitrary state $|\psi\rangle$ and another qubit $q_1$ in a reset state $|0\rangle$.  We can transfer the state of $q_0$ to $q_1$ using CX gates.  However, the state of $q_0$ is necessarily destroyed due to the no-cloning theorem.  In the following Qiskit example, $q_0$ is initially in a superposition state $\cos(\theta) | 0\rangle + \sin(\theta)|1\rangle$ and $q_1$ in $|0\rangle$.  Thus the total state vector is initially
+# 
+# $$
+# |\psi_0\rangle = |0\rangle \otimes \left[\cos(\theta)|0\rangle + \sin(\theta)|1\rangle \right] = \cos(\theta) |00\rangle + \sin(\theta) |01\rangle
+# $$
+# 
+# After transformation, $q_0$ is $|0\rangle$ and $q_1$ is now in the superposition state,  The outcome should be
+# 
+# $$
+# |\psi_1\rangle = \left[\cos(\theta)|0\rangle + \sin(\theta)|1\rangle \right] \otimes |0\rangle = \cos(\theta) |00\rangle + \sin(\theta) |10\rangle
+# $$
+# 
+# This method works only when $q_1$ is initially in $|0\rangle$.
+
+# In[19]:
+
+
+from qiskit import *
+from qiskit.quantum_info import Statevector
+
+qr=QuantumRegister(2,'q')
+qc=QuantumCircuit(qr)
+
+# Generate a state to be transfer
+theta=np.pi/3
+phi=0.0
+qc.u(theta,phi,0,0)
+psi0=Statevector(qc)
+
+qc.barrier()
+
+# transfer the state
+qc.cx(0,1)
+qc.cx(1,0)
+
+psi1=Statevector(qc)
+
+
+# In[20]:
+
+
+print("Initial state")
+psi0.draw('latex')
+
+
+# The above equation is a product state $|0\rangle \otimes \left(\frac{\sqrt{3}}{2}|0\rangle + \frac{1}{2}|1\rangle\right)$.
+
+# In[21]:
+
+
+print("Final state")
+psi1.draw('latex')
+
+
+# Writing the above state in a product form,  $\left(\frac{\sqrt{3}}{2}|0\rangle + \frac{1}{2}|1\rangle\right) \otimes |0\rangle$.  Notice that the superposition state moved from a quibit to the other.
 
 # ### Swapping qubits
 # 
+# Inthe previous example, the information is trasferred in one direction from $q_0$ to $q_1$.  The SWAP operation transfers information in both direction.
 # Swap gate SWAP is defined by SWAP$|q_1\, q_0\rangle = |q_0\, q_1\rangle$.  When it acts on a superposition state, the coefficients of $|01\rangle$ and $|10\rangle$ is swapped.
 # 
 # 
@@ -468,7 +574,7 @@ for x in range(2):
 # which indicates SWAP=$\text{CX}_{q_0}^{q_1} \cdot  \text{CX}_{q_1}^{q_0} \cdot \text{CX}_{q_0}^{q_1}$. (See the following circuit.)
 # 
 
-# In[15]:
+# In[22]:
 
 
 from qiskit import *
@@ -482,7 +588,7 @@ print("sawpping qubits")
 qc.draw()
 
 
-# In[16]:
+# In[23]:
 
 
 from qiskit import *
@@ -515,7 +621,7 @@ print("probability distribution before swap")
 plot_histogram(p0)
 
 
-# In[17]:
+# In[24]:
 
 
 qc.cx(0,1)
@@ -533,8 +639,13 @@ plot_histogram(p1)
 
 
 # 
+# [^symb-cx]: The notation `CX`$_{q_0}^{q_1}$ is not commonly used.  In many literature, simply `CX` is used without specifying which qubit is source, causing confusion. If you are confused, see the corresponding circuit diagram.
+# 
+# 
+
+# 
 # ---
-# Last Modified on 08/19/2022.
+# Last Modified on 08/22/2022.
 
 # In[ ]:
 
