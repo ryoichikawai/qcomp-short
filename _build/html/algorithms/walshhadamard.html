@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>9.2. Walsh-Hadamard Transformation &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>9.3. Walsh-Hadamard Transformation &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.3. A little example of quantum parallelism" href="qparallel.html" />
-    <link rel="prev" title="9.1. Quantum teleportation" href="teleportation.html" />
+    <link rel="next" title="9.4. A little example of quantum parallelism" href="qparallel.html" />
+    <link rel="prev" title="9.2. Entanglement swap" href="entanglement-swap.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -425,29 +425,34 @@ const thebe_selector_output = ".output, .cell_output"
      9.1. Quantum teleportation
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="entanglement-swap.html">
+     9.2. Entanglement swap
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     9.2. Walsh-Hadamard Transformation
+     9.3. Walsh-Hadamard Transformation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qparallel.html">
-     9.3. A little example of quantum parallelism
+     9.4. A little example of quantum parallelism
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deutsch.html">
-     9.4. The Deutsch problem
+     9.5. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qft.html">
-     9.5. Quantum Fourier Transform
+     9.6. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qpe.html">
-     9.6. Quantum Phase Estimation
+     9.7. Quantum Phase Estimation
     </a>
    </li>
   </ul>
@@ -672,12 +677,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   9.2.1. Walsh-Hadamard transformation
+   9.3.1. Walsh-Hadamard transformation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#remarks">
-   9.2.2. Remarks
+   9.3.2. Remarks
   </a>
  </li>
 </ul>
@@ -701,12 +706,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   9.2.1. Walsh-Hadamard transformation
+   9.3.1. Walsh-Hadamard transformation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#remarks">
-   9.2.2. Remarks
+   9.3.2. Remarks
   </a>
  </li>
 </ul>
@@ -720,7 +725,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="walsh-hadamard-transformation">
-<span id="sec-walsh-hadamard"></span><h1><span class="section-number">9.2. </span>Walsh-Hadamard Transformation<a class="headerlink" href="#walsh-hadamard-transformation" title="Permalink to this headline">#</a></h1>
+<span id="sec-walsh-hadamard"></span><h1><span class="section-number">9.3. </span>Walsh-Hadamard Transformation<a class="headerlink" href="#walsh-hadamard-transformation" title="Permalink to this headline">#</a></h1>
 <p>An integer <span class="math notranslate nohighlight">\(j\)</span> can be expressed in binary bits <span class="math notranslate nohighlight">\(j_{n-1}\,j_{n-2}\,\cdots\,j_{0}\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[
@@ -739,7 +744,7 @@ For example, integers from 0 to 15 can be encoded in with qubits. Integer <span 
 |\psi\rangle = \frac{1}{\sqrt{2^n}}\left(|0\rangle_n + |1\rangle_n + \cdots + |2^{n-1}\rangle_n \right).
 \]</div>
 <section id="id1">
-<h2><span class="section-number">9.2.1. </span>Walsh-Hadamard transformation<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.3.1. </span>Walsh-Hadamard transformation<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>To find a quantum algorithm, we look at a few small cases. For <span class="math notranslate nohighlight">\(n=1\)</span>, the target state is <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2}}\left(|0\rangle + |1\rangle\right)\)</span>.  We are already familiar with this state and <span class="math notranslate nohighlight">\(H|0\rangle\)</span> is the solution.  For <span class="math notranslate nohighlight">\(n=2\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -752,14 +757,14 @@ For example, integers from 0 to 15 can be encoded in with qubits. Integer <span 
 \end{split}\]</div>
 <p>It is now clear that the desired quantum algorithm for general case is</p>
 <div class="math notranslate nohighlight" id="equation-walsh-hadamard">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-walsh-hadamard" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(9.3)<a class="headerlink" href="#equation-walsh-hadamard" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align}
 |\psi\rangle &amp;= (H \otimes H \otimes \cdots \otimes H) |0\rangle_n \\
 &amp; = \frac{1}{\sqrt{2}}\left(|0\rangle + |1\rangle\right) \otimes \frac{1}{\sqrt{2}}\left(|0\rangle + |1\rangle\right) \otimes \cdots \otimes \frac{1}{\sqrt{2}}\left(|0\rangle + |1\rangle\right)
 \end{align}
 \end{split}\]</div>
 <p>which is known as <em>Walsh-Hadamard</em> transform.</p>
-<p><strong>Example</strong> <a class="reference internal" href="#sec-walsh-hadamard"><span class="std std-numref">9.2</span></a>.1   The following example calculate the Wals-Hadamard transform for <span class="math notranslate nohighlight">\(n=3\)</span>.  The result should be <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{8}} \left(|000\rangle + |001\rangle + \cdots + |110\rangle + |111\rangle \right)\)</span>.</p>
+<p><strong>Example</strong> <a class="reference internal" href="#sec-walsh-hadamard"><span class="std std-numref">9.3</span></a>.1   The following example calculate the Wals-Hadamard transform for <span class="math notranslate nohighlight">\(n=3\)</span>.  The result should be <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{8}} \left(|000\rangle + |001\rangle + \cdots + |110\rangle + |111\rangle \right)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -799,10 +804,10 @@ q_2: ┤ H ├
 </div>
 </section>
 <section id="remarks">
-<h2><span class="section-number">9.2.2. </span>Remarks<a class="headerlink" href="#remarks" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">9.3.2. </span>Remarks<a class="headerlink" href="#remarks" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Recalling that the Hadamard gate changes the basis set, from the computational basis to the <span class="math notranslate nohighlight">\(x\)</span>-basis.  The Walsh-Hadamard transformation is simply <span class="math notranslate nohighlight">\(|00 \cdots 00\rangle \Rightarrow |++ \cdots ++\rangle\)</span>.  Interestingly, the simple product of <span class="math notranslate nohighlight">\(|+\rangle\)</span> corresponds to the superposition of integer states.  Quantum algorithms use this kind of <em>tricks</em> everywhere.</p></li>
-<li><p>The Walsh-Hadamard transformation generates the superposition state where all terms have the same phase.  Applying phase shifting gates such as <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(S\)</span>, <span class="math notranslate nohighlight">\(T\)</span>, and <span class="math notranslate nohighlight">\(P\)</span>, you can modify the phases. Quantum Fourier transform is an example.  See <a class="reference internal" href="qft.html#sec-qft"><span class="std std-numref">Section 9.5</span></a>.</p></li>
+<li><p>The Walsh-Hadamard transformation generates the superposition state where all terms have the same phase.  Applying phase shifting gates such as <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(S\)</span>, <span class="math notranslate nohighlight">\(T\)</span>, and <span class="math notranslate nohighlight">\(P\)</span>, you can modify the phases. Quantum Fourier transform is an example.  See <a class="reference internal" href="qft.html#sec-qft"><span class="std std-numref">Section 9.6</span></a>.</p></li>
 </ol>
 <hr class="docutils" />
 <p>Last modified on 07/23/2022.</p>
@@ -836,17 +841,17 @@ q_2: ┤ H ├
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="teleportation.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="entanglement-swap.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9.1. </span>Quantum teleportation</p>
+            <p class="prev-next-title"><span class="section-number">9.2. </span>Entanglement swap</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="qparallel.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.3. </span>A little example of quantum parallelism</p>
+        <p class="prev-next-title"><span class="section-number">9.4. </span>A little example of quantum parallelism</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

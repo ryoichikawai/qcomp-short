@@ -140,8 +140,6 @@
 
 # **Exercise**  {numref}`%s <sec-2qubits>`.2  Generate $|\Psi^{\pm}\rangle$ and visualize the results using Qiskit. (HINT: You can filp one of qubits by `X` gate.
 
-# [^neg]: Symbol $\neg$ means negation.
-
 # ## Two-qubit measurements in computational basis
 # 
 # We want to determine $|c_{ij}|$ in  {eq}`superposition-q2` by measurement.  It can be done easily in Qiskit.

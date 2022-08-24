@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>9.3. A little example of quantum parallelism &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>9.4. A little example of quantum parallelism &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.4. The Deutsch problem" href="deutsch.html" />
-    <link rel="prev" title="9.2. Walsh-Hadamard Transformation" href="walshhadamard.html" />
+    <link rel="next" title="9.5. The Deutsch problem" href="deutsch.html" />
+    <link rel="prev" title="9.3. Walsh-Hadamard Transformation" href="walshhadamard.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -426,28 +426,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="entanglement-swap.html">
+     9.2. Entanglement swap
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="walshhadamard.html">
-     9.2. Walsh-Hadamard Transformation
+     9.3. Walsh-Hadamard Transformation
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     9.3. A little example of quantum parallelism
+     9.4. A little example of quantum parallelism
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deutsch.html">
-     9.4. The Deutsch problem
+     9.5. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qft.html">
-     9.5. Quantum Fourier Transform
+     9.6. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qpe.html">
-     9.6. Quantum Phase Estimation
+     9.7. Quantum Phase Estimation
     </a>
    </li>
   </ul>
@@ -673,7 +678,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="a-little-example-of-quantum-parallelism">
-<span id="sec-qparallel"></span><h1><span class="section-number">9.3. </span>A little example of quantum parallelism<a class="headerlink" href="#a-little-example-of-quantum-parallelism" title="Permalink to this headline">#</a></h1>
+<span id="sec-qparallel"></span><h1><span class="section-number">9.4. </span>A little example of quantum parallelism<a class="headerlink" href="#a-little-example-of-quantum-parallelism" title="Permalink to this headline">#</a></h1>
 <p>Quantum computer can calculate many different instances simultaneously. Here we consider a simple example.  Suppose that we want to calculate <span class="math notranslate nohighlight">\(z = x \oplus y\)</span> where <span class="math notranslate nohighlight">\(x,\, y,\, z \in \{0,1\}\)</span>.  The variables are assigned to three qubits as <span class="math notranslate nohighlight">\(|zyx\rangle = |z\rangle \otimes |y\rangle \otimes |x\rangle\)</span>.  Initially, <span class="math notranslate nohighlight">\(z=0\)</span>.  The computation corresponds to transformation <span class="math notranslate nohighlight">\(|0\rangle \otimes |y\rangle \otimes |x\rangle \Rightarrow |x \oplus y\rangle \otimes |y\rangle \otimes |x\rangle\)</span>.  There are four possible instances:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -786,13 +791,13 @@ c: 3/════════════════════════╩
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9.2. </span>Walsh-Hadamard Transformation</p>
+            <p class="prev-next-title"><span class="section-number">9.3. </span>Walsh-Hadamard Transformation</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="deutsch.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.4. </span>The Deutsch problem</p>
+        <p class="prev-next-title"><span class="section-number">9.5. </span>The Deutsch problem</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.2. Walsh-Hadamard Transformation" href="walshhadamard.html" />
+    <link rel="next" title="9.2. Entanglement swap" href="entanglement-swap.html" />
     <link rel="prev" title="9. Algorithms" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -426,28 +426,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="entanglement-swap.html">
+     9.2. Entanglement swap
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="walshhadamard.html">
-     9.2. Walsh-Hadamard Transformation
+     9.3. Walsh-Hadamard Transformation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qparallel.html">
-     9.3. A little example of quantum parallelism
+     9.4. A little example of quantum parallelism
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deutsch.html">
-     9.4. The Deutsch problem
+     9.5. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qft.html">
-     9.5. Quantum Fourier Transform
+     9.6. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qpe.html">
-     9.6. Quantum Phase Estimation
+     9.7. Quantum Phase Estimation
     </a>
    </li>
   </ul>
@@ -711,7 +716,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="quantum-teleportation">
 <span id="sec-teleportation"></span><h1><span class="section-number">9.1. </span>Quantum teleportation<a class="headerlink" href="#quantum-teleportation" title="Permalink to this headline">#</a></h1>
-<p>Suppose that Alice has a qubit in an arbitrary state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> carrying some information.  She wants to send the information to Bob who are separated from Alice by a large distance.  We learned in <a class="reference internal" href="../q2gates/cx.html#sec-cxgate"><span class="std std-numref">Section 8.1</span></a> that information can be transferred with CX gates but thet do not work due to the distance between them. Remarkably the information can be transferred over any distance if Alice and Bob share an entangled pair of qubits and a classical communication channel such as telephone is available.  The protocol is known as  <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_teleportation"><em>quantum teleportation</em></a>.</p>
+<p>Suppose that Alice has a qubit in an arbitrary state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span> carrying some information.  She wants to send the information to Bob who are separated from Alice by a large distance.  We learned in <a class="reference internal" href="../q2gates/cx.html#sec-cxgate"><span class="std std-numref">Section 8.1</span></a> that information can be transferred with CX gates but thet do not work due to the distance between them. Remarkably the information can be transferred over any distance if Alice and Bob share an entangled pair of qubits and a classical communication channel such as telephone is available.     The protocol is known as  <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_teleportation"><em>quantum teleportation</em></a>.  Amazingly, neither direct contact between the sender’s qubit and the receiver’s qubit nor a messenger carries the information between them.  This protcol has important applications in quantum information processes, e.g., <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_network#Repeaters"><em>quantum repeaters</em></a> in <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_network">quantum network</a>.</p>
 <section id="the-protocol">
 <h2><span class="section-number">9.1.1. </span>The protocol<a class="headerlink" href="#the-protocol" title="Permalink to this headline">#</a></h2>
 <p>Consider three qubits <span class="math notranslate nohighlight">\(q_0\)</span>, <span class="math notranslate nohighlight">\(q_1\)</span> and <span class="math notranslate nohighlight">\(q_2\)</span>. Alice has <span class="math notranslate nohighlight">\(q_2\)</span> which is in a super position state <span class="math notranslate nohighlight">\(\alpha |0\rangle + \beta |1\rangle\)</span>.  <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> are prepared in Bell state <span class="math notranslate nohighlight">\(|\Phi^{+}\rangle\)</span> and given to Bob and Alice, respectively.  Hence, Alice has two qubits <span class="math notranslate nohighlight">\(q_1\)</span> and <span class="math notranslate nohighlight">\(q_2\)</span> and Bob has <span class="math notranslate nohighlight">\(q_0\)</span>.  Recall that the entanglement survives the two qubits are far apart.  We use “spooky action at a distace” to teleport the information.<br />
@@ -772,28 +777,29 @@ The initial state of the whole system is given by</p>
 <p>If Alice obtain <span class="math notranslate nohighlight">\(00\rangle\)</span>, then Bob’s qubit is in the desired state.  Otherwise, Bob needs to transform his qubit based on the outcome of the measurement.  However, he does not know what outcome Alice obtained.  Thus Alice sends a message given in <a class="reference internal" href="#table-teleport"><span class="std std-numref">Table 9.1</span></a> to Bob through classical channel (such as telephone). In quantum circuit, this final adjustment can be done by applying CX<span class="math notranslate nohighlight">\(_{q_1}^{q_0}\)</span> and CZ<span class="math notranslate nohighlight">\(_{q_2}^{q_0}\)</span> after the measurement.  Note this CX and CZ are just mimicking the classical communication.</p>
 <p>Bob follows the message.  Now, Bob has the desired state in all cases.</p>
 <p>Notice that no unrealistic non-local operation is used in the protocol.  Alice and Bob operates only on the qubits under their control.</p>
+<p><strong>Qiskit example</strong></p>
+<p><span class="math notranslate nohighlight">\(\psi\rangle = \cos(\pi/3) |0\rangle - \sin(\pi/3)|1\rangle\)</span> is teleported from Alice to Bob.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">Aer</span>
-<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span><span class="p">,</span> <span class="n">partial_trace</span><span class="p">,</span> <span class="n">purity</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span><span class="p">,</span> <span class="n">partial_trace</span>
 <span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
 
 <span class="n">cr</span><span class="o">=</span><span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
 <span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
 
-<span class="c1"># Generate a state Alice has</span>
+<span class="c1"># Generate the state Alice has</span>
 <span class="c1"># set parameters</span>
-<span class="n">theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span>
-<span class="n">phi</span><span class="o">=</span><span class="mf">0.0</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">u</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">phi</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">u</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 
 <span class="c1"># form entanglement between 0 and 1</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
+<span class="c1"># save the state</span>
 <span class="n">psi0</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
 
 <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
@@ -820,15 +826,15 @@ The initial state of the whole system is given by</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">                    ░ ┌───┐      ░            ░        ░ ┌───┐   
-q_0: ───────────────░─┤ H ├──■───░────────────░────────░─┤ X ├─■─
-                    ░ └───┘┌─┴─┐ ░ ┌───┐      ░ ┌─┐    ░ └─┬─┘ │ 
-q_1: ───────────────░──────┤ X ├─░─┤ X ├──────░─┤M├────░───■───┼─
-     ┌────────────┐ ░      └───┘ ░ └─┬─┘┌───┐ ░ └╥┘┌─┐ ░       │ 
-q_2: ┤ U(π/3,0,0) ├─░────────────░───■──┤ H ├─░──╫─┤M├─░───────■─
-     └────────────┘ ░            ░      └───┘ ░  ║ └╥┘ ░         
-c: 2/════════════════════════════════════════════╩══╩════════════
-                                                 0  1            </pre></div></div>
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">                     ░ ┌───┐      ░            ░        ░ ┌───┐   
+q_0: ────────────────░─┤ H ├──■───░────────────░────────░─┤ X ├─■─
+                     ░ └───┘┌─┴─┐ ░ ┌───┐      ░ ┌─┐    ░ └─┬─┘ │ 
+q_1: ────────────────░──────┤ X ├─░─┤ X ├──────░─┤M├────░───■───┼─
+     ┌─────────────┐ ░      └───┘ ░ └─┬─┘┌───┐ ░ └╥┘┌─┐ ░       │ 
+q_2: ┤ U(-π/3,0,0) ├─░────────────░───■──┤ H ├─░──╫─┤M├─░───────■─
+     └─────────────┘ ░            ░      └───┘ ░  ║ └╥┘ ░         
+c: 2/═════════════════════════════════════════════╩══╩════════════
+                                                  0  1            </pre></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -844,19 +850,15 @@ c: 2/═════════════════════════
 <span class="c1"># assuiming the coefficients are real.</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alice&#39;s initial state&quot;</span><span class="p">)</span>
 <span class="n">rhoA</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span><span class="n">psi0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;purity=&quot;</span><span class="p">,</span><span class="n">purity</span><span class="p">(</span><span class="n">rhoA</span><span class="p">))</span>
-<span class="n">psiA</span> <span class="o">=</span> <span class="n">Statevector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">rhoA</span><span class="p">)))</span>
-<span class="n">psiA</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<span class="n">rhoA</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;bloch&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice&#39;s initial state
-purity= (0.9999999999999996+0j)
 </pre></div>
 </div>
-<div class="output text_latex math notranslate nohighlight">
-\[\frac{\sqrt{3}}{2} |0\rangle+\frac{1}{2} |1\rangle\]</div>
+<img alt="../_images/teleportation_6_1.png" src="../_images/teleportation_6_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -865,23 +867,29 @@ purity= (0.9999999999999996+0j)
 <span class="c1"># assuiming the coefficients are real.</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bob&#39;s final state&quot;</span><span class="p">)</span>
 <span class="n">rhoB</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span><span class="n">psi4</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;purity=&quot;</span><span class="p">,</span><span class="n">purity</span><span class="p">(</span><span class="n">rhoB</span><span class="p">))</span>
-<span class="n">psiB</span> <span class="o">=</span> <span class="n">Statevector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(</span><span class="n">rhoB</span><span class="p">)))</span>
-<span class="n">psiB</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<span class="n">rhoB</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;bloch&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bob&#39;s final state
-purity= (1.0000000000000002+0j)
 </pre></div>
 </div>
-<div class="output text_latex math notranslate nohighlight">
-\[\frac{\sqrt{3}}{2} |0\rangle+\frac{1}{2} |1\rangle\]</div>
+<img alt="../_images/teleportation_7_1.png" src="../_images/teleportation_7_1.png" />
 </div>
 </div>
 <p>The result shows that the state of Bob’s qubit is pure and identical to the original state of Alice’s qubit.</p>
 <p>The “spooky action at a distance” can’t transmit information or otherwise it violates the Einstein’s theory of special relativity.  It collapses the state but Bob does not know what is the outcome.  Alice helps Bob by telling him what she found.  This classical communication send 2 bits of information since Bob needs to know one outcome out of four possibilities.  However, the no-teleportation theorem tells us that an exact state of a qubit cannot be described by any length of classical bits.  So, the classical communication did not transmit the information of <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.  It is very strange.  Neither the quantum correlation nor classical communication alone can transmit the full information but it did reach the Bob. Therefore, teleportation succeeded <em>with the help of quantum entanglement</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rhoB</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;bloch&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/teleportation_10_0.png" src="../_images/teleportation_10_0.png" />
+</div>
+</div>
 <hr class="docutils" />
 <p>Last Modified on 08/22/2022.</p>
 </section>
@@ -921,10 +929,10 @@ purity= (1.0000000000000002+0j)
             <p class="prev-next-title"><span class="section-number">9. </span>Algorithms</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="walshhadamard.html" title="next page">
+    <a class='right-next' id="next-link" href="entanglement-swap.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.2. </span>Walsh-Hadamard Transformation</p>
+        <p class="prev-next-title"><span class="section-number">9.2. </span>Entanglement swap</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

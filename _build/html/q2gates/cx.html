@@ -426,28 +426,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/entanglement-swap.html">
+     9.2. Entanglement swap
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/walshhadamard.html">
-     9.2. Walsh-Hadamard Transformation
+     9.3. Walsh-Hadamard Transformation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qparallel.html">
-     9.3. A little example of quantum parallelism
+     9.4. A little example of quantum parallelism
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/deutsch.html">
-     9.4. The Deutsch problem
+     9.5. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qft.html">
-     9.5. Quantum Fourier Transform
+     9.6. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qpe.html">
-     9.6. Quantum Phase Estimation
+     9.7. Quantum Phase Estimation
     </a>
    </li>
   </ul>
@@ -1184,7 +1189,7 @@ CX_{q_0}^{q_1} \cdot H_{q_0} |11\rangle &amp;= -|\Psi^{-}\rangle
 <p><strong>Exercise</strong>  <a class="reference internal" href="cp.html#sec-cpgate"><span class="std std-numref">8.2</span></a>.1  Generate <span class="math notranslate nohighlight">\(|\Phi^{\pm}\rangle\)</span> and visualize the results using Qiskit.</p>
 </section>
 <section id="bell-state-measurement">
-<h3>Bell state measurement<a class="headerlink" href="#bell-state-measurement" title="Permalink to this headline">#</a></h3>
+<span id="ssec-bell-measurement"></span><h3>Bell state measurement<a class="headerlink" href="#bell-state-measurement" title="Permalink to this headline">#</a></h3>
 <p>We can expand any two qubit states in the Bell basis as</p>
 <div class="math notranslate nohighlight" id="equation-bell-expansion">
 <span class="eqno">(8.2)<a class="headerlink" href="#equation-bell-expansion" title="Permalink to this equation">#</a></span>\[
@@ -1198,13 +1203,13 @@ CX_{q_0}^{q_1} \cdot H_{q_0} |11\rangle &amp;= -|\Psi^{-}\rangle
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{+}\rangle &amp;= |00\rangle \\
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{-}\rangle &amp;= |01\rangle \\
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Psi^{+}\rangle &amp;= |10\rangle \\
-\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{-}\rangle &amp;= -|11\rangle
+\text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Psi^{-}\rangle &amp;= -|11\rangle
 \end{align}
 \end{split}\]</div>
-<p>Applying <span class="math notranslate nohighlight">\((H \otimes I)\cdot CX\)</span> to the superposition <a class="reference internal" href="#equation-bell-expansion">(8.2)</a>, we obtain</p>
+<p>Applying <span class="math notranslate nohighlight">\((I \otimes H)\cdot CX\)</span> to the superposition <a class="reference internal" href="#equation-bell-expansion">(8.2)</a>, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-comp-expansion">
 <span class="eqno">(8.3)<a class="headerlink" href="#equation-comp-expansion" title="Permalink to this equation">#</a></span>\[
-(H \otimes I)\cdot CX \ket{\psi} = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle - c_{\Psi^-} |11\rangle .
+(I \otimes H)\cdot CX \ket{\psi} = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle - c_{\Psi^-} |11\rangle .
 \]</div>
 <p>The resulting state is a superposition in computational basis but the expansion coefficients are the same as before the transformation.
 Now, the standard measurement in the computational basis determine the probabilities of finding the corresponding Bell state.  The actual measurement collapses the state to one of computational basis vectors but the Bell measurement should result in one of the Bell state.

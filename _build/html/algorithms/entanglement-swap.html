@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>9. Algorithms &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>9.2. Entanglement swap &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.1. Quantum teleportation" href="teleportation.html" />
-    <link rel="prev" title="8.3. SWAP" href="../q2gates/swap.html" />
+    <link rel="next" title="9.3. Walsh-Hadamard Transformation" href="walshhadamard.html" />
+    <link rel="prev" title="9.1. Quantum teleportation" href="teleportation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -409,7 +411,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="intro.html">
    9. Algorithms
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -417,14 +419,14 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="teleportation.html">
      9.1. Quantum teleportation
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="entanglement-swap.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      9.2. Entanglement swap
     </a>
    </li>
@@ -526,7 +528,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/algorithms/intro.ipynb"
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/algorithms/entanglement-swap.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -586,7 +588,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Falgorithms/intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Falgorithms/entanglement-swap.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -614,7 +616,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/algorithms/intro.ipynb"
+        <a href="../_sources/algorithms/entanglement-swap.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -651,23 +653,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-protocol">
+   9.2.1. The protocol
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Algorithms</h1>
+                <h1>Entanglement swap</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-protocol">
+   9.2.1. The protocol
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -675,11 +714,161 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="algorithms">
-<span id="chap-algorithms"></span><h1><span class="section-number">9. </span>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">#</a></h1>
-<p>TBW</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="entanglement-swap">
+<h1><span class="section-number">9.2. </span>Entanglement swap<a class="headerlink" href="#entanglement-swap" title="Permalink to this headline">#</a></h1>
+<p>The easiest way to create entanglement between two qubits is to bring them in direct contact.  The interaction potential makes them entangled.  Is it possible to make two qubits separated by a great distance without any interaction?  It turns out possible with help of two entangled pairs as resource.  The protocol is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_teleportation#Entanglement_swapping"><em>quantum entanglement swap</em></a>.  The mechanism is similar to the quantum teleportation.</p>
+<section id="the-protocol">
+<h2><span class="section-number">9.2.1. </span>The protocol<a class="headerlink" href="#the-protocol" title="Permalink to this headline">#</a></h2>
+<p>Suppose that Alice and Charlie share an entangled pair of qubits, <span class="math notranslate nohighlight">\(q_A\)</span> with Alice and <span class="math notranslate nohighlight">\(q_{C_A}\)</span> with Charlies.  Similarly, Bob and  Charlie share an entangled pair of qubits, <span class="math notranslate nohighlight">\(q_B\)</span> with Bob and <span class="math notranslate nohighlight">\(q_{C_B}\)</span> with Charlie.   Charlie’s qubits, <span class="math notranslate nohighlight">\(q_{C_A}\)</span> and <span class="math notranslate nohighlight">\(q_{C_B}\)</span>, are not entangled.  Now, Charlie apply Bell measurement (See <code class="xref std std-numref docutils literal notranslate"><span class="pre">ssec-bell-measurement</span></code>)  on his qubits.  Then,</p>
+<p>For convenience, we map the qubits as <span class="math notranslate nohighlight">\(q_A \rightarrow q_0\)</span>, <span class="math notranslate nohighlight">\(q_{C_A} \rightarrow q_1\)</span>, <span class="math notranslate nohighlight">\(q_{C_B} \rightarrow q_2\)</span>, and <span class="math notranslate nohighlight">\(q_{B} \rightarrow q_3\)</span>. As usual, we express the computational basis as <span class="math notranslate nohighlight">\(|q_3\,q_2\,q_1\,q_0\rangle\)</span>.  Our goal is to entangle <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_3\)</span>.</p>
+<p>Let us assume that <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> are in  Bell state <span class="math notranslate nohighlight">\(|\Phi^{+}\rangle_{01}\)</span> and similarly, <span class="math notranslate nohighlight">\(q_2\)</span> and <span class="math notranslate nohighlight">\(q_3\)</span> are in  Bell state <span class="math notranslate nohighlight">\(|\Phi^{+}\rangle_{23}\)</span>.  Hence, the initial state of the total system is</p>
+<div class="math notranslate nohighlight" id="equation-psi0-abc">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-psi0-abc" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+|\psi_0\rangle &amp;= |\Phi^{+}\rangle_{01} \otimes |\Phi^{+}\rangle_{23} \\
+&amp;=\frac{1}{2} \left (|0000\rangle + |0011\rangle + |1100\rangle + |1111\rangle\right) \\
+&amp;=\frac{1}{2} \left (|00\rangle_{03} \otimes^\prime |00\rangle_{12} + |01\rangle_{03} \otimes^\prime |01\rangle_{12} +
+(|10\rangle_{03} \otimes^\prime |10\rangle_{12} + |11\rangle_{03} \otimes^\prime |11\rangle_{12} \right)
+\end{align}
+\end{split}\]</div>
+<p>where the indices on the kets inciate the qubit pairs and <span class="math notranslate nohighlight">\(\otimes^\prime\)</span> means that the original order of qubits must be used to take the tensor product.</p>
+<p>Recallng that</p>
+<div class="math notranslate nohighlight" id="equation-bell-cbase">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-bell-cbase" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+|00\rangle &amp;= \frac{1}{\sqrt{2}} \left(|\Phi^{+}\rangle + |\Phi^{-}\rangle \right) \\
+|11\rangle &amp;= \frac{1}{\sqrt{2}} \left(|\Phi^{+}\rangle - |\phi^{-}\rangle \right) \\
+|01\rangle &amp;= \frac{1}{\sqrt{2}} \left(|\Psi^{+}\rangle + |\psi^{-}\rangle \right) \\
+|10\rangle &amp;= \frac{1}{\sqrt{2}} \left(|\Psi^{+}\rangle - |\psi^{-}\rangle \right)
+\end{align}
+\end{split}\]</div>
+<p>Now we write <span class="math notranslate nohighlight">\(|\psi_0\rangle\)</span> in Bell basis for mathematical convenience.  Substituting <a class="reference internal" href="#equation-bell-cbase">(9.2)</a> to <a class="reference internal" href="#equation-psi0-abc">(9.1)</a>,</p>
+<div class="math notranslate nohighlight">
+\[
+|\psi_0\rangle = \frac{1}{2} \left (|\Phi^{+}\rangle_{03} \otimes^\prime |\Phi^{+}\rangle_{12} 
++ |\Phi^{-}\rangle_{03} \otimes^\prime |\Phi^{-}\rangle_{12} + |\Psi^{+}\rangle_{03} \otimes^\prime |\Psi^{+}\rangle_{12} +
+|\Phi^{-}\rangle_{03} \otimes^\prime |\Phi^{-}\rangle_{12}  \right)
+\]</div>
+<p>This is just another expression of the initial state.  We haven’t applied any gate yet.</p>
+<p><strong>Step 1</strong></p>
+<p>Charlie applied Bell measurement (See <code class="xref std std-numref docutils literal notranslate"><span class="pre">ssec-bell-measurement</span></code>).  He obtains one of <span class="math notranslate nohighlight">\(|\Phi^{+}\rangle_{12}\)</span>, <span class="math notranslate nohighlight">\(|\Phi^{-}\rangle_{12}\)</span>,
+<span class="math notranslate nohighlight">\(|\Psi^{+}\rangle_{12}\)</span>, and <span class="math notranslate nohighlight">\(|\Psi^{+}\rangle_{12}\)</span> with equal probabiity.  The Alice’s and Bob’s qubits ends up with the same type of Bell state Charlie obtained. See <a class="reference internal" href="#table-entanglement-swap"><span class="std std-numref">Table 9.2</span></a>.  At this point their qubits are already entangled.</p>
+<table class="colwidths-auto table" id="table-entanglement-swap">
+<caption><span class="caption-number">Table 9.2 </span><span class="caption-text">The outcome of Bell measurement</span><a class="headerlink" href="#table-entanglement-swap" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Charlies’s outcome</p></th>
+<th class="text-align:center head"><p>Alice-Bob’s state</p></th>
+<th class="text-align:center head"><p>Alice’s action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\lvert \Phi^{+}\rangle\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\lvert \Phi^{+}\rangle\)</span></p></td>
+<td class="text-align:center"><p>Apply X  and Z.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\lvert \Phi^{-}\rangle\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\lvert \Phi^{-}\rangle\)</span></p></td>
+<td class="text-align:center"><p>Apply X.</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\lvert \Psi^{+}\rangle\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\lvert \Psi^{+}\rangle\)</span></p></td>
+<td class="text-align:center"><p>Apply Z.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\lvert \Psi^{-}\rangle\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\lvert \Psi^{-}\rangle\)</span></p></td>
+<td class="text-align:center"><p>Do nothing.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2</strong></p>
+<p>To obtain the desired Bell state (the singlet state in the current example), either Alice or Bob must act on their qubit but they don’t know  what state they have.  So Charlie calls Alice and tell her what state he obtained.  Then, Alice applies appropriate gates based on the given information.  Bob did not do anything but his qubit is now entangled with the Alice’s qubit as designed.</p>
+<p><strong>Qiskit example</strong></p>
+<p>The singlet state <span class="math notranslate nohighlight">\(|\Psi^{-}\rangle\)</span> is formed on ALice and Bob’s qubits out of two paires of <span class="math notranslate nohighlight">\(|\Phi^{+}\rangle\)</span> as resource.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">Aer</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span><span class="p">,</span> <span class="n">partial_trace</span><span class="p">,</span> <span class="n">purity</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_state_qsphere</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
+
+<span class="n">cr</span><span class="o">=</span><span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+
+<span class="c1"># generate entanglment between 0 and 1</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># generate entanglment between 2 and 3</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># Bell measurement of 1 and 2</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># Post measurement actions</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cz</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Restore the Charlies&#39; Bell state</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/entanglement-swap_4_0.png" src="../_images/entanglement-swap_4_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the full state vector</span>
+<span class="n">result</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="n">psi</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First the state Charlie obtained by the Bell measurement.  There are four possibilities with the equal probability.  One of them is chosen at random.  Hence, the following output changes from run to run.  Try several times and see it changes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Charlie&#39;s qubits</span>
+<span class="c1"># Get the reduced density for qubait 1 and 2</span>
+<span class="n">rho12</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">plot_state_qsphere</span><span class="p">(</span><span class="n">rho12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/entanglement-swap_7_0.png" src="../_images/entanglement-swap_7_0.png" />
+</div>
+</div>
+<p>Next, the composite state of Alice’s and Bob’s qubits is shown.  Despite that the Charlie’s state changes at random.  The state of Alice-Bob qubits always the same and that is their desired state <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2}}\left|01\rangle+|10\rangle\right)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Joint state of Alice&#39;s and Bob&#39;s qubits.</span>
+<span class="c1"># Get the reduced density for qubait 0 and 3</span>
+<span class="n">rho23</span> <span class="o">=</span> <span class="n">partial_trace</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1"># Plot the density</span>
+<span class="n">plot_state_qsphere</span><span class="p">(</span><span class="n">rho23</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/entanglement-swap_9_0.png" src="../_images/entanglement-swap_9_0.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -709,17 +898,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../q2gates/swap.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="teleportation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8.3. </span>SWAP</p>
+            <p class="prev-next-title"><span class="section-number">9.1. </span>Quantum teleportation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="teleportation.html" title="next page">
+    <a class='right-next' id="next-link" href="walshhadamard.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.1. </span>Quantum teleportation</p>
+        <p class="prev-next-title"><span class="section-number">9.3. </span>Walsh-Hadamard Transformation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

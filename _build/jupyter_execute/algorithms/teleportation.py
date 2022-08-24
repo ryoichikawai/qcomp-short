@@ -4,7 +4,7 @@
 # (sec-teleportation)=
 # # Quantum teleportation
 
-# Suppose that Alice has a qubit in an arbitrary state $|\psi\rangle$ carrying some information.  She wants to send the information to Bob who are separated from Alice by a large distance.  We learned in {numref}`sec-cxgate` that information can be transferred with CX gates but thet do not work due to the distance between them. Remarkably the information can be transferred over any distance if Alice and Bob share an entangled pair of qubits and a classical communication channel such as telephone is available.  The protocol is known as  [*quantum teleportation*](https://en.wikipedia.org/wiki/Quantum_teleportation).
+# Suppose that Alice has a qubit in an arbitrary state $|\psi\rangle$ carrying some information.  She wants to send the information to Bob who are separated from Alice by a large distance.  We learned in {numref}`sec-cxgate` that information can be transferred with CX gates but thet do not work due to the distance between them. Remarkably the information can be transferred over any distance if Alice and Bob share an entangled pair of qubits and a classical communication channel such as telephone is available.     The protocol is known as  [*quantum teleportation*](https://en.wikipedia.org/wiki/Quantum_teleportation).  Amazingly, neither direct contact between the sender's qubit and the receiver's qubit nor a messenger carries the information between them.  This protcol has important applications in quantum information processes, e.g., [*quantum repeaters*](https://en.wikipedia.org/wiki/Quantum_network#Repeaters) in [quantum network](https://en.wikipedia.org/wiki/Quantum_network).
 
 # ## The protocol
 # 
@@ -67,29 +67,32 @@
 # 
 # Notice that no unrealistic non-local operation is used in the protocol.  Alice and Bob operates only on the qubits under their control.
 
+# **Qiskit example**
+# 
+# $\psi\rangle = \cos(\pi/3) |0\rangle - \sin(\pi/3)|1\rangle$ is teleported from Alice to Bob. 
+
 # In[1]:
 
 
 import numpy as np
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, Aer
-from qiskit.quantum_info import Statevector, partial_trace, purity
+from qiskit.quantum_info import Statevector, partial_trace
 backend = Aer.get_backend('statevector_simulator')
 
 cr=ClassicalRegister(2,'c')
 qr=QuantumRegister(3,'q')
 qc=QuantumCircuit(qr,cr)
 
-# Generate a state Alice has
+# Generate the state Alice has
 # set parameters
-theta=np.pi/3
-phi=0.0
-qc.u(theta,phi,0,2)
+qc.u(-np.pi/3,0,0,2)
 qc.barrier()
 
 # form entanglement between 0 and 1
 qc.h(0)
 qc.cx(0,1)
 
+# save the state
 psi0=Statevector(qc)
 
 qc.barrier()
@@ -128,9 +131,7 @@ psi4 = result.get_statevector()
 # assuiming the coefficients are real.
 print("Alice's initial state")
 rhoA = partial_trace(psi0, [0,1])
-print("purity=",purity(rhoA))
-psiA = Statevector(np.sqrt(np.diagonal(rhoA)))
-psiA.draw('latex')
+rhoA.draw('bloch')
 
 
 # In[4]:
@@ -140,14 +141,18 @@ psiA.draw('latex')
 # assuiming the coefficients are real.
 print("Bob's final state")
 rhoB = partial_trace(psi4, [1,2])
-print("purity=",purity(rhoB))
-psiB = Statevector(np.sqrt(np.diagonal(rhoB)))
-psiB.draw('latex')
+rhoB.draw('bloch')
 
 
 # The result shows that the state of Bob's qubit is pure and identical to the original state of Alice's qubit.
 
 # The "spooky action at a distance" can't transmit information or otherwise it violates the Einstein's theory of special relativity.  It collapses the state but Bob does not know what is the outcome.  Alice helps Bob by telling him what she found.  This classical communication send 2 bits of information since Bob needs to know one outcome out of four possibilities.  However, the no-teleportation theorem tells us that an exact state of a qubit cannot be described by any length of classical bits.  So, the classical communication did not transmit the information of $|\psi\rangle$.  It is very strange.  Neither the quantum correlation nor classical communication alone can transmit the full information but it did reach the Bob. Therefore, teleportation succeeded *with the help of quantum entanglement*.
+
+# In[5]:
+
+
+rhoB.draw('bloch')
+
 
 # 
 # ---

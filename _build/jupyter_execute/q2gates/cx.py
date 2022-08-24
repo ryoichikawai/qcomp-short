@@ -318,6 +318,7 @@ plot_state_qsphere(psi,figsize=(4,4))
 
 # **Exercise**  {numref}`%s <sec-cpgate>`.1  Generate $|\Phi^{\pm}\rangle$ and visualize the results using Qiskit.
 
+# (ssec-bell-measurement)=
 # ### Bell state measurement
 # 
 # We can expand any two qubit states in the Bell basis as
@@ -335,13 +336,13 @@ plot_state_qsphere(psi,figsize=(4,4))
 # \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{+}\rangle &= |00\rangle \\
 # \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{-}\rangle &= |01\rangle \\
 # \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Psi^{+}\rangle &= |10\rangle \\
-# \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{-}\rangle &= -|11\rangle
+# \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Psi^{-}\rangle &= -|11\rangle
 # \end{align}
 # $$
-# Applying $(H \otimes I)\cdot CX$ to the superposition {eq}`bell-expansion`, we obtain 
+# Applying $(I \otimes H)\cdot CX$ to the superposition {eq}`bell-expansion`, we obtain 
 # 
 # $$
-# (H \otimes I)\cdot CX \ket{\psi} = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle - c_{\Psi^-} |11\rangle .
+# (I \otimes H)\cdot CX \ket{\psi} = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle - c_{\Psi^-} |11\rangle .
 # $$(comp-expansion)
 # 
 # The resulting state is a superposition in computational basis but the expansion coefficients are the same as before the transformation.
