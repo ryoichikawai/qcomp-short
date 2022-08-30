@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Single qubit" href="../qubit/intro.html" />
+    <link rel="next" title="4.3. Quantum Information Theory" href="qinfo.html" />
     <link rel="prev" title="4.1. Classical computation" href="ccomp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -228,6 +228,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      4.2. Quantum computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qinfo.html">
+     4.3. Quantum Information Theory
     </a>
    </li>
   </ul>
@@ -426,28 +431,33 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/entanglement-swap.html">
+     9.2. Entanglement swap
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/walshhadamard.html">
-     9.2. Walsh-Hadamard Transformation
+     9.3. Walsh-Hadamard Transformation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qparallel.html">
-     9.3. A little example of quantum parallelism
+     9.4. A little example of quantum parallelism
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/deutsch.html">
-     9.4. The Deutsch problem
+     9.5. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qft.html">
-     9.5. Quantum Fourier Transform
+     9.6. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qpe.html">
-     9.6. Quantum Phase Estimation
+     9.7. Quantum Phase Estimation
     </a>
    </li>
   </ul>
@@ -676,13 +686,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#restriction-on-quantum-information-processes">
-   4.2.2. Restriction on quantum information processes
+  <a class="reference internal nav-link" href="#resetting-a-qubit">
+   4.2.2. Resetting a qubit
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quantum-information">
-   4.2.3. Quantum Information
+  <a class="reference internal nav-link" href="#circuit-models">
+   4.2.3. Circuit models
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -696,8 +706,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#instructions">
-   4.2.6. Instructions
+  <a class="reference internal nav-link" href="#circuits">
+   4.2.6. Circuits
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -730,13 +740,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#restriction-on-quantum-information-processes">
-   4.2.2. Restriction on quantum information processes
+  <a class="reference internal nav-link" href="#resetting-a-qubit">
+   4.2.2. Resetting a qubit
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quantum-information">
-   4.2.3. Quantum Information
+  <a class="reference internal nav-link" href="#circuit-models">
+   4.2.3. Circuit models
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -750,8 +760,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#instructions">
-   4.2.6. Instructions
+  <a class="reference internal nav-link" href="#circuits">
+   4.2.6. Circuits
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -771,7 +781,15 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="quantum-computation">
 <span id="sec-qcomp"></span><h1><span class="section-number">4.2. </span>Quantum computation<a class="headerlink" href="#quantum-computation" title="Permalink to this headline">#</a></h1>
-<p>Here is a brief description of quantum computer and the details will be discussed in this book.  It is necessary for you to understand the following at this stage.  Just read them and move on.</p>
+<p>The construction of current quantum computers is based on the so-called <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_circuit"><em>quantum circuit model</em></a>. It requires the following five components.</p>
+<ol class="simple">
+<li><p>Many qubits.</p></li>
+<li><p>The ability to reset the qubits.</p></li>
+<li><p>A set of quantum operations (called quantum gates) that can entangle the qubits.</p></li>
+<li><p>A classical computer that applies a circuit of quantum gates on the qubits.</p></li>
+<li><p>The ability to measure the qubits in the computational basis and read out the classical bits.</p></li>
+</ol>
+<p>It is necessary for you to understand the structure of the quantum computers at this stage.  The very purpose of this book is to learn them. The followings are the brief summary of the construction. If you are interested in the details of the above requirements, see Ref. <span id="id1">[<a class="reference internal" href="../references.html#id22" title="David P. DiVincenzo. The physical implementation of quantum computation. Fortschr. Phys., 48(9-11):771–783, September 2000. URL: https://doi.org/10.1002/1521-3978(200009)48:9/11&lt;771::AID-PROP771&gt;3.0.CO;2-E.">1</a>]</span>.</p>
 <section id="qubits">
 <h2><span class="section-number">4.2.1. </span>Qubits<a class="headerlink" href="#qubits" title="Permalink to this headline">#</a></h2>
 <p>Quantum computers are also made of many small building blocks but unlike classical computers we need to use quantum mechanics to describe their state. Current quantum computers use the smallest quantum system, that is a two-dimensional Hilbert space <span class="math notranslate nohighlight">\(\mathbb{C}_2\)</span> spanned by complex vectors <span class="math notranslate nohighlight">\(\lvert 0 \rangle\)</span> and <span class="math notranslate nohighlight">\(\lvert 1 \rangle\)</span>, known as <em>qubit</em>. These two basis states looks similar to <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> for a classical bit . However, unlike the classical bit,  the state of a qubit  can be in a superposition state</p>
@@ -788,44 +806,13 @@ title="Print to PDF"
 <p>The four different possibilities are simultaneously considered in the superposition state. The complexity of the superposition state grows very rapidly as the number of qubits increases.  If there are <span class="math notranslate nohighlight">\(n\)</span> qubits, the number of terms in the superposition state can be as many as <span class="math notranslate nohighlight">\(2^n\)</span>.   Then, <span class="math notranslate nohighlight">\(2^n\)</span> different cases are simultaneously computed. We will take the advantage in various applications.</p>
 <p>In classical computers,  a bit string <span class="math notranslate nohighlight">\(b_{n-1}\, b_{n-2}\,\cdots\, b_1\, b_0\)</span> expresses the state of the system.  In quantum computer, a tensor product <span class="math notranslate nohighlight">\(\lvert q_{n-1} \rangle \otimes \lvert q_{n-2}\rangle \otimes \cdots \otimes \lvert q_1 \rangle \otimes \lvert q_0 \rangle\)</span> represents the state of <span class="math notranslate nohighlight">\(n\)</span> qubits.  For two qubits, <span class="math notranslate nohighlight">\(\lvert 01 \rangle = \lvert 0 \rangle \otimes \lvert 1 \rangle\)</span>.</p>
 </section>
-<section id="restriction-on-quantum-information-processes">
-<h2><span class="section-number">4.2.2. </span>Restriction on quantum information processes<a class="headerlink" href="#restriction-on-quantum-information-processes" title="Permalink to this headline">#</a></h2>
-<p>Qubits have many advantages over classical bits, which is the main topics of this book.  However, they have also many disadvantages.  Here are some restrictions imposed on the quantum information.</p>
-<ol class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-cloning_theorem"><strong>No-cloning theorem</strong></a><br />
-The theorem states that it is not possible to duplicate an arbitrary qubit.   During quantum computation we cannot make a copy of a qubit in an unknown state.  Recall that classical bit can be cloned.</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-teleportation_theorem"><strong>No-teleportation theorem</strong></a><br />
-If the information stored in a qubit can be converted to a classical bit string and vice versa, we can <em>teleport</em> the quantum information to a distant place via a classical bit string. Such teleportation is not possible.  This theorem imposes more important restriction.  We cannot read out the full information in an arbitrary qubit since the outcome of the measurement is classical.</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-deleting_theorem"><strong>No-deleting theorem</strong></a><br />
-If two qubits happened to be in the same but arbitrary state, it is not possible to delete the information in one of the qubits.  This is a no-go theorem and time-reversal of no cloning theorem.</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-broadcasting_theorem"><strong>No-broadcasting theorem</strong></a><br />
-It is possible to transfer the full information in an arbitrary qubit to another qubit but the information in the original qubit must be destroyed.  This is known as <em>quantum teleportation</em>.  However, broadcasting the full information in an arbitrary qubit to multiple qubits is not possible. This is a corollary of no cloning theorem.</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-hiding_theorem"><strong>No-hiding theorem</strong></a><br />
-Briefly stating, the information stored in quantum system must be conserved. It is not possible to create or destroy quantum information.  In contrast, classical information can be created or destroyed.</p></li>
-</ol>
+<section id="resetting-a-qubit">
+<h2><span class="section-number">4.2.2. </span>Resetting a qubit<a class="headerlink" href="#resetting-a-qubit" title="Permalink to this headline">#</a></h2>
+<p>Suppose that a qubit is in an arbitrary state <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.  We want to transform the state to <span class="math notranslate nohighlight">\(|0\rangle\)</span> or the lowest energy state.  This process is known as <em>resetting</em>.  The resetting is by no means trivial.  Actually, it is very difficult due to the restrictions listed in <a class="reference internal" href="qinfo.html#sec-qinfo"><span class="std std-numref">Section 4.3</span></a> and other restrictions set by the laws of thermodynamics.  The resetting on current quantum computers is not perfect.</p>
 </section>
-<section id="quantum-information">
-<h2><span class="section-number">4.2.3. </span>Quantum Information<a class="headerlink" href="#quantum-information" title="Permalink to this headline">#</a></h2>
-<p>Recall that information is about uncertainty or probability.  a classical bit is dichotomous and there is only one uncertainty, 0 or 1.  In contrast, the state of a qubit is continuous and there are infinitely many different states.  The no-teleportation theorem tells us that even infinitely many classical bits cannot describe the state of a qubit.  Does this mean a qubit contains infinite amount of information? It turns out that we can ask only a dichotomous question.</p>
-<p>Consider a qubit in a superposition state</p>
-<div class="math notranslate nohighlight">
-\[
-\lvert \psi \rangle = \frac{1}{\sqrt{2}} \lvert 0 \rangle +  \frac{1}{\sqrt{2}} \lvert 1 \rangle
-\]</div>
-<p>If we ask if the qubit is in <span class="math notranslate nohighlight">\(\lvert 0 \rangle\)</span>, the answer is either “yes” or “no” but there is no definite answer.  There is 50% chance to get “yes” and 50% chance to get “no”.  The situation is quite similar to the coin tossing.
-However, there are differences. Even when we know precisely that the qubit is in the state <span class="math notranslate nohighlight">\(\lvert \psi \rangle\)</span>, there is still the uncertainty, hence it is no due to our ignorance.  The uncertainty is not due to future event since <span class="math notranslate nohighlight">\(\lvert \psi \rangle\)</span> already exists.  Nevertheless, the amount of information seems <span class="math notranslate nohighlight">\(\log 2\)</span>.</p>
-<p>You can ask a different question.  Is the state <span class="math notranslate nohighlight">\(\lvert + \rangle =  \frac{1}{\sqrt{2}} \lvert 0 \rangle +  \frac{1}{\sqrt{2}} \lvert 1 \rangle\)</span> or <span class="math notranslate nohighlight">\(\lvert - \rangle =  \frac{1}{\sqrt{2}} \lvert 0 \rangle -  \frac{1}{\sqrt{2}} \lvert 1 \rangle\)</span>?  <span class="math notranslate nohighlight">\(\lvert \pm \rangle\)</span> forms an orthonormal basis, this question makes a sense.  Now, the answer is “yes” without ambiguity.  For this question,  <span class="math notranslate nohighlight">\(\lvert \psi \rangle\)</span> contains no information!   Although the question we can ask is always dichotomous, we can ask infinitely many different questions.  This is the main difference between qubit and classical bit.</p>
-<p>We define quantum information entropy using density operator <span class="math notranslate nohighlight">\(\rho = \lvert \psi \rangle \langle \psi \rvert\)</span> as</p>
-<div class="math notranslate nohighlight">
-\[
-S = - \text{Tr} \left(\rho \log \rho\right)
-\]</div>
-<p>which is known as von-Neumann entropy. Plugin <span class="math notranslate nohighlight">\(\rho = \lvert \psi \rangle \langle \psi \rvert\)</span> , we find <span class="math notranslate nohighlight">\(S=0\)</span>.  Hence, the state has no information (uncertainty).  When quantum measurement is done, the state collapses to a different state, which can have a non-vanishing information entropy.  In this sense, information is created, when measurement is done.  For the current example, the state after measurement of <span class="math notranslate nohighlight">\(\lvert 0 \rangle\)</span> and <span class="math notranslate nohighlight">\(\lvert 1 \rangle\)</span>, the state after the measurement is</p>
-<div class="math notranslate nohighlight">
-\[
-\rho = \frac{1}{2}  \lvert 0 \rangle \langle 0 \rvert + \frac{1}{2}  \lvert 1 \rangle \langle 1 \rvert
-\]</div>
-<p>and its von Neumann entropy is <span class="math notranslate nohighlight">\(S = \log 2\)</span> as expected.</p>
+<section id="circuit-models">
+<h2><span class="section-number">4.2.3. </span>Circuit models<a class="headerlink" href="#circuit-models" title="Permalink to this headline">#</a></h2>
+<p>The time-evolution of qubits  is a unitary transformation determined by the Shcrödinger equation.  Quantum computers manipulate the qubits by applying a unitary operator <span class="math notranslate nohighlight">\(U\)</span>.  Starting an initial state <span class="math notranslate nohighlight">\(|\psi_i\rangle\)</span>, the final state (the solution of the quantum computation) is mathematically given by <span class="math notranslate nohighlight">\(|\psi_f\rangle = U |\psi_i\rangle\)</span>.  The quantum algorithm determines the unitary operator <span class="math notranslate nohighlight">\(U\)</span>. Recall that <span class="math notranslate nohighlight">\(U\)</span> is <span class="math notranslate nohighlight">\(2^n \times 2^n\)</span> matrix for <span class="math notranslate nohighlight">\(n\)</span> qubits, which is huge.   How can we construct such a huge matrix?  It turns out that a set of signle qubit unitary operators (<span class="math notranslate nohighlight">\(2\times 2\)</span> matrix) and two-qubit unitary operators (<span class="math notranslate nohighlight">\(4 \times 4\)</span>) can realize <span class="math notranslate nohighlight">\(U\)</span>.  Such unitary matrices are knwon as <em>gates</em>.  To obtain a desired final state, we just apply a set of one-qubit gates and two-qubit gates successively.  In addition to the unitaries, we also need to measure the qubits using measurement gates.  The set of the gates is called <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_circuit"><em>quantum circuit</em></a>.  A simple example is given below.</p>
 </section>
 <section id="gates">
 <h2><span class="section-number">4.2.4. </span>Gates<a class="headerlink" href="#gates" title="Permalink to this headline">#</a></h2>
@@ -872,7 +859,7 @@ X \lvert \psi \rangle = c_0 X \lvert 0 \rangle + c_1 X \lvert 1 \rangle = c_0 \l
 <p><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Action of two-qubit gate.</span><a class="headerlink" href="#u2-gate" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Logically, infinitely many 1-qubit and 2-qubits gates are possible but actual devices can understand only some of them. Depending on the underlying quantum systems, the available gates are different.  However, almost any gate can be expressed equivalently with a set of other gates in principle (gate <em>decomposition</em>).  So, if a desired gate is not available on the device you are using, you  must find a decomposition of the gate.  For IBM devices, <span class="math notranslate nohighlight">\(\texttt{Qiskit}\)</span> finds a decomposition suitable for them.</p>
+<p>Logically, infinitely many 1-qubit and 2-qubits gates are possible but it is known that only several basic gates such as X, Z, and CX are actually needed to carry out quantum computation. Depending on the underlying quantum systems, the available gates are different.  However, almost any gate can be expressed equivalently with a set of other gates in principle (gate <em>decomposition</em>).  So, if a desired gate is not available on the device you are using, you  must find an alternative gate.</p>
 </section>
 <section id="encoding">
 <h2><span class="section-number">4.2.5. </span>Encoding<a class="headerlink" href="#encoding" title="Permalink to this headline">#</a></h2>
@@ -890,8 +877,8 @@ X \lvert \psi \rangle = c_0 X \lvert 0 \rangle + c_1 X \lvert 1 \rangle = c_0 \l
 <p>is another choice.</p>
 <p>To make a good use of quantum computer, finding a good encoding scheme is crucial.</p>
 </section>
-<section id="instructions">
-<h2><span class="section-number">4.2.6. </span>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">#</a></h2>
+<section id="circuits">
+<h2><span class="section-number">4.2.6. </span>Circuits<a class="headerlink" href="#circuits" title="Permalink to this headline">#</a></h2>
 <p>Once an encoding scheme is chosen, we need to give a set of instructions to a quantum computer.  That is we find a set of unitary operators that are applied on qubits one after the other. Unlike classical computation, no advanced programming language is available for quantum computing.  Therefore, programmers must right  instructions the device can understand directly (similar to coding with machine or assembly language for classical computers.)  A code for quantum computation looks like</p>
 <figure class="align-default" id="qc-example">
 <img alt="../_images/qc.png" src="../_images/qc.png" />
@@ -922,6 +909,8 @@ X \lvert \psi \rangle = c_0 X \lvert 0 \rangle + c_1 X \lvert 1 \rangle = c_0 \l
 <section id="readouts">
 <h2><span class="section-number">4.2.7. </span>Readouts<a class="headerlink" href="#readouts" title="Permalink to this headline">#</a></h2>
 <p>When a qubit is in <span class="math notranslate nohighlight">\(\lvert 0 \rangle\)</span> or <span class="math notranslate nohighlight">\(\lvert 1 \rangle\)</span>, readout is in principle accurate (not on current NISQ computers due to device errors). However, the outcome is completely uncertain if the qubit is in a superposition state <a class="reference internal" href="#equation-eqn-superposition">(4.1)</a>. We will obtain <span class="math notranslate nohighlight">\(\texttt{0}\)</span> or <span class="math notranslate nohighlight">\(\texttt{1}\)</span> at random.  If we prepare many qubits in the same superposition state, we obtain <span class="math notranslate nohighlight">\(\texttt{0}\)</span> from some and <span class="math notranslate nohighlight">\(\texttt{1}\)</span> from others. Hence, the readout of qubits is stochastic, from which we know that the qubits are in a superposition state but which one?  The principle of quantum mechanics tells us that the probability of getting <span class="math notranslate nohighlight">\(\texttt{0}\)</span> is given by <span class="math notranslate nohighlight">\(|c_0|^2\)</span> and <span class="math notranslate nohighlight">\(\texttt{1}\)</span> by <span class="math notranslate nohighlight">\(|c_1|^2\)</span>.  By measuring many qubits in the same state, we can calculate the probabilities from which <span class="math notranslate nohighlight">\(|c_0|^2\)</span> and <span class="math notranslate nohighlight">\(|c_1|^2\)</span> can be determined.  The phase of <span class="math notranslate nohighlight">\(c_0\)</span> and <span class="math notranslate nohighlight">\(c_1\)</span> are still missing.  There is a complicate procedure, known as <em>quantum tomography</em>, which can determine the superposition state if and only if sufficiently large number of the same superposition states are measured.  Therefore, it is necessary to repeat the same quantum computation many times if the final result is a superposition state.  Even when the result of the computation is designed to be <span class="math notranslate nohighlight">\(\lvert 0 \rangle\)</span> or <span class="math notranslate nohighlight">\(\lvert 1 \rangle\)</span> by the algorithm, the outcome can be a superposition state due to device errors.  Even worse, the final state can be so-called <em>mixed state</em>, which contains a mixture of classical and quantum uncertainties simultaneously.  A good quantum circuit avoids both classical and quantum uncertainties as much as possible.</p>
+<hr class="docutils" />
+<p>Last modified on 08/30/2022.</p>
 </section>
 </section>
 
@@ -959,10 +948,10 @@ X \lvert \psi \rangle = c_0 X \lvert 0 \rangle + c_1 X \lvert 1 \rangle = c_0 \l
             <p class="prev-next-title"><span class="section-number">4.1. </span>Classical computation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../qubit/intro.html" title="next page">
+    <a class='right-next' id="next-link" href="qinfo.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Single qubit</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Quantum Information Theory</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -17,15 +17,18 @@
 # $$
 # H = - p_\text{head} \log p_\text{head} - p_\text{tai} \log p_\text{tail} = \log 2
 # $$
+# 
 # which is known as *Shannon entropy* or *information entropy*.  If base 2 is used, $\log_2 2 = 1$ and  we say one *bit* of information is gained.  Here *bit* is the unit of the amount of information. 
 # 
 # After the coin is tossed and landed on someone's hand,  the outcome is not known to us until the person shows it.  The uncertainty is due to ignorance but the amount of information we will find remain the same.
 # 
 # Here is the general definition of the Shannon entropy
 # For a set of all possible outcomes, $\{\omega_1, \omega_2, \cdots, \omega_N\}$ where $N$ is the total number of possible outcomes and the probability $p_i$ of finding the outcome $\omega_i$ for all $i$ is defined,  the amount of  information  is measured by
+# 
 # $$
 # H = - \sum_{i=1}^N p_i \log p_i.
 # $$
+# 
 
 # ## Classical bits
 # 
@@ -164,8 +167,7 @@
 # 
 # Once the computation is completed at the device level, we need to read out the values of the bits and decode the outcome to an integer.  The readout of the classical bits can be done without damaging their state.  The value of the classical bits remains the same before and after the readout.  (That is not the case in quantum computers.)
 
-# In[ ]:
-
-
-
-
+# 
+# ---
+# 
+# Last modified on 08/30/2022.

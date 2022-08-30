@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>4.1. Classical computation &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>4.3. Quantum Information Theory &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.2. Quantum computation" href="qcomp.html" />
-    <link rel="prev" title="4. What is a Quantum Computer?" href="intro.html" />
+    <link rel="next" title="5. Single qubit" href="../qubit/intro.html" />
+    <link rel="prev" title="4.2. Quantum computation" href="qcomp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -220,8 +220,8 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="ccomp.html">
      4.1. Classical computation
     </a>
    </li>
@@ -230,8 +230,8 @@ const thebe_selector_output = ".output, .cell_output"
      4.2. Quantum computation
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="qinfo.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      4.3. Quantum Information Theory
     </a>
    </li>
@@ -533,7 +533,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/computation/ccomp.ipynb"
+        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/computation/qinfo.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -593,7 +593,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fcomputation/ccomp.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fcomputation/qinfo.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -621,7 +621,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/computation/ccomp.ipynb"
+        <a href="../_sources/computation/qinfo.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -681,43 +681,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-classical-information">
-   4.1.1. What is classical information?
+  <a class="reference internal nav-link" href="#classical-information">
+   4.3.1. Classical information
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classical-bits">
-   4.1.2. Classical bits
+  <a class="reference internal nav-link" href="#quantum-information">
+   4.3.2. Quantum Information
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#copying-a-state-of-bit">
-   4.1.3. Copying a state of bit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gates">
-   4.1.4. Gates
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#landauer-principle">
-   4.1.5. Landauer principle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#encoding">
-   4.1.6. Encoding
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#instructions">
-   4.1.7. Instructions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#readout-and-decoding">
-   4.1.8. Readout and decoding
+  <a class="reference internal nav-link" href="#restriction-on-quantum-information-processes">
+   4.3.3. Restriction on quantum information processes
   </a>
  </li>
 </ul>
@@ -729,7 +704,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Classical computation</h1>
+                <h1>Quantum Information Theory</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -740,43 +715,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-classical-information">
-   4.1.1. What is classical information?
+  <a class="reference internal nav-link" href="#classical-information">
+   4.3.1. Classical information
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classical-bits">
-   4.1.2. Classical bits
+  <a class="reference internal nav-link" href="#quantum-information">
+   4.3.2. Quantum Information
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#copying-a-state-of-bit">
-   4.1.3. Copying a state of bit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gates">
-   4.1.4. Gates
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#landauer-principle">
-   4.1.5. Landauer principle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#encoding">
-   4.1.6. Encoding
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#instructions">
-   4.1.7. Instructions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#readout-and-decoding">
-   4.1.8. Readout and decoding
+  <a class="reference internal nav-link" href="#restriction-on-quantum-information-processes">
+   4.3.3. Restriction on quantum information processes
   </a>
  </li>
 </ul>
@@ -789,20 +739,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="classical-computation">
-<span id="sec-ccomp"></span><h1><span class="section-number">4.1. </span>Classical computation<a class="headerlink" href="#classical-computation" title="Permalink to this headline">#</a></h1>
-<p>We carry out classical computation every day on many different devices, laptop computers, mobile phones, automobiles, smart TVs, refrigerators, …  to name a few. These devices are made from semiconductors chips and optionally magnetic materials and their functionalities are governed by quantum mechanics.  Nevertheless, we call them <em>classical computer</em>. Why?   While the underlying physical processes are quantum mechanical, <em>information</em> stored and processed in these materials is classical.  For example,  macroscopic electric current and voltage, which are classical quantities, are used to store and process information.  In other words, a large number of electrons are used to store even the smallest amount of information.  In contrast, quantum computation relies on microscopic states , e. g.,  energy eigenstates in an atomic ion.  In th following, we discuss what is the classical information and how it is processed in the classical devices.</p>
-<section id="what-is-classical-information">
-<h2><span class="section-number">4.1.1. </span>What is classical information?<a class="headerlink" href="#what-is-classical-information" title="Permalink to this headline">#</a></h2>
-<p>We  ask a question because we do not know something and try to find it.  In other words, wey to get new <a class="reference external" href="https://en.wikipedia.org/wiki/Information">information</a>.  But what is information and can we quantify the amount of information?  To answer this question, <a class="reference external" href="https://en.wikipedia.org/wiki/Information_theory">information theory</a> was developed in the first half of twenty century by <a class="reference external" href="https://en.wikipedia.org/wiki/Claude_Shannon">Claude Shannon</a> and others.</p>
-<p>In essence,  the amount of information we obtain is the amount of uncertainty decreased.  If there is no uncertainty, there is nothing to ask.  The undertainties arise in several different ways.  The outcome of an event that is going to happen in future can be uncertain if we cannot predict it precisely.  The uncertainty is due to the stochastic nature of the event.  IIn another case, the event has already happened and some people know  the outcome but we dont’ know it.  For us, this is uncertainty but it is due to our ignorance.  In either case,  once we know the outcome, the uncertainty disappears and we obtain the information.</p>
-<p>The uncertainty can be mathematically expressed as probability.  Consider coin tossing.  For tossing the coin, no one knows the outcome.  However, we know that the outcome must be one of head and tail.  We cannot predict the outcome because the motion of th coin is chaotic and thus the outcome is stochastic.  Assuming the coin is ideal, the probability of finding head and tail ares <span class="math notranslate nohighlight">\(p_\text{head} = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(p_\text{tail}=\frac{1}{2}\)</span>, which is the uncertainty associated with the coin tossing.  The amount of the information (undertainty) is given by</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="quantum-information-theory">
+<span id="sec-qinfo"></span><h1><span class="section-number">4.3. </span>Quantum Information Theory<a class="headerlink" href="#quantum-information-theory" title="Permalink to this headline">#</a></h1>
+<section id="classical-information">
+<h2><span class="section-number">4.3.1. </span>Classical information<a class="headerlink" href="#classical-information" title="Permalink to this headline">#</a></h2>
+<p>We  ask a question because we do not know something and try to find it.  In other words, we try to get new <a class="reference external" href="https://en.wikipedia.org/wiki/Information">information</a>.  But what is information and can we quantify the amount of information?  To answer this question, <a class="reference external" href="https://en.wikipedia.org/wiki/Information_theory">information theory</a> was developed in the first half of twenty century by <a class="reference external" href="https://en.wikipedia.org/wiki/Claude_Shannon">Claude Shannon</a> and others.</p>
+<p>In essence,  the amount of information we obtain is the amount of uncertainty decreased.  If there is no uncertainty, there is nothing to ask.  The uncertainties arise in several different ways.  The outcome of an event that is going to happen in future can be uncertain if we cannot predict it precisely.  The uncertainty is mainly due to the stochastic nature of the event, e.g. rolling a die.  In another case, an event has already happened and some people know the outcome.  For those who dont’ know it, the outcome is uncertain but it is due to their ignorance.  In either case,  once the outcome is known, the uncertainty disappears and some information is gained.</p>
+<p>The uncertainty can be mathematically expressed as probability.  Consider coin tossing. No one knows the outcome.  However, we know that it must be either head or tail.  We cannot predict the outcome because the motion of the coin is chaotic and thus the outcome is stochastic.  Assuming the coin is ideal, the probability of finding head and tail are equal, that is <span class="math notranslate nohighlight">\(p_\text{head} = \frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(p_\text{tail}=\frac{1}{2}\)</span>. Shannon defined the amount of the information (undertainty) by</p>
 <div class="math notranslate nohighlight">
 \[
 H = - p_\text{head} \log p_\text{head} - p_\text{tai} \log p_\text{tail} = \log 2
 \]</div>
-<p>which is known as <em>Shannon entropy</em> or <em>information entropy</em>.  If base 2 is used, <span class="math notranslate nohighlight">\(\log_2 2 = 1\)</span> and  we say one <em>bit</em> of information is gained.  Here <em>bit</em> is the unit of the amount of information.</p>
-<p>After the coin is tossed and landed on someone’s hand,  the outcome is not known to us until the person shows it.  The uncertainty is due to ignorance but the amount of information we will find remain the same.</p>
+<p>which is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Entropy_(information_theory)"><em>Shannon entropy</em></a> or <em>information entropy</em>.  If base 2 is used, <span class="math notranslate nohighlight">\(\log_2 2 = 1\)</span> and  we say one <em>bit</em> of information is gained.  Here <em>bit</em> is the unit of information.</p>
+<p>Even after the coin is tossed and landed on someone’s hand,  the outcome is not known to us until the person shows it to others.  In this case, the uncertainty is due to ignorance but the amount of information we will find still one bit.</p>
 <p>Here is the general definition of the Shannon entropy
 For a set of all possible outcomes, <span class="math notranslate nohighlight">\(\{\omega_1, \omega_2, \cdots, \omega_N\}\)</span> where <span class="math notranslate nohighlight">\(N\)</span> is the total number of possible outcomes and the probability <span class="math notranslate nohighlight">\(p_i\)</span> of finding the outcome <span class="math notranslate nohighlight">\(\omega_i\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> is defined,  the amount of  information  is measured by</p>
 <div class="math notranslate nohighlight">
@@ -810,151 +759,45 @@ For a set of all possible outcomes, <span class="math notranslate nohighlight">\
 H = - \sum_{i=1}^N p_i \log p_i.
 \]</div>
 </section>
-<section id="classical-bits">
-<h2><span class="section-number">4.1.2. </span>Classical bits<a class="headerlink" href="#classical-bits" title="Permalink to this headline">#</a></h2>
-<p>Selecting one out of two possibilities is the simplest question.  Coin tossing is one of them. In classical computer the smallest  information unit has two possibilities <span class="math notranslate nohighlight">\(\texttt{0}\)</span> and <span class="math notranslate nohighlight">\(\texttt{1}\)</span>, which are assigned to two well-defined physical states in the devices, e.g.,  <span class="math notranslate nohighlight">\(\texttt{0}\)</span> to <span class="math notranslate nohighlight">\(0\)</span> volt and <span class="math notranslate nohighlight">\(\texttt{1}\)</span> to <span class="math notranslate nohighlight">\(1\)</span> volt if the voltage is used.</p>
-<p>Mathematicall, we use a variable <span class="math notranslate nohighlight">\(b \in \{\texttt{0},\texttt{1}\}\)</span> for a single bit.  The computer consists of many bits, bit 0, bit 1, bit 2, …….  For convenience, we denote the bits as <span class="math notranslate nohighlight">\(b_0, b_1, b_2, \cdots \)</span> and altogether the information is stored in a string of n bits, <span class="math notranslate nohighlight">\('\, b_{n-1}\, b_{n-2}\, \cdots\, b_1\, b_0\, '\)</span>, for example ‘0010101’ (in this book, the bit string is in single quotes.)  Notice the order of bits in the string.  It is the standard to write string from the right to the left.</p>
-</section>
-<section id="copying-a-state-of-bit">
-<h2><span class="section-number">4.1.3. </span>Copying a state of bit<a class="headerlink" href="#copying-a-state-of-bit" title="Permalink to this headline">#</a></h2>
-<p>In classical computers, the information is stored as bit strings in random access memory (RAM).  To process information, the bit strings are copied to the central proccessing unit (CPU).  After the information is processed, the outcome is copied to some location in RAM.   Copying the bits is a fundamental aspect of classical information processsing. As you see below, the input information is usually lost in during processing in CPU.  In contrast, quantum computation does not have such luxury since cloning of quantum state is not possible (<em>no cloning theorem</em>).</p>
-<figure class="align-center" id="ccomp">
-<a class="reference internal image-reference" href="../_images/ccomp.png"><img alt="../_images/ccomp.png" src="../_images/ccomp.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">A schematic diagram of information flows in a typical classical computer.  The state of classical bit can be copied to another classical bit with no restriction.</span><a class="headerlink" href="#ccomp" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="gates">
-<h2><span class="section-number">4.1.4. </span>Gates<a class="headerlink" href="#gates" title="Permalink to this headline">#</a></h2>
-<p>The computer can change the state of any bit as directed by a program.  A simple operation is to flip a bit, that is <span class="math notranslate nohighlight">\(0\rightarrow 1\)</span>  and <span class="math notranslate nohighlight">\(1 \rightarrow 0\)</span>.  We express it using a concept of <em>gate</em>.  A bit enters a gate and comes out with a different value.  In the classical computer, there are only two possibility,  no flip or flip.  “No flip” means nothing happens to the bit and thus we are not interesting it.  The gate that flips a bit is called <code class="docutils literal notranslate"><span class="pre">NOT</span></code> gate. (See <a class="reference internal" href="#classical-gates"><span class="std std-numref">Fig. 4.2</span></a>.)  This is the only gate acts on a single bit outputs a single bit.  The relation between the input and the output bit is given in the truth <a class="reference internal" href="#classical-not"><span class="std std-numref">table 4.1</span></a>.</p>
-<table class="table" id="classical-not">
-<caption><span class="caption-number">Table 4.1 </span><span class="caption-text">NOT Gate</span><a class="headerlink" href="#classical-not" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p> </p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(i\)</span></p></th>
-<th class="head"><p> </p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(o\)</span></p></th>
-<th class="head"><p> </p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p> </p></td>
-<td><p>0</p></td>
-<td><p> </p></td>
-<td><p>1</p></td>
-<td><p> </p></td>
-</tr>
-<tr class="row-odd"><td><p> </p></td>
-<td><p>1</p></td>
-<td><p> </p></td>
-<td><p>0</p></td>
-<td><p> </p></td>
-</tr>
-</tbody>
-</table>
-<p>Classical computation uses various kind of gates which takes two input bits (<span class="math notranslate nohighlight">\(i_0\)</span> and <span class="math notranslate nohighlight">\(i_1\)</span>) and outputs one bit.  For example, <code class="docutils literal notranslate"><span class="pre">AND</span></code> gate outputs <span class="math notranslate nohighlight">\(i_0 \times i_1\)</span>.  (See <a class="reference internal" href="#classical-gates"><span class="std std-numref">Fig. 4.2</span></a>.)
-The corresponding truth table is given in <a class="reference internal" href="#classical-and"><span class="std std-numref">Table 4.2</span></a>.  Notice that this process is <em>irreversible</em>, meaning that we cannot recover the input information <span class="math notranslate nohighlight">\(i_0\)</span> and <span class="math notranslate nohighlight">\(i_1\)</span> from the output <span class="math notranslate nohighlight">\(o\)</span>.  Hence, we says that a bit of information is lost.  Two-bit classical gates  are in general irreversible and 1 bit of information is lost.  However, this is not a major issue since classical bits can be cloned and saved in a separate bit string.</p>
-<p>In principle, classical computation needs only <span class="math notranslate nohighlight">\(\texttt{NOT}\)</span> and <span class="math notranslate nohighlight">\(\texttt{AND}\)</span> gates.  It is using other gates makes classical computing much more efficient.</p>
-<table class="table" id="classical-and">
-<caption><span class="caption-number">Table 4.2 </span><span class="caption-text">AND Gate</span><a class="headerlink" href="#classical-and" title="Permalink to this table">#</a></caption>
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-<col style="width: 14%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p> </p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(i_0\)</span></p></th>
-<th class="head"><p> </p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(i_1\)</span></p></th>
-<th class="head"><p> </p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(o\)</span></p></th>
-<th class="head"><p> </p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p> </p></td>
-<td><p>0</p></td>
-<td><p> </p></td>
-<td><p>0</p></td>
-<td><p> </p></td>
-<td><p>0</p></td>
-<td><p> </p></td>
-</tr>
-<tr class="row-odd"><td><p> </p></td>
-<td><p>0</p></td>
-<td><p> </p></td>
-<td><p>1</p></td>
-<td><p> </p></td>
-<td><p>0</p></td>
-<td><p> </p></td>
-</tr>
-<tr class="row-even"><td><p> </p></td>
-<td><p>1</p></td>
-<td><p> </p></td>
-<td><p>0</p></td>
-<td><p> </p></td>
-<td><p>0</p></td>
-<td><p> </p></td>
-</tr>
-<tr class="row-odd"><td><p> </p></td>
-<td><p>1</p></td>
-<td><p> </p></td>
-<td><p>1</p></td>
-<td><p> </p></td>
-<td><p>1</p></td>
-<td><p> </p></td>
-</tr>
-</tbody>
-</table>
-<figure class="align-center" id="classical-gates">
-<a class="reference internal image-reference" href="../_images/classical-gate.png"><img alt="../_images/classical-gate.png" src="../_images/classical-gate.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">An example of classical gates. The <span class="math notranslate nohighlight">\(\texttt{NOT}\)</span> gate takes one bit and output one bit.</span><a class="headerlink" href="#classical-gates" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="landauer-principle">
-<h2><span class="section-number">4.1.5. </span>Landauer principle<a class="headerlink" href="#landauer-principle" title="Permalink to this headline">#</a></h2>
-<p>The irreversibility of classical gates has important physical consequence.  <a class="reference external" href="https://en.wikipedia.org/wiki/Landauer%27s_principle"><em>Landauer’s principle</em></a> states that the loss of one bit of information necessarily dissipates <span class="math notranslate nohighlight">\(k_B T \log 2\)</span> of heat. For example, every time an  <span class="math notranslate nohighlight">\(\texttt{AND}\)</span> gate is used, at least <span class="math notranslate nohighlight">\(k_B T \log 2\)</span> of heat must be generated. This heat is actually minute and much smaller than Joule heat that makes CPU really hot. Therefore, it odes not causes a significant problem.  However, it imposes a theoretical limit of classical computation.  In contrast, quantum computing is reversible and thus no dissipation is mandatory.</p>
-<p><strong>Exercise</strong>  Is <span class="math notranslate nohighlight">\(\texttt{NOT}\)</span> gate reversible?</p>
-</section>
-<section id="encoding">
-<h2><span class="section-number">4.1.6. </span>Encoding<a class="headerlink" href="#encoding" title="Permalink to this headline">#</a></h2>
-<p>The computer can understand only bit strings and manipulates them by applying gates.  However, problems we want to solve are usually not expressed in bit strings.  Somehow, we need to map the problems to bit strings the computer can understand. In other words, we need to <em>encode</em> the information in our expression to the bit strings. As a simple example, we consider a boolean operation between two logical variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.  Their value is either <span class="math notranslate nohighlight">\(\texttt{True}\)</span> or <span class="math notranslate nohighlight">\(\texttt{False}\)</span>.   Since the valiables takes only one of two possibilities, the mapping between the boolean variables and bits are naturally</p>
+<section id="quantum-information">
+<h2><span class="section-number">4.3.2. </span>Quantum Information<a class="headerlink" href="#quantum-information" title="Permalink to this headline">#</a></h2>
+<p>Recall that information is about uncertainty or probability.  a classical bit is dichotomous and there is only one uncertainty, 0 or 1.  In contrast, the state of a qubit is continuous.  Does this mean a qubit contains infinite amount of information? It turns out that we can ask only a dichotomous question at a time.</p>
+<p>Consider a qubit in a superposition state</p>
 <div class="math notranslate nohighlight">
 \[
-\texttt{False} \Rightarrow \texttt{0}, \quad \texttt{True} \Rightarrow \texttt{1}
+\lvert \psi \rangle = \frac{1}{\sqrt{2}} \lvert 0 \rangle +  \frac{1}{\sqrt{2}} \lvert 1 \rangle
 \]</div>
-<p>Now, variable <span class="math notranslate nohighlight">\(x\)</span> is expressed by a bit <span class="math notranslate nohighlight">\(b_0\)</span> and <span class="math notranslate nohighlight">\(y\)</span>  by <span class="math notranslate nohighlight">\(b_1\)</span>.</p>
-<p>In many problems, encoding is not obvious at all.  Integer numbers can be mapped to bit strings using their binary expressions.  For example, <span class="math notranslate nohighlight">\(5 \Rightarrow \texttt{101}\)</span>, which requires three bits.  Exact encoding of continuous numbers is not possible  since bits are digital.  Approximated representation such as <a class="reference external" href="https://en.wikipedia.org/wiki/Floating-point_arithmetic"><em>floating point arithmetic</em></a> numbers are used.</p>
+<p>When we ask if the qubit is in <span class="math notranslate nohighlight">\(\lvert 0 \rangle\)</span>, the answer is either “yes” or “no” but there is no definite answer.  There is 50% chance to get “yes” and 50% chance to get “no”.  The situation is quite similar to the coin tossing.</p>
+<p>However, there are differences. You can ask a different question for a qubit.  Is the state <span class="math notranslate nohighlight">\(\lvert + \rangle =  \frac{1}{\sqrt{2}} \lvert 0 \rangle +  \frac{1}{\sqrt{2}} \lvert 1 \rangle\)</span> or <span class="math notranslate nohighlight">\(\lvert - \rangle =  \frac{1}{\sqrt{2}} \lvert 0 \rangle -  \frac{1}{\sqrt{2}} \lvert 1 \rangle\)</span>?   Now, the answer is “yes” without ambiguity.  For this question,  <span class="math notranslate nohighlight">\(\lvert \psi \rangle\)</span> contains no information!   Although the question we can ask is always dichotomous, we can ask infinitely many different questions.  This is the main difference between qubit and classical bit.</p>
+<p>Even when we know precisely that the qubit is in the state <span class="math notranslate nohighlight">\(\lvert \psi \rangle\)</span>, there is still the uncertainty, not due to our ignorance nor due to future event since <span class="math notranslate nohighlight">\(\lvert \psi \rangle\)</span> already exists. and we know it.  Nevertheless, the amount of information seems <span class="math notranslate nohighlight">\(\log 2\)</span>. The uncertainty is originated from the quantum measurement which is inherently stochastic.  The measurement is supposed to gain information and thus uncertainty should decrease but the very process to extract information creates uncertainty!</p>
+<p>The no-teleportation theorem suggests that infinitely many classical bits are needed to describe the state of a single qubit.  Nonetheless, we can extract only one classical bit of information out of it.  This is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Holevo%27s_theorem"><em>Halevo bound</em></a>.  If you have <span class="math notranslate nohighlight">\(n\)</span> qubits, you can get only <span class="math notranslate nohighlight">\(n\)</span> classical bits of information.  On the other hand, we can transmit two classical bits of information using a single qubit, which is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Superdense_coding"><em>superdense coding</em></a>.  The trick is to use quantum entanglement as resource.</p>
+<p>We define quantum information entropy using density operator <span class="math notranslate nohighlight">\(\rho = \lvert \psi \rangle \langle \psi \rvert\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+S = - \text{Tr} \left(\rho \log \rho\right)
+\]</div>
+<p>which is known as von-Neumann entropy. Plugin <span class="math notranslate nohighlight">\(\rho = \lvert \psi \rangle \langle \psi \rvert\)</span> , we find <span class="math notranslate nohighlight">\(S=0\)</span>.  Hence, the state has no information (uncertainty) with respect to the question “what is the state of qubit?”.  We know the answer prcesiely. It is <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>. When quantum measurement is done, the state collapses to a different state, which can have a non-vanishing information classical Shannon entropy.  In this sense, classical information is created out of quantum information, when measurement is done.  For the current example, the state after measurement of <span class="math notranslate nohighlight">\(\lvert 0 \rangle\)</span> and <span class="math notranslate nohighlight">\(\lvert 1 \rangle\)</span>, the state after the non-selective measurement is</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \frac{1}{2}  \lvert 0 \rangle \langle 0 \rvert + \frac{1}{2}  \lvert 1 \rangle \langle 1 \rvert
+\]</div>
+<p>and its von Neumann entropy is <span class="math notranslate nohighlight">\(S = \log 2\)</span> as expected.</p>
 </section>
-<section id="instructions">
-<h2><span class="section-number">4.1.7. </span>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">#</a></h2>
-<p>Computation means that by manipu, quantum or classicallating the state of bits toward the solution.  The device can flip the specified bits .  It can be thought of bits entering a <em>gate</em> and coming out with different values.  We need to instruct the device how to change the state of the bits.  In other words we to find find what gates should be applied to the bits. Let us consider a simple operation <span class="math notranslate nohighlight">\(x+y \mod 2\)</span> where <span class="math notranslate nohighlight">\(x, y \in \{0, 1\}\)</span>.  WE shall write this operation simply as <span class="math notranslate nohighlight">\(x \oplus y\)</span> . We map <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> to bits <span class="math notranslate nohighlight">\(b_0\)</span> and <span class="math notranslate nohighlight">\(b_1\)</span>. Applying an <code class="docutils literal notranslate"><span class="pre">XOR</span></code> gate on <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(b_1\)</span> produces desired outputs.   The following diagram classically computes <span class="math notranslate nohighlight">\(x \oplus y\)</span> and the output is stored in <span class="math notranslate nohighlight">\(x\)</span>. The value of <span class="math notranslate nohighlight">\(y\)</span> remains the same.</p>
-<figure class="align-center" id="classical-half-adder">
-<a class="reference internal image-reference" href="../_images/classical-half-adder.png"><img alt="../_images/classical-half-adder.png" src="../_images/classical-half-adder.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">An example of classical circuit.  This circuit computer <span class="math notranslate nohighlight">\(x \oplus y\)</span> using <span class="math notranslate nohighlight">\(\texttt{XOR}\)</span> and <span class="math notranslate nohighlight">\(\texttt{AND}\)</span>.  In addition to the answer, carry over bit</span><a class="headerlink" href="#classical-half-adder" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>In real world applications, we don’t apply the gates by ourselves.  Instead, we use a programming language such as <code class="docutils literal notranslate"><span class="pre">python</span></code>. The language translates the mathematical  expression such as <span class="math notranslate nohighlight">\(x + y\)</span> into gate instructions. So, we really don’t need to know about the classical gate.  Quantum computation has not reached that level yet. Users must picks appropriate gates by themselves.</p>
-</section>
-<section id="readout-and-decoding">
-<h2><span class="section-number">4.1.8. </span>Readout and decoding<a class="headerlink" href="#readout-and-decoding" title="Permalink to this headline">#</a></h2>
-<p>Once the computation is completed at the device level, we need to read out the values of the bits and decode the outcome to an integer.  The readout of the classical bits can be done without damaging their state.  The value of the classical bits remains the same before and after the readout.  (That is not the case in quantum computers.)</p>
+<section id="restriction-on-quantum-information-processes">
+<h2><span class="section-number">4.3.3. </span>Restriction on quantum information processes<a class="headerlink" href="#restriction-on-quantum-information-processes" title="Permalink to this headline">#</a></h2>
+<p>Qubits have many advantages over classical bits, which is the main topics of this book.  However, they have also many disadvantages.  Here are some restrictions imposed on the quantum information.</p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-cloning_theorem"><strong>No-cloning theorem</strong></a><br />
+The theorem states that it is not possible to duplicate an arbitrary qubit.   During quantum computation we cannot make a copy of a qubit in an unknown state.  Recall that classical bit can be cloned.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-teleportation_theorem"><strong>No-teleportation theorem</strong></a><br />
+If the information stored in a qubit can be converted to a classical bit string and vice versa, we can <em>teleport</em> the quantum information to a distant place via a classical bit string. Such teleportation is not possible.  This theorem imposes more important restriction.  We cannot read out the full information in an arbitrary qubit since the outcome of the measurement is classical.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-deleting_theorem"><strong>No-deleting theorem</strong></a><br />
+If two qubits happened to be in the same but arbitrary state, it is not possible to delete the information in one of the qubits.  This is a no-go theorem and time-reversal of no cloning theorem.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-broadcasting_theorem"><strong>No-broadcasting theorem</strong></a><br />
+It is possible to transfer the full information in an arbitrary qubit to another qubit but the information in the original qubit must be destroyed.  This is known as <em>quantum teleportation</em>.  However, broadcasting the full information in an arbitrary qubit to multiple qubits is not possible. This is a corollary of no cloning theorem.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/No-hiding_theorem"><strong>No-hiding theorem</strong></a><br />
+Briefly stating, the information stored in quantum system must be conserved. It is not possible to create or destroy quantum information.  In contrast, classical information can be created or destroyed.</p></li>
+</ol>
 <hr class="docutils" />
 <p>Last modified on 08/30/2022.</p>
 </section>
@@ -987,17 +830,17 @@ The corresponding truth table is given in <a class="reference internal" href="#c
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="qcomp.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4. </span>What is a Quantum Computer?</p>
+            <p class="prev-next-title"><span class="section-number">4.2. </span>Quantum computation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="qcomp.html" title="next page">
+    <a class='right-next' id="next-link" href="../qubit/intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.2. </span>Quantum computation</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Single qubit</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

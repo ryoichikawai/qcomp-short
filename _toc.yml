@@ -31,6 +31,7 @@ parts:
       sections:
       -  file: computation/ccomp
       -  file: computation/qcomp
+      -  file: computation/qinfo
 -  caption: Single qubit
    numbered: 3
    chapters:

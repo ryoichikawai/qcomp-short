@@ -4,7 +4,15 @@
 # (sec-qcomp)=
 # # Quantum computation
 # 
-# Here is a brief description of quantum computer and the details will be discussed in this book.  It is necessary for you to understand the following at this stage.  Just read them and move on.
+# The construction of current quantum computers is based on the so-called [*quantum circuit model*](https://en.wikipedia.org/wiki/Quantum_circuit). It requires the following five components.
+# 
+# 1. Many qubits.
+# 2. The ability to reset the qubits.
+# 3. A set of quantum operations (called quantum gates) that can entangle the qubits.
+# 4. A classical computer that applies a circuit of quantum gates on the qubits.
+# 5. The ability to measure the qubits in the computational basis and read out the classical bits.
+# 
+# It is necessary for you to understand the structure of the quantum computers at this stage.  The very purpose of this book is to learn them. The followings are the brief summary of the construction. If you are interested in the details of the above requirements, see Ref. {cite}`DiVincenzo2000`.  
 
 # ## Qubits
 # 
@@ -26,56 +34,14 @@
 # 
 # In classical computers,  a bit string $b_{n-1}\, b_{n-2}\,\cdots\, b_1\, b_0$ expresses the state of the system.  In quantum computer, a tensor product $\lvert q_{n-1} \rangle \otimes \lvert q_{n-2}\rangle \otimes \cdots \otimes \lvert q_1 \rangle \otimes \lvert q_0 \rangle$ represents the state of $n$ qubits.  For two qubits, $\lvert 01 \rangle = \lvert 0 \rangle \otimes \lvert 1 \rangle$.
 
-# ## Restriction on quantum information processes
+# ## Resetting a qubit
 # 
-# Qubits have many advantages over classical bits, which is the main topics of this book.  However, they have also many disadvantages.  Here are some restrictions imposed on the quantum information.
-# 
-# 1. [**No-cloning theorem**](https://en.wikipedia.org/wiki/No-cloning_theorem)  
-# The theorem states that it is not possible to duplicate an arbitrary qubit.   During quantum computation we cannot make a copy of a qubit in an unknown state.  Recall that classical bit can be cloned.
-# 
-# 2. [**No-teleportation theorem**](https://en.wikipedia.org/wiki/No-teleportation_theorem)  
-# If the information stored in a qubit can be converted to a classical bit string and vice versa, we can *teleport* the quantum information to a distant place via a classical bit string. Such teleportation is not possible.  This theorem imposes more important restriction.  We cannot read out the full information in an arbitrary qubit since the outcome of the measurement is classical.
-# 
-# 3. [**No-deleting theorem**](https://en.wikipedia.org/wiki/No-deleting_theorem)  
-# If two qubits happened to be in the same but arbitrary state, it is not possible to delete the information in one of the qubits.  This is a no-go theorem and time-reversal of no cloning theorem.
-# 
-# 4. [**No-broadcasting theorem**](https://en.wikipedia.org/wiki/No-broadcasting_theorem)  
-# It is possible to transfer the full information in an arbitrary qubit to another qubit but the information in the original qubit must be destroyed.  This is known as *quantum teleportation*.  However, broadcasting the full information in an arbitrary qubit to multiple qubits is not possible. This is a corollary of no cloning theorem.
-# 
-# 5. [**No-hiding theorem**](https://en.wikipedia.org/wiki/No-hiding_theorem)  
-# Briefly stating, the information stored in quantum system must be conserved. It is not possible to create or destroy quantum information.  In contrast, classical information can be created or destroyed.
-# 
+# Suppose that a qubit is in an arbitrary state $|\psi\rangle$.  We want to transform the state to $|0\rangle$ or the lowest energy state.  This process is known as *resetting*.  The resetting is by no means trivial.  Actually, it is very difficult due to the restrictions listed in {numref}`sec-qinfo` and other restrictions set by the laws of thermodynamics.  The resetting on current quantum computers is not perfect.
 # 
 
-# ## Quantum Information
+# ## Circuit models
 # 
-# Recall that information is about uncertainty or probability.  a classical bit is dichotomous and there is only one uncertainty, 0 or 1.  In contrast, the state of a qubit is continuous and there are infinitely many different states.  The no-teleportation theorem tells us that even infinitely many classical bits cannot describe the state of a qubit.  Does this mean a qubit contains infinite amount of information? It turns out that we can ask only a dichotomous question.  
-# 
-# Consider a qubit in a superposition state
-# 
-# $$
-# \lvert \psi \rangle = \frac{1}{\sqrt{2}} \lvert 0 \rangle +  \frac{1}{\sqrt{2}} \lvert 1 \rangle
-# $$
-# 
-# If we ask if the qubit is in $\lvert 0 \rangle$, the answer is either "yes" or "no" but there is no definite answer.  There is 50% chance to get "yes" and 50% chance to get "no".  The situation is quite similar to the coin tossing. 
-# However, there are differences. Even when we know precisely that the qubit is in the state $\lvert \psi \rangle$, there is still the uncertainty, hence it is no due to our ignorance.  The uncertainty is not due to future event since $\lvert \psi \rangle$ already exists.  Nevertheless, the amount of information seems $\log 2$.
-# 
-# You can ask a different question.  Is the state $\lvert + \rangle =  \frac{1}{\sqrt{2}} \lvert 0 \rangle +  \frac{1}{\sqrt{2}} \lvert 1 \rangle$ or $\lvert - \rangle =  \frac{1}{\sqrt{2}} \lvert 0 \rangle -  \frac{1}{\sqrt{2}} \lvert 1 \rangle$?  $\lvert \pm \rangle$ forms an orthonormal basis, this question makes a sense.  Now, the answer is "yes" without ambiguity.  For this question,  $\lvert \psi \rangle$ contains no information!   Although the question we can ask is always dichotomous, we can ask infinitely many different questions.  This is the main difference between qubit and classical bit.
-# 
-# We define quantum information entropy using density operator $\rho = \lvert \psi \rangle \langle \psi \rvert$ as
-# 
-# $$
-# S = - \text{Tr} \left(\rho \log \rho\right)
-# $$
-# 
-# which is known as von-Neumann entropy. Plugin $\rho = \lvert \psi \rangle \langle \psi \rvert$ , we find $S=0$.  Hence, the state has no information (uncertainty).  When quantum measurement is done, the state collapses to a different state, which can have a non-vanishing information entropy.  In this sense, information is created, when measurement is done.  For the current example, the state after measurement of $\lvert 0 \rangle$ and $\lvert 1 \rangle$, the state after the measurement is
-# 
-# $$
-# \rho = \frac{1}{2}  \lvert 0 \rangle \langle 0 \rvert + \frac{1}{2}  \lvert 1 \rangle \langle 1 \rvert
-# $$
-# 
-# and its von Neumann entropy is $S = \log 2$ as expected. 
-# 
+# The time-evolution of qubits  is a unitary transformation determined by the Shcr&ouml;dinger equation.  Quantum computers manipulate the qubits by applying a unitary operator $U$.  Starting an initial state $|\psi_i\rangle$, the final state (the solution of the quantum computation) is mathematically given by $|\psi_f\rangle = U |\psi_i\rangle$.  The quantum algorithm determines the unitary operator $U$. Recall that $U$ is $2^n \times 2^n$ matrix for $n$ qubits, which is huge.   How can we construct such a huge matrix?  It turns out that a set of signle qubit unitary operators ($2\times 2$ matrix) and two-qubit unitary operators ($4 \times 4$) can realize $U$.  Such unitary matrices are knwon as *gates*.  To obtain a desired final state, we just apply a set of one-qubit gates and two-qubit gates successively.  In addition to the unitaries, we also need to measure the qubits using measurement gates.  The set of the gates is called [*quantum circuit*](https://en.wikipedia.org/wiki/Quantum_circuit).  A simple example is given below.
 
 # ## Gates
 # 
@@ -93,6 +59,7 @@
 # $$
 # X \lvert \psi \rangle = c_0 X \lvert 0 \rangle + c_1 X \lvert 1 \rangle = c_0 \lvert 1 \rangle + c_1 \lvert 0 \rangle = c_1 \lvert 0 \rangle + c_0 \lvert 1 \rangle
 # $$ (Xgate)
+# 
 # which actually swaps the coefficients.  The first two rows in  {numref}`quantum-gate-X` is much like the classical truth {numref}`table %s <classical-NOT>`.  The third row makes quantum computers more powerful than the classical computers.
 # 
 # 
@@ -116,7 +83,7 @@
 # ```
 # 
 # 
-# Logically, infinitely many 1-qubit and 2-qubits gates are possible but actual devices can understand only some of them. Depending on the underlying quantum systems, the available gates are different.  However, almost any gate can be expressed equivalently with a set of other gates in principle (gate _decomposition_).  So, if a desired gate is not available on the device you are using, you  must find a decomposition of the gate.  For IBM devices, $\texttt{Qiskit}$ finds a decomposition suitable for them.  
+# Logically, infinitely many 1-qubit and 2-qubits gates are possible but it is known that only several basic gates such as X, Z, and CX are actually needed to carry out quantum computation. Depending on the underlying quantum systems, the available gates are different.  However, almost any gate can be expressed equivalently with a set of other gates in principle (gate _decomposition_).  So, if a desired gate is not available on the device you are using, you  must find an alternative gate. 
 
 # ## Encoding
 # 
@@ -138,7 +105,7 @@
 # To make a good use of quantum computer, finding a good encoding scheme is crucial.
 # 
 
-# ## Instructions
+# ## Circuits
 # 
 # Once an encoding scheme is chosen, we need to give a set of instructions to a quantum computer.  That is we find a set of unitary operators that are applied on qubits one after the other. Unlike classical computation, no advanced programming language is available for quantum computing.  Therefore, programmers must right  instructions the device can understand directly (similar to coding with machine or assembly language for classical computers.)  A code for quantum computation looks like
 # 
@@ -180,6 +147,11 @@
 # ## Readouts
 # 
 # When a qubit is in $\lvert 0 \rangle$ or $\lvert 1 \rangle$, readout is in principle accurate (not on current NISQ computers due to device errors). However, the outcome is completely uncertain if the qubit is in a superposition state {eq}`eqn:superposition`. We will obtain $\texttt{0}$ or $\texttt{1}$ at random.  If we prepare many qubits in the same superposition state, we obtain $\texttt{0}$ from some and $\texttt{1}$ from others. Hence, the readout of qubits is stochastic, from which we know that the qubits are in a superposition state but which one?  The principle of quantum mechanics tells us that the probability of getting $\texttt{0}$ is given by $|c_0|^2$ and $\texttt{1}$ by $|c_1|^2$.  By measuring many qubits in the same state, we can calculate the probabilities from which $|c_0|^2$ and $|c_1|^2$ can be determined.  The phase of $c_0$ and $c_1$ are still missing.  There is a complicate procedure, known as _quantum tomography_, which can determine the superposition state if and only if sufficiently large number of the same superposition states are measured.  Therefore, it is necessary to repeat the same quantum computation many times if the final result is a superposition state.  Even when the result of the computation is designed to be $\lvert 0 \rangle$ or $\lvert 1 \rangle$ by the algorithm, the outcome can be a superposition state due to device errors.  Even worse, the final state can be so-called _mixed state_, which contains a mixture of classical and quantum uncertainties simultaneously.  A good quantum circuit avoids both classical and quantum uncertainties as much as possible.
+
+# 
+# ---
+# 
+# Last modified on 08/30/2022.
 
 # In[ ]:
 
