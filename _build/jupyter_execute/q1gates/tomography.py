@@ -39,7 +39,7 @@
 # ```
 # 
 
-# In[1]:
+# In[2]:
 
 
 import numpy as np
@@ -80,10 +80,10 @@ qc.h(1)
 qc.measure(qr,cr)
 
 # show the circuit
-qc.draw()
+qc.draw('mpl')
 
 
-# In[2]:
+# In[3]:
 
 
 # Chose a general quantum simulator without noise.
@@ -124,8 +124,6 @@ print("measured   phi = {:6.3f} (exact  = {:6.3f} )".format(phi_qc, phi))
 print("measured theta = {:6.3f} (exact  = {:6.3f} )".format(theta_qc,theta))
 
 
-# In[ ]:
-
-
-
-
+# 
+# ---
+# Last modified: 08/30/2022

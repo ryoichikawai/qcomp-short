@@ -68,10 +68,9 @@ from qiskit import QuantumCircuit
 qc=QuantumCircuit(1)
 qc.x(0)
 qc.y(0)
-qc.draw()
+qc.draw('mpl')
 
 
 # 
 # ---
-# 
-# Last modified: 07/09/2022
+# Last modified: 08/31/2022

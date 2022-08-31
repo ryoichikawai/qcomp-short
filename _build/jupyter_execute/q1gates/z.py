@@ -31,10 +31,7 @@
 # z = i R_z(\pi)
 # $$
 # 
-# The Qiskit circuit symbol is `z` and it appears in quantum circuit as
-# 
-# 
-# The standard symbol is $Z$ and it appears in quantum circuit as
+# The Qiskit circuit code symbol is `z` and it appears in quantum circuit as
 
 # In[1]:
 
@@ -42,6 +39,14 @@
 from qiskit import QuantumCircuit
 qc=QuantumCircuit(1)
 qc.z(0)
+qc.draw('mpl')
+
+
+# or
+
+# In[2]:
+
+
 qc.draw()
 
 
@@ -70,7 +75,7 @@ qc.draw()
 
 # **Qiskit Example** {numref}`%s <sec-zgate>`.1&nbsp;  Let us demonstrate the effect of ZGate using Qiskit.  Using the BLoch sphere representation, ZGate transform $(\theta,\phi)$ to $(\theta,\phi+\pi)$.  Try $\theta=\pi/4$ and $\phi=-\pi/4$.  Check that he Bloch vector rotates around $z$ axis by $\pi$.
 
-# In[2]:
+# In[6]:
 
 
 # import QuatumCircuit and QuantumRegister classes.
@@ -125,8 +130,6 @@ display("Original |psi>",bloch0,"Z|psi>",bloch1)
 # 2.  $Z$ is  self-inverse, that is $Z^{-1} = Z$.
 # 3.  $Z$ is self-adjoint ($Z^\dagger = Z$) since $Z$ is unitary ($Z^\dagger = Z^{-1}$) by definition.
 
-# In[ ]:
-
-
-
-
+# 
+# ---
+# Last modified: 08/31/2022

@@ -146,7 +146,7 @@
 # 
 # 
 
-# In[30]:
+# In[1]:
 
 
 from qiskit import *
@@ -170,7 +170,7 @@ qc.barrier()
 qc.measure(0,0)
 qc.measure(1,1)
 
-qc.draw()
+qc.draw('mpl')
 
 
 # In[ ]:

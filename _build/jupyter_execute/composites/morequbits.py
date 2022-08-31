@@ -86,7 +86,7 @@ qc.h(0)
 qc.cx(0,1)
 qc.cx(0,2)
 
-qc.draw()
+qc.draw('mpl')
 
 
 # In[2]:
@@ -126,7 +126,7 @@ qc.cx(1,2)
 qc.cx(0,1)
 qc.x(0)
 
-qc.draw()
+qc.draw('mpl')
 
 
 # In[5]:

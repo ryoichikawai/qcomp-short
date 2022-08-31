@@ -324,7 +324,7 @@ plot_state_qsphere(psi,figsize=(4,4))
 # We can expand any two qubit states in the Bell basis as
 # 
 # $$
-# \ket{\psi} = c_{\Phi^+} |\Phi^{+}\rangle + c_{\Phi^-} |\Phi^{-}\rangle + c_{\Psi^+} |\Psi^{+}\rangle + c_{\Psi^-} |\Phi^{-}\rangle .
+# |\psi\rangle = c_{\Phi^+} |\Phi^{+}\rangle + c_{\Phi^-} |\Phi^{-}\rangle + c_{\Psi^+} |\Psi^{+}\rangle + c_{\Psi^-} |\Phi^{-}\rangle .
 # $$(bell-expansion)
 # 
 # Now, we want find the probabilities to find the Bell states. The process is called *Bell measurement*.  After the measurement, the state collapses to a Bell state depending on the outcome of the measurement.  The Bell measurement is commonly used in quantum information processes, such as [*quantum teleportation*](https://en.wikipedia.org/wiki/Quantum_teleportation).  However, the Bell measurement is not trivial.  Any local measurement fails and thus the standard measurement based on the computational basis does not help.
@@ -342,7 +342,7 @@ plot_state_qsphere(psi,figsize=(4,4))
 # Applying $(I \otimes H)\cdot CX$ to the superposition {eq}`bell-expansion`, we obtain 
 # 
 # $$
-# (I \otimes H)\cdot CX \ket{\psi} = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle - c_{\Psi^-} |11\rangle .
+# (I \otimes H)\cdot CX |\psi\rangle = c_{\Phi^+} |00\rangle + c_{\Phi^-} |10\rangle + c_{\Psi^+} |01\rangle - c_{\Psi^-} |11\rangle .
 # $$(comp-expansion)
 # 
 # The resulting state is a superposition in computational basis but the expansion coefficients are the same as before the transformation.

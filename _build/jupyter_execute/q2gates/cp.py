@@ -99,7 +99,7 @@ qc.draw()
 # c_{00} |00\rangle + c_{11} |01\rangle + c_{10} |10\rangle + e^{i \theta} c_{01} |11\rangle
 # $$
 # 
-# How can we change the phase of a basis vector other than $11\tangle$?  A possible strategy is to transform the target basis vector to $|11\rangle$, apply CP and transform back to the original basis vector.  For example, if we want to multiply $i$ to $|00\rangle$ without changing other basis vector, apply $(\text{X} \otime \text{X}) \cdot \text{CS} \cdot (\text{X} \otimes \text{X})$ 
+# How can we change the phase of a basis vector other than $|11\rangle$?  A possible strategy is to transform the target basis vector to $|11\rangle$, apply CP and transform back to the original basis vector.  For example, if we want to multiply $i$ to $|00\rangle$ without changing other basis vector, apply $(\text{X} \otimes \text{X}) \cdot \text{CS} \cdot (\text{X} \otimes \text{X})$ 
 
 # **Example**  
 # How can we change the phase of a basis vector other than $|11\rangle$?  A possible strategy is to transform the target basis vector to $|11\rangle$, apply CP and transform back to the original basis vector.  For example, if we want to multiply $i$ to $|00\rangle$ without changing other basis vector, apply $(\text{X} \otimes \text{X}) \cdot \text{CS} \cdot (\text{X} \otimes \text{X})$.  In this example, we start with a product state $|+\rangle \otimes |+\rangle$.  Then, the above gate is applied to it.  Check that $i$ is multiplied only to  $|00\rangle$.  The final state is entangled. (See {numref}`sec-2qubits`.

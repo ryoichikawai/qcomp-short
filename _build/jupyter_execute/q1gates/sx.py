@@ -43,7 +43,7 @@
 # 
 # Notice that $SX^2 = (SX^\dagger)^2 = X$.  Hence, $SX$ and $SX^\dagger$ are square roots of $X$ and they are often expressed as  $SX=X^{1/2}$ and $SX^\dagger = X^{-1/2}$.
 # 
-# The Qiskit circuit symbols are `sx` and `sxdg`, respectively. They appear in quantum circuits as
+# The Qiskit circuit code symbols are `sx` and `sxdg`, respectively. They appear in quantum circuits as
 
 # In[1]:
 
@@ -52,6 +52,14 @@ from qiskit import QuantumCircuit
 qc=QuantumCircuit(1)
 qc.sx(0)
 qc.sxdg(0)
+qc.draw('mpl')
+
+
+# or
+
+# In[2]:
+
+
 qc.draw()
 
 
@@ -108,8 +116,6 @@ qc.draw()
 # 2. $X = SX \cdot X \cdot SX^\dagger = SX^\dagger \cdot X \cdot SX$
 # 3. $SX = X \cdot SX \cdot X, \quad SX^\dagger = X \cdot SX^\dagger \cdot X$.
 
-# In[ ]:
-
-
-
-
+# 
+# ---
+# Last modified: 08/31/2022

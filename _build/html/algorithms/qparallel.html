@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>9.4. A little example of quantum parallelism &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>8.5. A little example of quantum parallelism &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.5. The Deutsch problem" href="deutsch.html" />
-    <link rel="prev" title="9.3. Walsh-Hadamard Transformation" href="walshhadamard.html" />
+    <link rel="next" title="8.6. The Deutsch problem" href="deutsch.html" />
+    <link rel="prev" title="8.4. Walsh-Hadamard Transformation" href="walshhadamard.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,27 +116,17 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preface
- </span>
-</p>
-<ul class="nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../preface.html">
-   1. Preface
+   Preface
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preparation
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../preparation/intro.html">
-   2. Preparation
+   1. Preparation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -146,34 +136,34 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/thisbook.html">
-     2.1. About This Book
+     1.1. About This Book
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/python.html">
-     2.2. Python
+     1.2. Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/jupyter.html">
-     2.3. JupyterLab
+     1.3. JupyterLab
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/qiskit.html">
-     2.4. Qiskit
+     1.4. Qiskit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/cloud.html">
-     2.5. Cloud IDE
+     1.5. Cloud IDE
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qmsummary/intro.html">
-   3. Quantum Mechanics
+   2. Quantum Mechanics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -183,36 +173,29 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/vectors.html">
-     3.1. State vectors
+     2.1. State vectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/operators.html">
-     3.2. Operators
+     2.2. Operators
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/evolution.html">
-     3.3. Time-evolution
+     2.3. Time-evolution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/measurement.html">
-     3.4. Quantum measurement
+     2.4. Quantum measurement
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../computation/intro.html">
-   4. What is a Quantum Computer?
+   3. What is a Quantum Computer?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -222,26 +205,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../computation/ccomp.html">
-     4.1. Classical computation
+     3.1. Classical computation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../computation/qcomp.html">
-     4.2. Quantum computation
+     3.2. Quantum computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/qinfo.html">
+     3.3. Quantum Information Theory
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Single qubit
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qubit/intro.html">
-   5. Single qubit
+   4. Single qubit
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -251,29 +232,29 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/purestates.html">
-     5.1. Pure states
+     4.1. Pure states
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/bloch.html">
-     5.2. Bloch sphere
+     4.2. Bloch sphere
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/measurement.html">
-     5.3. Qubit Measurement
+     4.3. Qubit Measurement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/mixedstates.html">
-     5.4. Mixed states
+     4.4. Mixed states
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../q1gates/intro.html">
-   6. One-qubit gates
+   5. One-qubit gates
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -283,42 +264,42 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/u.html">
-     6.4. U Gate
+     5.4. U Gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/r.html">
-     6.5. Rotation Gates, RX, RY, RZ
+     5.5. Rotation Gates, RX, RY, RZ
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/x.html">
-     6.6. XGate
+     5.6. XGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/y.html">
-     6.7. YGate
+     5.7. YGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/z.html">
-     6.8. ZGate
+     5.8. ZGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/h.html">
-     6.9. Hadamard gate
+     5.9. Hadamard gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/sx.html">
-     6.10. SX and SXdg Gates
+     5.10. SX and SXdg Gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/s.html">
-     6.11. S Gate and S
+     5.11. S Gate and S
      <span class="math notranslate nohighlight">
       \(^\dagger\)
      </span>
@@ -327,31 +308,24 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/p.html">
-     6.12. P Gate
+     5.12. P Gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/change-basis.html">
-     6.13. Change of basis sets
+     5.13. Change of basis sets
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/tomography.html">
-     6.14. State tomography
+     5.14. State tomography
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Composite Systems
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../composites/intro.html">
-   7. Composite Systems
+   6. Composite Systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -361,24 +335,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../composites/2qubit.html">
-     7.1. Two qubits
+     6.1. Two qubits
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../composites/morequbits.html">
-     7.2. More qubits
+     6.2. More qubits
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../composites/numbers.html">
-     7.3. Encoding numbers
+     6.3. Encoding numbers
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../q2gates/intro.html">
-   8. Two-qubits Gates
+   7. Two-qubits Gates
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -388,31 +362,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../q2gates/cx.html">
-     8.1. CX gate
+     7.1. CX gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q2gates/cp.html">
-     8.2. Controlled- Z, S, T, P gates
+     7.2. Controlled- Z, S, T, P gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q2gates/swap.html">
-     8.3. SWAP
+     7.3. SWAP
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Algorithms
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   9. Algorithms
+   8. Algorithms
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -422,50 +389,50 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="teleportation.html">
-     9.1. Quantum teleportation
+     8.1. Quantum teleportation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="entanglement-swap.html">
-     9.2. Entanglement swap
+     8.2. Entanglement swap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="densecoding.html">
+     8.3. Superdense coding
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="walshhadamard.html">
-     9.3. Walsh-Hadamard Transformation
+     8.4. Walsh-Hadamard Transformation
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     9.4. A little example of quantum parallelism
+     8.5. A little example of quantum parallelism
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deutsch.html">
-     9.5. The Deutsch problem
+     8.6. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qft.html">
-     9.6. Quantum Fourier Transform
+     8.7. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qpe.html">
-     9.7. Quantum Phase Estimation
+     8.8. Quantum Phase Estimation
     </a>
    </li>
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Backmatters
- </span>
-</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../references.html">
+  <a class="reference internal" href="../references/references.html">
    References
   </a>
  </li>
@@ -678,7 +645,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="a-little-example-of-quantum-parallelism">
-<span id="sec-qparallel"></span><h1><span class="section-number">9.4. </span>A little example of quantum parallelism<a class="headerlink" href="#a-little-example-of-quantum-parallelism" title="Permalink to this headline">#</a></h1>
+<span id="sec-qparallel"></span><h1><span class="section-number">8.5. </span>A little example of quantum parallelism<a class="headerlink" href="#a-little-example-of-quantum-parallelism" title="Permalink to this headline">#</a></h1>
 <p>Quantum computer can calculate many different instances simultaneously. Here we consider a simple example.  Suppose that we want to calculate <span class="math notranslate nohighlight">\(z = x \oplus y\)</span> where <span class="math notranslate nohighlight">\(x,\, y,\, z \in \{0,1\}\)</span>.  The variables are assigned to three qubits as <span class="math notranslate nohighlight">\(|zyx\rangle = |z\rangle \otimes |y\rangle \otimes |x\rangle\)</span>.  Initially, <span class="math notranslate nohighlight">\(z=0\)</span>.  The computation corresponds to transformation <span class="math notranslate nohighlight">\(|0\rangle \otimes |y\rangle \otimes |x\rangle \Rightarrow |x \oplus y\rangle \otimes |y\rangle \otimes |x\rangle\)</span>.  There are four possible instances:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -713,20 +680,13 @@ title="Print to PDF"
 <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">     ┌───┐                ░ ┌─┐      
-q_0: ┤ H ├──■─────────■───░─┤M├──────
-     ├───┤┌─┴─┐     ┌─┴─┐ ░ └╥┘┌─┐   
-q_1: ┤ H ├┤ X ├──■──┤ X ├─░──╫─┤M├───
-     └───┘└───┘┌─┴─┐└───┘ ░  ║ └╥┘┌─┐
-q_2: ──────────┤ X ├──────░──╫──╫─┤M├
-               └───┘      ░  ║  ║ └╥┘
-c: 3/════════════════════════╩══╩══╩═
-                             0  1  2 </pre></div></div>
+<img alt="../_images/qparallel_2_0.png" src="../_images/qparallel_2_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -791,13 +751,13 @@ c: 3/════════════════════════╩
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9.3. </span>Walsh-Hadamard Transformation</p>
+            <p class="prev-next-title"><span class="section-number">8.4. </span>Walsh-Hadamard Transformation</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="deutsch.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.5. </span>The Deutsch problem</p>
+        <p class="prev-next-title"><span class="section-number">8.6. </span>The Deutsch problem</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

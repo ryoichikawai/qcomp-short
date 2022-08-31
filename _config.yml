@@ -24,7 +24,7 @@ latex:
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - references.bib
+  - references/references.bib
 
 # Information about where the book exists on the web
 repository:
@@ -44,15 +44,8 @@ html:
    use_repository_button: true
    use_download_button: true
    use_issues_button: true
-#   use_multitoc_numbering: true
 
 sphinx:
-#   config:
-#     html_theme_options:
-#         use_download_button: true
-#         use_issues_button: true
-#         use_repository_button: true
-#         use_edit_page_button: true
    bibtex_reference_style: label
    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
    extra_extensions:

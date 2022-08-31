@@ -46,10 +46,24 @@ from qiskit.circuit import QuantumCircuit, Parameter
 t=Parameter('\u03B8')
 qc=QuantumCircuit(1)
 qc.p(t,0)
+qc.draw('mpl')
+
+
+# or
+
+# In[2]:
+
+
 qc.draw()
 
 
 # $Z$, $S$, $T$ and $P$ all rotates the Bloch vector around the $z$ axis. gates are special cases of $P$ gate: $Z=P(\pi)$, $S=P(\pi/2)$ and $T=P(\pi/4)$. While these relations are mathematically exact and $P$ gate can replace them, the parameter-free gates should be used when the rotation angle
+
+# In[ ]:
+
+
+
+
 
 # ## Acting on a superposition state
 # 
@@ -67,8 +81,6 @@ qc.draw()
 # 
 # This suggests that the Bloch vector rotates around $z$ axis by $t$.
 
-# In[ ]:
-
-
-
-
+# 
+# ---
+# Last modified: 08/31/2022

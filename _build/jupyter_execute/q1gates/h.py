@@ -35,7 +35,7 @@
 # H = i \, R_x(\pi) \cdot R_y\left(\frac{\pi}{2}\right)
 # $$
 # 
-# The qiskit circuit symbol is $h$ and it appears in quantum circuit as
+# The Qiskit circuit code symbol is 'h' and it appears in quantum circuit as
 
 # In[1]:
 
@@ -43,6 +43,14 @@
 from qiskit import QuantumCircuit
 qc=QuantumCircuit(1)
 qc.h(0)
+qc.draw('mpl')
+
+
+# or
+
+# In[2]:
+
+
 qc.draw()
 
 
@@ -69,13 +77,13 @@ qc.draw()
 # In this example, the following process is visualized with Qiskit.
 # 
 
-# In[2]:
+# In[3]:
 
 
 get_ipython().run_cell_magic('capture', '', 'from qiskit import *\nfrom qiskit.visualization import visualize_transition\n\nqc=QuantumCircuit(1)\n\nqc.h(0)\nqc.z(0)\nqc.h(0)\n\nmovie=visualize_transition(qc,fpg=50, spg=1)')
 
 
-# In[3]:
+# In[4]:
 
 
 movie
@@ -99,7 +107,7 @@ movie
 # 
 # We demonstrate Eq. {eq}`H-on-superpos` using Qiskit.  Suppose that the qubit is in a superposition state $\cos(\pi/6) |0\rangle + \sin(\pi/6)|1\rangle$.  We want to find $\cos(\pi/6)+\sin(\pi/6)$ and $\cos(\pi/6)-\sin(\pi/6)$ using the Hadamard gate.  First, we construct a quantum circuit and test it with Statevector function.  Recall that this is not a quantum computation since we cheat by using `initialization` and `Statevector` function. I next example, we try to find the solution by quantum computation.
 
-# In[4]:
+# In[5]:
 
 
 # import QuatumCircuit and QuantumRegister classes.
@@ -139,7 +147,7 @@ print("c0-c1: Hadamard = ",ket1[1],"   Direct calculation",c0-c1)
 
 # The above calculation mathematically confirms that the Hadamard gate computes the addition and subtraction.  Now, we want to solve it using quantum computation. Although there is no advantage over classical computation, we can see how quantum computation calculate two things, addition and subtraction, simultaneously (quantum parallelism). Using the  Born rule, the probability that the outcome of measurement is $|0\rangle$ is given by $p_0 = (c_0+c_1)^2/2$ and similarly for $|1\rangle$ $p_1 = (c_0-c_1)^2/2$.  By repeating quantum computation, many times, we can estimate $p_0$ and $p_1$.  From the probabilities we obtain $|c_0 + c_1| = \sqrt{2 p_0}$ and $|c_0-c_1| = \sqrt{2 p_1}$.  This approach give us only the modulus of the target quantities.  We can run the quantum calculation only finite times, the result is not exact.  Nevertheless, the results good enough with 10000 tries.
 
-# In[5]:
+# In[6]:
 
 
 from qiskit import *  # import qiskit
@@ -162,7 +170,7 @@ qc.measure(qr,cr)
 qc.draw()
 
 
-# In[6]:
+# In[7]:
 
 
 # Now we execute the circuit
@@ -189,7 +197,7 @@ from qiskit.visualization import plot_histogram
 plot_histogram(counts)
 
 
-# In[7]:
+# In[8]:
 
 
 # post analysis
@@ -234,7 +242,7 @@ print("c0-c1: quantum = {:6.3f}   classical {:6.3f}".format(sub,c0-c1))
 
 # 
 # ---
-# Last modified: 07/09/2022
+# Last modified: 08/31/2022
 
 # In[ ]:
 

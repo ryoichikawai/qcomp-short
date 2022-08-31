@@ -62,7 +62,7 @@ qc=QuantumCircuit(qr)
 
 qc.h(range(3))
 
-qc.draw()
+qc.draw('mpl')
 
 
 # In[2]:

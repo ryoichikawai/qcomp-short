@@ -19,7 +19,7 @@
 
 # ## Ket and bra
 # 
-# The state of a quantum object is mathematically described by a complex vector in a *Hilbert space*, which is called *state vector*. The state vector is denoted as $|\bullet\rangle$, which is called *ket vector* or simply *ket*.  "$\bullet$" in the ket can be any symbol representing the state.  For example, an electron in a spin-up state is commonly expressed by $\ket{\uparrow}$. We could use $|$&hearts; $\rangle$, $|$&spades;$\rangle$, $|$&diams;$\rangle$, $|$&clubs;$\rangle$ to express the states of quantum cards (if they exist.)  We often write an arbitrary state as $| \psi\rangle$. 
+# The state of a quantum object is mathematically described by a complex vector in a *Hilbert space*, which is called *state vector*. The state vector is denoted as $|\bullet\rangle$, which is called *ket vector* or simply *ket*.  "$\bullet$" in the ket can be any symbol representing the state.  For example, an electron in a spin-up state is commonly expressed by $|\uparrow\rangle$. We could use $|$&hearts; $\rangle$, $|$&spades;$\rangle$, $|$&diams;$\rangle$, $|$&clubs;$\rangle$ to express the states of quantum cards (if they exist.)  We often write an arbitrary state as $| \psi\rangle$. 
 # 
 # For every ket $|\psi\rangle$, there is a corresponding complex vector $\langle\psi|$, which is known as *bra vector* or just *bra*. Mathematically, $\langle\psi|$ is the _adjoint_ or _dual_ of $|\psi\rangle$. 
 # The corresponding bra with the same symbol as a ket represents the same state of the qubit.  For example, both $|\uparrow\rangle$ and $\langle\uparrow|$ represent the same spin-up state.
@@ -83,10 +83,11 @@
 # 
 # The inner product between $|c \rangle$ and a superposition state $|\psi \rangle = \alpha |a \rangle + \beta |b \rangle$ can be computed with the distribution rule
 # 
-# $$\begin{eqnarray}
-# \langle c|\psi \rangle &=& \bra{c} \left(\alpha |a \rangle + \beta |b \rangle\right) = \alpha \langle c|a \rangle + \beta \langle c|b \rangle\\
-# \langle \psi|c \rangle &=& \left(\alpha^* \langle a | + \beta^* \langle b |\right) \ket{c} = \alpha^* \langle a|c \rangle + \beta^* \langle b|c \rangle.
-# \end{eqnarray}
+# $$
+# \begin{align}
+# \langle c|\psi \rangle &= \langle c| \left(\alpha |a \rangle + \beta |b \rangle\right) = \alpha \langle c|a \rangle + \beta \langle c|b \rangle\\
+# \langle \psi|c \rangle &= \left(\alpha^* \langle a | + \beta^* \langle b |\right) | c \rangle = \alpha^* \langle a|c \rangle + \beta^* \langle b|c \rangle.
+# \end{align}
 # $$
 # 
 
@@ -103,7 +104,7 @@
 # ## Norm and normarization
 # 
 # Recall that the norm (magnitude) of an Euclidean vector is defined by $\|\vec{a}\| = \sqrt{\vec{a}\cdot\vec{a}}$.
-# The norm of $\ket{a}$ is defined in the same way.  Replacing the dot product with inner product, we have the norm of $|a\rangle$ as
+# The norm of $| a \rangle$ is defined in the same way.  Replacing the dot product with inner product, we have the norm of $|a\rangle$ as
 # 
 # $$
 # \|a\rangle\| = \sqrt{\langle a|a \rangle}  \ge 0.
@@ -127,7 +128,7 @@
 # In a freshman physics course, perhaps you expressed a force vector in the three-dimensional Euclidean space as $\vec{F} = F_x \vec{i} + F_y \vec{j} + F_z \vec{k}$.  In fact, any vector can be expressed in the same way using the basis vectors  $\vec{i}$, $\vec{j}$ and $\vec{k}$.  These three vectors are orthogonal to each other and their magnitude is 1.  Hence they are *orthonormal basis*.
 # 
 # 
-# Similarly, a $n$-dimensional Hilbert space is _spanned_ by a basis set $\{\ket{e_0}, \ket{e_1}, \cdots, \ket{e_{n-1}}\}$.  We assume that the basis vectors are normized and orthogonal to each other.  Such basis set is called _orthonormal basis_ and the basis vectors satisfy
+# Similarly, a $n$-dimensional Hilbert space is _spanned_ by a basis set $\{|e_0\rangle, | e_1\rangle, \cdots, |e_{n-1}\rangle\}$.  We assume that the basis vectors are normized and orthogonal to each other.  Such basis set is called _orthonormal basis_ and the basis vectors satisfy
 # 
 # $$
 # \langle e_i | e_j \rangle = \delta_{ij}

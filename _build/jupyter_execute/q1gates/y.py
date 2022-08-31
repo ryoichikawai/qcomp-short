@@ -36,7 +36,7 @@
 # Y = i R_y(\pi)
 # $$
 # 
-# The qiskit circuit symbol is `y` and it appears in quantum circuit as
+# The qiskit circuit code symbol is `y` and it appears in quantum circuit as
 
 # In[1]:
 
@@ -44,6 +44,14 @@
 from qiskit import QuantumCircuit
 qc=QuantumCircuit(1)
 qc.y(0)
+qc.draw('mpl')
+
+
+# or
+
+# In[2]:
+
+
 qc.draw()
 
 
@@ -81,4 +89,6 @@ qc.draw()
 # ---
 # 
 
-# Late modified xxx
+# 
+# ---
+# Last modified: 08/31/2022

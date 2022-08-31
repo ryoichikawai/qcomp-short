@@ -57,8 +57,9 @@
 # \end{align}
 # $$
 # 
-# These gates rotates the Bloch vector arounf $x$, $y$, and $z$ axis by $\theta$, respectively. They appear in quantum circuit as
-# The qiskit circuit symbols are `rx`, `ry`, and `rz`, respectively and they appear in quantum circuit as
+# These gates rotates the Bloch vector arounf $x$, $y$, and $z$ axis by $\theta$, respectively.
+# 
+# The qiskit circuit code symbols are `rx`, `ry`, and `rz`, respectively and they appear in quantum circuit as
 
 # In[1]:
 
@@ -75,18 +76,26 @@ qc.ry(t,0)
 qc.rz(t,0)
 
 # show the circuit
+qc.draw('mpl')
+
+
+# or
+
+# In[2]:
+
+
 qc.draw()
 
 
 # **Example** {numref}`%s <sec-rgate>`.1&nbsp;  Starting with $|0\rangle$, rotate about the $y$ axis by $\pi/3$, about $z$ axis by $\pi/2$, and about $x$ axis by $-2\pi/3$. This example shows that the final state is $|1\rangle$.  
 
-# In[2]:
+# In[3]:
 
 
 get_ipython().run_cell_magic('capture', '', 'import numpy as np\nfrom qiskit.circuit import QuantumCircuit\nfrom qiskit.quantum_info import Statevector\n\nqc=QuantumCircuit(1)\nqc.ry(np.pi/3,0)\nqc.rz(np.pi/2,0)\nqc.rx(-2*np.pi/3,0)\n\n# load the visdualization tool\nfrom qiskit.visualization import visualize_transition\n\n# generate a movie (it will be shown in next cell,\nmovie=visualize_transition(qc,fpg=20, spg=1)')
 
 
-# In[3]:
+# In[4]:
 
 
 movie
@@ -117,4 +126,4 @@ movie
 
 # 
 # ---
-# Last modified
+# Last modified: 08/31/2022

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>8.2. Controlled- Z, S, T, P gates &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>7.2. Controlled- Z, S, T, P gates &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.3. SWAP" href="swap.html" />
-    <link rel="prev" title="8.1. CX gate" href="cx.html" />
+    <link rel="next" title="7.3. SWAP" href="swap.html" />
+    <link rel="prev" title="7.1. CX gate" href="cx.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,27 +116,17 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preface
- </span>
-</p>
-<ul class="nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../preface.html">
-   1. Preface
+   Preface
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preparation
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../preparation/intro.html">
-   2. Preparation
+   1. Preparation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -146,34 +136,34 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/thisbook.html">
-     2.1. About This Book
+     1.1. About This Book
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/python.html">
-     2.2. Python
+     1.2. Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/jupyter.html">
-     2.3. JupyterLab
+     1.3. JupyterLab
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/qiskit.html">
-     2.4. Qiskit
+     1.4. Qiskit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/cloud.html">
-     2.5. Cloud IDE
+     1.5. Cloud IDE
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qmsummary/intro.html">
-   3. Quantum Mechanics
+   2. Quantum Mechanics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -183,36 +173,29 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/vectors.html">
-     3.1. State vectors
+     2.1. State vectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/operators.html">
-     3.2. Operators
+     2.2. Operators
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/evolution.html">
-     3.3. Time-evolution
+     2.3. Time-evolution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/measurement.html">
-     3.4. Quantum measurement
+     2.4. Quantum measurement
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../computation/intro.html">
-   4. What is a Quantum Computer?
+   3. What is a Quantum Computer?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -222,26 +205,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../computation/ccomp.html">
-     4.1. Classical computation
+     3.1. Classical computation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../computation/qcomp.html">
-     4.2. Quantum computation
+     3.2. Quantum computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/qinfo.html">
+     3.3. Quantum Information Theory
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Single qubit
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qubit/intro.html">
-   5. Single qubit
+   4. Single qubit
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -251,29 +232,29 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/purestates.html">
-     5.1. Pure states
+     4.1. Pure states
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/bloch.html">
-     5.2. Bloch sphere
+     4.2. Bloch sphere
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/measurement.html">
-     5.3. Qubit Measurement
+     4.3. Qubit Measurement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/mixedstates.html">
-     5.4. Mixed states
+     4.4. Mixed states
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../q1gates/intro.html">
-   6. One-qubit gates
+   5. One-qubit gates
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -283,42 +264,42 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/u.html">
-     6.4. U Gate
+     5.4. U Gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/r.html">
-     6.5. Rotation Gates, RX, RY, RZ
+     5.5. Rotation Gates, RX, RY, RZ
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/x.html">
-     6.6. XGate
+     5.6. XGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/y.html">
-     6.7. YGate
+     5.7. YGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/z.html">
-     6.8. ZGate
+     5.8. ZGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/h.html">
-     6.9. Hadamard gate
+     5.9. Hadamard gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/sx.html">
-     6.10. SX and SXdg Gates
+     5.10. SX and SXdg Gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/s.html">
-     6.11. S Gate and S
+     5.11. S Gate and S
      <span class="math notranslate nohighlight">
       \(^\dagger\)
      </span>
@@ -327,31 +308,24 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/p.html">
-     6.12. P Gate
+     5.12. P Gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/change-basis.html">
-     6.13. Change of basis sets
+     5.13. Change of basis sets
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/tomography.html">
-     6.14. State tomography
+     5.14. State tomography
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Composite Systems
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../composites/intro.html">
-   7. Composite Systems
+   6. Composite Systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -361,24 +335,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../composites/2qubit.html">
-     7.1. Two qubits
+     6.1. Two qubits
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../composites/morequbits.html">
-     7.2. More qubits
+     6.2. More qubits
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../composites/numbers.html">
-     7.3. Encoding numbers
+     6.3. Encoding numbers
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   8. Two-qubits Gates
+   7. Two-qubits Gates
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -388,31 +362,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="cx.html">
-     8.1. CX gate
+     7.1. CX gate
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     8.2. Controlled- Z, S, T, P gates
+     7.2. Controlled- Z, S, T, P gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="swap.html">
-     8.3. SWAP
+     7.3. SWAP
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Algorithms
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../algorithms/intro.html">
-   9. Algorithms
+   8. Algorithms
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -422,45 +389,50 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/teleportation.html">
-     9.1. Quantum teleportation
+     8.1. Quantum teleportation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/entanglement-swap.html">
+     8.2. Entanglement swap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithms/densecoding.html">
+     8.3. Superdense coding
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/walshhadamard.html">
-     9.2. Walsh-Hadamard Transformation
+     8.4. Walsh-Hadamard Transformation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qparallel.html">
-     9.3. A little example of quantum parallelism
+     8.5. A little example of quantum parallelism
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/deutsch.html">
-     9.4. The Deutsch problem
+     8.6. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qft.html">
-     9.5. Quantum Fourier Transform
+     8.7. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithms/qpe.html">
-     9.6. Quantum Phase Estimation
+     8.8. Quantum Phase Estimation
     </a>
    </li>
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Backmatters
- </span>
-</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../references.html">
+  <a class="reference internal" href="../references/references.html">
    References
   </a>
  </li>
@@ -672,12 +644,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#qiskit-circuit-functions">
-   8.2.1. Qiskit circuit functions
+   7.2.1. Qiskit circuit functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acting-on-superposition-state">
-   8.2.2. Acting on superposition state
+   7.2.2. Acting on superposition state
   </a>
  </li>
 </ul>
@@ -701,12 +673,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#qiskit-circuit-functions">
-   8.2.1. Qiskit circuit functions
+   7.2.1. Qiskit circuit functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acting-on-superposition-state">
-   8.2.2. Acting on superposition state
+   7.2.2. Acting on superposition state
   </a>
  </li>
 </ul>
@@ -720,8 +692,8 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="controlled-z-s-t-p-gates">
-<span id="sec-cpgate"></span><h1><span class="section-number">8.2. </span>Controlled- Z, S, T, P gates<a class="headerlink" href="#controlled-z-s-t-p-gates" title="Permalink to this headline">#</a></h1>
-<p>Recall that that Z, S, and T gates all change the phase of <span class="math notranslate nohighlight">\(|1\rangle\)</span> and that the general phase gate P(<span class="math notranslate nohighlight">\(\theta\)</span>) can replace them as Z = P(<span class="math notranslate nohighlight">\(\pi\)</span>), S = P(<span class="math notranslate nohighlight">\(\pi/2\)</span>), and T = P(<span class="math notranslate nohighlight">\(\pi/4\)</span>)  (See <a class="reference internal" href="../q1gates/intro.html#chap-one-qubit-gates"><span class="std std-numref">Section 6</span></a>.)  In this section, controlled- Z, S, T, and P gates (CZ, CS, CT, and CP, respectively) are introduced.  Since all of them work in the similar manner, only controlled-P is explained in most parts.</p>
+<span id="sec-cpgate"></span><h1><span class="section-number">7.2. </span>Controlled- Z, S, T, P gates<a class="headerlink" href="#controlled-z-s-t-p-gates" title="Permalink to this headline">#</a></h1>
+<p>Recall that that Z, S, and T gates all change the phase of <span class="math notranslate nohighlight">\(|1\rangle\)</span> and that the general phase gate P(<span class="math notranslate nohighlight">\(\theta\)</span>) can replace them as Z = P(<span class="math notranslate nohighlight">\(\pi\)</span>), S = P(<span class="math notranslate nohighlight">\(\pi/2\)</span>), and T = P(<span class="math notranslate nohighlight">\(\pi/4\)</span>)  (See <a class="reference internal" href="../q1gates/intro.html#chap-one-qubit-gates"><span class="std std-numref">Section 5</span></a>.)  In this section, controlled- Z, S, T, and P gates (CZ, CS, CT, and CP, respectively) are introduced.  Since all of them work in the similar manner, only controlled-P is explained in most parts.</p>
 <p><strong>Operational Definition</strong></p>
 <p>When gate  CP<span class="math notranslate nohighlight">\(_{q_0}^{q_1}(\theta)\)</span> acts on <span class="math notranslate nohighlight">\(|q_1\, q_0\rangle\)</span>, P(<span class="math notranslate nohighlight">\(\theta\)</span>) is applied to <span class="math notranslate nohighlight">\(q_1\)</span> if <span class="math notranslate nohighlight">\(q_0=1\)</span> and nothing is done otherwise. Qubit <span class="math notranslate nohighlight">\(q_0\)</span> serves as source and <span class="math notranslate nohighlight">\(q_1\)</span> as target.  AS shwon bellow, CP<span class="math notranslate nohighlight">\(_{q_0}^{q_1}(\theta) =\)</span> CP<span class="math notranslate nohighlight">\(_{q_1}^{q_0}(\theta)\)</span>.  Hence, it is not necessary to specify a source and a target qubit.</p>
 <p>Mathematically, it is expressed as</p>
@@ -753,7 +725,7 @@ title="Print to PDF"
 \text{CP}_{q_0}^{q_1}(\theta) = \text{CP}_{q_0}^{q_1}(\theta)  = \begin{bmatrix} 1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;e^{i\theta}\end{bmatrix}
 \end{split}\]</div>
 <section id="qiskit-circuit-functions">
-<h2><span class="section-number">8.2.1. </span>Qiskit circuit functions<a class="headerlink" href="#qiskit-circuit-functions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.1. </span>Qiskit circuit functions<a class="headerlink" href="#qiskit-circuit-functions" title="Permalink to this headline">#</a></h2>
 <p>The Qiskit circuit functions for CZ and CP are <code class="docutils literal notranslate"><span class="pre">cz</span></code> and <code class="docutils literal notranslate"><span class="pre">cp</span></code>, respectively and it appears in a circuit as follows.  Unlike CX gate, the source and target are not distinguished.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -809,16 +781,16 @@ q_1: ┤ S ├┤ T ├
 </div>
 </section>
 <section id="acting-on-superposition-state">
-<h2><span class="section-number">8.2.2. </span>Acting on superposition state<a class="headerlink" href="#acting-on-superposition-state" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.2. </span>Acting on superposition state<a class="headerlink" href="#acting-on-superposition-state" title="Permalink to this headline">#</a></h2>
 <p>CP<span class="math notranslate nohighlight">\(_{q_0}^{q_1}(\theta)\)</span> multiplies phase factor <span class="math notranslate nohighlight">\(e^{i\theta}\)</span> only to <span class="math notranslate nohighlight">\(|11\rangle\)</span>.  Other basis vectors are not affected.  Note also that the modulus of the coefficients remain the same and thus probabilities of finding the computational basis vectors are not modified by CP.</p>
 <div class="math notranslate nohighlight">
 \[
 \text{CP}_{q_0}^{q_1} (\theta) \left (c_{00} |00\rangle + c_{01} |01\rangle + c_{10} |10\rangle + c_{11} |11\rangle \right ) =
 c_{00} |00\rangle + c_{11} |01\rangle + c_{10} |10\rangle + e^{i \theta} c_{01} |11\rangle
 \]</div>
-<p>How can we change the phase of a basis vector other than <span class="math notranslate nohighlight">\(11\tangle\)</span>?  A possible strategy is to transform the target basis vector to <span class="math notranslate nohighlight">\(|11\rangle\)</span>, apply CP and transform back to the original basis vector.  For example, if we want to multiply <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(|00\rangle\)</span> without changing other basis vector, apply <span class="math notranslate nohighlight">\((\text{X} \otime \text{X}) \cdot \text{CS} \cdot (\text{X} \otimes \text{X})\)</span></p>
+<p>How can we change the phase of a basis vector other than <span class="math notranslate nohighlight">\(|11\rangle\)</span>?  A possible strategy is to transform the target basis vector to <span class="math notranslate nohighlight">\(|11\rangle\)</span>, apply CP and transform back to the original basis vector.  For example, if we want to multiply <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(|00\rangle\)</span> without changing other basis vector, apply <span class="math notranslate nohighlight">\((\text{X} \otimes \text{X}) \cdot \text{CS} \cdot (\text{X} \otimes \text{X})\)</span></p>
 <p><strong>Example</strong><br />
-How can we change the phase of a basis vector other than <span class="math notranslate nohighlight">\(|11\rangle\)</span>?  A possible strategy is to transform the target basis vector to <span class="math notranslate nohighlight">\(|11\rangle\)</span>, apply CP and transform back to the original basis vector.  For example, if we want to multiply <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(|00\rangle\)</span> without changing other basis vector, apply <span class="math notranslate nohighlight">\((\text{X} \otimes \text{X}) \cdot \text{CS} \cdot (\text{X} \otimes \text{X})\)</span>.  In this example, we start with a product state <span class="math notranslate nohighlight">\(|+\rangle \otimes |+\rangle\)</span>.  Then, the above gate is applied to it.  Check that <span class="math notranslate nohighlight">\(i\)</span> is multiplied only to  <span class="math notranslate nohighlight">\(|00\rangle\)</span>.  The final state is entangled. (See <a class="reference internal" href="../composites/2qubit.html#sec-2qubits"><span class="std std-numref">Section 7.1</span></a>.</p>
+How can we change the phase of a basis vector other than <span class="math notranslate nohighlight">\(|11\rangle\)</span>?  A possible strategy is to transform the target basis vector to <span class="math notranslate nohighlight">\(|11\rangle\)</span>, apply CP and transform back to the original basis vector.  For example, if we want to multiply <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(|00\rangle\)</span> without changing other basis vector, apply <span class="math notranslate nohighlight">\((\text{X} \otimes \text{X}) \cdot \text{CS} \cdot (\text{X} \otimes \text{X})\)</span>.  In this example, we start with a product state <span class="math notranslate nohighlight">\(|+\rangle \otimes |+\rangle\)</span>.  Then, the above gate is applied to it.  Check that <span class="math notranslate nohighlight">\(i\)</span> is multiplied only to  <span class="math notranslate nohighlight">\(|00\rangle\)</span>.  The final state is entangled. (See <a class="reference internal" href="../composites/2qubit.html#sec-2qubits"><span class="std std-numref">Section 6.1</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
@@ -912,13 +884,13 @@ q_1: ┤ H ├─░─┤ X ├─■───────┤ X ├
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8.1. </span>CX gate</p>
+            <p class="prev-next-title"><span class="section-number">7.1. </span>CX gate</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="swap.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8.3. </span>SWAP</p>
+        <p class="prev-next-title"><span class="section-number">7.3. </span>SWAP</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

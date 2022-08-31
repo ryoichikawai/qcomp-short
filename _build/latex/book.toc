@@ -1,0 +1,211 @@
+\select@language {english}
+\contentsline {part}{I\hspace {1em}Preface}{3}{part.1}
+\contentsline {chapter}{\numberline {1}Preface}{5}{chapter.1}
+\contentsline {part}{II\hspace {1em}Preparation}{7}{part.2}
+\contentsline {chapter}{\numberline {2}Preparation}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}About This Book}{9}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Layout}{9}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Linked references}{10}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Downloading the page}{10}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Github}{10}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}Google Colab}{10}{subsection.2.1.5}
+\contentsline {section}{\numberline {2.2}Python}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Installation }{11}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Using Python}{11}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Numpy}{12}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Matplotlib}{13}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}JupyterLab}{14}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Installation }{14}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Launching}{14}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Usage}{15}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Mathematical expression}{15}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Closing JupyterLab}{15}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}Qiskit}{16}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Installation}{16}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}IBM Quantum Experience}{17}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}API key}{17}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}Using Qiskit}{17}{subsection.2.4.4}
+\contentsline {subsection}{\numberline {2.4.5}Suggested Reading}{18}{subsection.2.4.5}
+\contentsline {section}{\numberline {2.5}Cloud IDE}{18}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}IBM Quantum Lab}{18}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Google Colab}{18}{subsection.2.5.2}
+\contentsline {chapter}{\numberline {3}Quantum Mechanics}{21}{chapter.3}
+\contentsline {section}{\numberline {3.1}State vectors}{21}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Ket and bra}{22}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Addition}{22}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Scalar multiplication}{22}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Superposition}{22}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.5}Inner product}{23}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.6}Orthogonality}{23}{subsection.3.1.6}
+\contentsline {subsection}{\numberline {3.1.7}Norm and normarization}{23}{subsection.3.1.7}
+\contentsline {subsection}{\numberline {3.1.8}Global phase}{24}{subsection.3.1.8}
+\contentsline {subsection}{\numberline {3.1.9}Basis sets}{24}{subsection.3.1.9}
+\contentsline {subsection}{\numberline {3.1.10}Completeness}{24}{subsection.3.1.10}
+\contentsline {subsection}{\numberline {3.1.11}Two\sphinxhyphen {}dimensional Hilbert space}{25}{subsection.3.1.11}
+\contentsline {section}{\numberline {3.2}Operators}{25}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Operator times ket}{25}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Scalar multiplication}{26}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Linearity}{26}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Operator sum}{26}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Operator products}{27}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Identity operator \(I\)}{27}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Matrix elements}{28}{subsection.3.2.7}
+\contentsline {subsection}{\numberline {3.2.8}Dyads}{28}{subsection.3.2.8}
+\contentsline {subsection}{\numberline {3.2.9}Self\sphinxhyphen {}adjoint operators}{28}{subsection.3.2.9}
+\contentsline {subsection}{\numberline {3.2.10}Unitary operators}{29}{subsection.3.2.10}
+\contentsline {subsection}{\numberline {3.2.11}Eigenvalues and eigenvectors}{29}{subsection.3.2.11}
+\contentsline {subsection}{\numberline {3.2.12}Trace of operators}{30}{subsection.3.2.12}
+\contentsline {subsection}{\numberline {3.2.13}Pauli Operators}{30}{subsection.3.2.13}
+\contentsline {subsection}{\numberline {3.2.14}Functions of operators}{34}{subsection.3.2.14}
+\contentsline {section}{\numberline {3.3}Time\sphinxhyphen {}evolution}{36}{section.3.3}
+\contentsline {section}{\numberline {3.4}Quantum measurement}{36}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Observables}{36}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Outcomes of measurement}{37}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Projective measurement}{37}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Expectation values}{38}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}Uncertainty principle}{38}{subsection.3.4.5}
+\contentsline {part}{III\hspace {1em}Introduction}{39}{part.3}
+\contentsline {chapter}{\numberline {4}What is a Quantum Computer?}{41}{chapter.4}
+\contentsline {section}{\numberline {4.1}Classical computation}{41}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}What is classical information?}{42}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Classical bits}{42}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Copying a state of bit}{42}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Gates}{44}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Landauer principle}{45}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}Encoding}{45}{subsection.4.1.6}
+\contentsline {subsection}{\numberline {4.1.7}Instructions}{45}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}Readout and decoding}{46}{subsection.4.1.8}
+\contentsline {section}{\numberline {4.2}Quantum computation}{46}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Qubits}{46}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Resetting a qubit}{47}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Circuit models}{47}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Gates}{47}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Encoding}{48}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.6}Circuits}{49}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.7}Readouts}{49}{subsection.4.2.7}
+\contentsline {section}{\numberline {4.3}Quantum Information Theory}{50}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Classical information}{50}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Quantum Information}{51}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Restriction on quantum information processes}{51}{subsection.4.3.3}
+\contentsline {part}{IV\hspace {1em}Single qubit}{53}{part.4}
+\contentsline {chapter}{\numberline {5}Single qubit}{55}{chapter.5}
+\contentsline {section}{\numberline {5.1}Pure states}{55}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Pure states}{55}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Standard Basis sets}{56}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}The basis sets in Qiskit}{56}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Bloch sphere}{58}{section.5.2}
+\contentsline {section}{\numberline {5.3}Qubit Measurement}{61}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Projective measurement}{61}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Born rule}{61}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Quantum coin flipping}{62}{subsection.5.3.3}
+\contentsline {subsubsection}{Classical simulation}{62}{subsubsection*.5}
+\contentsline {subsubsection}{Quantum simulation}{62}{subsubsection*.6}
+\contentsline {section}{\numberline {5.4}Mixed states}{64}{section.5.4}
+\contentsline {chapter}{\numberline {6}One\sphinxhyphen {}qubit gates}{65}{chapter.6}
+\contentsline {section}{\numberline {6.1}Mathematical expressions}{66}{section.6.1}
+\contentsline {section}{\numberline {6.2}Transformation of general superposition states}{66}{section.6.2}
+\contentsline {section}{\numberline {6.3}Combination of gates}{66}{section.6.3}
+\contentsline {section}{\numberline {6.4}U Gate}{66}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Definition}{67}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Acting on a superposition state}{68}{subsection.6.4.2}
+\contentsline {section}{\numberline {6.5}Rotation Gates, RX, RY, RZ}{68}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Definition}{68}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Additional useful Properties}{70}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}Relation with other gates}{70}{subsection.6.5.3}
+\contentsline {section}{\numberline {6.6}XGate}{70}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Definition}{71}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}Acting on a superposition state}{73}{subsection.6.6.2}
+\contentsline {subsection}{\numberline {6.6.3}Important Properties}{75}{subsection.6.6.3}
+\contentsline {section}{\numberline {6.7}YGate}{75}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Definition}{76}{subsection.6.7.1}
+\contentsline {subsection}{\numberline {6.7.2}Acting on a superposition state}{76}{subsection.6.7.2}
+\contentsline {subsection}{\numberline {6.7.3}Important Properties}{77}{subsection.6.7.3}
+\contentsline {section}{\numberline {6.8}ZGate}{77}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}Definition}{77}{subsection.6.8.1}
+\contentsline {subsection}{\numberline {6.8.2}Acting on a superposition state}{78}{subsection.6.8.2}
+\contentsline {subsection}{\numberline {6.8.3}Important Properties}{80}{subsection.6.8.3}
+\contentsline {section}{\numberline {6.9}Hadamard gate}{80}{section.6.9}
+\contentsline {subsection}{\numberline {6.9.1}Definition}{80}{subsection.6.9.1}
+\contentsline {subsection}{\numberline {6.9.2}Acting on a superposition state}{82}{subsection.6.9.2}
+\contentsline {subsection}{\numberline {6.9.3}Qiskit example:}{82}{subsection.6.9.3}
+\contentsline {subsection}{\numberline {6.9.4}Important Properties}{85}{subsection.6.9.4}
+\contentsline {section}{\numberline {6.10}SX and SXdg Gates}{85}{section.6.10}
+\contentsline {subsection}{\numberline {6.10.1}Definition}{85}{subsection.6.10.1}
+\contentsline {subsection}{\numberline {6.10.2}Transformation of other basis kets}{86}{subsection.6.10.2}
+\contentsline {subsection}{\numberline {6.10.3}Acting on a superposition state}{86}{subsection.6.10.3}
+\contentsline {subsection}{\numberline {6.10.4}Additional useful Properties}{87}{subsection.6.10.4}
+\contentsline {section}{\numberline {6.11}S Gate and S\(^\dagger \) Gate}{87}{section.6.11}
+\contentsline {subsection}{\numberline {6.11.1}Definition}{87}{subsection.6.11.1}
+\contentsline {subsection}{\numberline {6.11.2}Acting on a superposition state}{88}{subsection.6.11.2}
+\contentsline {subsection}{\numberline {6.11.3}Additional useful Properties}{90}{subsection.6.11.3}
+\contentsline {section}{\numberline {6.12}P Gate}{90}{section.6.12}
+\contentsline {subsection}{\numberline {6.12.1}Definition}{90}{subsection.6.12.1}
+\contentsline {subsection}{\numberline {6.12.2}Acting on a superposition state}{91}{subsection.6.12.2}
+\contentsline {section}{\numberline {6.13}Change of basis sets}{91}{section.6.13}
+\contentsline {subsection}{\numberline {6.13.1}Transformation of gates}{91}{subsection.6.13.1}
+\contentsline {subsection}{\numberline {6.13.2}Qiskit Example: Measuring quantum phase.}{92}{subsection.6.13.2}
+\contentsline {section}{\numberline {6.14}State tomography}{95}{section.6.14}
+\contentsline {part}{V\hspace {1em}Composite Systems}{99}{part.5}
+\contentsline {chapter}{\numberline {7}Composite Systems}{101}{chapter.7}
+\contentsline {section}{\numberline {7.1}Two qubits}{101}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Hilbert space and computational basis}{101}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Superposition states}{102}{subsection.7.1.2}
+\contentsline {subsection}{\numberline {7.1.3}Product states}{103}{subsection.7.1.3}
+\contentsline {subsection}{\numberline {7.1.4}Entangled states}{103}{subsection.7.1.4}
+\contentsline {subsection}{\numberline {7.1.5}Bell basis}{104}{subsection.7.1.5}
+\contentsline {subsection}{\numberline {7.1.6}Two\sphinxhyphen {}qubit measurements in computational basis}{104}{subsection.7.1.6}
+\contentsline {subsection}{\numberline {7.1.7}Entanglement Measure}{106}{subsection.7.1.7}
+\contentsline {section}{\numberline {7.2}More qubits}{107}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Notation}{107}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Entanglement}{108}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Encoding numbers}{111}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Integers}{111}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Real numbers with floating point arithmetic}{112}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Real numbers encoded in coefficients}{113}{subsection.7.3.3}
+\contentsline {chapter}{\numberline {8}Two\sphinxhyphen {}qubits Gates}{115}{chapter.8}
+\contentsline {section}{\numberline {8.1}CX gate}{116}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Definition}{116}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Acting on superposition state}{117}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Phase kickback}{118}{subsection.8.1.3}
+\contentsline {subsection}{\numberline {8.1.4}Change of basis}{120}{subsection.8.1.4}
+\contentsline {subsection}{\numberline {8.1.5}Simple applications}{121}{subsection.8.1.5}
+\contentsline {subsubsection}{Generating Bell states}{121}{subsubsection*.7}
+\contentsline {subsubsection}{Bell state measurement}{122}{subsubsection*.8}
+\contentsline {subsubsection}{Addition modulo 2}{123}{subsubsection*.9}
+\contentsline {subsubsection}{Long distance CX}{124}{subsubsection*.10}
+\contentsline {subsubsection}{One\sphinxhyphen {}way information transfer}{125}{subsubsection*.11}
+\contentsline {subsubsection}{Swapping qubits}{127}{subsubsection*.12}
+\contentsline {section}{\numberline {8.2}Controlled\sphinxhyphen {} Z, S, T, P gates}{129}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Qiskit circuit functions}{130}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Acting on superposition state}{131}{subsection.8.2.2}
+\contentsline {section}{\numberline {8.3}SWAP}{132}{section.8.3}
+\contentsline {part}{VI\hspace {1em}Algorithms}{135}{part.6}
+\contentsline {chapter}{\numberline {9}Algorithms}{137}{chapter.9}
+\contentsline {section}{\numberline {9.1}Quantum teleportation}{137}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}The protocol}{137}{subsection.9.1.1}
+\contentsline {section}{\numberline {9.2}Entanglement swap}{141}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}The protocol}{141}{subsection.9.2.1}
+\contentsline {section}{\numberline {9.3}Superdense coding}{145}{section.9.3}
+\contentsline {subsection}{\numberline {9.3.1}The protocol}{145}{subsection.9.3.1}
+\contentsline {section}{\numberline {9.4}Walsh\sphinxhyphen {}Hadamard Transformation}{150}{section.9.4}
+\contentsline {subsection}{\numberline {9.4.1}Walsh\sphinxhyphen {}Hadamard transformation}{150}{subsection.9.4.1}
+\contentsline {subsection}{\numberline {9.4.2}Remarks}{151}{subsection.9.4.2}
+\contentsline {section}{\numberline {9.5}A little example of quantum parallelism}{151}{section.9.5}
+\contentsline {section}{\numberline {9.6}The Deutsch problem}{153}{section.9.6}
+\contentsline {subsection}{\numberline {9.6.1}The problem}{154}{subsection.9.6.1}
+\contentsline {subsection}{\numberline {9.6.2}Encoding the functions}{154}{subsection.9.6.2}
+\contentsline {subsection}{\numberline {9.6.3}No\sphinxhyphen {}so smart algorithm}{155}{subsection.9.6.3}
+\contentsline {subsection}{\numberline {9.6.4}The Deutsch’s algorithm}{157}{subsection.9.6.4}
+\contentsline {section}{\numberline {9.7}Quantum Fourier Transform}{159}{section.9.7}
+\contentsline {subsection}{\numberline {9.7.1}Discrete Fourier Transform}{159}{subsection.9.7.1}
+\contentsline {subsection}{\numberline {9.7.2}The QFT algorithm}{160}{subsection.9.7.2}
+\contentsline {section}{\numberline {9.8}Quantum Phase Estimation}{165}{section.9.8}
+\contentsline {subsection}{\numberline {9.8.1}The problem}{165}{subsection.9.8.1}
+\contentsline {subsection}{\numberline {9.8.2}Encoding a continuous number between 0 and 1}{165}{subsection.9.8.2}
+\contentsline {section}{\numberline {9.9}}{166}{section.9.9}
+\contentsline {subsection}{\numberline {9.9.1}The algorithm}{166}{subsection.9.9.1}
+\contentsline {subsection}{\numberline {9.9.2}Example}{166}{subsection.9.9.2}
+\contentsline {subsection}{\numberline {9.9.3}Irrational value}{171}{subsection.9.9.3}
+\contentsline {part}{VII\hspace {1em}Backmatters}{175}{part.7}
+\contentsline {chapter}{\numberline {10}References}{177}{chapter.10}
+\contentsline {chapter}{Bibliography}{179}{chapter*.13}

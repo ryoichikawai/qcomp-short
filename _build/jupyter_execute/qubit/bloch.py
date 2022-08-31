@@ -9,16 +9,16 @@
 # $c_0 = r_0 e^{i \phi_0}$ and $c_1 = r_1 e^{i \phi_1}$ where $r_i$ and $\phi_i$ are modulus and argument. Then, we remove a global phase as 
 # 
 # $$
-# \ket{\psi} = r_0 e^{i \phi_0} \ket{0} + r_1 e^{i \phi_1} \ket{1} = e^{i \phi_0} \left( r_0  \ket{0} + r_1 e^{i (\phi_1-\phi_0)} \ket{1} \right) \simeq r_0  \ket{0} + r_1 e^{i \theta} \ket{1}
+# |\psi\rangle = r_0 e^{i \phi_0} |0\rangle + r_1 e^{i \phi_1} |1\rangle = e^{i \phi_0} \left( r_0  |0\rangle + r_1 e^{i (\phi_1-\phi_0)} |1\rangle \right) \simeq r_0  |0\rangle + r_1 e^{i \theta} |1\rangle
 # $$
 # 
 # where $\phi=\phi_1-\phi_0,\ \phi \in [0, 2\pi)$ and "$\simeq$" means "equivalent up to global phase".  Now, the normalization condition becomes $r_0^2 + r_1^2 = 1$.  Since $r_0$ and $r_1$ are positive, we can write them as $r_0 = \cos\left(\frac{\theta}{2}\right)$ and $r_1 = \sin\left(\frac{\theta}{2}\right)$ with $0 < \theta < \pi$.  Now the general qubit state is written as
 # 
 # $$
-# \ket{\psi} = \cos\left(\frac{\theta}{2}\right) \ket{0} + \sin\left(\frac{\theta}{2}\right) e^{i \phi} \ket{1},\quad 0 \le \theta \le \pi, \, 0 \le \phi < 2 \pi .
+# |\psi\rangle = \cos\left(\frac{\theta}{2}\right) |0\rangle + \sin\left(\frac{\theta}{2}\right) e^{i \phi} |1\rangle,\quad 0 \le \theta \le \pi, \, 0 \le \phi < 2 \pi .
 # $$(bloch-vector)
 # 
-# This expression suggests that any pure state can be map to a point on the surface of a unit sphere using spherical coordinates $\theta$ and $\phi$.   The north pole of the sphere ($\theta=0$) corresponds to $\ket{0}$ and the south pole ($\theta=\pi$) to $\ket{1}$ (recall that the global phase $e^{i \phi}$ can be omitted.  When $\theta = \frac{\pi}{2}$ and $\phi=0$, we obtain $|+\rangle$ and when $\theta = \frac{\pi}{2}$ and $\phi=\pi$, we have $|-\rangle$. 
+# This expression suggests that any pure state can be map to a point on the surface of a unit sphere using spherical coordinates $\theta$ and $\phi$.   The north pole of the sphere ($\theta=0$) corresponds to $|0\rangle$ and the south pole ($\theta=\pi$) to $|1\rangle$ (recall that the global phase $e^{i \phi}$ can be omitted.  When $\theta = \frac{\pi}{2}$ and $\phi=0$, we obtain $|+\rangle$ and when $\theta = \frac{\pi}{2}$ and $\phi=\pi$, we have $|-\rangle$. 
 # 
 # The sphere is known as *Bloch sphere* and the arrow from the center of the sphere to the point on the surface is called *Bloch vector*. Each Bloch vector corresponds to a qubit state. 
 

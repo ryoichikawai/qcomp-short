@@ -43,7 +43,7 @@ qc.cx(1,2)
 qc.cx(0,1)
 qc.barrier()
 qc.measure(qr,cr)
-qc.draw()
+qc.draw('mpl')
 
 
 # In[2]:

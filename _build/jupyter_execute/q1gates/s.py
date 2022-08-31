@@ -38,7 +38,8 @@
 # >$$
 # S = e^{i\pi/4} R_z (\pi/2), \quad S^\dagger = e^{-i\pi/4} R_z (-\pi/2)
 # $$
-# The qiskit circuit symbols are `s`  and `sdg`, respectively. They appear in quantum circuits as
+# 
+# The qiskit circuit code symbols are `s`  and `sdg`, respectively. They appear in quantum circuits as
 
 # In[1]:
 
@@ -47,6 +48,14 @@ from qiskit import QuantumCircuit
 qc=QuantumCircuit(1)
 qc.s(0)
 qc.sdg(0)
+qc.draw('mpl')
+
+
+# or
+
+# In[2]:
+
+
 qc.draw()
 
 
@@ -115,19 +124,19 @@ qc.draw()
 # 
 # Hence, the whole operation does nothing at all.  In order to avoid unnecessary computation like this, we need to understand the properties of gates.  You will surprise that a long circuit can be significantly shortened by contracting gates.
 
-# In[2]:
+# In[3]:
 
 
 get_ipython().run_cell_magic('capture', '', 'from qiskit import *\nfrom qiskit.visualization import visualize_transition\n\nqc=QuantumCircuit(1)\n\nqc.h(0)\nqc.s(0)\nqc.sdg(0)\nqc.h(0)\n\nmovie=visualize_transition(qc,fpg=50, spg=1)')
 
 
-# In[3]:
+# In[4]:
 
 
 qc.draw('mpl')
 
 
-# In[4]:
+# In[5]:
 
 
 movie
@@ -142,7 +151,7 @@ movie
 
 # 
 # ---
-# Last modified 07/11/2022
+# Last modified: 08/31/2022
 
 # In[ ]:
 

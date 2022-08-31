@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>9.2. Entanglement swap &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>8.2. Entanglement swap &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.3. Walsh-Hadamard Transformation" href="walshhadamard.html" />
-    <link rel="prev" title="9.1. Quantum teleportation" href="teleportation.html" />
+    <link rel="next" title="8.3. Superdense coding" href="densecoding.html" />
+    <link rel="prev" title="8.1. Quantum teleportation" href="teleportation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,27 +116,17 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preface
- </span>
-</p>
-<ul class="nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../preface.html">
-   1. Preface
+   Preface
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preparation
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../preparation/intro.html">
-   2. Preparation
+   1. Preparation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -146,34 +136,34 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/thisbook.html">
-     2.1. About This Book
+     1.1. About This Book
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/python.html">
-     2.2. Python
+     1.2. Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/jupyter.html">
-     2.3. JupyterLab
+     1.3. JupyterLab
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/qiskit.html">
-     2.4. Qiskit
+     1.4. Qiskit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../preparation/cloud.html">
-     2.5. Cloud IDE
+     1.5. Cloud IDE
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qmsummary/intro.html">
-   3. Quantum Mechanics
+   2. Quantum Mechanics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -183,36 +173,29 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/vectors.html">
-     3.1. State vectors
+     2.1. State vectors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/operators.html">
-     3.2. Operators
+     2.2. Operators
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/evolution.html">
-     3.3. Time-evolution
+     2.3. Time-evolution
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qmsummary/measurement.html">
-     3.4. Quantum measurement
+     2.4. Quantum measurement
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../computation/intro.html">
-   4. What is a Quantum Computer?
+   3. What is a Quantum Computer?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -222,26 +205,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../computation/ccomp.html">
-     4.1. Classical computation
+     3.1. Classical computation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../computation/qcomp.html">
-     4.2. Quantum computation
+     3.2. Quantum computation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../computation/qinfo.html">
+     3.3. Quantum Information Theory
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Single qubit
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../qubit/intro.html">
-   5. Single qubit
+   4. Single qubit
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -251,29 +232,29 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/purestates.html">
-     5.1. Pure states
+     4.1. Pure states
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/bloch.html">
-     5.2. Bloch sphere
+     4.2. Bloch sphere
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/measurement.html">
-     5.3. Qubit Measurement
+     4.3. Qubit Measurement
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../qubit/mixedstates.html">
-     5.4. Mixed states
+     4.4. Mixed states
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../q1gates/intro.html">
-   6. One-qubit gates
+   5. One-qubit gates
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -283,42 +264,42 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/u.html">
-     6.4. U Gate
+     5.4. U Gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/r.html">
-     6.5. Rotation Gates, RX, RY, RZ
+     5.5. Rotation Gates, RX, RY, RZ
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/x.html">
-     6.6. XGate
+     5.6. XGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/y.html">
-     6.7. YGate
+     5.7. YGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/z.html">
-     6.8. ZGate
+     5.8. ZGate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/h.html">
-     6.9. Hadamard gate
+     5.9. Hadamard gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/sx.html">
-     6.10. SX and SXdg Gates
+     5.10. SX and SXdg Gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/s.html">
-     6.11. S Gate and S
+     5.11. S Gate and S
      <span class="math notranslate nohighlight">
       \(^\dagger\)
      </span>
@@ -327,31 +308,24 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/p.html">
-     6.12. P Gate
+     5.12. P Gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/change-basis.html">
-     6.13. Change of basis sets
+     5.13. Change of basis sets
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q1gates/tomography.html">
-     6.14. State tomography
+     5.14. State tomography
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Composite Systems
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../composites/intro.html">
-   7. Composite Systems
+   6. Composite Systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
@@ -361,24 +335,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../composites/2qubit.html">
-     7.1. Two qubits
+     6.1. Two qubits
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../composites/morequbits.html">
-     7.2. More qubits
+     6.2. More qubits
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../composites/numbers.html">
-     7.3. Encoding numbers
+     6.3. Encoding numbers
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../q2gates/intro.html">
-   8. Two-qubits Gates
+   7. Two-qubits Gates
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -388,31 +362,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../q2gates/cx.html">
-     8.1. CX gate
+     7.1. CX gate
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q2gates/cp.html">
-     8.2. Controlled- Z, S, T, P gates
+     7.2. Controlled- Z, S, T, P gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../q2gates/swap.html">
-     8.3. SWAP
+     7.3. SWAP
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Algorithms
- </span>
-</p>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="intro.html">
-   9. Algorithms
+   8. Algorithms
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -422,50 +389,50 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="teleportation.html">
-     9.1. Quantum teleportation
+     8.1. Quantum teleportation
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     9.2. Entanglement swap
+     8.2. Entanglement swap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="densecoding.html">
+     8.3. Superdense coding
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="walshhadamard.html">
-     9.3. Walsh-Hadamard Transformation
+     8.4. Walsh-Hadamard Transformation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qparallel.html">
-     9.4. A little example of quantum parallelism
+     8.5. A little example of quantum parallelism
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="deutsch.html">
-     9.5. The Deutsch problem
+     8.6. The Deutsch problem
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qft.html">
-     9.6. Quantum Fourier Transform
+     8.7. Quantum Fourier Transform
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="qpe.html">
-     9.7. Quantum Phase Estimation
+     8.8. Quantum Phase Estimation
     </a>
    </li>
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Backmatters
- </span>
-</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../references.html">
+  <a class="reference internal" href="../references/references.html">
    References
   </a>
  </li>
@@ -677,7 +644,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-protocol">
-   9.2.1. The protocol
+   8.2.1. The protocol
   </a>
  </li>
 </ul>
@@ -701,7 +668,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-protocol">
-   9.2.1. The protocol
+   8.2.1. The protocol
   </a>
  </li>
 </ul>
@@ -715,15 +682,15 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="entanglement-swap">
-<h1><span class="section-number">9.2. </span>Entanglement swap<a class="headerlink" href="#entanglement-swap" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8.2. </span>Entanglement swap<a class="headerlink" href="#entanglement-swap" title="Permalink to this headline">#</a></h1>
 <p>The easiest way to create entanglement between two qubits is to bring them in direct contact.  The interaction potential makes them entangled.  Is it possible to make two qubits separated by a great distance without any interaction?  It turns out possible with help of two entangled pairs as resource.  The protocol is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_teleportation#Entanglement_swapping"><em>quantum entanglement swap</em></a>.  The mechanism is similar to the quantum teleportation.</p>
 <section id="the-protocol">
-<h2><span class="section-number">9.2.1. </span>The protocol<a class="headerlink" href="#the-protocol" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.1. </span>The protocol<a class="headerlink" href="#the-protocol" title="Permalink to this headline">#</a></h2>
 <p>Suppose that Alice and Charlie share an entangled pair of qubits, <span class="math notranslate nohighlight">\(q_A\)</span> with Alice and <span class="math notranslate nohighlight">\(q_{C_A}\)</span> with Charlies.  Similarly, Bob and  Charlie share an entangled pair of qubits, <span class="math notranslate nohighlight">\(q_B\)</span> with Bob and <span class="math notranslate nohighlight">\(q_{C_B}\)</span> with Charlie.   Charlie’s qubits, <span class="math notranslate nohighlight">\(q_{C_A}\)</span> and <span class="math notranslate nohighlight">\(q_{C_B}\)</span>, are not entangled.  Now, Charlie apply Bell measurement (See <code class="xref std std-numref docutils literal notranslate"><span class="pre">ssec-bell-measurement</span></code>)  on his qubits.  Then,</p>
 <p>For convenience, we map the qubits as <span class="math notranslate nohighlight">\(q_A \rightarrow q_0\)</span>, <span class="math notranslate nohighlight">\(q_{C_A} \rightarrow q_1\)</span>, <span class="math notranslate nohighlight">\(q_{C_B} \rightarrow q_2\)</span>, and <span class="math notranslate nohighlight">\(q_{B} \rightarrow q_3\)</span>. As usual, we express the computational basis as <span class="math notranslate nohighlight">\(|q_3\,q_2\,q_1\,q_0\rangle\)</span>.  Our goal is to entangle <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_3\)</span>.</p>
 <p>Let us assume that <span class="math notranslate nohighlight">\(q_0\)</span> and <span class="math notranslate nohighlight">\(q_1\)</span> are in  Bell state <span class="math notranslate nohighlight">\(|\Phi^{+}\rangle_{01}\)</span> and similarly, <span class="math notranslate nohighlight">\(q_2\)</span> and <span class="math notranslate nohighlight">\(q_3\)</span> are in  Bell state <span class="math notranslate nohighlight">\(|\Phi^{+}\rangle_{23}\)</span>.  Hence, the initial state of the total system is</p>
 <div class="math notranslate nohighlight" id="equation-psi0-abc">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-psi0-abc" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-psi0-abc" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align}
 |\psi_0\rangle &amp;= |\Phi^{+}\rangle_{01} \otimes |\Phi^{+}\rangle_{23} \\
 &amp;=\frac{1}{2} \left (|0000\rangle + |0011\rangle + |1100\rangle + |1111\rangle\right) \\
@@ -734,7 +701,7 @@ title="Print to PDF"
 <p>where the indices on the kets inciate the qubit pairs and <span class="math notranslate nohighlight">\(\otimes^\prime\)</span> means that the original order of qubits must be used to take the tensor product.</p>
 <p>Recallng that</p>
 <div class="math notranslate nohighlight" id="equation-bell-cbase">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-bell-cbase" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-bell-cbase" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align}
 |00\rangle &amp;= \frac{1}{\sqrt{2}} \left(|\Phi^{+}\rangle + |\Phi^{-}\rangle \right) \\
 |11\rangle &amp;= \frac{1}{\sqrt{2}} \left(|\Phi^{+}\rangle - |\phi^{-}\rangle \right) \\
@@ -742,7 +709,7 @@ title="Print to PDF"
 |10\rangle &amp;= \frac{1}{\sqrt{2}} \left(|\Psi^{+}\rangle - |\psi^{-}\rangle \right)
 \end{align}
 \end{split}\]</div>
-<p>Now we write <span class="math notranslate nohighlight">\(|\psi_0\rangle\)</span> in Bell basis for mathematical convenience.  Substituting <a class="reference internal" href="#equation-bell-cbase">(9.2)</a> to <a class="reference internal" href="#equation-psi0-abc">(9.1)</a>,</p>
+<p>Now we write <span class="math notranslate nohighlight">\(|\psi_0\rangle\)</span> in Bell basis for mathematical convenience.  Substituting <a class="reference internal" href="#equation-bell-cbase">(8.2)</a> to <a class="reference internal" href="#equation-psi0-abc">(8.1)</a>,</p>
 <div class="math notranslate nohighlight">
 \[
 |\psi_0\rangle = \frac{1}{2} \left (|\Phi^{+}\rangle_{03} \otimes^\prime |\Phi^{+}\rangle_{12} 
@@ -752,9 +719,9 @@ title="Print to PDF"
 <p>This is just another expression of the initial state.  We haven’t applied any gate yet.</p>
 <p><strong>Step 1</strong></p>
 <p>Charlie applied Bell measurement (See <code class="xref std std-numref docutils literal notranslate"><span class="pre">ssec-bell-measurement</span></code>).  He obtains one of <span class="math notranslate nohighlight">\(|\Phi^{+}\rangle_{12}\)</span>, <span class="math notranslate nohighlight">\(|\Phi^{-}\rangle_{12}\)</span>,
-<span class="math notranslate nohighlight">\(|\Psi^{+}\rangle_{12}\)</span>, and <span class="math notranslate nohighlight">\(|\Psi^{+}\rangle_{12}\)</span> with equal probabiity.  The Alice’s and Bob’s qubits ends up with the same type of Bell state Charlie obtained. See <a class="reference internal" href="#table-entanglement-swap"><span class="std std-numref">Table 9.2</span></a>.  At this point their qubits are already entangled.</p>
+<span class="math notranslate nohighlight">\(|\Psi^{+}\rangle_{12}\)</span>, and <span class="math notranslate nohighlight">\(|\Psi^{+}\rangle_{12}\)</span> with equal probabiity.  The Alice’s and Bob’s qubits ends up with the same type of Bell state Charlie obtained. See <a class="reference internal" href="#table-entanglement-swap"><span class="std std-numref">Table 8.2</span></a>.  At this point their qubits are already entangled.</p>
 <table class="colwidths-auto table" id="table-entanglement-swap">
-<caption><span class="caption-number">Table 9.2 </span><span class="caption-text">The outcome of Bell measurement</span><a class="headerlink" href="#table-entanglement-swap" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 8.2 </span><span class="caption-text">The outcome of Bell measurement</span><a class="headerlink" href="#table-entanglement-swap" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Charlies’s outcome</p></th>
 <th class="text-align:center head"><p>Alice-Bob’s state</p></th>
@@ -902,13 +869,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9.1. </span>Quantum teleportation</p>
+            <p class="prev-next-title"><span class="section-number">8.1. </span>Quantum teleportation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="walshhadamard.html" title="next page">
+    <a class='right-next' id="next-link" href="densecoding.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.3. </span>Walsh-Hadamard Transformation</p>
+        <p class="prev-next-title"><span class="section-number">8.3. </span>Superdense coding</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

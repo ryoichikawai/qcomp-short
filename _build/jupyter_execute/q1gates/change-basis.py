@@ -198,7 +198,7 @@ qc.h(1)
 qc.measure(qr,cr)
 
 # show the circuit
-qc.draw()
+qc.draw('mpl')
 
 
 # In[2]:
@@ -248,7 +248,7 @@ print("error =  {:6.3f}".format(phi - np.pi/3))
 
 # 
 # ---
-# Last modified: 07/09/2022
+# Last modified: 08/31/2022
 
 # In[ ]:
 

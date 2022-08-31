@@ -36,13 +36,33 @@
 # U(\theta,\phi,\lambda) = e^{i (\lambda+\phi)/2} R_z(\phi) R_y(\theta) R_z(\lambda) .
 # $$
 # 
-# 
+# The Qiskit circuit code symbol is `u` and it appears in quantum circuit as
+
+# In[6]:
+
+
+from qiskit.circuit import QuantumCircuit, Parameter
+theta=Parameter('\u03B8')
+phi=Parameter('\u03D5')
+lamb=Parameter('\u03BB')
+qc=QuantumCircuit(1)
+qc.u(theta,phi,lamb,0)
+qc.draw('mpl')
+
+
+# or
+
+# In[7]:
+
+
+qc.draw()
+
 
 # 
 # ---
 # **Qiskit Example** {numref}`%s <sec-ugate>`.1&nbsp;  Generate a state $\cos(\pi/3)|0\rangle + \sin(\pi/3) e^{-i \pi/7} |1\rangle$ in a quantum circuit.
 
-# In[1]:
+# In[10]:
 
 
 # import numpy
@@ -65,23 +85,15 @@ qc.u(np.pi/5,-np.pi/3,0,0)
 Statevector(qc).draw('bloch')
 
 
-# In[ ]:
-
-
-
-
-
 # ## Acting on a superposition state
 # 
-# >$$
+# $$
 # U(\theta,\phi,\lambda)\left(c_0|0\rangle+c_1|1\rangle\right) 
-# =\left[c_0 \cos(\theta/2) - c_1 e^{i\phi} \sin(\theta/2)\right]|0\rangle 
+# =\left[c_0 \cos(\theta/2) - c_1 e^{i\phi} \sin(\theta/2)\right]|0\rangle
 # + e^{i \phi} \left[ c_0 \sin(\theta/2) + c_1 e^{i \lambda}\cos(\theta/2) \right]|1\rangle
 # $$
 # 
 
-# In[ ]:
-
-
-
-
+# 
+# ---
+# Last modified: 08/31/2022

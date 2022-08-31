@@ -53,16 +53,16 @@
 # 
 # The `qiskit.opflow` library provides us with basic tools to describe quantum mechanics using expressions very similar to the original methematical expressions.  Here are the correspondence between mathematical expressions and `opflow` expressions.
 # 
-# > $\ket{0} \quad \Rightarrow \quad$ `Zero`  
-# > $\ket{1} \quad \Rightarrow \quad$ `One`  
-# > $\ket{+} \quad \Rightarrow \quad$ `Plus`  
-# > $\ket{-} \quad \Rightarrow \quad$ `Minus`     
+# > $|0\rangle \quad \Rightarrow \quad$ `Zero`  
+# > $|1\rangle \quad \Rightarrow \quad$ `One`  
+# > $|+\rangle \quad \Rightarrow \quad$ `Plus`  
+# > $|-\rangle \quad \Rightarrow \quad$ `Minus`     
 # 
 # The vector with "~" indicates bra.  For example,  
-# > $\bra{0} \quad  \Rightarrow \quad$ `~One` 
+# > $\langle 0| \quad  \Rightarrow \quad$ `~One` 
 # 
 # The regular addition works.
-# > $\ket{0} + \ket{1} \quad \Rightarrow \quad$  `Zero + One`
+# > $|0\rangle + |1\rangle \quad \Rightarrow \quad$  `Zero + One`
 # 
 # The operator for inner product is "@". You need to evalute it with `.eval()`.
 # > $\langle 0 | + \rangle \quad \Rightarrow \quad$  `(~Zero @ Plus).eval()`
@@ -151,7 +151,7 @@ print( "<L|R> =",(~L @ R).eval() )
 
 # 
 # ---
-# Last modified: 07/09/2022
+# Last modified: 08/31/2022
 
 # In[ ]:
 

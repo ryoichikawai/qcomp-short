@@ -114,7 +114,7 @@ qc.barrier()
 qc.cx(1,0)
 qc.cz(2,0)
 
-qc.draw()
+qc.draw('mpl')
 
 
 # In[2]:

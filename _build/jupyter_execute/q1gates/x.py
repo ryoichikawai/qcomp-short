@@ -12,7 +12,7 @@
 # 
 # **Transformation**  
 # 
-# >$$
+# $$
 # \begin{align}
 # X |0\rangle &= |1\rangle\\
 # X |1\rangle &= |0\rangle
@@ -40,7 +40,7 @@
 # X = i R_x(\pi)
 # $$
 # 
-# The qiskit circuit symbol is `x` and it appears in quantum circuit as
+# The qiskit circuit code symbol is `x` and it appears in quantum circuit as
 
 # In[1]:
 
@@ -48,6 +48,14 @@
 from qiskit import QuantumCircuit
 qc=QuantumCircuit(1)
 qc.x(0)
+qc.draw('mpl')
+
+
+# or
+
+# In[2]:
+
+
 qc.draw()
 
 
@@ -58,7 +66,7 @@ qc.draw()
 # We construct a short quantum circuit using two Xgates and check how the state vector is transformed.  The initial state is always $|0\rangle$.  The first Xgate flips it to $|1\rangle$ and the second Xgate flips it back to $|0\rangle$.
 # 
 
-# In[2]:
+# In[3]:
 
 
 # import QuatumCircuit and QuantumRegister classes.
@@ -135,7 +143,7 @@ display("Quantum circuit",qc.draw('mpl'),"State vector before the gate",
 # 
 # The following Qiskit code demonstrates that mathematically $X|L\rangle = i |R\rangle$ but $X|L\rangle$ \simeq |R\rangle$ when plotted in the Bloch sphere.
 
-# In[3]:
+# In[4]:
 
 
 # import QuatumCircuit and QuantumRegister classes.
@@ -169,7 +177,7 @@ final=Statevector(qc)
 final.draw('latex')
 
 
-# In[4]:
+# In[5]:
 
 
 # Compare the final state with |R> in Bloch sphere.
@@ -206,7 +214,7 @@ display("Original |R>",R_bloch,"X|L>",final_bloch)
 
 # 
 # ---
-# Last modified: 07/09/2022
+# Last modified: 08/31/2022
 
 # In[ ]:
 

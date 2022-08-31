@@ -18,7 +18,7 @@
 # :align: center
 # :width: 400px
 # 
-# Measurement of a superposition state.  Before measurement, every qubit in the ensemble is in the same superposition state {eq}`qubit-purestate`.  It is known as a purestate ensemble  The measurement selects one of $|0\rangle$ and $|1\rangle$.  As the result, some qubits in the ensemble are in $|0\rangle$ and others in $\1\rangle$. After the measurement, we have a mixed state ensemble.
+# Measurement of a superposition state.  Before measurement, every qubit in the ensemble is in the same superposition state {eq}`qubit-purestate`.  It is known as a purestate ensemble  The measurement selects one of $|0\rangle$ and $|1\rangle$.  As the result, some qubits in the ensemble are in $|0\rangle$ and others in $|1\rangle$. After the measurement, we have a mixed state ensemble.
 # ```
 
 # ## Born rule

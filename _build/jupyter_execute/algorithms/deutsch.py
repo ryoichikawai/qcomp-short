@@ -159,7 +159,7 @@ Uf(k)
 qc.x(qr[0])
 Uf(k)
 qc.measure(qr[1],cr[0])
-qc.draw()
+qc.draw('mpl')
 
 
 # In[2]:
@@ -254,7 +254,7 @@ Uf(k)
 qc.h(qr[0])
 qc.measure(qr[0],cr[0])
 
-qc.draw()
+qc.draw('mpl')
 
 
 # In[4]:

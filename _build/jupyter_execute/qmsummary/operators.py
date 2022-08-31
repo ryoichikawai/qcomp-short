@@ -9,8 +9,8 @@
 # 
 # | operation | mathematical expression |
 # | :---: | :---: |
-# | operator times ket | $A \ket{\psi}$ |
-# | adjoint operator | $\bra{\psi} A^\dagger$ |
+# | operator times ket | $A |\psi\rangle$ |
+# | adjoint operator | $|\psi\rangle A^\dagger$ |
 # | scalar multiplication | $\lambda A, \quad \lambda \in \mathbb{C}$ |
 # | operator sum | $A+B$ |
 # | identity operator | $I$ |
@@ -18,11 +18,11 @@
 # | commutation | $[A\, B]=AB-BA $ |
 # | matrix element | $\langle \psi \vert A \vert \varphi  \rangle$ |
 # | trace | $\text{tr} A$ |
-# | dyad | $\ket{\psi}\bra{\varphi}$ |
+# | dyad | $|\psi\rangle\langle\varphi$ |
 # | projection operator | $P^2=P$ |
 # | Self-adjoint operators | $A^\dagger = A$ |
 # | Unitary operator | $U^\dagger U = I$ |
-# | Eigenvalue and eigenvector | $A \ket{a_i} = \lambda_i \ket{a_i}$ |
+# | Eigenvalue and eigenvector | $A |a_i\rangle = \lambda_i |a_i\rangle$ |
 # | Pauli operator | $X, Y, Z$ |
 # | function of operator | $f(A)$ |
 # 
@@ -33,23 +33,23 @@
 # When a operator $A$ acts on any ket in the Hilbert space, it transforms the ket to another ket in the same Hilbert space, 
 # 
 # $$
-# \ket{b} = A \ket{a}.  
+# |b\rangle = A |a\rangle.  
 # $$
 #  
 # Similarly every bra is transformed as
 # 
 # $$
-# \bra{b} = \bra{a} A^\dagger
+# \langle b| = \langle a | A^\dagger
 # $$
 # where $A^\dagger$ is _Hermite conjugate_ or _adjoint_ of $A$.  The adjoint of the adjoint operator is the original operator, that is  $(A^\dagger)^\dagger = A$.
 # 
-# It is wrong to think that $A^\dagger$ always act on bra.  It can be applied to ket and $A^\dagger \ket{a}$ is perfectly OK.  However, in general $A \ket{a} \ne A^\dagger \ket{A}$. Therefore $A$ and $A^\dagger$ are two different operators..  By definition, the adjoint expression of $A^\dagger \ket{A}$ is $\bra{a} (A^\dagger)^\dagger = \bra{a} A$. 
+# It is wrong to think that $A^\dagger$ always act on bra.  It can be applied to ket and $A^\dagger | a\rangle$ is perfectly OK.  However, in general $A |a\rangle \ne A^\dagger |A\rangle$. Therefore $A$ and $A^\dagger$ are two different operators.  By definition, the adjoint expression of $A^\dagger |A\rangle$ is $\langle a| (A^\dagger)^\dagger = \langle a| A$. 
 
-# **Example** {numref}`%s <sec-operators>`.1  Operator $X$ transforms the basis vectors as $X\ket{0} \equiv \ket{1}$ and $X\ket{1} \equiv \ket{0}$.
+# **Example** {numref}`%s <sec-operators>`.1  Operator $X$ transforms the basis vectors as $X |0\rangle \equiv |1\rangle$ and $X|1\rangle \equiv |0\rangle$.
 # 
 # 
-# **Example** {numref}`%s <sec-operators>`.2  Consider $H$ transforms the basis vectors as $H\ket{0} \equiv \ket{+}$ and $H\ket{1} \equiv \ket{-}$.
-# (See {eq}`eq-plusminus-basis` for the definition of $\ket{\pm}$.)  $H$ is known as _Hadamard_ gate and one of the very important quantum gates.
+# **Example** {numref}`%s <sec-operators>`.2  Consider $H$ transforms the basis vectors as $H|0\rangle \equiv |+\rangle$ and $H|1\rangle \equiv |-\rangle$.
+# (See {eq}`eq-plusminus-basis` for the definition of $|\pm\rangle$.)  $H$ is known as _Hadamard_ gate and one of the very important quantum gates.
 
 # ## Scalar multiplication
 # 
@@ -58,20 +58,18 @@
 # The following associativity holds:
 # 
 # $$
-# (\lambda A) \ket{a} = \lambda (A \ket{a}) = A (\lambda \ket{a})
+# (\lambda A) |a\rangle = \lambda (A  |a\rangle) = A (\lambda  |a\rangle)
 # $$
 # 
 # $$
 # (\lambda \eta) A = \lambda (\eta A)
 # $$
 # 
-# 
-# 
 
 # 
 # ___  
 # 
-# **Exercise** {numref}`%s <sec-operators>`.1 &nbsp;   Find the adjoint of $\lambda A \ket{a}$.  
+# **Exercise** {numref}`%s <sec-operators>`.1 &nbsp;   Find the adjoint of $\lambda A  |a\rangle$.  
 # 
 # ___  
 # 
@@ -81,7 +79,7 @@
 # When an operator acts on a superposition state, the following linearity holds:
 # 
 # $$
-# A \left(\alpha \ket{\psi} + \beta\ket{\phi}\right) = \alpha A \ket{\psi} + \beta A \ket{\phi}
+# A \left(\alpha  |\psi\rangle + \beta|\psi\rangle\right) = \alpha A |\psi\rangle + \beta A |\psi\rangle
 # $$
 # 
 # where $\alpha, \beta \in \mathbb{C}$.
@@ -90,7 +88,7 @@
 # ___  
 # 
 # 
-# **Exercise** {numref}`%s <sec-operators>`.2 &nbsp;   Show that $H\ket{+} = \ket{0}$ and $H \ket{-} = \ket{1}$ where $H$ is the Hadamard gate.  
+# **Exercise** {numref}`%s <sec-operators>`.2 &nbsp;   Show that $H|+\rangle = |0\rangle$ and $H |-\rangle = |1\rangle$ where $H$ is the Hadamard gate.  
 # 
 # ___  
 # 
@@ -100,20 +98,20 @@
 # The sum of operators satisfies the following distributivity:
 # 
 # $$
-# \left(A+B\right)\ket{\psi} = A \ket{\psi} + B \ket{\psi}.
+# \left(A+B\right)|\psi\rangle = A |\psi\rangle + B |\psi\rangle.
 # $$
 
 # ## Operator products
 # 
-# For any operators $P$ and $Q$ in a Hilbert space, the product $PQ$ is also an operator in the same Hilbert space. When $Q$ is applied on $\ket{a}$ and $P$ is applied on the result of the first operation,  the final result is also a vector in the same Hilbert space:
+# For any operators $P$ and $Q$ in a Hilbert space, the product $PQ$ is also an operator in the same Hilbert space. When $Q$ is applied on $|a\rangle$ and $P$ is applied on the result of the first operation,  the final result is also a vector in the same Hilbert space:
 # 
 # $$
-# P (Q\ket{a}) = P \ket{b} = \ket{c}
+# P (Q|a\rangle) = P |b\rangle = |c\rangle
 # $$
 # 
-# where $\ket{b} = Q \ket{a}$. The associativity $P (Q\ket{a}) = (PQ) \ket{a}$ holds. 
+# where $|b\rangle = Q |a\rangle$. The associativity $P (Q|a\rangle) = (PQ) |a\rangle$ holds. 
 # 
-# Similarly, when we apply $P$ on $\ket{a}$ first and $Q$ afterward, the associativity  $Q (P\ket{a}) = (QP) \ket{a}$ holds as well. 
+# Similarly, when we apply $P$ on $|a\rangle$ first and $Q$ afterward, the associativity  $Q (P|a\rangle) = (QP) |a\rangle$ holds as well. 
 # In general the outcomes of these two operations are different and thus $PQ \ne QP$.  In other words, $P$ and $Q$ do not _commute_.  The difference between $PQ$ and $QP$ is expressed with _commutator_
 # 
 # $$
@@ -133,10 +131,10 @@
 # The dual of the above transformation is
 # 
 # $$
-# \bra{c} = \bra{b}P^\dagger = (\bra{a} Q^\dagger) P^\dagger
+# \langle c| = \langle b|P^\dagger = (\langle a| Q^\dagger) P^\dagger
 # $$
 # 
-# Using the associativity $PQ$, $\bra{c} = \bra{a} (PQ)^\dagger$.  By direct comparison, we find
+# Using the associativity $PQ$, $\langle c| = \langle a| (PQ)^\dagger$.  By direct comparison, we find
 # 
 # $$
 # (PQ)^\dagger = Q^\dagger P^\dagger.
@@ -150,13 +148,13 @@
 # The simplest operator is the _identity_ operator $I$ which transforms a vector to itself: 
 # 
 # $$
-# \ket{a} = I \ket{a}.
+# |a \rangle = I |a \rangle.
 # $$
 # 
-# The adjoit of the transformation is given by
+# The adjoint of the transformation is given by
 # 
 # $$
-# \bra{a} = \bra{a} I^\dagger
+# \langle a | = \langle a | I^\dagger
 # $$
 # 
 # It is easy to show that for any operator $A$, 
@@ -183,44 +181,44 @@
 
 # ## Matrix elements
 # 
-# Consider an expression $\langle a | A | b \rangle$.  It is not clear if $A$ is acting on the ket or the bra. Let us assume that $A$ acts on the ket as$\langle b | (A | a \rangle)$.  Then, it is a regular inner product.  If $A \ket{a}=\ket{c}$, it is indeed $\langle  b|c \rangle$.  It turns out that when $A$ can act on the bra, the same inner product is obtained.  Therefore, we don't have to specify which way the operator acts.  The quantity $\langle a | A | b \rangle$ is called _matrix element_ of $A$.  
+# Consider an expression $\langle a | A | b \rangle$.  It is not clear if $A$ is acting on the ket or the bra. Let us assume that $A$ acts on the ket as$\langle b | (A | a \rangle)$.  Then, it is a regular inner product.  If $A | a \rangle=| c \rangle$, it is indeed $\langle  b|c \rangle$.  It turns out that when $A$ can act on the bra, the same inner product is obtained.  Therefore, we don't have to specify which way the operator acts.  The quantity $\langle a | A | b \rangle$ is called _matrix element_ of $A$.  
 # 
 # Most of mathematical objects we encounter in quantum mechanics are defined in some abstract space and they are not directly connected to what we see in the real world.  The inner products and also matrix elements are numbers we are familiar with.  Hence, abstract expressions of quantum mechanics and physical values we experience in the real world are connected through the inner product.  In this sense, the inner product is very essential.  Without it, quantum mechanics is completely separated from the real world and would be useless.
 # 
 
-# **Example** {numref}`%s <sec-operators>`.3 &nbsp;   $\bra{0}X\ket{0} = 0$.  
+# **Example** {numref}`%s <sec-operators>`.3 &nbsp;   $\langle 0|X| 0 \rangle = 0$.  
 # 
-# > Calculation: $\bra{0}X\ket{0} = \langle 0 | 1 \rangle = 0$ where $X\ket{0} = \ket{1}$ is used.
+# > Calculation: $\langle 0|X| 0 \rangle = \langle 0 | 1 \rangle = 0$ where $X| 0 \rangle = | 1 \rangle$ is used.
 # 
-# **Example** {numref}`%s <sec-operators>`.4 &nbsp;   $\bra{+}H\ket{+} = \frac{1}{\sqrt{2}}$. 
+# **Example** {numref}`%s <sec-operators>`.4 &nbsp;   $\langle +|H| + \rangle = \frac{1}{\sqrt{2}}$. 
 # 
-# > Calculation: $\bra{+}H\ket{+} = \langle + | 0 \rangle = \left(\frac{1}{\sqrt{2}}(\bra{0}+\bra{1}) \right) \ket{0} = \frac{1}{\sqrt{2}} \left(\langle 0|0 \rangle + \langle 1|0 \rangle \right)= \frac{1}{\sqrt{2}}.
+# > Calculation: $\langle +|H| + \rangle = \langle + | 0 \rangle = \left(\frac{1}{\sqrt{2}}(\langle 0 + \langle 1| \right) | 0 \rangle = \frac{1}{\sqrt{2}} \left(\langle 0|0 \rangle + \langle 1|0 \rangle \right)= \frac{1}{\sqrt{2}}.
 # $.
 
 # 
 # ___  
 # 
-# **Exercise** {numref}`%s <sec-operators>`.4 &nbsp;   Evaluate matrix element $\bra{+} H \ket{-}$.  
+# **Exercise** {numref}`%s <sec-operators>`.4 &nbsp;   Evaluate matrix element $\langle +| H |-\rangle$.  
 # 
 # ___  
 # 
 
 # ## Dyads
 # 
-# A kind of product between a bra $\bra{\psi}$ and a ket $\ket{\varphi}$
+# A kind of product between a bra $\langle \psi |$ and a ket $|\varphi\rangle$
 # 
 # $$
-# \ket{\varphi} \bra{\psi}
+# |\varphi\rangle\langle \psi |
 # $$
 # 
 # is an operator known as _dyad_.  In fact, it transforms a ket to another ket:
 # 
-# $$ \left(\ket{\varphi}\bra{\psi}\right) \ket{a} = \ket{\varphi} \langle \psi|a \rangle = \lambda \ket{\varphi}
+# $$ \left(|\varphi\rangle\langle\psi|\right) |a\rangle = |\varphi\rangle \langle \psi|a \rangle = \lambda |\varphi\rangle
 # $$
 # 
 # where $\lambda = \langle \psi|a \rangle$.
 # 
-# A special case of dyad, $\ket{\psi}\bra{\psi}$ is known as _orthogonal projection operator_.  Assuming $\ket{\psi}$ is normalized, it satisfies the idempotency $P^2=P$. Mathematically, the idempotency is the definition of projection operators and the orthogonal projection operator is a special kind of projection operators. However, as in physics literature, we shall call it projection operator without "orthogonal".  We have already encounter it in the closure relation of the complete basis set {eq}`completeness`.
+# A special case of dyad, $|\psi\rangle\langle\psi|$ is known as _orthogonal projection operator_.  Assuming $|\psi\rangle$ is normalized, it satisfies the idempotency $P^2=P$. Mathematically, the idempotency is the definition of projection operators and the orthogonal projection operator is a special kind of projection operators. However, as in physics literature, we shall call it projection operator without "orthogonal".  We have already encounter it in the closure relation of the complete basis set {eq}`completeness`.
 
 # ## Self-adjoint operators
 # 
@@ -228,8 +226,8 @@
 
 # ## Unitary operators
 # 
-# When an operator transform a _state vector_ to another _state vector_, the transformation should preserve the norm of the _stat vectors_.  Consider a transformation $\ket{\psi'} = U \ket{\psi}$ and its adjoint $\bra{\psi'} = \bra{\psi} U^\dagger$.  Since the norm must preserve, we have
-# $\langle \psi'|\psi' \rangle = \bra{\psi} U^\dagger U \ket{\psi} = \langle \psi|\psi \rangle$, which indicates that
+# When an operator transform a _state vector_ to another _state vector_, the transformation should preserve the norm of the _stat vectors_.  Consider a transformation $|\psi'\rangle = U |\psi\rangle$ and its adjoint $ \langle\psi'| = \langle\psi| U^\dagger$.  Since the norm must preserve, we have
+# $\langle \psi'|\psi' \rangle =  \langle\psi| U^\dagger U |\psi\rangle = \langle \psi|\psi \rangle$, which indicates that
 # 
 # $$
 # U^\dagger U = I.
@@ -268,15 +266,15 @@
 # When an operator $A$ and its adjoint $A^\dagger$ commute, i.e. $[A,A^\dagger]=0$, $A$ is a _normal_ operator and there are special kets which are transformed to "itself"  by $A$.  Mathematically, it is expressed by
 # 
 # $$
-# A \ket{a} = \lambda \ket{a}
+# A |a\rangle = \lambda |a\rangle 
 # $$ (eigeneq)
 # 
-# where $\lambda \in \mathbb{C}$.  The right hand side is not exactly the "itself" but multiplied by a constant $\lambda$ which is called _eigenvalue_.  (In next section, we will see that $\ket{a}$ and $\lambda \ket{a}$ represent the same physical state.)  The ket $\ket{a}$ is called _eigenvector_ or _eigenket_ of $A$.
+# where $\lambda \in \mathbb{C}$.  The right hand side is not exactly the "itself" but multiplied by a constant $\lambda$ which is called _eigenvalue_.  (In next section, we will see that $|a\rangle $ and $\lambda |a\rangle $ represent the same physical state.)  The ket $|a\rangle$ is called _eigenvector_ or _eigenket_ of $A$.
 # 
 # There are many such vectors.  More precisely, there are $N$ eigenkets in $N$-dimensional Hilbert space.  Therefore, we write {eq}`eigeneq` as
 # 
 # $$
-# A \ket{a_i} = \lambda_i \ket{a_i}, \quad i=1,\cdots, N.
+# A |a_i\rangle  = \lambda_i |a_i\rangle , \quad i=1,\cdots, N.
 # $$
 # 
 # When $A$ is self-adjoint, the eigenvalues are all real, which is important when we discuss measurement of physical quantities in {numref}`sec_measurement}.
@@ -286,10 +284,10 @@
 # Another operation on operators we often use is tracing.   For an operator $A \in \mathcal{H}$, the trace of the operator is defined by
 # 
 # $$
-# \text{tr} A = \sum_j  \bra{e_j} A  \ket{e_j}
+# \text{tr} A = \sum_j  \langle e_j| A  |e_j\rangle
 # $$
 # 
-# where $\{\ket{e_j}, \, j=1,n\}$ is a basis set in the Hilbert space.  $\bra{e_j} A  \ket{e_j}$ is matrix element.
+# where $\{|e_j\rangle, \, j=1,n\}$ is a basis set in the Hilbert space.  $\langle e_j| A  |e_j\rangle$ is matrix element.
 # 
 # The following properties of the trace are useful.  ($A$and $B$ are operators and $\alpha, \beta \in \mathbb{C}$.)
 # 
@@ -302,10 +300,10 @@
 # > $\text{tr} A^\dagger = (\text{tr} A)^*$
 # 
 # 
-# The following trace formula for dyads are also usefull
+# The following trace formula for dyads are also useful
 # 
-# > $\text{tr}\left(\ket{\varphi}\bra{\psi}\right) = \langle\psi|\varphi\rangle$.  
-# > $\text{tr}\left(A\ket{\varphi}\bra{\psi}\right) = \langle\psi|A|\varphi\rangle$. 
+# > $\text{tr}\left(|\varphi\rangle\langle \psi|\right) = \langle\psi|\varphi\rangle$.  
+# > $\text{tr}\left(A|\varphi\rangle\langle \psi|\right) = \langle\psi|A|\varphi\rangle$. 
 
 # 
 # ___  
@@ -355,20 +353,20 @@
 # Among the three Pauli operators, $X$ is the most important for quantum computation. Its main roles are:
 # 
 # * $X$ flips the computational basis.
-# > $X \ket{0} = \ket{1}, \qquad X \ket{1} = \ket{0}$.
+# > $X |0\rangle = |1\rangle, \qquad X |1\rangle = |0\rangle$.
 # * $X$ swaps the coefficients in a superposition state.
-# > $X \left(c_0\ket{0} + c_1 \ket{1}\right) = c_1\ket{0} + c_0 \ket{1}$,
+# > $X \left(c_0|0\rangle + c_1 |1\rangle\right) = c_1|0\rangle + c_0 |1\rangle$,
 # 
 # $Z$ does not flip the basis but change the relative phase.
 # 
-# * $Z$ does nothing on $\ket{0}$
-# > $Z \ket{0} = \ket{0}$.
-# * $Z$ inverts the phase of $\ket{1}$.
-# > $Z \ket{1} = - \ket{1}$.
+# * $Z$ does nothing on $|0\rangle$
+# > $Z |0\rangle = |0\rangle$.
+# * $Z$ inverts the phase of $|1\rangle$.
+# > $Z |1\rangle = - |1\rangle$.
 # * When acting on a superposition state $Z$ changes the relative phase as
-# > $Z \left(c_0\ket{0} + c_1 \ket{1}\right) = c_0\ket{0} - c_1 \ket{1}$
+# > $Z \left(c_0|0\rangle + c_1 |1\rangle\right) = c_0|0\rangle - c_1|1\rangle$
 # 
-# When $Z$ acts on $\ket{1}$, the ket acquires a new phase "$-$". Since the global phase is irrelevant, the operator essential does nothing thing to $\ket{0}$ nor $\ket{1}$. However, when it acts on a superposition state, the relative phase between $\ket{0}$ and $\ket{1}$ changes.
+# When $Z$ acts on $|1\rangle$, the ket acquires a new phase "$-$". Since the global phase is irrelevant, the operator essential does nothing thing to $|0\rangle$ nor $|1\rangle$. However, when it acts on a superposition state, the relative phase between $|0\rangle$ and $|1\rangle$ changes.
 
 # Any operator $A$ In $\mathbb{C}^2$ can be decomposed as
 # 
@@ -381,12 +379,12 @@
 # 
 # ___  
 # 
-# **Exercise** {numref}`%s <sec-operators>`.8 &nbsp;   Initially a qubit is in $\ket{0}$. We want to transform it to $\ket{-} = \frac{1}{\sqrt{2}} \left(\ket{0} - \ket{1}\right)$. In previous sections, we learn that the Hadamard gate transforms $\ket{1}$ to $\ket{-}$. Pick two operators from $X$, $Z$, $H$, and construct a quantum circuit that transforms $\ket{0}$ to $\ket{-}$.  There are two possible combinations. Find both.  (The following Qiskit example veryify the solutions.
+# **Exercise** {numref}`%s <sec-operators>`.8 &nbsp;   Initially a qubit is in $|0\rangle$. We want to transform it to $|-\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right)$. In previous sections, we learn that the Hadamard gate transforms $|1\rangle$ to $|-\rangle$. Pick two operators from $X$, $Z$, $H$, and construct a quantum circuit that transforms $|0\rangle$ to $|-\rangle$.  There are two possible combinations. Find both.  (The following Qiskit example veryify the solutions.
 # 
 
 # __Qiskit Example__
 # 
-# We shall demonstrate the two solution to the above exercise using Qiskit.  We use two qubits.  Initially they are both in $\ket{0}$.  Then, we apply different gates to them. At the end, both should be in $\ket{-}$.  In this example, we use `statevector_simulator` which calculate the transformation exactly.
+# We shall demonstrate the two solution to the above exercise using Qiskit.  We use two qubits.  Initially they are both in $|0\rangle$.  Then, we apply different gates to them. At the end, both should be in $|-\rangle$.  In this example, we use `statevector_simulator` which calculate the transformation exactly.
 # 
 # 
 
@@ -433,7 +431,7 @@ plot_bloch_multivector(psi)
 # :::{admonition} Qiskit note: Pauli Operators
 # :class: tip
 # 
-# In {numref}`sec-statevectors`, we calculated inner products of computational basis using `qiskit.opflow` module.  The same module provides predefined Pauli operators  `I`, `X`, `Y`, and `Z`.   Applying operator on ket is done with "@".  For example $X \ket{0}$ is `(X@One).eval()` in Qiskit.
+# In {numref}`sec-statevectors`, we calculated inner products of computational basis using `qiskit.opflow` module.  The same module provides predefined Pauli operators  `I`, `X`, `Y`, and `Z`.   Applying operator on ket is done with "@".  For example $X |0\rangle$ is `(X@One).eval()` in Qiskit.
 # 
 # 
 # [QIskit API Reference: qiskit.opflow](https://qiskit.org/documentation/apidoc/opflow.html)
@@ -468,7 +466,7 @@ print("X is unitary ",(~X @ X).eval() == I.eval())
 # 
 # ___
 # 
-# **Exercise** {numref}`%s <sec-operators>`.9 &nbsp;   Demonstrate $Z\ket{0}=\ket{0}$ and $Z\ket{1}=-\ket{1}$ using the `qiskit.opflow` module.
+# **Exercise** {numref}`%s <sec-operators>`.9 &nbsp;   Demonstrate $Z|0\rangle=|0\rangle$ and $Z|1\rangle=-|1\rangle$ using the `qiskit.opflow` module.
 # 
 # ___
 
@@ -493,13 +491,13 @@ plot_bloch_multivector(One)
 # e^A = I + A + \frac{1}{2} A^2 + \cdots \frac{1}{n!} A^n + \cdots
 # $$
 # 
-# Since we know how to calcuate the product of operators, there is no problem with $A^n$.  Hence, we evaluate
+# Since we know how to calculate the product of operators, there is no problem with $A^n$.  Hence, we evaluate
 # 
 # $$
-# e^A \ket{\psi} = I \ket{\psi} + A \ket{\psi} + \cdots + \frac{1}{n!} A^n \ket{\psi} + \cdots.
+# e^A |\psi\rangle = I |\psi\rangle + A |\psi\rangle + \cdots + \frac{1}{n!} A^n |\psi\rangle + \cdots.
 # $$
 # 
-# For a general function $f(A)$, we assume that $f(x)$ is a nice smooth function which can be expanded in a power series.  Then, the function of opperator is understood as
+# For a general function $f(A)$, we assume that $f(x)$ is a nice smooth function which can be expanded in a power series.  Then, the function of operator is understood as
 # 
 # $$
 # f(A) = I + c_1 A + c_2 A^2 + \cdot + c_n A^n + \cdots, \qquad \text{where  } c_n = \frac{1}{n!} \frac{d f}{dx} \Big|_{x=0}
@@ -514,7 +512,7 @@ plot_bloch_multivector(One)
 # 
 # **Exercise** {numref}`%s <sec-operators>`.10 &nbsp;   For Pauli operator $X$, show that $\,e^{i \theta X} = I \cos \theta - i X \sin \theta \,$ where $\theta$ is a real number. Hint: Use $X^2=I$ in the power series.
 # 
-# When $\theta=\frac{\pi}{4}$, the equality indicates that $e^{i \frac{\pi}{4} X} = \frac{1}{\sqrt{2}}  ( I - i X)$.  Applying the operator on $\ket{0}$ we obtain $e^{i \frac{\pi}{4} X}\ket{0} = \frac{1}{\sqrt{2}} \left (\ket{0}  - i \ket{1} \right)$.
+# When $\theta=\frac{\pi}{4}$, the equality indicates that $e^{i \frac{\pi}{4} X} = \frac{1}{\sqrt{2}}  ( I - i X)$.  Applying the operator on $|0\rangle$ we obtain $e^{i \frac{\pi}{4} X}|0\rangle = \frac{1}{\sqrt{2}} \left (|0\rangle  - i |1\rangle \right)$.
 # In the following Qiskit example, we will check it using `qiskit.opflow` module.
 # 
 # ___

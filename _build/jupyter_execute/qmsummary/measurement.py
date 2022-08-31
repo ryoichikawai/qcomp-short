@@ -17,10 +17,10 @@
 # [Wikipedia: Observable](https://en.wikipedia.org/wiki/Observable)
 # 
 # We haven't discussed how to describe physical quantities in quantum mechanics.  They are not number.  They are a special kind of operators in the Hilbert space of a quantum system. The operators corresponding to physical quantities are called *observable*. 
-# In order for operator $A$ to be observable, it must be *Hermitian* (self-adjoint).  That is $A^\dagger = A$.  Since it satisfies $[A^\dagger, A]=0$, the observable is also a *normal* operator,  which guarantees that the observable has eigenvalues $a_i$ and eigenvectors $\ket{e_i}$.  Thus we have
+# In order for operator $A$ to be observable, it must be *Hermitian* (self-adjoint).  That is $A^\dagger = A$.  Since it satisfies $[A^\dagger, A]=0$, the observable is also a *normal* operator,  which guarantees that the observable has eigenvalues $a_i$ and eigenvectors $|a_i\rangle$.  Thus we have
 # 
 # $$
-# A \ket{a_i} = a_i \ket{a_i}, \quad i=1,\cdots,d
+# A |a_i\rangle = a_i |a_i\rangle, \quad i=1,\cdots,d
 # $$
 # 
 # where $d$ is the dimension of Hilbert space.  There are two important properties of the observable:
@@ -30,46 +30,46 @@
 # 
 # which are essential to the quantum measurement.
 # 
-# In quantum computation,  computational basis vectors $\ket{0}$ and $\ket{1}$ are the eigenvectors of a Pauli operator $Z$.  Hence, we measure $Z$.
+# In quantum computation,  computational basis vectors $|0\rangle$ and $|1\rangle$ are the eigenvectors of a Pauli operator $Z$.  Hence, we measure $Z$.
 
 # ## Outcomes of measurement
 # 
 # When we measure a physical quantity, we expect that the outcome is a number, not an operator.  The role of operator (observable) is to determine possible outcome.  The outcome of the measurement must be an eigenvalue of the observable.  We obtain one of $a_i$ when $A$ is measured.  But there are many eigenvalues.  Which one are we going to obtain?   Quantum mechanics can't tell us what precisely we get.  No one can predict it. Only we know the probability to obtain a particular eigenvalue.   If the state of the system is $\rho$, the probability of finding $a_i$ is given by
 # 
 # $$
-# p_i = \bra{a_i} \rho \ket{a_i}.
+# p_i = \langle a_i| \rho |a_i\rangle.
 # $$(born-rule-density)
 # 
 # which is vaklid for both pure and mixed states.
 # 
-# For pure state, we already use the probability.  Consider the system on a pure state $\ket{\psi}$, we expand it in basis $\{\ket{a_i}\}$ (We can do so since the eigenvectors form a complete orthonormal basis):
+# For pure state, we already use the probability.  Consider the system on a pure state $|\psi\rangle$, we expand it in basis $\{|a_i\rangle\}$ (We can do so since the eigenvectors form a complete orthonormal basis):
 # 
 # $$
-# \ket{\psi} = c_1 \ket{a_1} + c_2 \ket{a_2} + \cdots + c_d \ket{a_d}
+# |\psi\rangle = c_1 |a_1\rangle + c_2 |a_2\rangle + \cdots + c_d |a_d\rangle
 # $$
 # 
-# The Born rule indicates that we obtain $a_i$  with probability $p_i= |c_i|^2 = |\langle a_i | \psi \rangle |^2$.  Recalling that the density operator of  the pure state is $\rho = \ket{\psi}\bra{\psi}$, Eq. {eq}`born-rule-density` gives the same probability. 
+# The Born rule indicates that we obtain $a_i$  with probability $p_i= |c_i|^2 = |\langle a_i | \psi \rangle |^2$.  Recalling that the density operator of  the pure state is $\rho = |\psi\rangle\langle\psi|$, Eq. {eq}`born-rule-density` gives the same probability. 
 # 
 
 # 
 # ___   
 # 
-# __Exercise__  {numref}`%s<chap-measurement>`.1&nbsp;  Show that $\bra{a_i} \rho \ket{a_i} =  |\langle a_i | \psi \rangle |^2$ for the pure state $\ket{\psi}$.
+# __Exercise__  {numref}`%s<chap-measurement>`.1&nbsp;  Show that $\langle a_i| \rho |a_i\rangle =  |\langle a_i | \psi \rangle |^2$ for the pure state $|\psi\rangle$.
 # 
 # ___   
 # 
 
 # ## Projective measurement
 # 
-# In classical mechanics, we can measure a physical quantity without disturbing the system state.  That is not the case of quantum systems.  When  the measurement results in $a_i$, the state also is transformed to $\ket{a_i}$ regardless of the original state before the measurement.  This transformation is known as *wave function collapse*.  The mechanism of the collapse is still not known but we are able to explain experiment results based on this postulate.  No exception has been reported since the inception of quantum mechanics 100 years ago. 
+# In classical mechanics, we can measure a physical quantity without disturbing the system state.  That is not the case of quantum systems.  When  the measurement results in $a_i$, the state also is transformed to $|a_i\rangle$ regardless of the original state before the measurement.  This transformation is known as *wave function collapse*.  The mechanism of the collapse is still not known but we are able to explain experiment results based on this postulate.  No exception has been reported since the inception of quantum mechanics 100 years ago. 
 # 
-# Recall that the quantum mechanics is is applied to an ensemble and measurement is needed to be repeated.  If we throw away other states and keep only $\ket{a_i}$, then the resulting state is a pure state $\ket{a_i}$.  This kind of measurement is called *selective measurement*.   On the other hand, if we keep all outcomes (*non-selective measurement*), we have a classical mixture of $\ket{a_i}$ with probability {eq}`born-rule-density`:
+# Recall that the quantum mechanics is is applied to an ensemble and measurement is needed to be repeated.  If we throw away other states and keep only $|a_i\rangle$, then the resulting state is a pure state $|a_i\rangle$.  This kind of measurement is called *selective measurement*.   On the other hand, if we keep all outcomes (*non-selective measurement*), we have a classical mixture of $|a_i\rangle$ with probability {eq}`born-rule-density`:
 # 
 # $$
-# \rho_\text{out} = \sum_i p_i \ket{a_i}\bra{a_i}  = \sum_i \ket{a_i}\bra{a_i} \rho_\text{in} \ket{a_i}\bra{a_i}.
+# \rho_\text{out} = \sum_i p_i |a_i\rangle\langle a_i|  = \sum_i |a_i\rangle\langle a_i| \rho_\text{in} |a_i\rangle\langle a_i|.
 # $$(rho-out)
 # 
-# where $\rho_\text{in}$ and $\rho_\text{out}$ are the density operators before and after the measurement, respectively.   Noting that $\ket{a_i}\bra{a_i}$ is a projection operator, we can interpret Eq. {eq}`rho-out` as a projection of the state to $\ket{a_i}$ and this type of measurement is called *projective measurement*.
+# where $\rho_\text{in}$ and $\rho_\text{out}$ are the density operators before and after the measurement, respectively.   Noting that $|a_i\rangle\langle a_i|$ is a projection operator, we can interpret Eq. {eq}`rho-out` as a projection of the state to $|a_i\rangle$ and this type of measurement is called *projective measurement*.
 
 # ## Expectation values
 

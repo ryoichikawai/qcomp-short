@@ -4,11 +4,11 @@
 format: jb-book
 root: cover
 parts:
--  caption: Preface
-   numbered: true
+-  caption:
+   numbered: false
    chapters:
    -  file: preface
--  caption: Preparation
+-  caption:
    numbered: 3
    chapters:
    -  file: preparation/intro
@@ -24,17 +24,11 @@ parts:
       -  file: qmsummary/operators
       -  file: qmsummary/evolution
       -  file: qmsummary/measurement
--  caption: Introduction
-   numbered: 3
-   chapters:
    -  file: computation/intro
       sections:
       -  file: computation/ccomp
       -  file: computation/qcomp
       -  file: computation/qinfo
--  caption: Single qubit
-   numbered: 3
-   chapters:
    -  file: qubit/intro
       sections:
       -  file: qubit/purestates
@@ -54,9 +48,6 @@ parts:
       -  file: q1gates/p
       -  file: q1gates/change-basis
       -  file: q1gates/tomography
--  caption: Composite Systems
-   numbered: 3
-   chapters:
    -  file: composites/intro
       sections:
       -  file: composites/2qubit
@@ -67,20 +58,19 @@ parts:
       -  file: q2gates/cx
       -  file: q2gates/cp
       -  file: q2gates/swap
--  caption: Algorithms
-   numbered: 3
-   chapters:
    -  file: algorithms/intro
       sections:
       -  file: algorithms/teleportation
       -  file: algorithms/entanglement-swap
+      -  file: algorithms/densecoding
       -  file: algorithms/walshhadamard
       -  file: algorithms/qparallel
       -  file: algorithms/deutsch
       -  file: algorithms/qft
       -  file: algorithms/qpe
--  caption: Backmatters
+-  caption:
+   numbered: false
    chapters:
-   -  file: references.md
+   -  file: references/references.md
 
 

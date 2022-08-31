@@ -182,7 +182,7 @@ qc.h(1)
 qc.append(cs,[0,1])
 qc.h(0)
 qc.swap(0,1)
-qc.draw()
+qc.draw('mpl')
 
 
 # In the following example, all four transformations {eq}`qft2` are computed using Qiskit.

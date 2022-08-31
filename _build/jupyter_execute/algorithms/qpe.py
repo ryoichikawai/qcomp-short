@@ -119,7 +119,7 @@ qc.cp(np.pi*3/4,2,3)
 
 qc.barrier()
 
-qc.draw()
+qc.draw('mpl')
 
 
 # In[2]:
@@ -148,7 +148,7 @@ qc.measure(0,0)
 qc.measure(1,1)
 qc.measure(2,2)
 
-qc.draw()
+qc.draw('mpl')
 
 
 # In[3]:
