@@ -643,9 +643,36 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-protocol">
-   8.3.1. The protocol
+  <a class="reference internal nav-link" href="#the-objective">
+   8.3.1. The Objective
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   8.3.2. Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qiskit-example">
+   8.3.3. Qiskit Example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circuit">
+     Circuit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execution-noiseless">
+     Execution (noiseless)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execution-noisy">
+     Execution (noisy)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -667,9 +694,36 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-protocol">
-   8.3.1. The protocol
+  <a class="reference internal nav-link" href="#the-objective">
+   8.3.1. The Objective
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   8.3.2. Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qiskit-example">
+   8.3.3. Qiskit Example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circuit">
+     Circuit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execution-noiseless">
+     Execution (noiseless)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execution-noisy">
+     Execution (noisy)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -683,9 +737,12 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="superdense-coding">
 <span id="sec-denscoding"></span><h1><span class="section-number">8.3. </span>Superdense coding<a class="headerlink" href="#superdense-coding" title="Permalink to this headline">#</a></h1>
+<section id="the-objective">
+<h2><span class="section-number">8.3.1. </span>The Objective<a class="headerlink" href="#the-objective" title="Permalink to this headline">#</a></h2>
 <p>Accoring to the Halevo’s bound, we can extract from a qubit only one bit of information at maximum. If we transmit some information using a qubit as carrier, it is natural to think that only one bit information can be sent. Surprisingly, we can send two bits of information by sending only a qubit.<span id="id1">[<a class="reference internal" href="../references/references.html#id23" title="Charles H. Bennett and Stephen J. Wiesner. Communication via one- and two-particle operators on einstein-podolsky-rosen states. Phys. Rev. Lett., 69:2881–2884, Nov 1992. doi:10.1103/PhysRevLett.69.2881.">5</a>]</span>  The method is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Superdense_coding"><em>superdense coding</em></a>.  Experiments<span id="id2">[<a class="reference internal" href="../references/references.html#id24" title="T. Schaetz, M. D. Barrett, D. Leibfried, J. Chiaverini, J. Britton, W. M. Itano, J. D. Jost, C. Langer, and D. J. Wineland. Quantum dense coding with atomic qubits. Phys. Rev. Lett., 93:040505, Jul 2004. doi:10.1103/PhysRevLett.93.040505.">6</a>, <a class="reference internal" href="../references/references.html#id25" title="Brian P. Williams, Ronald J. Sadlier, and Travis S. Humble. Superdense coding over optical fiber links with complete bell-state measurements. Phys. Rev. Lett., 118:050501, Feb 2017. doi:10.1103/PhysRevLett.118.050501.">7</a>]</span> confirmed that more than one bit of information can be sent with a single qubit.</p>
-<section id="the-protocol">
-<h2><span class="section-number">8.3.1. </span>The protocol<a class="headerlink" href="#the-protocol" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="algorithm">
+<h2><span class="section-number">8.3.2. </span>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">#</a></h2>
 <p>Alice and Bob are separated by a distance and there is no classical communication channel between them. Alice wants to send two bits of information to Bob.  Bob knows Alice is sending one of <span class="math notranslate nohighlight">\(00\)</span>, <span class="math notranslate nohighlight">\(01\)</span> , <span class="math notranslate nohighlight">\(10\)</span>, and <span class="math notranslate nohighlight">\(11\)</span>.  Alice sent Bob a single qubit and somehow Bob received the information.  How?  If only one qubit travels from Alice to Bob, it seems not possible since it can carry only one bit of information.  Similarly to the quantum teleportation, we can use quantum entanglement.</p>
 <p><strong>Step 1. Preparation</strong><br />
 Alice and Bob have a qubit each, <span class="math notranslate nohighlight">\(q_A\)</span> and <span class="math notranslate nohighlight">\(q_B\)</span>, respectively.  These two qubits are prepared in a Bell state</p>
@@ -714,18 +771,17 @@ Bob now has two qubits.  To decode the information, Bob applies CX with <span cl
 </ul>
 <p><strong>Step 4. Measurement</strong><br />
 Bob measures both qubits in the computational basis.  The outcome is one of <span class="math notranslate nohighlight">\(00\)</span>, <span class="math notranslate nohighlight">\(01\)</span>, <span class="math notranslate nohighlight">\(10\)</span>, or <span class="math notranslate nohighlight">\(11\)</span> with probability 1, which is the information Alice submitted.</p>
-<hr class="docutils" />
-<p><strong>Qiskit Examle</strong><br />
-In the following Qiskit example, Alice selects a message at random, encode it and send it to Bob.  Then, Bob decodes it.  Run it several times and see the input and output are always the same.</p>
+</section>
+<section id="qiskit-example">
+<h2><span class="section-number">8.3.3. </span>Qiskit Example<a class="headerlink" href="#qiskit-example" title="Permalink to this headline">#</a></h2>
+<section id="circuit">
+<h3>Circuit<a class="headerlink" href="#circuit" title="Permalink to this headline">#</a></h3>
+<p>In the following Qiskit example, Alice selects a message at random, encode it and send it to Bob.  Then, Bob decodes it.  Run it several times and see the input and output are always the same.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">Aer</span>
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span><span class="p">,</span> <span class="n">partial_trace</span>
-<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
-
-<span class="c1"># set number of tries</span>
-<span class="n">nshots</span><span class="o">=</span><span class="mi">8192</span>
 
 <span class="n">cr</span><span class="o">=</span><span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
 <span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
@@ -754,12 +810,7 @@ In the following Qiskit example, Alice selects a message at random, encode it an
     <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">qc</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alice atemps to send = &quot;</span><span class="p">,</span><span class="n">messageA</span><span class="p">)</span>
-    
-<span class="c1"># save the current state</span>
-<span class="n">psi0</span><span class="o">=</span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
-
-<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 
 <span class="c1"># Bob decodes the message</span>
 
@@ -776,55 +827,57 @@ In the following Qiskit example, Alice selects a message at random, encode it an
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice atemps to send =  01
-</pre></div>
-</div>
-<img alt="../_images/densecoding_4_1.png" src="../_images/densecoding_4_1.png" />
+<img alt="../_images/densecoding_5_0.png" src="../_images/densecoding_5_0.png" />
 </div>
 </div>
+</section>
+<section id="execution-noiseless">
+<h3>Execution (noiseless)<a class="headerlink" href="#execution-noiseless" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># execute the quantum circuit and store the outcome</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using noiseless simulator</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>   
+
 <span class="n">result</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-<span class="n">psi1</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
+<span class="n">psi</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize the state Alice sent</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show results</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Allice sent the message:&quot;</span><span class="p">,</span> <span class="n">messageA</span><span class="p">)</span>
+<span class="c1"># visualize the state Alice sent</span>
 <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_state_qsphere</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The message is encoded in the joint state&quot;</span><span class="p">)</span>
-<span class="n">plot_state_qsphere</span><span class="p">(</span><span class="n">psi0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The message is encoded in the joint state
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Allice sent the message: 00
 </pre></div>
 </div>
-<img alt="../_images/densecoding_6_1.png" src="../_images/densecoding_6_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize the decoded state</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decoded state&quot;</span><span class="p">)</span>
-<span class="n">plot_state_qsphere</span><span class="p">(</span><span class="n">psi1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The state Bob finds.&quot;</span><span class="p">)</span>
+<span class="n">plot_state_qsphere</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decoded state
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The state Bob finds.
 </pre></div>
 </div>
-<img alt="../_images/densecoding_7_1.png" src="../_images/densecoding_7_1.png" />
+<img alt="../_images/densecoding_9_1.png" src="../_images/densecoding_9_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">messageB</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">psi1</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">messageB</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">psi</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">messageB</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bob finds the message = &quot;</span><span class="p">,</span><span class="n">messageB</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -836,14 +889,47 @@ In the following Qiskit example, Alice selects a message at random, encode it an
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bob finds the message =  01
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bob finds the message =  00
 the communication was succerss!
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="execution-noisy">
+<h3>Execution (noisy)<a class="headerlink" href="#execution-noisy" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulating IBL Jakarta device</span>
+<span class="kn">from</span> <span class="nn">qiskit.providers.fake_provider</span> <span class="kn">import</span> <span class="n">FakeJakarta</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">FakeJakarta</span><span class="p">()</span>
+
+<span class="c1"># set the number of tries</span>
+<span class="n">nshots</span><span class="o">=</span><span class="mi">8192</span>
+
+<span class="c1"># execute the circuit</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span>
+
+<span class="c1"># get the results</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="c1"># get statistics</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/densecoding_12_0.png" src="../_images/densecoding_12_0.png" />
+</div>
+</div>
+<p>With a high probability, Bob gets the correct message.</p>
 <hr class="docutils" />
-<p>Last modified on 08/30/2022.</p>
+<p>Last modified on 08/31/2022.</p>
+</section>
 </section>
 </section>
 

@@ -4,6 +4,8 @@
 # (sec-qparallel)=
 # # A little example of quantum parallelism
 
+# ## The Objective
+# 
 # Quantum computer can calculate many different instances simultaneously. Here we consider a simple example.  Suppose that we want to calculate $z = x \oplus y$ where $x,\, y,\, z \in \{0,1\}$.  The variables are assigned to three qubits as $|zyx\rangle = |z\rangle \otimes |y\rangle \otimes |x\rangle$.  Initially, $z=0$.  The computation corresponds to transformation $|0\rangle \otimes |y\rangle \otimes |x\rangle \Rightarrow |x \oplus y\rangle \otimes |y\rangle \otimes |x\rangle$.  There are four possible instances:
 # 
 # $$
@@ -15,7 +17,11 @@
 # \end{align}
 # $$
 # 
-# We want to compute all these four cases at once.  We use a superposition state of the four input states. First we create four possible input states with equal weight and then we compute $x\oplus y$ for each term:
+# We want to compute all these four cases at once.
+
+# ## Algorithm
+# 
+#  We use a superposition state of the four input states. First we create four possible input states with equal weight and then we compute $x\oplus y$ for each term:
 # 
 # $$
 # \begin{align}
@@ -26,7 +32,11 @@
 # 
 # Note that the output does not include all possible states.  For example $|111\rangle$ does not exist since $1\oplus 1 \ne 1$.
 # 
-# The first step can be done with the Walsh-Hadamard transformation.  The addition can be done with thee $CX$ gates as shown in XXX. The following circuit calculates four cases simultaneously.
+# The first step can be done with the Walsh-Hadamard transformation.  The addition can be done with thee CX gates as shown in {numref}`sec-walsh-hadamard`. The following Qiskit example evaluates the four cases simultaneously.
+
+# ## Qiskit Example
+
+# ### Circuit
 
 # In[1]:
 
@@ -45,6 +55,8 @@ qc.barrier()
 qc.measure(qr,cr)
 qc.draw('mpl')
 
+
+# ### Execution (noiseless)
 
 # In[2]:
 
@@ -71,9 +83,37 @@ plot_histogram(counts)
 
 # Only four states are obtained and each shows $z = x \oplus y$. We indeed calculated four different cases at once thanks to the quantum parallelism.
 
+# ### Execution (noisy)
+
+# In[3]:
+
+
+# simulating IBL Jakarta device
+from qiskit.providers.fake_provider import FakeJakarta
+
+backend = FakeJakarta()
+
+# set the number of tries
+nshots=8192
+
+# execute the circuit
+job = backend.run(qc,shots=nshots)
+
+# extract the result
+result = job.result()
+
+# count the outcome
+counts = result.get_counts()
+
+from qiskit.visualization import plot_histogram
+plot_histogram(counts)
+
+
+# Notice that additional states appeared due to the noises.  However, their probabilities are small and we can easily identify the four major peaks. 
+
 # 
 # ---
-# Last modified: 07/31/2022
+# Last modified: 08/31/2022
 
 # In[ ]:
 

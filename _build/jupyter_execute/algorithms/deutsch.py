@@ -276,6 +276,9 @@ result = job.result()
 # count the outcome
 counts = result.get_counts()
 
+from qiskit.visualization import plot_histogram
+plot_histogram(counts)
+
 p0=counts.get('0',0)/nshots
 p1=counts.get('1',0)/nshots
 
@@ -288,6 +291,10 @@ else:
        
 print("The function is found to be",answer, "( oracle actually has",oracle,")")
 
+
+# 
+# ---
+# Last modified: 08/31/2022
 
 # In[ ]:
 

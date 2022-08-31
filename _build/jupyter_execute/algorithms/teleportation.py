@@ -4,7 +4,15 @@
 # (sec-teleportation)=
 # # Quantum teleportation
 
+# ## Objective 
+# 
 # Suppose that Alice has a qubit in an arbitrary state $|\psi\rangle$ carrying some information.  She wants to send the information to Bob who are separated from Alice by a large distance.  We learned in {numref}`sec-cxgate` that information can be transferred with CX gates but thet do not work due to the distance between them. Remarkably the information can be transferred over any distance if Alice and Bob share an entangled pair of qubits and a classical communication channel such as telephone is available.     The protocol is known as  [*quantum teleportation*](https://en.wikipedia.org/wiki/Quantum_teleportation).  Amazingly, neither direct contact between the sender's qubit and the receiver's qubit nor a messenger carries the information between them.  This protcol has important applications in quantum information processes, e.g., [*quantum repeaters*](https://en.wikipedia.org/wiki/Quantum_network#Repeaters) in [quantum network](https://en.wikipedia.org/wiki/Quantum_network).
+
+# In[ ]:
+
+
+
+
 
 # ## The protocol
 # 
@@ -146,14 +154,8 @@ rhoB.draw('bloch')
 
 # The result shows that the state of Bob's qubit is pure and identical to the original state of Alice's qubit.
 
-# The "spooky action at a distance" can't transmit information or otherwise it violates the Einstein's theory of special relativity.  It collapses the state but Bob does not know what is the outcome.  Alice helps Bob by telling him what she found.  This classical communication send 2 bits of information since Bob needs to know one outcome out of four possibilities.  However, the no-teleportation theorem tells us that an exact state of a qubit cannot be described by any length of classical bits.  So, the classical communication did not transmit the information of $|\psi\rangle$.  It is very strange.  Neither the quantum correlation nor classical communication alone can transmit the full information but it did reach the Bob. Therefore, teleportation succeeded *with the help of quantum entanglement*.
-
-# In[5]:
-
-
-rhoB.draw('bloch')
-
+# The "spooky action at a distance" can't transmit information or otherwise it violates the Einstein's theory of special relativity.  It collapses the state but Bob does not know what is the outcome.  Alice helps Bob by telling him what she found.  This classical communication send 2 bits of information since Bob needs to know one outcome out of four possibilities.  However, the no-teleportation theorem tells us that an exact state of a qubit cannot be described by any length of classical bits.  So, the classical communication did not transmit the information of $|\psi\rangle$.  It is very strange.  Neither the quantum correlation nor classical communication alone can transmit the full information but it did reach the Bob. Therefore, teleportation must have succeeded *with the help of quantum entanglement*.
 
 # 
 # ---
-# Last Modified on 08/22/2022.
+# Last Modified on 08/31/2022.

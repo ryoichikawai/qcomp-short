@@ -895,8 +895,8 @@ U_{f_4} |x\rangle \otimes |y\rangle =  |x\rangle \otimes |y \oplus (1-x) \rangle
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantum computer has found that the function is balanced .
-Correct! Oracle has balanced .
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantum computer has found that the function is constant .
+Correct! Oracle has constant .
 </pre></div>
 </div>
 </div>
@@ -973,6 +973,9 @@ U_f |+\rangle \otimes |-\rangle = \pm |-\rangle \otimes |-\rangle
 <span class="c1"># count the outcome</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
 
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
 <span class="n">p0</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">nshots</span>
 <span class="n">p1</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">nshots</span>
 
@@ -988,11 +991,13 @@ U_f |+\rangle \otimes |-\rangle = \pm |-\rangle \otimes |-\rangle
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The function is found to be balanced ( oracle actually has balanced )
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The function is found to be constant ( oracle actually has constant )
 </pre></div>
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<p>Last modified: 08/31/2022</p>
 </section>
 </section>
 

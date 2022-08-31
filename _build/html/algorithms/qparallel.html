@@ -620,12 +620,63 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-objective">
+   8.5.1. The Objective
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   8.5.2. Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qiskit-example">
+   8.5.3. Qiskit Example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circuit">
+     Circuit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execution-noiseless">
+     Execution (noiseless)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execution-noisy">
+     Execution (noisy)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -637,6 +688,46 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-objective">
+   8.5.1. The Objective
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   8.5.2. Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qiskit-example">
+   8.5.3. Qiskit Example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circuit">
+     Circuit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execution-noiseless">
+     Execution (noiseless)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execution-noisy">
+     Execution (noisy)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -646,6 +737,8 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="a-little-example-of-quantum-parallelism">
 <span id="sec-qparallel"></span><h1><span class="section-number">8.5. </span>A little example of quantum parallelism<a class="headerlink" href="#a-little-example-of-quantum-parallelism" title="Permalink to this headline">#</a></h1>
+<section id="the-objective">
+<h2><span class="section-number">8.5.1. </span>The Objective<a class="headerlink" href="#the-objective" title="Permalink to this headline">#</a></h2>
 <p>Quantum computer can calculate many different instances simultaneously. Here we consider a simple example.  Suppose that we want to calculate <span class="math notranslate nohighlight">\(z = x \oplus y\)</span> where <span class="math notranslate nohighlight">\(x,\, y,\, z \in \{0,1\}\)</span>.  The variables are assigned to three qubits as <span class="math notranslate nohighlight">\(|zyx\rangle = |z\rangle \otimes |y\rangle \otimes |x\rangle\)</span>.  Initially, <span class="math notranslate nohighlight">\(z=0\)</span>.  The computation corresponds to transformation <span class="math notranslate nohighlight">\(|0\rangle \otimes |y\rangle \otimes |x\rangle \Rightarrow |x \oplus y\rangle \otimes |y\rangle \otimes |x\rangle\)</span>.  There are four possible instances:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -656,7 +749,11 @@ title="Print to PDF"
 |011\rangle \quad &amp;\Rightarrow \quad |011\rangle
 \end{align}
 \end{split}\]</div>
-<p>We want to compute all these four cases at once.  We use a superposition state of the four input states. First we create four possible input states with equal weight and then we compute <span class="math notranslate nohighlight">\(x\oplus y\)</span> for each term:</p>
+<p>We want to compute all these four cases at once.</p>
+</section>
+<section id="algorithm">
+<h2><span class="section-number">8.5.2. </span>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">#</a></h2>
+<p>We use a superposition state of the four input states. First we create four possible input states with equal weight and then we compute <span class="math notranslate nohighlight">\(x\oplus y\)</span> for each term:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -665,7 +762,12 @@ title="Print to PDF"
 \end{align}
 \end{split}\]</div>
 <p>Note that the output does not include all possible states.  For example <span class="math notranslate nohighlight">\(|111\rangle\)</span> does not exist since <span class="math notranslate nohighlight">\(1\oplus 1 \ne 1\)</span>.</p>
-<p>The first step can be done with the Walsh-Hadamard transformation.  The addition can be done with thee <span class="math notranslate nohighlight">\(CX\)</span> gates as shown in XXX. The following circuit calculates four cases simultaneously.</p>
+<p>The first step can be done with the Walsh-Hadamard transformation.  The addition can be done with thee CX gates as shown in <a class="reference internal" href="walshhadamard.html#sec-walsh-hadamard"><span class="std std-numref">Section 8.4</span></a>. The following Qiskit example evaluates the four cases simultaneously.</p>
+</section>
+<section id="qiskit-example">
+<h2><span class="section-number">8.5.3. </span>Qiskit Example<a class="headerlink" href="#qiskit-example" title="Permalink to this headline">#</a></h2>
+<section id="circuit">
+<h3>Circuit<a class="headerlink" href="#circuit" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
@@ -685,9 +787,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/qparallel_2_0.png" src="../_images/qparallel_2_0.png" />
+<img alt="../_images/qparallel_5_0.png" src="../_images/qparallel_5_0.png" />
 </div>
 </div>
+</section>
+<section id="execution-noiseless">
+<h3>Execution (noiseless)<a class="headerlink" href="#execution-noiseless" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chose a general quantum simulator without noise.</span>
@@ -712,12 +817,46 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/qparallel_3_0.png" src="../_images/qparallel_3_0.png" />
+<img alt="../_images/qparallel_7_0.png" src="../_images/qparallel_7_0.png" />
 </div>
 </div>
 <p>Only four states are obtained and each shows <span class="math notranslate nohighlight">\(z = x \oplus y\)</span>. We indeed calculated four different cases at once thanks to the quantum parallelism.</p>
+</section>
+<section id="execution-noisy">
+<h3>Execution (noisy)<a class="headerlink" href="#execution-noisy" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulating IBL Jakarta device</span>
+<span class="kn">from</span> <span class="nn">qiskit.providers.fake_provider</span> <span class="kn">import</span> <span class="n">FakeJakarta</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">FakeJakarta</span><span class="p">()</span>
+
+<span class="c1"># set the number of tries</span>
+<span class="n">nshots</span><span class="o">=</span><span class="mi">8192</span>
+
+<span class="c1"># execute the circuit</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span>
+
+<span class="c1"># extract the result</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="c1"># count the outcome</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/qparallel_10_0.png" src="../_images/qparallel_10_0.png" />
+</div>
+</div>
+<p>Notice that additional states appeared due to the noises.  However, their probabilities are small and we can easily identify the four major peaks.</p>
 <hr class="docutils" />
-<p>Last modified: 07/31/2022</p>
+<p>Last modified: 08/31/2022</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

@@ -15,8 +15,7 @@
 # Measuring this state directly, we obtain only $\left|\cos\left(\frac{\theta}{2}\right)\right|$ and $\left|\sin\left(\frac{\theta}{2}\right)\right|$. Neither $\theta$ nor $\phi$ can be determined from them. We need a quantum algorithm similar to the method used in {numref}`ex-quantum-phase`.  See the following Strategy box on State Tomography.
 # 
 
-# ```{admonition} Strategy - State Tomography
-# 
+# ## Algorithm
 # 
 # To determine the Bloch vector corresponding to a pure state $\psi\rangle$,  change the $x$-, $y$-, $z$-basis to the computational basis and measure the state in the computational basis.
 # 
@@ -36,10 +35,11 @@
 # One the Bloch vector is measured, we can calculate the angles by $\theta = \text{arccos}(r_z)$ and $\phi = \text{arctan2}.(r_y,r_x)$.
 # 
 # 
-# ```
-# 
+# This method relies on the probabilities of finding |0> and |1>.  In order to get an accurate result, we need a sufficient number of samplings.  Hence, we must run the circuit many times.
 
-# In[2]:
+# ## Circuit
+
+# In[6]:
 
 
 import numpy as np
@@ -73,8 +73,7 @@ qc.h(0)
 qc.sdg(1)
 qc.h(1)
 
-# z-component
-# no gate for this
+qc.barrier()
 
 # measure the both qubits
 qc.measure(qr,cr)
@@ -83,14 +82,26 @@ qc.measure(qr,cr)
 qc.draw('mpl')
 
 
-# In[3]:
+# ## Execution
+
+# In[7]:
 
 
-# Chose a general quantum simulator without noise.
-# The simulator behaves as an ideal quantum computer.
-backend = Aer.get_backend('qasm_simulator')
+# noisy or noiseless simulation
+noise=True
 
-# set number of tries
+# Chose a quantum simulator
+if noise:
+    # Using Fake IBM Jakarta
+    from qiskit.providers.fake_provider import FakeJakarta
+    backend = FakeJakarta()
+    print("noise is on: Using FakeJakarta")
+else:
+    # Using noiseless simulator
+    backend = Aer.get_backend('qasm_simulator')
+    print("noise is off:  Using Qasm_simulatior.")
+
+# set the number of tries
 nshots=8192
 
 # execute the quantum circuit and store the outcome
@@ -126,4 +137,4 @@ print("measured theta = {:6.3f} (exact  = {:6.3f} )".format(theta_qc,theta))
 
 # 
 # ---
-# Last modified: 08/30/2022
+# Last modified: 08/31/2022

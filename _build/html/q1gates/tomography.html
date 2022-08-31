@@ -620,12 +620,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   5.14.1. Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#circuit">
+   5.14.2. Circuit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#execution">
+   5.14.3. Execution
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -637,6 +671,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm">
+   5.14.1. Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#circuit">
+   5.14.2. Circuit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#execution">
+   5.14.3. Execution
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -653,8 +710,8 @@ title="Print to PDF"
 |\psi\rangle = \cos\left(\frac{\theta}{2}\right) |0\rangle + \sin\left(\frac{\theta}{2}\right) e^{i \phi}|1\rangle
 \]</div>
 <p>Measuring this state directly, we obtain only <span class="math notranslate nohighlight">\(\left|\cos\left(\frac{\theta}{2}\right)\right|\)</span> and <span class="math notranslate nohighlight">\(\left|\sin\left(\frac{\theta}{2}\right)\right|\)</span>. Neither <span class="math notranslate nohighlight">\(\theta\)</span> nor <span class="math notranslate nohighlight">\(\phi\)</span> can be determined from them. We need a quantum algorithm similar to the method used in <a class="reference internal" href="change-basis.html#ex-quantum-phase"><span class="std std-numref">Section 5.13.2</span></a>.  See the following Strategy box on State Tomography.</p>
-<div class="admonition-strategy-state-tomography admonition">
-<p class="admonition-title">Strategy - State Tomography</p>
+<section id="algorithm">
+<h2><span class="section-number">5.14.1. </span>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">#</a></h2>
 <p>To determine the Bloch vector corresponding to a pure state <span class="math notranslate nohighlight">\(\psi\rangle\)</span>,  change the <span class="math notranslate nohighlight">\(x\)</span>-, <span class="math notranslate nohighlight">\(y\)</span>-, <span class="math notranslate nohighlight">\(z\)</span>-basis to the computational basis and measure the state in the computational basis.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x\)</span> component<br />
@@ -668,7 +725,10 @@ Since the <span class="math notranslate nohighlight">\(z\)</span>-basis and the 
 Measure <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.  Then, <span class="math notranslate nohighlight">\(r_z = \cos\theta = p_0 -p_1\)</span>.</p></li>
 </ul>
 <p>One the Bloch vector is measured, we can calculate the angles by <span class="math notranslate nohighlight">\(\theta = \text{arccos}(r_z)\)</span> and <span class="math notranslate nohighlight">\(\phi = \text{arctan2}.(r_y,r_x)\)</span>.</p>
-</div>
+<p>This method relies on the probabilities of finding |0&gt; and |1&gt;.  In order to get an accurate result, we need a sufficient number of samplings.  Hence, we must run the circuit many times.</p>
+</section>
+<section id="circuit">
+<h2><span class="section-number">5.14.2. </span>Circuit<a class="headerlink" href="#circuit" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -702,8 +762,7 @@ Measure <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.  The
 <span class="n">qc</span><span class="o">.</span><span class="n">sdg</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># z-component</span>
-<span class="c1"># no gate for this</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 
 <span class="c1"># measure the both qubits</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
@@ -714,16 +773,29 @@ Measure <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.  The
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tomography_2_0.png" src="../_images/tomography_2_0.png" />
+<img alt="../_images/tomography_3_0.png" src="../_images/tomography_3_0.png" />
 </div>
 </div>
+</section>
+<section id="execution">
+<h2><span class="section-number">5.14.3. </span>Execution<a class="headerlink" href="#execution" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Chose a general quantum simulator without noise.</span>
-<span class="c1"># The simulator behaves as an ideal quantum computer.</span>
-<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># noisy or noiseless simulation</span>
+<span class="n">noise</span><span class="o">=</span><span class="kc">True</span>
 
-<span class="c1"># set number of tries</span>
+<span class="c1"># Chose a quantum simulator</span>
+<span class="k">if</span> <span class="n">noise</span><span class="p">:</span>
+    <span class="c1"># Using Fake IBM Jakarta</span>
+    <span class="kn">from</span> <span class="nn">qiskit.providers.fake_provider</span> <span class="kn">import</span> <span class="n">FakeJakarta</span>
+    <span class="n">backend</span> <span class="o">=</span> <span class="n">FakeJakarta</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;noise is on: Using FakeJakarta&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Using noiseless simulator</span>
+    <span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;noise is off:  Using Qasm_simulatior.&quot;</span><span class="p">)</span>
+
+<span class="c1"># set the number of tries</span>
 <span class="n">nshots</span><span class="o">=</span><span class="mi">8192</span>
 
 <span class="c1"># execute the quantum circuit and store the outcome</span>
@@ -759,14 +831,16 @@ Measure <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>.  The
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>measured   phi =  1.077 (exact  =  1.047 )
-measured theta =  0.462 (exact  =  0.449 )
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>noise is on: Using FakeJakarta
+measured   phi =  0.982 (exact  =  1.047 )
+measured theta =  0.478 (exact  =  0.449 )
 </pre></div>
 </div>
 </div>
 </div>
 <hr class="docutils" />
-<p>Last modified: 08/30/2022</p>
+<p>Last modified: 08/31/2022</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

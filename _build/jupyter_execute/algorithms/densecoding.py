@@ -5,10 +5,12 @@
 # # Superdense coding
 # 
 
+# ## The Objective
+# 
 # Accoring to the Halevo's bound, we can extract from a qubit only one bit of information at maximum. If we transmit some information using a qubit as carrier, it is natural to think that only one bit information can be sent. Surprisingly, we can send two bits of information by sending only a qubit.{cite}`Bennett1992`  The method is known as [*superdense coding*](https://en.wikipedia.org/wiki/Superdense_coding).  Experiments{cite}`Schaetz2004,Williams2017` confirmed that more than one bit of information can be sent with a single qubit.
 # 
 
-# ## The protocol
+# ## Algorithm
 # 
 # Alice and Bob are separated by a distance and there is no classical communication channel between them. Alice wants to send two bits of information to Bob.  Bob knows Alice is sending one of $00$, $01$ , $10$, and $11$.  Alice sent Bob a single qubit and somehow Bob received the information.  How?  If only one qubit travels from Alice to Bob, it seems not possible since it can carry only one bit of information.  Similarly to the quantum teleportation, we can use quantum entanglement.
 # 
@@ -50,10 +52,10 @@
 # 
 # 
 
-# 
-# ---
-# 
-# **Qiskit Examle**  
+# ## Qiskit Example
+
+# ### Circuit
+#   
 # In the following Qiskit example, Alice selects a message at random, encode it and send it to Bob.  Then, Bob decodes it.  Run it several times and see the input and output are always the same.
 
 # In[1]:
@@ -62,10 +64,6 @@
 import numpy as np
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, Aer
 from qiskit.quantum_info import Statevector, partial_trace
-backend = Aer.get_backend('statevector_simulator')
-
-# set number of tries
-nshots=8192
 
 cr=ClassicalRegister(2,'c')
 qr=QuantumRegister(2,'q')
@@ -94,12 +92,7 @@ else:
     qc.x(1)
     qc.z(1)
 
-print("Alice atemps to send = ",messageA)
-    
-# save the current state
-psi0=Statevector(qc)
-
-qc.barrier()
+    qc.barrier()
 
 # Bob decodes the message
 
@@ -114,35 +107,40 @@ qc.measure([0,1],[0,1])
 qc.draw('mpl')
 
 
+# ### Execution (noiseless)
+
 # In[2]:
 
 
-# execute the quantum circuit and store the outcome
+# Using noiseless simulator
+backend = Aer.get_backend('statevector_simulator')   
+
 result=backend.run(qc).result()
-psi1 = result.get_statevector()
+psi = result.get_statevector()
 
 
 # In[3]:
 
 
+# Show results
+
+print("Allice sent the message:", messageA)
 # visualize the state Alice sent
 from qiskit.visualization import plot_state_qsphere
-print("The message is encoded in the joint state")
-plot_state_qsphere(psi0)
 
 
 # In[4]:
 
 
 # visualize the decoded state
-print("Decoded state")
-plot_state_qsphere(psi1)
+print("The state Bob finds.")
+plot_state_qsphere(psi)
 
 
 # In[5]:
 
 
-messageB=list(psi1.to_dict().keys())
+messageB=list(psi.to_dict().keys())
 
 if len(messageB)==1:
     print("Bob finds the message = ",messageB[0])
@@ -152,10 +150,38 @@ else:
     print("the communication failed.")
 
 
+# ### Execution (noisy)
+
+# In[6]:
+
+
+# simulating IBL Jakarta device
+from qiskit.providers.fake_provider import FakeJakarta
+
+backend = FakeJakarta()
+
+# set the number of tries
+nshots=8192
+
+# execute the circuit
+job = backend.run(qc,shots=nshots)
+
+# get the results
+result = job.result()
+
+# get statistics
+counts = result.get_counts()
+
+from qiskit.visualization import plot_histogram
+plot_histogram(counts)
+
+
+# With a high probability, Bob gets the correct message.
+
 # 
 # ---
 # 
-# Last modified on 08/30/2022.
+# Last modified on 08/31/2022.
 # 
 
 # In[ ]:
