@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.2. Controlled- Z, S, T, P gates" href="cp.html" />
+    <link rel="next" title="7.2. CZ Gate" href="cz.html" />
     <link rel="prev" title="7. Two-qubits Gates" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -366,13 +366,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="cz.html">
+     7.2. CZ Gate
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="cp.html">
-     7.2. Controlled- Z, S, T, P gates
+     7.3. Controlled- Z, S, T, P gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="swap.html">
-     7.3. SWAP
+     7.4. SWAP
     </a>
    </li>
   </ul>
@@ -787,7 +792,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="cx-gate">
 <span id="sec-cxgate"></span><h1><span class="section-number">7.1. </span>CX gate<a class="headerlink" href="#cx-gate" title="Permalink to this headline">#</a></h1>
-<p>CX (Controlled-X), known also as <code class="docutils literal notranslate"><span class="pre">CNOT</span></code>, is one of the most essential gates for quantum computation.</p>
+<p>CX (Controlled-X), known also as <code class="docutils literal notranslate"><span class="pre">CNOT</span></code>, is one of the most essential gates for quantum computation.  It is known that any controlled gate can be realized by a combination of CX gates and one-qubit gates including X.</p>
 <section id="definition">
 <h2><span class="section-number">7.1.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
 <p><strong>Operational Definition</strong></p>
@@ -816,7 +821,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-\text{CX}_{q_0}^{q_1} \lvert 00\rangle &amp;= \lvert 00\rangle \\
+\text{CX}_{q_1}^{q_0} \lvert 00\rangle &amp;= \lvert 00\rangle \\
 \text{CX}_{q_1}^{q_0} \lvert 01\rangle &amp;= \lvert 01\rangle \\
 \text{CX}_{q_1}^{q_0} \lvert 10\rangle &amp;= \lvert 11\rangle \\
 \text{CX}_{q_1}^{q_0} \lvert 11\rangle &amp;= \lvert 10\rangle 
@@ -1153,7 +1158,7 @@ CX_{q_0}^{q_1} \cdot H_{q_0} |11\rangle &amp;= -|\Psi^{-}\rangle
 <img alt="../_images/cx_24_0.png" src="../_images/cx_24_0.png" />
 </div>
 </div>
-<p><strong>Exercise</strong>  <a class="reference internal" href="cp.html#sec-cpgate"><span class="std std-numref">7.2</span></a>.1  Generate <span class="math notranslate nohighlight">\(|\Phi^{\pm}\rangle\)</span> and visualize the results using Qiskit.</p>
+<p><strong>Exercise</strong>  <a class="reference internal" href="cp.html#sec-cpgate"><span class="std std-numref">7.3</span></a>.1  Generate <span class="math notranslate nohighlight">\(|\Phi^{\pm}\rangle\)</span> and visualize the results using Qiskit.</p>
 </section>
 <section id="bell-state-measurement">
 <span id="ssec-bell-measurement"></span><h3>Bell state measurement<a class="headerlink" href="#bell-state-measurement" title="Permalink to this headline">#</a></h3>
@@ -1598,10 +1603,10 @@ q_1: ┤ X ├──■──┤ X ├
             <p class="prev-next-title"><span class="section-number">7. </span>Two-qubits Gates</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="cp.html" title="next page">
+    <a class='right-next' id="next-link" href="cz.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>Controlled- Z, S, T, P gates</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>CZ Gate</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

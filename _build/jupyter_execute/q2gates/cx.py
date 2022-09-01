@@ -4,7 +4,7 @@
 # (sec-cxgate)=
 # # CX gate
 # 
-# CX (Controlled-X), known also as `CNOT`, is one of the most essential gates for quantum computation.  
+# CX (Controlled-X), known also as `CNOT`, is one of the most essential gates for quantum computation.  It is known that any controlled gate can be realized by a combination of CX gates and one-qubit gates including X.
 
 # ## Definition
 
@@ -39,7 +39,7 @@
 # 
 # $$
 # \begin{align}
-# \text{CX}_{q_0}^{q_1} \lvert 00\rangle &= \lvert 00\rangle \\
+# \text{CX}_{q_1}^{q_0} \lvert 00\rangle &= \lvert 00\rangle \\
 # \text{CX}_{q_1}^{q_0} \lvert 01\rangle &= \lvert 01\rangle \\
 # \text{CX}_{q_1}^{q_0} \lvert 10\rangle &= \lvert 11\rangle \\
 # \text{CX}_{q_1}^{q_0} \lvert 11\rangle &= \lvert 10\rangle 

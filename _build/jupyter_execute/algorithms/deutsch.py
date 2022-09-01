@@ -6,7 +6,7 @@
 
 # We are going to solve a kind of classification problem discussed originally by Deutsch {cite}`Deutsch1985`.   The problem itself is rather trivial and not really useful. However, it demonstrates an advantage of quantum computation over classical computation.
 
-# ## The problem
+# ## The Objective
 # 
 # Consider a binary function $x \mapsto f(x)$ where $x \in \{0,1\}$ and $f(x)  \in \{0,1\}$. There are only four possible functions, $f_1,\, f_2,\, f_3,\, f_4$.
 # 

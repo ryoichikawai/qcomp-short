@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7.2. Controlled- Z, S, T, P gates &#8212; A First Step to Quantum Computation with Qiskit.</title>
+    <title>7.3. Controlled- Z, S, T, P gates &#8212; A First Step to Quantum Computation with Qiskit.</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.3. SWAP" href="swap.html" />
-    <link rel="prev" title="7.1. CX gate" href="cx.html" />
+    <link rel="next" title="7.4. SWAP" href="swap.html" />
+    <link rel="prev" title="7.2. CZ Gate" href="cz.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -365,14 +365,19 @@ const thebe_selector_output = ".output, .cell_output"
      7.1. CX gate
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cz.html">
+     7.2. CZ Gate
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     7.2. Controlled- Z, S, T, P gates
+     7.3. Controlled- Z, S, T, P gates
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="swap.html">
-     7.3. SWAP
+     7.4. SWAP
     </a>
    </li>
   </ul>
@@ -644,12 +649,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#qiskit-circuit-functions">
-   7.2.1. Qiskit circuit functions
+   7.3.1. Qiskit circuit functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acting-on-superposition-state">
-   7.2.2. Acting on superposition state
+   7.3.2. Acting on superposition state
   </a>
  </li>
 </ul>
@@ -673,12 +678,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#qiskit-circuit-functions">
-   7.2.1. Qiskit circuit functions
+   7.3.1. Qiskit circuit functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#acting-on-superposition-state">
-   7.2.2. Acting on superposition state
+   7.3.2. Acting on superposition state
   </a>
  </li>
 </ul>
@@ -692,7 +697,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="controlled-z-s-t-p-gates">
-<span id="sec-cpgate"></span><h1><span class="section-number">7.2. </span>Controlled- Z, S, T, P gates<a class="headerlink" href="#controlled-z-s-t-p-gates" title="Permalink to this headline">#</a></h1>
+<span id="sec-cpgate"></span><h1><span class="section-number">7.3. </span>Controlled- Z, S, T, P gates<a class="headerlink" href="#controlled-z-s-t-p-gates" title="Permalink to this headline">#</a></h1>
 <p>Recall that that Z, S, and T gates all change the phase of <span class="math notranslate nohighlight">\(|1\rangle\)</span> and that the general phase gate P(<span class="math notranslate nohighlight">\(\theta\)</span>) can replace them as Z = P(<span class="math notranslate nohighlight">\(\pi\)</span>), S = P(<span class="math notranslate nohighlight">\(\pi/2\)</span>), and T = P(<span class="math notranslate nohighlight">\(\pi/4\)</span>)  (See <a class="reference internal" href="../q1gates/intro.html#chap-one-qubit-gates"><span class="std std-numref">Section 5</span></a>.)  In this section, controlled- Z, S, T, and P gates (CZ, CS, CT, and CP, respectively) are introduced.  Since all of them work in the similar manner, only controlled-P is explained in most parts.</p>
 <p><strong>Operational Definition</strong></p>
 <p>When gate  CP<span class="math notranslate nohighlight">\(_{q_0}^{q_1}(\theta)\)</span> acts on <span class="math notranslate nohighlight">\(|q_1\, q_0\rangle\)</span>, P(<span class="math notranslate nohighlight">\(\theta\)</span>) is applied to <span class="math notranslate nohighlight">\(q_1\)</span> if <span class="math notranslate nohighlight">\(q_0=1\)</span> and nothing is done otherwise. Qubit <span class="math notranslate nohighlight">\(q_0\)</span> serves as source and <span class="math notranslate nohighlight">\(q_1\)</span> as target.  AS shwon bellow, CP<span class="math notranslate nohighlight">\(_{q_0}^{q_1}(\theta) =\)</span> CP<span class="math notranslate nohighlight">\(_{q_1}^{q_0}(\theta)\)</span>.  Hence, it is not necessary to specify a source and a target qubit.</p>
@@ -725,7 +730,7 @@ title="Print to PDF"
 \text{CP}_{q_0}^{q_1}(\theta) = \text{CP}_{q_0}^{q_1}(\theta)  = \begin{bmatrix} 1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;e^{i\theta}\end{bmatrix}
 \end{split}\]</div>
 <section id="qiskit-circuit-functions">
-<h2><span class="section-number">7.2.1. </span>Qiskit circuit functions<a class="headerlink" href="#qiskit-circuit-functions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.3.1. </span>Qiskit circuit functions<a class="headerlink" href="#qiskit-circuit-functions" title="Permalink to this headline">#</a></h2>
 <p>The Qiskit circuit functions for CZ and CP are <code class="docutils literal notranslate"><span class="pre">cz</span></code> and <code class="docutils literal notranslate"><span class="pre">cp</span></code>, respectively and it appears in a circuit as follows.  Unlike CX gate, the source and target are not distinguished.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -781,7 +786,7 @@ q_1: ┤ S ├┤ T ├
 </div>
 </section>
 <section id="acting-on-superposition-state">
-<h2><span class="section-number">7.2.2. </span>Acting on superposition state<a class="headerlink" href="#acting-on-superposition-state" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.3.2. </span>Acting on superposition state<a class="headerlink" href="#acting-on-superposition-state" title="Permalink to this headline">#</a></h2>
 <p>CP<span class="math notranslate nohighlight">\(_{q_0}^{q_1}(\theta)\)</span> multiplies phase factor <span class="math notranslate nohighlight">\(e^{i\theta}\)</span> only to <span class="math notranslate nohighlight">\(|11\rangle\)</span>.  Other basis vectors are not affected.  Note also that the modulus of the coefficients remain the same and thus probabilities of finding the computational basis vectors are not modified by CP.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -880,17 +885,17 @@ q_1: ┤ H ├─░─┤ X ├─■───────┤ X ├
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="cx.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="cz.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">7.1. </span>CX gate</p>
+            <p class="prev-next-title"><span class="section-number">7.2. </span>CZ Gate</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="swap.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.3. </span>SWAP</p>
+        <p class="prev-next-title"><span class="section-number">7.4. </span>SWAP</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

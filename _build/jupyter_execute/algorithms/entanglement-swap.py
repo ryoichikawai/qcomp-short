@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# (sec-entanglement-swap)=
 # # Entanglement swap
 
 # The easiest way to create entanglement between two qubits is to bring them in direct contact.  The interaction potential makes them entangled.  Is it possible to make two qubits separated by a great distance without any interaction?  It turns out possible with help of two entangled pairs as resource.  The protocol is known as [*quantum entanglement swap*](https://en.wikipedia.org/wiki/Quantum_teleportation#Entanglement_swapping).  The mechanism is similar to the quantum teleportation.
