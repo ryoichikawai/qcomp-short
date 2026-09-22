@@ -1,0 +1,79 @@
+Traceback (most recent call last):
+  File "/home/kawai/anaconda3/envs/book/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/kawai/anaconda3/envs/book/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/kawai/anaconda3/envs/book/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kawai/anaconda3/envs/book/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kawai/anaconda3/envs/book/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/kawai/anaconda3/envs/book/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/kawai/anaconda3/envs/book/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/kawai/anaconda3/envs/book/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Chose a general quantum simulator without noise.
+# The simulator behaves as an ideal quantum computer.
+backend = Aer.get_backend('qasm_simulator')
+
+# set number of tries
+nshots=8192
+
+# execute the quantum circuit and store the outcome
+job = backend.run(qc,shots=nshots)
+
+# extract the result
+result = job.result()
+
+# count the outcome
+counts = result.get_counts()
+
+# get the marginal counts
+from qiskit.result import marginal_counts
+counts_x = marginal_counts(result,indices=[0]).get_counts()
+counts_y = marginal_counts(result,indices=[1]).get_counts()
+
+# calculate the marginal probability for the sine part
+q0=counts_y['0']/nshots
+q1=counts_y['1']/nshots
+dy=q0-q1
+
+# calculate the marginal probability for the cosine part
+p0=counts_x['0']/nshots
+p1=counts_x['1']/nshots
+dx=p0-p1
+
+# evaluate the phase angle
+phi=np.arctan2(dy,dx)
+
+# print out the results
+print("measured phi = {:6.3f}".format(phi))
+print("exact answer = {:6.3f}".format(np.pi/3))
+print("error =  {:6.3f}".format(phi - np.pi/3))
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 3[39m
+[32m      1[39m [38;5;66;03m# Chose a general quantum simulator without noise.[39;00m
+[32m      2[39m [38;5;66;03m# The simulator behaves as an ideal quantum computer.[39;00m
+[32m----> [39m[32m3[39m backend = [43mAer[49m.get_backend([33m'[39m[33mqasm_simulator[39m[33m'[39m)
+[32m      5[39m [38;5;66;03m# set number of tries[39;00m
+[32m      6[39m nshots=[32m8192[39m
+
+[31mNameError[39m: name 'Aer' is not defined
+

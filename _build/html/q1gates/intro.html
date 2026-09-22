@@ -1,113 +1,179 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5. One-qubit gates &#8212; A First Step to Quantum Computation with Qiskit.</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=b27ccfa1" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'q1gates/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.4. U Gate" href="u.html" />
+    <link rel="next" title="5.5. U Gate" href="u.html" />
     <link rel="prev" title="4.4. Mixed states" href="../qubit/mixedstates.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../cover.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/me-tiny.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">A First Step to Quantum Computation with Qiskit.</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/me-tiny.png" class="logo__image only-light" alt="A First Step to Quantum Computation with Qiskit. - Home"/>
+    <script>document.write(`<img src="../_static/me-tiny.png" class="logo__image only-dark" alt="A First Step to Quantum Computation with Qiskit. - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -117,693 +183,437 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../preface.html">
-   Preface
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">Preface</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../preparation/intro.html">
-   1. Preparation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../preparation/thisbook.html">
-     1.1. About This Book
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../preparation/python.html">
-     1.2. Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../preparation/jupyter.html">
-     1.3. JupyterLab
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../preparation/qiskit.html">
-     1.4. Qiskit
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../preparation/cloud.html">
-     1.5. Cloud IDE
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../qmsummary/intro.html">
-   2. Quantum Mechanics
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qmsummary/vectors.html">
-     2.1. State vectors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qmsummary/operators.html">
-     2.2. Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qmsummary/evolution.html">
-     2.3. Time-evolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qmsummary/measurement.html">
-     2.4. Quantum measurement
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../computation/intro.html">
-   3. What is a Quantum Computer?
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../computation/ccomp.html">
-     3.1. Classical computation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../computation/qcomp.html">
-     3.2. Quantum computation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../computation/qinfo.html">
-     3.3. Quantum Information Theory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../qubit/intro.html">
-   4. Single qubit
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit/purestates.html">
-     4.1. Pure states
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit/bloch.html">
-     4.2. Bloch sphere
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit/measurement.html">
-     4.3. Qubit Measurement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../qubit/mixedstates.html">
-     4.4. Mixed states
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   5. One-qubit gates
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="u.html">
-     5.4. U Gate
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="r.html">
-     5.5. Rotation Gates, RX, RY, RZ
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="x.html">
-     5.6. XGate
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="y.html">
-     5.7. YGate
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="z.html">
-     5.8. ZGate
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="h.html">
-     5.9. Hadamard gate
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sx.html">
-     5.10. SX and SXdg Gates
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="s.html">
-     5.11. S Gate and S
-     <span class="math notranslate nohighlight">
-      \(^\dagger\)
-     </span>
-     Gate
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p.html">
-     5.12. P Gate
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="change-basis.html">
-     5.13. Change of basis sets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="tomography.html">
-     5.14. State tomography
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../composites/intro.html">
-   6. Composite Systems
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../composites/2qubit.html">
-     6.1. Two qubits
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../composites/morequbits.html">
-     6.2. More qubits
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../composites/numbers.html">
-     6.3. Encoding numbers
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../q2gates/intro.html">
-   7. Two-qubits Gates
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../q2gates/cx.html">
-     7.1. CX gate
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../q2gates/cp.html">
-     7.2. Controlled- Z, S, T, P gates
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../q2gates/swap.html">
-     7.3. SWAP
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../algorithms/intro.html">
-   8. Algorithms
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithms/teleportation.html">
-     8.1. Quantum teleportation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithms/entanglement-swap.html">
-     8.2. Entanglement swap
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithms/densecoding.html">
-     8.3. Superdense coding
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithms/walshhadamard.html">
-     8.4. Walsh-Hadamard Transformation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithms/qparallel.html">
-     8.5. A little example of quantum parallelism
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithms/deutsch.html">
-     8.6. The Deutsch problem
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithms/qft.html">
-     8.7. Quantum Fourier Transform
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithms/qpe.html">
-     8.8. Quantum Phase Estimation
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preparation/intro.html">1. Preparation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preparation/thisbook.html">1.1. About This Book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preparation/python.html">1.2. Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preparation/jupyter.html">1.3. JupyterLab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preparation/qiskit.html">1.4. Qiskit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preparation/cloud.html">1.5. Cloud IDE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../qmsummary/intro.html">2. Quantum Mechanics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../qmsummary/vectors.html">2.1. State vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qmsummary/operators.html">2.2. Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qmsummary/evolution.html">2.3. Time-evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qmsummary/measurement.html">2.4. Quantum measurement</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../computation/intro.html">3. What is a Quantum Computer?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../computation/ccomp.html">3.1. Classical computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computation/qcomp.html">3.2. Quantum computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../computation/qinfo.html">3.3. Quantum Information Theory</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../qubit/intro.html">4. Single qubit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../qubit/purestates.html">4.1. Pure states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qubit/bloch.html">4.2. Bloch sphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qubit/measurement.html">4.3. Qubit Measurement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qubit/mixedstates.html">4.4. Mixed states</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">5. One-qubit gates</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="u.html">5.5. U Gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r.html">5.6. Rotation Gates, RX, RY, RZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x.html">5.7. XGate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="y.html">5.8. YGate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="z.html">5.9. ZGate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="h.html">5.10. Hadamard gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sx.html">5.11. SX and SXdg Gates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s.html">5.12. S Gate and S<span class="math notranslate nohighlight">\(^\dagger\)</span> Gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p.html">5.13. P Gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="change-basis.html">5.14. Change of basis sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tomography.html">5.15. State tomography</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../composites/intro.html">6. Composite Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../composites/2qubit.html">6.1. Two qubits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../composites/morequbits.html">6.2. More qubits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../composites/numbers.html">6.3. Encoding numbers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../q2gates/intro.html">7. Two-qubits Gates</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../q2gates/cx.html">7.1. CX gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../q2gates/cz.html">7.2. CZ Gate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../q2gates/cp.html">7.3. Controlled- Z, S, T, P gates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../q2gates/swap.html">7.4. SWAP</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../algorithms/intro.html">8. Algorithms</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/teleportation.html">8.1. Quantum teleportation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/entanglement-swap.html">8.2. Entanglement swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/densecoding.html">8.3. Superdense coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/walshhadamard.html">8.4. Walsh-Hadamard Transformation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/qparallel.html">8.5. A little example of quantum parallelism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/deutsch.html">8.6. The Deutsch problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/qft.html">8.7. Quantum Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/qpe.html">8.8. Quantum Phase Estimation</a></li>
+
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../references/references.html">
-   References
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../references/references.html">References</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/q1gates/intro.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/ryoichikawai/qcomp-short/blob/main/q1gates/intro.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ryoichikawai/qcomp-short" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ryoichikawai/qcomp-short/issues/new?title=Issue%20on%20page%20%2Fq1gates/intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/q1gates/intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/ryoichikawai/qcomp-short/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/ryoichikawai/qcomp-short//issues/new?title=Issue%20on%20page%20%2Fq1gates/intro.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/q1gates/intro.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </button>
-
-      </li>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mathematical-expressions">
-   5.1. Mathematical expressions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transformation-of-general-superposition-states">
-   5.2. Transformation of general superposition states
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#combination-of-gates">
-   5.3. Combination of gates
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>One-qubit gates</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mathematical-expressions">
-   5.1. Mathematical expressions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transformation-of-general-superposition-states">
-   5.2. Transformation of general superposition states
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#combination-of-gates">
-   5.3. Combination of gates
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>One-qubit gates</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-expressions">5.1. Mathematical expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-gate">5.2. Universal Gate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformation-of-general-superposition-states">5.3. Transformation of general superposition states</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combination-of-gates">5.4. Combination of gates</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="one-qubit-gates">
-<span id="chap-one-qubit-gates"></span><h1><span class="section-number">5. </span>One-qubit gates<a class="headerlink" href="#one-qubit-gates" title="Permalink to this headline">#</a></h1>
+<span id="chap-one-qubit-gates"></span><h1><span class="section-number">5. </span>One-qubit gates<a class="headerlink" href="#one-qubit-gates" title="Link to this heading">#</a></h1>
 <p>In quantum computing, we manipulate the state of qubits by applying a series of gates on qubits. In this chapter, I introduce various one-qubit gates commonly used in quantum computing. When a one-qubit gate acts on a single qubit, the Bloch vector of the qubit rotates around a certain axis by a certain angle.  The most general rotation is <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_angles"><em>Euler rotation</em></a>, which is done by <span class="math notranslate nohighlight">\(U\)</span> gate.  In theory, we need only this gate. However, it is not convenient since we have to figure out three parameters (angles) for each operation.  Furthermore, in actual quantum computing devices, the general gate may not be available.   In practice, we use parameter-free gates with predefined rotation axes and angles, and a few others that require a single parameter.</p>
 <p>Mathematically, the gates are unitary operators in <span class="math notranslate nohighlight">\(\mathbb{C}^2\)</span>. Some are Hermitian and others are not.  <a class="reference internal" href="#tbl-q1gates"><span class="std std-numref">Table 5.1</span></a> lists commonly used single-qubit gates.  I explain some the most important ones in the following section.  See also Qiskit documentation:</p>
 <p><a class="reference external" href="https://qiskit.org/documentation/apidoc/circuit_library.html">Qiskit Circuit Library</a>.</p>
-<table class="colwidths-auto table" id="tbl-q1gates">
-<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Commonly used single-qubit gates</span><a class="headerlink" href="#tbl-q1gates" title="Permalink to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="tbl-q1gates">
+<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Commonly used single-qubit gates</span><a class="headerlink" href="#tbl-q1gates" title="Link to this table">#</a></caption>
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p>Generaic Name</p></th>
-<th class="text-align:center head"><p>Qiskit Ciruit Name</p></th>
-<th class="text-align:center head"><p># of Parameters</p></th>
-<th class="text-align:center head"><p>Symbols</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Generaic Name</p></th>
+<th class="head text-center"><p>Qiskit Ciruit Name</p></th>
+<th class="head text-center"><p># of Parameters</p></th>
+<th class="head text-center"><p>Symbols</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>Unitary</p></td>
-<td class="text-align:center"><p>u</p></td>
-<td class="text-align:center"><p>3</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(U\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p>Unitary</p></td>
+<td class="text-center"><p>u</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(U\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>Rotation X</p></td>
-<td class="text-align:center"><p>rx</p></td>
-<td class="text-align:center"><p>1</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(R_x\)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p>Rotation X</p></td>
+<td class="text-center"><p>rx</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(R_x\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>Rotation Y</p></td>
-<td class="text-align:center"><p>ry</p></td>
-<td class="text-align:center"><p>1</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(R_y\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p>Rotation Y</p></td>
+<td class="text-center"><p>ry</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(R_y\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>Rotation Z</p></td>
-<td class="text-align:center"><p>rz</p></td>
-<td class="text-align:center"><p>1</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(R_z\)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p>Rotation Z</p></td>
+<td class="text-center"><p>rz</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(R_z\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>Pauli X</p></td>
-<td class="text-align:center"><p>x</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(X\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p>Pauli X</p></td>
+<td class="text-center"><p>x</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(X\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>Pauli Y</p></td>
-<td class="text-align:center"><p>y</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(Y\)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p>Pauli Y</p></td>
+<td class="text-center"><p>y</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Y\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>Pauli Z</p></td>
-<td class="text-align:center"><p>z</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(Z\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p>Pauli Z</p></td>
+<td class="text-center"><p>z</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(Z\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>Hadamard</p></td>
-<td class="text-align:center"><p>h</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(H\)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p>Hadamard</p></td>
+<td class="text-center"><p>h</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(H\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>Sqrt X</p></td>
-<td class="text-align:center"><p>sx</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(SX\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p>Sqrt X</p></td>
+<td class="text-center"><p>sx</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(SX\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>Inverse sqrt X</p></td>
-<td class="text-align:center"><p>sxdg</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(SX^\dagger\)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p>Inverse sqrt X</p></td>
+<td class="text-center"><p>sxdg</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(SX^\dagger\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>Sqrt Z</p></td>
-<td class="text-align:center"><p>s</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p>Sqrt Z</p></td>
+<td class="text-center"><p>s</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>Inverse sqrt Z</p></td>
-<td class="text-align:center"><p>sdg</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(S^\dagger\)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p>Inverse sqrt Z</p></td>
+<td class="text-center"><p>sdg</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(S^\dagger\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>4th root Z</p></td>
-<td class="text-align:center"><p>t</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p>4th root Z</p></td>
+<td class="text-center"><p>t</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>Inverse 4th root Z</p></td>
-<td class="text-align:center"><p>tdg</p></td>
-<td class="text-align:center"><p>0</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(T^\dagger\)</span></p></td>
+<tr class="row-odd"><td class="text-center"><p>Inverse 4th root Z</p></td>
+<td class="text-center"><p>tdg</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(T^\dagger\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>Phase</p></td>
-<td class="text-align:center"><p>p</p></td>
-<td class="text-align:center"><p>1</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(P\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p>Phase</p></td>
+<td class="text-center"><p>p</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(P\)</span></p></td>
 </tr>
 </tbody>
 </table>
-<p>Their definition and typical usage of those gates are explained in the following sections.</p>
+</div>
 <section id="mathematical-expressions">
-<h2><span class="section-number">5.1. </span>Mathematical expressions<a class="headerlink" href="#mathematical-expressions" title="Permalink to this headline">#</a></h2>
-<p>There are several ways to define the gates. In the following sections, the gates are defined in four different ways but they  are mathematically all equivalent.  In one definition, a gate is defined by how the computational basis kets are transformed by the gate.  This definition is practical.  For computational purpose, the matrix expression of the gate is more convenient.  The matrix expression assumes the computational basis. Since every gate is a special case of the general <span class="math notranslate nohighlight">\(U\)</span> gate, the gate can be expressed with <span class="math notranslate nohighlight">\(U\)</span>, which is the third definition.</p>
+<h2><span class="section-number">5.1. </span>Mathematical expressions<a class="headerlink" href="#mathematical-expressions" title="Link to this heading">#</a></h2>
+<p>In the following sections, the definition and properties of each gate is explained.
+There are several ways to define the gates. In the following sections, the gates are defined in four different ways but they  are mathematically all equivalent. In this lecture, each gate is expressed with the following forms.   Using complex coefficients <span class="math notranslate nohighlight">\(c_{ij}\)</span>, a gate <span class="math notranslate nohighlight">\(A\)</span> is defines as</p>
+<ul class="simple">
+<li><p>Transformation of basis vectors<br />
+<span class="math notranslate nohighlight">\(A|0\rangle = c_{00} |0\rangle + c_{10}|1\rangle\)</span> and <span class="math notranslate nohighlight">\(A|1\rangle = c_{01}|0\rangle + c_{11}|1\rangle\)</span></p></li>
+<li><p>Operator expression with dyads (useful for theoretical investigation)<br />
+<span class="math notranslate nohighlight">\(A = c_{00} |0\rangle\langle 0| + c_{01} |0\rangle\langle 1| + c_{10} |1\rangle\langle 0| + c_{11} |1\rangle\langle 1|\)</span></p></li>
+<li><p>Matrix expression<br />
+<span class="math notranslate nohighlight">\(A = \begin{bmatrix}c_{00} &amp; c_{01} \\ c_{10} &amp; c_{11}\end{bmatrix}\)</span></p></li>
+</ul>
+<p>which are all equivalent.</p>
+</section>
+<section id="universal-gate">
+<h2><span class="section-number">5.2. </span>Universal Gate<a class="headerlink" href="#universal-gate" title="Link to this heading">#</a></h2>
+<p>Every single qubit can be expressed with universal gate <span class="math notranslate nohighlight">\(U(\theta,\phi,\lambda)\)</span> by specifying the value of parameters <span class="math notranslate nohighlight">\(\theta\)</span>, <span class="math notranslate nohighlight">\(\phi\)</span>, and <span class="math notranslate nohighlight">\(\lambda\)</span>.  Hence, any single qubit can be defined with the <span class="math notranslate nohighlight">\(U\)</span> gate.  Why do we need many different gates when they can be all expressed with a single <span class="math notranslate nohighlight">\(U\)</span> gate?  In fact, a common algorithm of quantum machine learning uses only the <span class="math notranslate nohighlight">\(U\)</span> gate and <span class="math notranslate nohighlight">\(CX\)</span> gate and determine the parameter values by mahine learning methods.  However, it is easier to understand a circuit if it is written with a set of parameter-free gates since the meaning of the gates are clear.</p>
 </section>
 <section id="transformation-of-general-superposition-states">
-<h2><span class="section-number">5.2. </span>Transformation of general superposition states<a class="headerlink" href="#transformation-of-general-superposition-states" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.3. </span>Transformation of general superposition states<a class="headerlink" href="#transformation-of-general-superposition-states" title="Link to this heading">#</a></h2>
 <p>The definitions do not give you a clear idea on the operational functionality of a gate.  It is important to understand how a superposition state is transformed by the gate. Pay attention to how the coefficients are transformed.</p>
 </section>
 <section id="combination-of-gates">
-<h2><span class="section-number">5.3. </span>Combination of gates<a class="headerlink" href="#combination-of-gates" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4. </span>Combination of gates<a class="headerlink" href="#combination-of-gates" title="Link to this heading">#</a></h2>
 <p>When gate <span class="math notranslate nohighlight">\(Y\)</span> is applied after <span class="math notranslate nohighlight">\(X\)</span>, we write it <span class="math notranslate nohighlight">\(Y \cdot X\)</span>. We can think of a gate <span class="math notranslate nohighlight">\((Y \cdot X)\)</span>  acts on a state vector as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -813,8 +623,13 @@ Y (X |\psi\rangle) = (Y \cdot X) |\psi\rangle
 <p>The order is important.  <span class="math notranslate nohighlight">\(Y \cdot X\)</span> is not necessarily equal to <span class="math notranslate nohighlight">\(X \cdot Y\)</span>.</p>
 <p>In quantum circuit, the gates act from left to right.  For example,  <span class="math notranslate nohighlight">\(Y\cdot X |0\rangle\)</span> becomes</p>
 <div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
 
 <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -823,8 +638,9 @@ Y (X |\psi\rangle) = (Y \cdot X) |\psi\rangle
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../_images/intro_7_0.png" src="../_images/intro_7_0.png" />
+<img alt="../_images/a9aa680b125611c3f1e4e17fe8c4dd7c62f93cd986cbdefc79015556294d183c.png" src="../_images/a9aa680b125611c3f1e4e17fe8c4dd7c62f93cd986cbdefc79015556294d183c.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -846,7 +662,7 @@ Y (X |\psi\rangle) = (Y \cdot X) |\psi\rangle
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./q1gates"
         },
         predefinedOutput: true
@@ -854,50 +670,106 @@ Y (X |\psi\rangle) = (Y \cdot X) |\psi\rangle
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../qubit/mixedstates.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.4. </span>Mixed states</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="u.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.4. </span>U Gate</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Ryoichi Kawai<br/>
-  
-      &copy; Copyright Ryoichi Kawai 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
 
-
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../qubit/mixedstates.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>Mixed states</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="u.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.5. </span>U Gate</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-expressions">5.1. Mathematical expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-gate">5.2. Universal Gate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformation-of-general-superposition-states">5.3. Transformation of general superposition states</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combination-of-gates">5.4. Combination of gates</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ryoichi Kawai
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Ryoichi Kawai 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
