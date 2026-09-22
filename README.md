@@ -8,7 +8,7 @@ https://kawaihome.link
 
 
 
-This lecture note is still under construction.  The contents change everyday.  There are many errors and misleading statements, which will be fixed after all chapters are added.  It is still a long way to go.
+This lecture note was written in 2022.  At that time, `qiskit` was still in its early stage.  Since then, `qiskirt` has changed significantly.  Many examples in this lecture note perhaps would not run.  I  retired after writing this note.  Hence,  I have no plan to update them.  
 
 Copyright © 2022 Ryoichi Kawai. All rights reserved.
 
