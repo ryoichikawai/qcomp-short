@@ -72,6 +72,6 @@ parts:
 -  caption:
    numbered: false
    chapters:
-   -  file: references/references.md
+   -  file: references/references
 
 

@@ -16,44 +16,47 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=b27ccfa1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -67,6 +70,7 @@
     <link rel="prev" title="7. Two-qubits Gates" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -82,19 +86,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -102,7 +95,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -110,8 +102,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -127,7 +119,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -157,21 +150,17 @@
     
     
     <img src="../_static/me-tiny.png" class="logo__image only-light" alt="A First Step to Quantum Computation with Qiskit. - Home"/>
-    <script>document.write(`<img src="../_static/me-tiny.png" class="logo__image only-dark" alt="A First Step to Quantum Computation with Qiskit. - Home"/>`);</script>
+    <img src="../_static/me-tiny.png" class="logo__image only-dark pst-js-only" alt="A First Step to Quantum Computation with Qiskit. - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -250,7 +239,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/deutsch.html">8.6. The Deutsch problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/qft.html">8.7. Quantum Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/qpe.html">8.8. Quantum Phase Estimation</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -264,9 +252,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -427,7 +420,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -441,25 +434,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -527,21 +512,21 @@ document.write(`
 <p>CX transforms computational basis as follows:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \text{CX}_{q_0}^{q_1} \lvert 00\rangle &amp;= \lvert 00\rangle \\
 \text{CX}_{q_0}^{q_1} \lvert 01\rangle &amp;= \lvert 11\rangle \\
 \text{CX}_{q_0}^{q_1} \lvert 10\rangle &amp;= \lvert 10\rangle \\
 \text{CX}_{q_0}^{q_1} \lvert 11\rangle &amp;= \lvert 01\rangle 
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \text{CX}_{q_1}^{q_0} \lvert 00\rangle &amp;= \lvert 00\rangle \\
 \text{CX}_{q_1}^{q_0} \lvert 01\rangle &amp;= \lvert 01\rangle \\
 \text{CX}_{q_1}^{q_0} \lvert 10\rangle &amp;= \lvert 11\rangle \\
 \text{CX}_{q_1}^{q_0} \lvert 11\rangle &amp;= \lvert 10\rangle 
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p><strong>Matrix representation</strong></p>
 <div class="math notranslate nohighlight">
@@ -557,7 +542,11 @@ document.write(`
 <p>The Qiskit circuit symbol is <code class="docutils literal notranslate"><span class="pre">cx</span></code> and it appears in circuit as:</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.quantum_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">Statevector</span>
+
+<span class="c1"># from qiskit import QuantumCircuit</span>
 <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># CX_{q0,q1}</span>
@@ -597,9 +586,7 @@ c_{00} |00\rangle + c_{01} |01\rangle + c_{11} |10\rangle + c_{10} |11\rangle
 <p>The following Qiskit example demonstrates it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
 
 <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
@@ -618,8 +605,7 @@ q_1: ┤ X ├┤ H ├
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.quantum_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">Statevector</span>
-<span class="c1"># state before applying CX</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># state before applying CX</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;State before applying CX.&quot;</span><span class="p">)</span>
 <span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
 </pre></div>
@@ -687,7 +673,7 @@ q_1: ┤ X ├┤ H ├┤ X ├
 <p>Let us look at the action of CX on z-basis <span class="math notranslate nohighlight">\(|\pm\pm\rangle\)</span>.  We assume that <span class="math notranslate nohighlight">\(q_0\)</span> is the control qubit and <span class="math notranslate nohighlight">\(q_1\)</span> is the target.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \text{CX}_{q_0}^{q_1} |++\rangle &amp;= \frac{1}{2} \text{CX}_{q_0}^{q_1} \left(|00\rangle + |01\rangle  + |10\rangle + |11\rangle \right)
 &amp;&amp;=  \frac{1}{2} \left(|00\rangle + |11\rangle  + |10\rangle + |01\rangle \right) &amp;= |++\rangle \\
 \text{CX}_{q_0}^{q_1} |+-\rangle &amp;= \frac{1}{2} \text{CX}_{q_0}^{q_1} \left(|00\rangle - |01\rangle  + |10\rangle - |11\rangle \right)
@@ -696,16 +682,14 @@ q_1: ┤ X ├┤ H ├┤ X ├
 &amp;&amp;=  \frac{1}{2} \left(|00\rangle + |11\rangle  - |10\rangle - |01\rangle \right) &amp;= |--\rangle \\
 \text{CX}_{q_0}^{q_1} |--\rangle &amp;= \frac{1}{2} \text{CX}_{q_0}^{q_1} \left(|00\rangle - |01\rangle  - |10\rangle + |11\rangle \right)
 &amp;&amp;=  \frac{1}{2} \left(|00\rangle - |11\rangle  - |10\rangle + |01\rangle \right) &amp;= |-+\rangle
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>This transformation can be described as “Apply Z to <span class="math notranslate nohighlight">\(q_0\)</span> if <span class="math notranslate nohighlight">\(q_1=-\)</span> and do nothing otherwise.” Interestingly, now <span class="math notranslate nohighlight">\(q_1\)</span> is the control qubit and <span class="math notranslate nohighlight">\(q_0\)</span> is the target.  The gate has not change and  this operation is still “Apply X to <span class="math notranslate nohighlight">\(q_1\)</span> if <span class="math notranslate nohighlight">\(q_0=1\)</span> and do nothing otherwise.”  The two operations are equivalent. The reversal of control-target relation is known as signature of <em>phase kickback</em>.  Other controlled gates also show phase kickback.</p>
 <p>Remembering that the Hadamard gate changes basis set from z-basis to x-basis and vice versa. Applying H gate before CX we can realize the phase kickback shown above. After the kickback, we can go back to z-basis by another H gate. Then, we have reversed CX.</p>
 <p>In the following example, we start with an initial state <span class="math notranslate nohighlight">\(|10\rangle\)</span>. In the first example, the basis is switched to x-basis by H gate and apply CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span>. In the second computation, CX<span class="math notranslate nohighlight">\(_{q_1}^{q_0}\)</span> is directly applied. Both get the same result. Try other initial conditions and confirm that the two circuits do the same transformation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
 <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
 
 <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -726,8 +710,7 @@ q_1: ┤ X ├─░─┤ H ├┤ X ├┤ H ├
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.quantum_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">Statevector</span>
-<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -771,20 +754,18 @@ q_1: ┤ X ├─░───■──
 <p>Suppose that we want to flip <span class="math notranslate nohighlight">\(q_1\)</span>  if <span class="math notranslate nohighlight">\(q_0\)</span> is <span class="math notranslate nohighlight">\(|-\rangle\)</span> and do nothing otherwise.  We change the basis of <span class="math notranslate nohighlight">\(q_0\)</span> using H gate, apply CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span>, and apply H again to <span class="math notranslate nohighlight">\(q_0\)</span>.  Note that the third step bring <span class="math notranslate nohighlight">\(q_0\)</span> back to the original state.  We can generate superposition of Bell states using the circuit.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} \cdot \text{H}_{q_0} |00\rangle &amp;= \frac{1}{2}\left(|00\rangle + |01\rangle + |10\rangle - |11\rangle \right) = \frac{1}{\sqrt{2}} \left( \Phi^{-} + \Psi^{+} \right) \\
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} \cdot \text{H}_{q_0} |01\rangle &amp;= \frac{1}{2}\left(|00\rangle - |01\rangle + |10\rangle + |11\rangle \right) = \frac{1}{\sqrt{2}} \left( \Phi^{+} - \Psi^{-} \right) \\
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} \cdot \text{H}_{q_0} |10\rangle &amp;= \frac{1}{2}\left(|00\rangle + |01\rangle - |10\rangle + |11\rangle \right) = \frac{1}{\sqrt{2}} \left( \Phi^{+} + \Psi^{-} \right) \\
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} \cdot \text{H}_{q_0} |11\rangle &amp;= \frac{1}{2}\left(-|00\rangle + |01\rangle + |10\rangle + |11\rangle \right) = \frac{1}{\sqrt{2}} \left( -\Phi^{-} + \Psi^{+} \right)
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>If we want to flip the target qubit also in x-basis, H gate is applied on <span class="math notranslate nohighlight">\(q_1\)</span> before and after CX. as well.  However, this circuit is identical to just a single CX since it does the same transformation simply in a different basis.</p>
 <p>The following example generates <span class="math notranslate nohighlight">\(\frac{1}{\sqrt{2}} \left( \Phi^{-} + \Psi^{+} \right)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
 
 <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -804,9 +785,7 @@ q_1: ─────┤ X ├─────
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.quantum_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">Statevector</span>
-
-<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -825,21 +804,18 @@ q_1: ─────┤ X ├─────
 No one-qubit gate can generate an entangled state.  The CX gate is commonly used to generate entangled states from product states.  As discussed in <a class="reference internal" href="../composites/2qubit.html#sec-2qubits"><span class="std std-numref">Section 6.1</span></a>, Bell states play important roles in quantum computation. We can generate all Bell states by by applying CX_{q_0}^{q_1} \cdot H_{q_0}$ to the computational basis vectors.</p>
 <div class="math notranslate nohighlight" id="equation-cbase-bell">
 <span class="eqno">(7.1)<a class="headerlink" href="#equation-cbase-bell" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{align}
+\begin{aligned}
 CX_{q_0}^{q_1} \cdot H_{q_0} |00\rangle &amp;= |\Phi^{+}\rangle \\
 CX_{q_0}^{q_1} \cdot H_{q_0} |01\rangle &amp;= |\Phi^{-}\rangle \\
 CX_{q_0}^{q_1} \cdot H_{q_0} |10\rangle &amp;= |\Psi^{+}\rangle \\
 CX_{q_0}^{q_1} \cdot H_{q_0} |11\rangle &amp;= -|\Psi^{-}\rangle
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>The last one has unwanted phase “-”.  We can get rid of it by applying Z on both qubits.  In the following Qiskit code, we generate the singlet state <span class="math notranslate nohighlight">\(|\Psi^{-}\)</span>.</p>
 <p><strong>Exercise</strong>  <a class="reference internal" href="#sec-cxgate"><span class="std std-numref">7.1</span></a>.1  Generate <span class="math notranslate nohighlight">\(|\Psi^{\pm}\rangle\)</span> and visualize the results using Qiskit. (HINT: You can flip one of qubits by X gate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.quantum_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">Statevector</span>
-
-<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
 
 <span class="c1"># generate |11&gt;</span>
@@ -871,7 +847,7 @@ CX_{q_0}^{q_1} \cdot H_{q_0} |11\rangle &amp;= -|\Psi^{-}\rangle
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ce45f6e17f522b41d1e4804560566369f55ba746646dbe726b9dfebe143e990a.png" src="../_images/ce45f6e17f522b41d1e4804560566369f55ba746646dbe726b9dfebe143e990a.png" />
+<img alt="../_images/7bd69846bb4575370f988373291853eba907d3b5590b5ff8467f864a8b1f5768.png" src="../_images/7bd69846bb4575370f988373291853eba907d3b5590b5ff8467f864a8b1f5768.png" />
 </div>
 </div>
 <p><strong>Exercise</strong>  <a class="reference internal" href="cp.html#sec-cpgate"><span class="std std-numref">7.3</span></a>.1  Generate <span class="math notranslate nohighlight">\(|\Phi^{\pm}\rangle\)</span> and visualize the results using Qiskit.</p>
@@ -887,12 +863,12 @@ CX_{q_0}^{q_1} \cdot H_{q_0} |11\rangle &amp;= -|\Psi^{-}\rangle
 <p>In the example above, we transformed the computational basis vectors to the Bell states using CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1} \cdot\)</span> H<span class="math notranslate nohighlight">\(_{q_0}\)</span>.  By inverting the transformation, we can convert the Bell states to the computational basis.  That is applying H<span class="math notranslate nohighlight">\(_{q_0} \cdot\)</span> CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> to the Bell states</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{+}\rangle &amp;= |00\rangle \\
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Phi^{-}\rangle &amp;= |01\rangle \\
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Psi^{+}\rangle &amp;= |10\rangle \\
 \text{H}_{q_0} \cdot \text{CX}_{q_0}^{q_1} |\Psi^{-}\rangle &amp;= -|11\rangle
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>Applying <span class="math notranslate nohighlight">\((I \otimes H)\cdot CX\)</span> to the superposition <a class="reference internal" href="#equation-bell-expansion">(7.2)</a>, we obtain</p>
 <div class="math notranslate nohighlight" id="equation-comp-expansion">
@@ -947,43 +923,38 @@ The computational basis vector obtained from the measurement can be transformed 
 <p>The second transformation can be done by CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> and the third transformation can be done by a CX<span class="math notranslate nohighlight">\(_{q_1}^{q_2}\)</span>. These two gates also works for the first transformation.  However, it does not work for the last transformation.  It takes more than one step.  It would be nice if <span class="math notranslate nohighlight">\(z\)</span> is directly correlated to <span class="math notranslate nohighlight">\(y\)</span> or <span class="math notranslate nohighlight">\(x\)</span>. Let us try CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \text{CX}_{q_0}^{q_1}|000\rangle = |000\rangle \\
 \text{CX}_{q_0}^{q_1}|001\rangle = |011\rangle \\
 \text{CX}_{q_0}^{q_1}|010\rangle = |010\rangle \\
 \text{CX}_{q_0}^{q_1}|011\rangle = |001\rangle
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>Now , the output <span class="math notranslate nohighlight">\(z\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are perfectly correlated.  We can now apply CX<span class="math notranslate nohighlight">\(_{q_1}^{q_2}\)</span> to find <span class="math notranslate nohighlight">\(z\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|000\rangle = \text{CX}_{q_1}^{q_2}|000\rangle = |000\rangle  \\
 \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|001\rangle = \text{CX}_{q_1}^{q_2}|011\rangle = |111\rangle \\
 \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|010\rangle = \text{CX}_{q_1}^{q_2}|010\rangle = |110\rangle \\
 \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|011\rangle = \text{CX}_{q_1}^{q_2}|001\rangle = |001\rangle 
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>The value of <span class="math notranslate nohighlight">\(z\)</span> is correct but <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are not preserved.  That is not good. Next,we try to recover them by
 X<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \text{CX}_{q_0}^{q_1} \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|000\rangle = \text{CX}_{q_0}^{q_1}|000\rangle = |000\rangle  \\
 \text{CX}_{q_0}^{q_1} \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|001\rangle = \text{CX}_{q_0}^{q_1}|111\rangle = |101\rangle \\
 \text{CX}_{q_0}^{q_1} \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|010\rangle = \text{CX}_{q_0}^{q_1}|110\rangle = |110\rangle \\
 \text{CX}_{q_0}^{q_1} \text{CX}_{q_1}^{q_2}\text{CX}_{q_0}^{q_1}|011\rangle = \text{CX}_{q_0}^{q_1}|001\rangle =|011\rangle 
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>Now we have the desired output.  Three CX gates calculate <span class="math notranslate nohighlight">\(x \oplus y\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.quantum_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">Statevector</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-
-<span class="c1"># loop over all inputs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># loop over all inputs</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
 
@@ -1178,12 +1149,12 @@ c_{00} |00\rangle + c_{10} |01\rangle + c_{01} |10\rangle + c_{11} |11\rangle
 <p>Recall that CX<span class="math notranslate nohighlight">\(_{q_0}^{q_1}\)</span> swaps the coefficients of <span class="math notranslate nohighlight">\(|01\rangle\)</span> and <span class="math notranslate nohighlight">\(|11\rangle\)</span>, and  CX<span class="math notranslate nohighlight">\(_{q_1}^{q_0}\)</span> swaps the coefficients of <span class="math notranslate nohighlight">\(|10\rangle\)</span> and <span class="math notranslate nohighlight">\(|11\rangle\)</span>.  Using these gates in series, we can create SWAP.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 &amp;\text{CX}_{q_0}^{q_1} \cdot \text{CX}_{q_1}^{q_0} \cdot \text{CX}_{q_0}^{q_1} \left(c_{00} |00\rangle + c_{01} |01\rangle + c_{10} |10\rangle + c_{11} |11\rangle \right)\\ 
 = &amp;\text{CX}_{q_0}^{q_1} \cdot \text{CX}_{q_1}^{q_0} \left(c_{00} |00\rangle + c_{11} |01\rangle + c_{10} |10\rangle + c_{01} |11\rangle \right) \\
 = &amp;\text{CX}_{q_0}^{q_1}  \left(c_{00} |00\rangle + c_{11} |01\rangle + c_{01} |10\rangle + c_{10} |11\rangle \right)\\
 = &amp; c_{00} |00\rangle + c_{10} |01\rangle + c_{01} |10\rangle + c_{11} |11\rangle
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>which indicates SWAP=<span class="math notranslate nohighlight">\(\text{CX}_{q_0}^{q_1} \cdot  \text{CX}_{q_1}^{q_0} \cdot \text{CX}_{q_0}^{q_1}\)</span>. (See the following circuit.)</p>
 <div class="cell tag_hide_input docutils container">
@@ -1247,7 +1218,7 @@ q_1: ┤ X ├──■──┤ X ├
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probability distribution before swap
 </pre></div>
 </div>
-<img alt="../_images/a2566f87e9181f7f5a02f97afc99d6115239c458f191a79b14da0ecea5e89c91.png" src="../_images/a2566f87e9181f7f5a02f97afc99d6115239c458f191a79b14da0ecea5e89c91.png" />
+<img alt="../_images/10f7d928aaa501bb0ad42aac0d8695dc456f9cf33df84dd8f26f9d1e978fb8f6.png" src="../_images/10f7d928aaa501bb0ad42aac0d8695dc456f9cf33df84dd8f26f9d1e978fb8f6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1271,7 +1242,7 @@ q_1: ┤ X ├──■──┤ X ├
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>probability distribution after swapping.
 </pre></div>
 </div>
-<img alt="../_images/ac0ca33aed06ff60b4832f4b0ed42d62d44394f8151e420522b573f50c0736e2.png" src="../_images/ac0ca33aed06ff60b4832f4b0ed42d62d44394f8151e420522b573f50c0736e2.png" />
+<img alt="../_images/79973b2cc0be6ba65dd27b92564997c5136ce86a3a14b0e4e01a78d1f1d62432.png" src="../_images/79973b2cc0be6ba65dd27b92564997c5136ce86a3a14b0e4e01a78d1f1d62432.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1296,16 +1267,16 @@ q_1: ┤ X ├──■──┤ X ├
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "book"
         },
         kernelOptions: {
-            name: "python3",
+            name: "book",
             path: "./q2gates"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'book'</script>
 
                 </article>
               
@@ -1342,14 +1313,16 @@ q_1: ┤ X ├──■──┤ X ├
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">7.1.1. Definition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acting-on-superposition-state">7.1.2. Acting on superposition state</a></li>
@@ -1388,7 +1361,7 @@ By Ryoichi Kawai
 
   <p class="copyright">
     
-      © Copyright Ryoichi Kawai 2022.
+      © Copyright 2026 Ryoichi Kawai. All rights reserved..
       <br/>
     
   </p>
@@ -1412,8 +1385,8 @@ By Ryoichi Kawai
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

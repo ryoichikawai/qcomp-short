@@ -16,44 +16,47 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=b27ccfa1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -67,6 +70,7 @@
     <link rel="prev" title="4. Single qubit" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -82,19 +86,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -102,7 +95,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -110,8 +102,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -127,7 +119,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -157,21 +150,17 @@
     
     
     <img src="../_static/me-tiny.png" class="logo__image only-light" alt="A First Step to Quantum Computation with Qiskit. - Home"/>
-    <script>document.write(`<img src="../_static/me-tiny.png" class="logo__image only-dark" alt="A First Step to Quantum Computation with Qiskit. - Home"/>`);</script>
+    <img src="../_static/me-tiny.png" class="logo__image only-dark pst-js-only" alt="A First Step to Quantum Computation with Qiskit. - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -250,7 +239,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/deutsch.html">8.6. The Deutsch problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/qft.html">8.7. Quantum Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms/qpe.html">8.8. Quantum Phase Estimation</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -264,9 +252,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -427,7 +420,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -441,25 +434,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -534,27 +519,35 @@ They are related to the computational basis as follows:</p>
 <p>In Qiskit, the computatioal basis kets <span class="math notranslate nohighlight">\(\{|0\rangle, |1\rangle\}\)</span> and x-basis kets <span class="math notranslate nohighlight">\(\{|+\rangle, |-\rangle\}\)</span> are predefined.  See the following Qiskit note.</p>
 <div class="tip admonition">
 <p class="admonition-title">Qiskit note: Computational Basis</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code> library provides us with basic tools to describe quantum mechanics using expressions very similar to the original methematical expressions.  Here are the correspondence between mathematical expressions and <code class="docutils literal notranslate"><span class="pre">opflow</span></code> expressions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">qiskit.quantum_info</span></code> library provides us with basic tools to describe quantum mechanics using expressions very similar to the original methematical expressions.  Here are the correspondence between mathematical expressions and <code class="docutils literal notranslate"><span class="pre">qiskit</span></code> expressions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">qiskit.quantum_info</span> <span class="pre">import</span> <span class="pre">Statevector</span></code></p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(|0\rangle \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Zero</span></code><br />
-<span class="math notranslate nohighlight">\(|1\rangle \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">One</span></code><br />
-<span class="math notranslate nohighlight">\(|+\rangle \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Plus</span></code><br />
-<span class="math notranslate nohighlight">\(|-\rangle \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Minus</span></code></p>
+<div><p><span class="math notranslate nohighlight">\(|0\rangle \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Statevector.from_label(&quot;0&quot;)</span></code><br />
+<span class="math notranslate nohighlight">\(|1\rangle \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Statevector.from_label(&quot;1&quot;)</span></code><br />
+<span class="math notranslate nohighlight">\(|+\rangle \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Statevector.from_label(&quot;+&quot;)</span></code><br />
+<span class="math notranslate nohighlight">\(|-\rangle \quad \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Statevector.from_label(&quot;-&quot;)</span></code></p>
 </div></blockquote>
-<p>The vector with “~” indicates bra.  For example,</p>
+<p>In this note, we use the following convention:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Zero</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="n">One</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">Plus</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">)</span>
+<span class="n">Minus</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The vector with “.adjoint()” indicates bra.  For example,</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(\langle 0| \quad  \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">~One</span></code></p>
+<div><p><span class="math notranslate nohighlight">\(\langle 0| \quad  \Rightarrow \quad\)</span> <code class="docutils literal notranslate"><span class="pre">Zero.adjoint()</span></code></p>
 </div></blockquote>
 <p>The regular addition works.</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(|0\rangle + |1\rangle \quad \Rightarrow \quad\)</span>  <code class="docutils literal notranslate"><span class="pre">Zero</span> <span class="pre">+</span> <span class="pre">One</span></code></p>
 </div></blockquote>
-<p>The operator for inner product is “&#64;”. You need to evalute it with <code class="docutils literal notranslate"><span class="pre">.eval()</span></code>.</p>
+<p>The operator for inner product is “&#64;”.</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(\langle 0 | + \rangle \quad \Rightarrow \quad\)</span>  <code class="docutils literal notranslate"><span class="pre">(~Zero</span> <span class="pre">&#64;</span> <span class="pre">Plus).eval()</span></code></p>
+<div><p><span class="math notranslate nohighlight">\(\langle 0 | + \rangle \quad \Rightarrow \quad\)</span>  <code class="docutils literal notranslate"><span class="pre">Zero.adjoint()</span> <span class="pre">&#64;</span> <span class="pre">Plus</span></code></p>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">eval</span></code> is a method associated with <code class="docutils literal notranslate"><span class="pre">OperatorBase</span></code> class in <code class="docutils literal notranslate"><span class="pre">qiskit.opflow</span></code>.</p>
-<p>For more detail, see <a class="reference external" href="https://qiskit.org/documentation/apidoc/opflow.html">Qiskit API Document: qiskit.opflow</a></p>
 </div>
 <hr class="docutils" />
 <p><strong>Qiskit Example</strong> <a class="reference internal" href="#sec-purestates"><span class="std std-numref">4.1</span></a>.1   Let us check the orthonormality of the computational basis set in Qiskit.</p>
@@ -562,48 +555,31 @@ They are related to the computational basis as follows:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import numpy (for sqrt)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.quantum_info</span><span class="w"> </span><span class="kn">import</span> <span class="n">Statevector</span><span class="p">,</span> <span class="n">Operator</span>
 
-<span class="c1"># Import the base vectors from qiskit.opflow library</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.opflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zero</span><span class="p">,</span> <span class="n">One</span><span class="p">,</span> <span class="n">Plus</span><span class="p">,</span> <span class="n">Minus</span>
+<span class="n">Zero</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="n">One</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">Plus</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">)</span>
+<span class="n">Minus</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_label</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
 
-<span class="c1"># Example of inner product calculation with qiskit</span>
+<span class="c1"># Inner product &lt;psi|phi&gt; = psi.inner(phi)</span>
+<span class="n">Norm_of_Zero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Zero</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">Zero</span><span class="p">))</span>
+<span class="n">Norm_of_One</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">One</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">One</span><span class="p">))</span>
+<span class="n">Inner_Product</span> <span class="o">=</span> <span class="n">Zero</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">One</span><span class="p">)</span>
 
-<span class="c1"># First example calculate the norm of |0&gt; and |1&gt;</span>
-<span class="c1"># Zero and One are ket</span>
-<span class="c1"># ~Zero and ~One are corresponding bra</span>
-<span class="c1"># @ product between bra and ket, that is inner product</span>
-<span class="c1"># To complete the operation @, we must evaluate it by .eval()</span>
-
-<span class="n">Norm_of_Zero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="o">~</span><span class="n">Zero</span> <span class="o">@</span> <span class="n">Zero</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
-<span class="n">Norm_of_One</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="o">~</span><span class="n">One</span> <span class="o">@</span> <span class="n">One</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
-
-<span class="c1"># Show the reults</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Norm of |0&gt; =&quot;</span><span class="p">,</span> <span class="n">Norm_of_Zero</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Norm of |1&gt; =&quot;</span><span class="p">,</span> <span class="n">Norm_of_One</span><span class="p">)</span>
-
-<span class="c1"># Next we check the orthogonality between |0&gt; and |1&gt;</span>
-<span class="n">Inner_Product</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">Zero</span> <span class="o">@</span> <span class="n">One</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-
-<span class="c1"># Show the result.</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&lt;0|1&gt; =&quot;</span><span class="p">,</span> <span class="n">Inner_Product</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Import the base vectors from qiskit.opflow library</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.opflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zero</span><span class="p">,</span> <span class="n">One</span><span class="p">,</span> <span class="n">Plus</span><span class="p">,</span> <span class="n">Minus</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Example of inner product calculation with qiskit</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> 
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># First example calculate the norm of |0&gt; and |1&gt;</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">12</span> <span class="c1"># @ product between bra and ket, that is inner product</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># To complete the operation @, we must evaluate it by .eval()</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">Norm_of_Zero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="o">~</span><span class="n">Zero</span> <span class="o">@</span> <span class="n">Zero</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.opflow&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Norm of |0&gt; = (1+0j)
+Norm of |1&gt; = (1+0j)
+&lt;0|1&gt; = 0j
 </pre></div>
 </div>
 </div>
@@ -612,21 +588,9 @@ They are related to the computational basis as follows:</p>
 <p><strong>Qiskit Example</strong> <a class="reference internal" href="#sec-purestates"><span class="std std-numref">4.1</span></a>.2    Let us construct another orthonormal basis set <span class="math notranslate nohighlight">\(|L\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle + i |1\rangle\right)\)</span> and <span class="math notranslate nohighlight">\(|R\rangle = \frac{1}{\sqrt{2}}\left(|0\rangle - i |1\rangle\right)\)</span>.  Notice the complex unit <span class="math notranslate nohighlight">\(i\)</span> on <span class="math notranslate nohighlight">\(|1\rangle\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let us try more complicated case.</span>
-<span class="c1"># we will solve the above exercise problem using Qiskit</span>
-
-<span class="c1"># import numpy </span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="c1"># imaginary unit &quot;i&quot; is &quot;1j&quot; in python.</span>
-<span class="n">L</span> <span class="o">=</span> <span class="p">(</span><span class="n">Zero</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span> <span class="n">One</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">R</span> <span class="o">=</span> <span class="p">(</span><span class="n">Zero</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span> <span class="n">One</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&lt;L|L&gt; =&quot;</span><span class="p">,(</span><span class="o">~</span><span class="n">L</span><span class="nd">@L</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&lt;R|R&gt; =&quot;</span><span class="p">,(</span><span class="o">~</span><span class="n">R</span><span class="nd">@R</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&lt;L|R&gt; =&quot;</span><span class="p">,(</span><span class="o">~</span><span class="n">L</span> <span class="o">@</span> <span class="n">R</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="p">)</span>
-
-<span class="c1"># Anser should be 0 since they are orthogonal.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&lt;L|L&gt; =&quot;</span><span class="p">,</span><span class="n">L</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&lt;R|R&gt; =&quot;</span><span class="p">,</span><span class="n">R</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">R</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;&lt;L|R&gt; =&quot;</span><span class="p">,</span><span class="n">L</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">R</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -664,16 +628,16 @@ They are related to the computational basis as follows:</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "book"
         },
         kernelOptions: {
-            name: "python3",
+            name: "book",
             path: "./qubit"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'book'</script>
 
                 </article>
               
@@ -710,14 +674,16 @@ They are related to the computational basis as follows:</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1.1. Pure states</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-basis-sets">4.1.2. Standard Basis sets</a></li>
@@ -746,7 +712,7 @@ By Ryoichi Kawai
 
   <p class="copyright">
     
-      © Copyright Ryoichi Kawai 2022.
+      © Copyright 2026 Ryoichi Kawai. All rights reserved..
       <br/>
     
   </p>
@@ -770,8 +736,8 @@ By Ryoichi Kawai
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

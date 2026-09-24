@@ -16,44 +16,47 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=b27ccfa1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -67,6 +70,7 @@
     <link rel="prev" title="8.7. Quantum Fourier Transform" href="qft.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -82,19 +86,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -102,7 +95,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -110,8 +102,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -127,7 +119,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -157,21 +150,17 @@
     
     
     <img src="../_static/me-tiny.png" class="logo__image only-light" alt="A First Step to Quantum Computation with Qiskit. - Home"/>
-    <script>document.write(`<img src="../_static/me-tiny.png" class="logo__image only-dark" alt="A First Step to Quantum Computation with Qiskit. - Home"/>`);</script>
+    <img src="../_static/me-tiny.png" class="logo__image only-dark pst-js-only" alt="A First Step to Quantum Computation with Qiskit. - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -250,7 +239,6 @@
 <li class="toctree-l2"><a class="reference internal" href="deutsch.html">8.6. The Deutsch problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qft.html">8.7. Quantum Fourier Transform</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">8.8. Quantum Phase Estimation</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -264,9 +252,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -427,7 +420,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -441,25 +434,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -482,19 +467,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">8.8. Quantum Phase Estimation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">8.8.1. The problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-a-continuous-number-between-0-and-1">8.8.2. Encoding a continuous number between 0 and 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">8.8.3. The algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">8.8.4. Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#irrational-value">8.8.5. Irrational value</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.9. </a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">8.9.1. The algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">8.9.2. Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#irrational-value">8.9.3. Irrational value</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -522,13 +500,10 @@ U|\psi_\theta\rangle = e^{2 \pi i\theta} |\psi_\theta\rangle
 <p>The value we want to find is not integer.  How can we encode a continuous number between 0 and 1 in qubits? Since it is not possible to encode a true continuous number in digital computers, we approximate it.  In <a class="reference internal" href="walshhadamard.html#sec-walsh-hadamard"><span class="std std-numref">Section 8.4</span></a> we encoded integers between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2^n-1\)</span> in <span class="math notranslate nohighlight">\(n\)</span> qubits as <span class="math notranslate nohighlight">\(|j\rangle_n = |j_{n-1}\,j_{n-2}\,\cdots\,j_{0} \rangle\)</span>.  Noting that <span class="math notranslate nohighlight">\( 0 \le 2^n \theta &lt; 2^n\)</span>, we can encode <span class="math notranslate nohighlight">\(2^n \theta\)</span> as an integer state <span class="math notranslate nohighlight">\(|j\rangle_n\)</span>.  Then, <span class="math notranslate nohighlight">\(\theta = j/2^n\)</span>, which is not continuous and there is a gap of <span class="math notranslate nohighlight">\(2^{-n}\)</span>.  The gap decreases quickly as <span class="math notranslate nohighlight">\(n\)</span> increases.  If an accurate value of <span class="math notranslate nohighlight">\(\theta\)</span> is needed, we must use a large number of qubits.</p>
 <p>Our task is now to find the integer state <span class="math notranslate nohighlight">\(|j\rangle_n\)</span> corresponding to <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">8.9. </span><a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="the-algorithm">
-<h2><span class="section-number">8.9.1. </span>The algorithm<a class="headerlink" href="#the-algorithm" title="Link to this heading">#</a></h2>
-<p>The QPE algorithm was developed by Kitaev in 1995 <span id="id2">[<a class="reference internal" href="../references/references.html#id18" title="A. Yu. Kitaev. Quantum measurements and the abelian stabilizer problem. arXiv, pages quant-ph/9511026, 1995. doi:10.48550/ARXIV.QUANT-PH/9511026.">9</a>]</span>.</p>
-<p>We use <span class="math notranslate nohighlight">\(n+1\)</span> qubits.  The first <span class="math notranslate nohighlight">\(n\)</span> qubits are used to from  the computational basis <span class="math notranslate nohighlight">\(\ell\rangle_n\, \ell=0,\cdots, n-1\)</span> and <span class="math notranslate nohighlight">\(the remaining qubit stores \)</span>|psi\rangle$.
+<h2><span class="section-number">8.8.3. </span>The algorithm<a class="headerlink" href="#the-algorithm" title="Link to this heading">#</a></h2>
+<p>The QPE algorithm was developed by Kitaev in 1995 <code class="docutils literal notranslate"><span class="pre">Kitaev1995</span></code>.</p>
+<p>We use <span class="math notranslate nohighlight">\(n+1\)</span> qubits.  The first <span class="math notranslate nohighlight">\(n\)</span> qubits are used to from  the computational basis <span class="math notranslate nohighlight">\(\ell\rangle_n\, \ell=0,\cdots, n-1\)</span> and the remaining qubit stores <span class="math notranslate nohighlight">\(|psi\rangle\)</span>.
 The first step of our strategy is to create the following state:</p>
 <div class="math notranslate nohighlight" id="equation-qpe-step1">
 <span class="eqno">(8.18)<a class="headerlink" href="#equation-qpe-step1" title="Link to this equation">#</a></span>\[
@@ -540,25 +515,25 @@ The first step of our strategy is to create the following state:</p>
 \[
 |\Phi\rangle_{n+1} = \frac{1}{\sqrt{2^{n+1}}} \left(|0\rangle + |1\rangle\right) \otimes \cdots \otimes \left(|0\rangle + |1\rangle\right) \otimes |\psi\rangle
 \]</div>
-<p>Next we consider a controlled gate <span class="math notranslate nohighlight">\(CU^{2^i}\)</span> which applys the unitary operator <span class="math notranslate nohighlight">\(U\)</span> <span class="math notranslate nohighlight">\(2^i\)</span> times on <span class="math notranslate nohighlight">\(\psi\rangle\)</span> when <span class="math notranslate nohighlight">\(i\)</span>-th qubit is in <span class="math notranslate nohighlight">\(1\rangle\)</span> and does nothing otherwise.  For example, the <span class="math notranslate nohighlight">\(i\)</span>-th qubit is transformed as (only the <span class="math notranslate nohighlight">\(i\)</span>-qubit and <span class="math notranslate nohighlight">\(|psi\rangle\)</span> are shown)</p>
+<p>Next we consider a controlled gate <span class="math notranslate nohighlight">\(CU^{2^i}\)</span> which applies the unitary operator <span class="math notranslate nohighlight">\(U\)</span> <span class="math notranslate nohighlight">\(2^i\)</span> times on <span class="math notranslate nohighlight">\(\psi\rangle\)</span> when <span class="math notranslate nohighlight">\(i\)</span>-th qubit is in <span class="math notranslate nohighlight">\(1\rangle\)</span> and does nothing otherwise.  For example, the <span class="math notranslate nohighlight">\(i\)</span>-th qubit is transformed as (only the <span class="math notranslate nohighlight">\(i\)</span>-qubit and <span class="math notranslate nohighlight">\(|psi\rangle\)</span> are shown)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;= 
 |0\rangle \otimes |\psi\rangle + |1\rangle \otimes (U^{2^i}|\psi\rangle)
 = |0\rangle \otimes |\psi\rangle + |1\rangle \otimes (e^{2\pi i\, \theta\, 2^i} |\psi\rangle) \\
 &amp;= \left(|0\rangle + e^{2\pi i\, \theta\, 2^i} |1\rangle\right) \otimes |\psi\rangle
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>Applying the gate to all qubits (except for <span class="math notranslate nohighlight">\(|\psi\rangle\)</span>),</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 \overset{n-1}{\underset{i=0}{\Large\otimes}} CU^{2^i} |\Psi\rangle_{n+1}
 &amp;= \frac{1}{\sqrt{2^{n+1}}} \left(|0\rangle + e^{2\pi i\, \theta\,2^{n-1}}|1\rangle\right) \otimes \cdots \otimes \left(|0\rangle + e^{2\pi i\, \theta\,2^{0}}|1\rangle\right) \otimes |\psi\rangle \\
 &amp; =  \frac{1}{\sqrt{2^{n+1}}} \sum_{\ell=0}^{n-1} e^{2\pi i\, \theta\, \ell} |\ell\rangle \otimes |\psi\rangle =  \frac{1}{\sqrt{2^{n+1}}} \sum_{\ell=0}^{n-1} e^{2\pi i\, 2^n \theta\, \ell/2^n} |\ell\rangle \otimes |\psi\rangle \\
 &amp;= \mathcal{F}_{n} |2^n \theta\rangle \otimes |\psi\rangle
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>Recall that <span class="math notranslate nohighlight">\(2^n \theta\)</span> is an integer as discussed in <a class="reference internal" href="#ssec-binary-fraction"><span class="std std-numref">Section 8.8.2</span></a>.  Hence, we have Fourier transform of a computational basis.</p>
 <p>The final step is to apply inverse Fourier transform.</p>
@@ -567,10 +542,10 @@ CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;=
 \mathcal{F}^\dagger_{n} \cdot \overset{n-1}{\underset{i=0}{\Large\otimes}} CU^{2^i} |\Psi\rangle_{n+1} = \mathcal{F}^\dagger _{n} \mathcal{F}_{n} |2^n \theta\rangle \otimes |\psi\rangle =  |2^n \theta\rangle \otimes |\psi\rangle.
 \]</div>
 <p>We have obtained a desired state.  Suppose that we obtain <span class="math notranslate nohighlight">\(|j\rangle\)</span> up on the measurement with high probability, then <span class="math notranslate nohighlight">\(\theta = j/2^n\)</span>.</p>
-<p>If the number of qubits is not big enough, <span class="math notranslate nohighlight">\(2^n \theta\)</span> can deviate from any integer.  Nevertheless, the chance to find the nearest integer <span class="math notranslate nohighlight">\(j\)</span> is much high than other integers.  Thence, this algorithm gives us a good estimate of <span class="math notranslate nohighlight">\(\theta\)</span>.  See the discussion of the error in <span id="id3">[<a class="reference internal" href="../references/references.html#id5" title="M. A. Nielsen and I. L. Chuang. Quantum Computation and Quantum Information. Cambridge University Press, 2000. ISBN 0-521-63503-9.">10</a>]</span>.</p>
+<p>If the number of qubits is not big enough, <span class="math notranslate nohighlight">\(2^n \theta\)</span> can deviate from any integer.  Nevertheless, the chance to find the nearest integer <span class="math notranslate nohighlight">\(j\)</span> is much high than other integers.  Thence, this algorithm gives us a good estimate of <span class="math notranslate nohighlight">\(\theta\)</span>.  See the discussion of the error in <code class="docutils literal notranslate"><span class="pre">Nielsen2000</span></code>.</p>
 </section>
 <section id="example">
-<h2><span class="section-number">8.9.2. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.8.4. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <p>Consider a unitary operator <span class="math notranslate nohighlight">\(U = T^3\)</span>. <span class="math notranslate nohighlight">\(|1\rangle\)</span> is known to be its eigenket.  We want to find the phase of angle <span class="math notranslate nohighlight">\(\theta\)</span> of the corresponding eigenvalue.  Since the value of <span class="math notranslate nohighlight">\(\theta\)</span> is not known, we don’t know how many qubits are needed.  Let us try three qubits for the expression of <span class="math notranslate nohighlight">\(\theta\)</span> and another qubit for <span class="math notranslate nohighlight">\(|psi\rangle\)</span>.  We need also three classical bits for measurement. <span class="math notranslate nohighlight">\(T^3\)</span> can be realized by the pase gate <span class="math notranslate nohighlight">\(P(3\pi/4)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -610,7 +585,7 @@ CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/633e5dc83ecd0e384b9f33830318eafd647d9b9f34f57df30558924175cfd37e.png" src="../_images/633e5dc83ecd0e384b9f33830318eafd647d9b9f34f57df30558924175cfd37e.png" />
+<img alt="../_images/ec091069531e8753911c0307a17b99c17f10e84531d0b745b2500c0cdb53f113.png" src="../_images/ec091069531e8753911c0307a17b99c17f10e84531d0b745b2500c0cdb53f113.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -643,7 +618,7 @@ CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b4841213ee1103f94c7ab2a607478054d18a3834ea2aea45e2481b521faff0be.png" src="../_images/b4841213ee1103f94c7ab2a607478054d18a3834ea2aea45e2481b521faff0be.png" />
+<img alt="../_images/c997098b1a6f082c1bf10ed0b461b0c18511d7723179a1709804d4b7d4e42405.png" src="../_images/c997098b1a6f082c1bf10ed0b461b0c18511d7723179a1709804d4b7d4e42405.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -670,7 +645,7 @@ CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ee1008c8febac5c5ec52eb118462c065fa0988ee980b11856240b27343367b5f.png" src="../_images/ee1008c8febac5c5ec52eb118462c065fa0988ee980b11856240b27343367b5f.png" />
+<img alt="../_images/e42b57b295d7b3ae72bcf1ae70dcb8786efb91f0c411c80040d8caa109ef9d27.png" src="../_images/e42b57b295d7b3ae72bcf1ae70dcb8786efb91f0c411c80040d8caa109ef9d27.png" />
 </div>
 </div>
 <p>We obtain <span class="math notranslate nohighlight">\(|011\rangle = |3\rangle_3\)</span>  with unit probability.   The quantum algorithm has selected <span class="math notranslate nohighlight">\(j=3\)</span> out of 8 integers. Hence, <span class="math notranslate nohighlight">\(\theta = 3 / 2^3 = 3/8\)</span>.  The result is in perfect agreement with the actual eigenvalue <span class="math notranslate nohighlight">\(e^{i \pi 3/4} = e^{2\pi i 3/8}\)</span>.</p>
@@ -751,14 +726,14 @@ CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/89ca166b25313215adfabc5e6d43c1a117dea6e04e36575569fe2b640ed51828.png" src="../_images/89ca166b25313215adfabc5e6d43c1a117dea6e04e36575569fe2b640ed51828.png" />
+<img alt="../_images/9ad45a02c0af8f40655b25372333859d044003824a42d22faca8dfd40d562759.png" src="../_images/9ad45a02c0af8f40655b25372333859d044003824a42d22faca8dfd40d562759.png" />
 </div>
 </div>
 <p>Now we got <span class="math notranslate nohighlight">\(|0110\rangle = |6\rangle\)</span> from which we find <span class="math notranslate nohighlight">\(\theta = 6/2^4 = 3/8\)</span>.  The result does not change.</p>
 </section>
 <section id="irrational-value">
-<h2><span class="section-number">8.9.3. </span>Irrational value<a class="headerlink" href="#irrational-value" title="Link to this heading">#</a></h2>
-<p>If the eigenvalue is <span class="math notranslate nohighlight">\(e^{2\pi i /3}\)</span>, <span class="math notranslate nohighlight">\(theta=1/3\)</span> cannot be expressed by the finite binary fractions and thus it is not possible to get the perfect answer using the current algorithm.  Let us consider <span class="math notranslate nohighlight">\(U=P(2\pi/3)\)</span> and <span class="math notranslate nohighlight">\(\psi\rangle=|1\rangle\)</span>.</p>
+<h2><span class="section-number">8.8.5. </span>Irrational value<a class="headerlink" href="#irrational-value" title="Link to this heading">#</a></h2>
+<p>If the eigenvalue is <span class="math notranslate nohighlight">\(e^{2\pi i /3}\)</span>, <span class="math notranslate nohighlight">\(\theta=1/3\)</span> cannot be expressed by the finite binary fractions and thus it is not possible to get the perfect answer using the current algorithm.  Let us consider <span class="math notranslate nohighlight">\(U=P(2\pi/3)\)</span> and <span class="math notranslate nohighlight">\(\psi\rangle=|1\rangle\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -835,7 +810,7 @@ CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;=
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/138177d228a9c8a2a5c05313e26ad4ba6afb71933afb53b1fcc4df8415d0658e.png" src="../_images/138177d228a9c8a2a5c05313e26ad4ba6afb71933afb53b1fcc4df8415d0658e.png" />
+<img alt="../_images/54d52a037aebc6fd9dcdc5de0615c8ff99b5ccaf8eccd34305e3a9bb643cfd4e.png" src="../_images/54d52a037aebc6fd9dcdc5de0615c8ff99b5ccaf8eccd34305e3a9bb643cfd4e.png" />
 </div>
 </div>
 <p>Clearly <span class="math notranslate nohighlight">\(|0101\rangle = |5\rangle\)</span> is dominant. It corresponds to <span class="math notranslate nohighlight">\(\theta = 5/2^4 = 0.3125\)</span>.  The exact answer is <span class="math notranslate nohighlight">\(1/3=0.3333...\)</span>.  The agreement is not bad and the error can be reduced by using more qubits.</p>
@@ -853,16 +828,16 @@ CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;=
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "book"
         },
         kernelOptions: {
-            name: "python3",
+            name: "book",
             path: "./algorithms"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'book'</script>
 
                 </article>
               
@@ -899,28 +874,23 @@ CU^{2^i} \left(|0\rangle + |1\rangle\right)_i \otimes |\psi\rangle &amp;=
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">8.8. Quantum Phase Estimation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">8.8.1. The problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-a-continuous-number-between-0-and-1">8.8.2. Encoding a continuous number between 0 and 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">8.8.3. The algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">8.8.4. Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#irrational-value">8.8.5. Irrational value</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.9. </a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">8.9.1. The algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">8.9.2. Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#irrational-value">8.9.3. Irrational value</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
@@ -944,7 +914,7 @@ By Ryoichi Kawai
 
   <p class="copyright">
     
-      © Copyright Ryoichi Kawai 2022.
+      © Copyright 2026 Ryoichi Kawai. All rights reserved..
       <br/>
     
   </p>
@@ -968,8 +938,8 @@ By Ryoichi Kawai
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

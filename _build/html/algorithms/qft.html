@@ -16,44 +16,47 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyles.css?v=b27ccfa1" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -67,6 +70,7 @@
     <link rel="prev" title="8.6. The Deutsch problem" href="deutsch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -82,19 +86,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -102,7 +95,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -110,8 +102,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -127,7 +119,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -157,21 +150,17 @@
     
     
     <img src="../_static/me-tiny.png" class="logo__image only-light" alt="A First Step to Quantum Computation with Qiskit. - Home"/>
-    <script>document.write(`<img src="../_static/me-tiny.png" class="logo__image only-dark" alt="A First Step to Quantum Computation with Qiskit. - Home"/>`);</script>
+    <img src="../_static/me-tiny.png" class="logo__image only-dark pst-js-only" alt="A First Step to Quantum Computation with Qiskit. - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -250,7 +239,6 @@
 <li class="toctree-l2"><a class="reference internal" href="deutsch.html">8.6. The Deutsch problem</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">8.7. Quantum Fourier Transform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qpe.html">8.8. Quantum Phase Estimation</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -264,9 +252,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -427,7 +420,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -441,25 +434,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -568,25 +553,25 @@ First, we compute Eq. <a class="reference internal" href="#equation-qft">(8.12)<
 Let us consider <span class="math notranslate nohighlight">\(n=1\)</span>, the simplest QFT transforms the computational basis <span class="math notranslate nohighlight">\(0\rangle\)</span> and <span class="math notranslate nohighlight">\(|1\rangle\)</span> as</p>
 <div class="math notranslate nohighlight" id="equation-qft2">
 <span class="eqno">(8.13)<a class="headerlink" href="#equation-qft2" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{align}
+\begin{aligned}
 \mathcal{F}_2 |u_0\rangle &amp;= \mathcal{F}_2 |0\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle +  e^{i 0} |1\rangle\right) = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right)\\
 \mathcal{F}_2 |u_1\rangle &amp;= \mathcal{F}_2 |1\rangle = \frac{1}{\sqrt{2}} \left(|0\rangle + e^{i \pi}|1\rangle\right) = \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right).
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>We want to find a quantum circuit that does the same transformation. Recalling that</p>
 <div class="math notranslate nohighlight" id="equation-hgate-as-qft2">
 <span class="eqno">(8.14)<a class="headerlink" href="#equation-hgate-as-qft2" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{align}
+\begin{aligned}
 H |0\rangle &amp;= \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
 H |1\rangle &amp;= \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) 
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>By direct comparison between Eqs. <a class="reference internal" href="#equation-qft2">(8.13)</a> and <a class="reference internal" href="#equation-hgate-as-qft2">(8.14)</a>, it is clear that <span class="math notranslate nohighlight">\(\mathcal{F}_2 = H\)</span>. We learned in <a class="reference internal" href="../q1gates/h.html#sec-hgate"><span class="std std-numref">Section 5.10</span></a> that the Hadamard gate transforms the computational basis to the <span class="math notranslate nohighlight">\(x\)</span>-basis. That transformation turned out to be the lowest order QFT and  we have already computed it.   See <a class="reference internal" href="../q1gates/h.html#sec-hgate-qft"><span class="std std-numref">Section 5.10.2</span></a>.</p>
 <p><strong>N=4</strong></p>
 <p>We need more examples to get an idea of <span class="math notranslate nohighlight">\(\mathcal{F}_N\)</span>..  Let us try <span class="math notranslate nohighlight">\(n=2\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-qft4">
 <span class="eqno">(8.15)<a class="headerlink" href="#equation-qft4" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{align}
+\begin{aligned}
 \mathcal{F}_2 |u_0\rangle &amp;=\mathcal{F}_2 |00\rangle = \frac{1}{2} \left(|00\rangle + |01\rangle  +|10\rangle + |11\rangle\right)\\ &amp;= \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \otimes
 \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
 \mathcal{F}_2 |u_1\rangle &amp;= \mathcal{F}_2 |01\rangle = \frac{1}{2} \left(|00\rangle + e^{i \pi/2}|01\rangle + e^{i \pi}|10\rangle + e^{i 3\pi/2}|11\rangle \right)\\
@@ -597,20 +582,20 @@ H |1\rangle &amp;= \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right)
 \mathcal{F}_2 |u_3\rangle &amp;= \mathcal{F}_2 |11\rangle = \frac{1}{2} \left(|00\rangle + e^{i 3\pi/2}|01\rangle + e^{3 i \pi}|10\rangle + e^{i 9 \pi/2} |11\rangle \right) \\
 &amp;= \frac{1}{2} \left(|00\rangle - i|01\rangle - |10\rangle + i |11\rangle \right) \\
 &amp;=  \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) \otimes \frac{1}{\sqrt{2}} \left(|0\rangle -i |1\rangle\right)
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>The corresponding quantum circuit seems complicated since phase factor <span class="math notranslate nohighlight">\(\pm i\)</span> are now involved.  We recall that <span class="math notranslate nohighlight">\(S\)</span> gate does the job.</p>
 <div class="math notranslate nohighlight" id="equation-s-h-gates">
 <span class="eqno">(8.16)<a class="headerlink" href="#equation-s-h-gates" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{align}
+\begin{aligned}
 S \cdot H |0\rangle &amp;= \frac{1}{\sqrt{2}}\left(|0\rangle + i |1\rangle\right) \\
 S \cdot H |1\rangle &amp;= \frac{1}{\sqrt{2}}\left(|0\rangle - i |1\rangle\right) 
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>Using eqs. <a class="reference internal" href="#equation-hgate-as-qft2">(8.14)</a> and <a class="reference internal" href="#equation-s-h-gates">(8.16)</a>, we try the following transformations</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
+\begin{aligned}
 H \otimes H |00\rangle &amp; = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \otimes
 \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
 (S\cdot H) \otimes H |01\rangle &amp; = \frac{1}{\sqrt{2}}\left(|0\rangle + i |1\rangle\right)  \otimes
@@ -619,12 +604,12 @@ H \otimes H |10\rangle &amp; = \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\ri
 \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
 (S\cdot H) \otimes H |11\rangle &amp; = \frac{1}{\sqrt{2}}\left(|0\rangle - i |1\rangle\right)  \otimes
  \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) 
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>The results are close to the Fourier transform but the order of the output bits are wrong.  We need to swap the qubits.  Another issue is that <span class="math notranslate nohighlight">\(S\)</span> gates is applied to <span class="math notranslate nohighlight">\(|01\rangle\)</span> and <span class="math notranslate nohighlight">\(|11\rangle\)</span>.  Noting that the second qubit is <span class="math notranslate nohighlight">\(1\rangle\)</span>.  Hence, we can use the controlled-S gate with the second qubit as the control.</p>
 <div class="math notranslate nohighlight" id="equation-qft4-gates">
 <span class="eqno">(8.17)<a class="headerlink" href="#equation-qft4-gates" title="Link to this equation">#</a></span>\[\begin{split}
-\begin{align}
+\begin{aligned}
 SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H) |00\rangle &amp; = \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \otimes
 \frac{1}{\sqrt{2}} \left(|0\rangle + |1\rangle\right) \\
 SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H)  |01\rangle &amp; = \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) \otimes  \frac{1} {\sqrt{2}}\left(|0\rangle + i |1\rangle\right) 
@@ -633,7 +618,7 @@ SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H) |10\rangle  &amp; = \frac{
  \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right) \\
 SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H) |11\rangle &amp; =  \frac{1}{\sqrt{2}} \left(|0\rangle - |1\rangle\right)   \otimes
 \frac{1}{\sqrt{2}}\left(|0\rangle - i |1\rangle\right)
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>Now, the Fourier transform <a class="reference internal" href="#equation-qft4">(8.15)</a> and The circhuit <a class="reference internal" href="#equation-qft4-gates">(8.17)</a> produces the same outputs.  Hence, <span class="math notranslate nohighlight">\(\mathcal{F}_4 = SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H)\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
@@ -658,7 +643,7 @@ SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H) |11\rangle &amp; =  \frac{
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/3f7a26d8e7cf96e19971086625807b622d5444b447bc11ce0bf58f2b1e4bb1f2.png" src="../_images/3f7a26d8e7cf96e19971086625807b622d5444b447bc11ce0bf58f2b1e4bb1f2.png" />
+<img alt="../_images/60791bbd5e8faa31f379fdbd362d0c42ee97f152fc0baa7783e7d0b99553a4e0.png" src="../_images/60791bbd5e8faa31f379fdbd362d0c42ee97f152fc0baa7783e7d0b99553a4e0.png" />
 </div>
 </div>
 <p>In the following example, all four transformations <a class="reference internal" href="#equation-qft2">(8.13)</a> are computed using Qiskit.</p>
@@ -775,18 +760,22 @@ SWAP \cdot (H \otimes I) \cdot CS \cdot (I \otimes H) |11\rangle &amp; =  \frac{
 <p>Now we have some good idea about QFT. Now, we try to find <span class="math notranslate nohighlight">\(\mathcal{F}_N\)</span>.  The derivation is a bit complicated but the extension of the <span class="math notranslate nohighlight">\(N=4\)</span> case.  First, we evaluate <span class="math notranslate nohighlight">\(\mathcal{F}_N |j\rangle\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align}
-\mathcal{F}_N |j\rangle  = \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} e^{2\pi i\, j\, k /2^n} |k\rangle \\
+\begin{aligned}
+\mathcal{F}_N |j\rangle  &amp; = \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} e^{2\pi i\, j\, k /2^n} |k\rangle \\
 &amp; = \sum_{k=0}^{N-1} e^{2\pi i\, j\,\sum_{\ell=1}^{n} k_\ell/2^\ell} |k_1\, k_2\, \cdots\, k_n \rangle \\
-&amp; = \left (\sum_{k_1=0}^1 e^{2 \pi i\, j\, k_1/2} |k_1\rangle\right) \otimes \left (\sum_{k_2=0}^1 e^{2 \pi i\, j, k_2/2^2} |k_2\rangle\right)\otimes \cdots \otimes \left (\sum_{k_n=0}^1 e^{2 \pi i\,j\' k_n/2^n} |k_n\rangle\right) \\
+&amp; = \left (\sum_{k_1=0}^1 e^{2 \pi i\, j\, k_1/2} |k_1\rangle\right) \otimes \left (\sum_{k_2=0}^1 e^{2 \pi i\, j, k_2/2^2} |k_2\rangle\right)\otimes \cdots \otimes \left (\sum_{k_n=0}^1 e^{2 \pi i\,j\, k_n/2^n} |k_n\rangle\right) \\
 &amp; = \left(|0\rangle + e^{2 \pi i\, j /2} |1\rangle \right) \otimes \left(|0\rangle + e^{2 \pi i\, j /2^2 } |1\rangle \right) \otimes \cdots \otimes \left(|0\rangle + e^{2 \pi i\, j /2^n}|1\rangle \right) 
-\end{align}
+\end{aligned}
 \end{split}\]</div>
 <p>The results look quite similar to Eq. <a class="reference internal" href="#equation-qft4">(8.15)</a>.  Only the difference is the phase angles.  The question is how we calculate the phase angle. Let us take a closer look at a phase factor <span class="math notranslate nohighlight">\(e^{2 \pi i\, j /2^k},\, 1 \le k \le n\)</span>.  Using Eq. <a class="reference internal" href="#equation-decimal-binary">(8.11)</a>,</p>
 <div class="math notranslate nohighlight">
-\[
-e^{2\pi i\, j /2^k} = e^{2 \pi i\, \sum_{\ell=1}^{n} 2^{\ell-1-k} j_\ell } = e^{2\pi i , j_1 /2^k} e^{2\pi i\,j_2/2^{k-1}} \cdots e^{2\pi i\, j_k/2} e^{2 \pi i j_{k+1}} \cdots e^{2\pi i\, j_{n} (n-1-k)} = e^{2\pi i\, j_1/2^k} e^{2\pi i\, j_2 /2^{k-1}} \cdots e^{2\pi i\, j_k/2}
-\]</div>
+\[\begin{split}
+\begin{aligned}
+e^{2\pi i\, j /2^k} &amp; = e^{2 \pi i\, \sum_{\ell=1}^{n} 2^{\ell-1-k} j_\ell } \\
+&amp; = e^{2\pi i , j_1 /2^k} e^{2\pi i\,j_2/2^{k-1}} \cdots e^{2\pi i\, j_k/2} e^{2 \pi i j_{k+1}} \cdots e^{2\pi i\, j_{n} (n-1-k)}\\
+&amp;= e^{2\pi i\, j_1/2^k} e^{2\pi i\, j_2 /2^{k-1}} \cdots e^{2\pi i\, j_k/2}
+\end{aligned}
+\end{split}\]</div>
 <p>We need to apply the phase rotation of angle <span class="math notranslate nohighlight">\(k\)</span> different phase angle <span class="math notranslate nohighlight">\(2\pi j_\ell /2^{ell-1-k},\, 1 \le \ell \le k\)</span>.  No rotation is needed when <span class="math notranslate nohighlight">\(\ell &gt; k\)</span> or <span class="math notranslate nohighlight">\(j_\ell=0\)</span>.  Hence, we apply the controlled phase gate <span class="math notranslate nohighlight">\(CP(2\pi/2^{\ell-1-k})\)</span> only when <span class="math notranslate nohighlight">\(j_\ell=0\)</span>.  In conclusion, apply <span class="math notranslate nohighlight">\(H\)</span> to <span class="math notranslate nohighlight">\(k\)</span>-th qubit and apply controlled-<span class="math notranslate nohighlight">\(P\)</span> gate  <span class="math notranslate nohighlight">\(k\)</span> times with appropriate angles.  Repeat this from <span class="math notranslate nohighlight">\(k=n\)</span> to <span class="math notranslate nohighlight">\(k=1\)</span> in the backward so that source qubits of controlled <span class="math notranslate nohighlight">\(P\)</span> gate is not modified before the controlled operation.  As you saw in <span class="math notranslate nohighlight">\(\mathcal{F}_4\)</span>, the order of the qubits is wrong after these operations.  Hence, we reverse the order by applying swap gates.</p>
 <p>The following circuit is equivalent to <span class="math notranslate nohighlight">\(\mathcal{F}_8\)</span></p>
 <div class="cell docutils container">
@@ -825,7 +814,7 @@ e^{2\pi i\, j /2^k} = e^{2 \pi i\, \sum_{\ell=1}^{n} 2^{\ell-1-k} j_\ell } = e^{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/54b29247eef0e70c9b38641d3cc0b41376c11e934072ff3c3a19dd90216176a3.png" src="../_images/54b29247eef0e70c9b38641d3cc0b41376c11e934072ff3c3a19dd90216176a3.png" />
+<img alt="../_images/1d18a564540d61c6890ecbeb346f3d51b218fccfc9bb2d1108de1ae3671f8bfa.png" src="../_images/1d18a564540d61c6890ecbeb346f3d51b218fccfc9bb2d1108de1ae3671f8bfa.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -842,16 +831,16 @@ e^{2\pi i\, j /2^k} = e^{2 \pi i\, \sum_{\ell=1}^{n} 2^{\ell-1-k} j_\ell } = e^{
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "book"
         },
         kernelOptions: {
-            name: "python3",
+            name: "book",
             path: "./algorithms"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'book'</script>
 
                 </article>
               
@@ -888,14 +877,16 @@ e^{2\pi i\, j /2^k} = e^{2 \pi i\, \sum_{\ell=1}^{n} 2^{\ell-1-k} j_\ell } = e^{
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-fourier-transform">8.7.1. Discrete Fourier Transform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-qft-algorithm">8.7.2. The QFT algorithm</a></li>
@@ -923,7 +914,7 @@ By Ryoichi Kawai
 
   <p class="copyright">
     
-      © Copyright Ryoichi Kawai 2022.
+      © Copyright 2026 Ryoichi Kawai. All rights reserved..
       <br/>
     
   </p>
@@ -947,8 +938,8 @@ By Ryoichi Kawai
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
