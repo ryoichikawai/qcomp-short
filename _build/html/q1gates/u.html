@@ -498,7 +498,7 @@ U(\theta,\phi,\lambda) |1\rangle &amp;= - e^{i \phi} \left[\sin(\theta/2) |0\ran
 <p><strong>Matrix expression</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-U(\theta,\phi,\lambda) \doteq \begin{bmatrix} \cos(\theta/2) &amp; - e^{i \phi} \sin(\theta/2) \\ e^{i \lambda} \sin(\theta/2) &amp; e^{i (\lambda+\phi)} \cos(\theta/2)\end{bmatrix}
+U(\theta,\phi,\lambda) \doteq \begin{bmatrix} \cos(\theta/2) &amp; e^{i \phi} \sin(\theta/2) \\ - e^{i  \phi} \sin(\theta/2) &amp; e^{i (\lambda+\phi)} \cos(\theta/2)\end{bmatrix}
 \end{split}\]</div>
 <p><strong>Using Rotation gates</strong></p>
 <p>The <span class="math notranslate nohighlight">\(U\)</span> gate used to be defined as <span class="math notranslate nohighlight">\(U(\theta,\phi,\lambda)=R_z(\phi) R_y(\theta) R_z(\lambda)\)</span>. (See <a class="reference external" href="https://doi.org/10.48550/arXiv.1707.03429">OpenQASM 2</a>.)  However, it adds a global phase on the Bloch sphere expression. To remove the inconvenience, now it is officially defined in <a class="reference external" href="https://openqasm.com/language/gates.html#built-in-gates">OpenQASM 3</a> as</p>
@@ -565,15 +565,15 @@ q: ┤ U(θ,ϕ,λ) ├
 <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>  <span class="c1"># create a quantum circuit</span>
 
 <span class="c1">#  apply the Ugate to the qubit</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">u</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">u</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Plot the final state</span>
-<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;bloch&#39;</span><span class="p">)</span>
+<span class="n">Statevector</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;bloch&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/37b9675c7c0f900eff82a3b66fd4f3a2302bdb70f578e1c420d2517fc3da6dd2.png" src="../_images/37b9675c7c0f900eff82a3b66fd4f3a2302bdb70f578e1c420d2517fc3da6dd2.png" />
+<img alt="../_images/28ad7085325b25e731b809db4885f0293fea378fddc45b6c8b6d288c43b9845d.png" src="../_images/28ad7085325b25e731b809db4885f0293fea378fddc45b6c8b6d288c43b9845d.png" />
 </div>
 </div>
 </section>
