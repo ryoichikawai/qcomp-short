@@ -6,29 +6,29 @@ mailto:kawai@uab.edu
 https://kawaihome.link
 
 
-This lecture note is still under construction.  The contents change everyday.  There are many errors and misleading statements, which will be fixed after all chapters are added.  It is still a long way to go.
+This lecture note was originally written in 2020 for an on-line course but the course was cancelled due to the COVID pandemic. The lecture note was never completed and updated slowly.  In 2022, the development was completely terminated due to my retirement.  At that time, `qiskit` was still in its early stage.  Since then, `qiskirt` has changed significantly.  Many examples in the original lecture note were not compatible with the new version of `qiskit`.  I had no plan to update them,  but recently I made quick changes so that the example codes work in `qiskit 2.5`.  I hope it helps some people to learn quantum computing.
 
-Copyright © 2022 Ryoichi Kawai. All rights reserved.
+Copyright © 2026 Ryoichi Kawai. All rights reserved.
 
+```{important} MIT License
 
+Copyright (c) 2026 Ryoichi Kawai
 
-**Terms of Use and Reproduction Policy**
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-These lecture notes are provided strictly for the personal, educational use of students enrolled in University of Alabama at Birmingham. No part of this document may be reproduced, distributed, shared, or transmitted in any form or by any means—including photocopying, recording, or other electronic or mechanical methods—without the prior written permission of the author.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-Prohibited actions include, but are not limited to:
-
-Uploading this material, in whole or in part, to third-party document-sharing platforms (e.g., Course Hero, Chegg, GitHub, Discord) without a permission.
-
-Distributing copies to individuals not currently enrolled in the course.
-
-Using the materials for any commercial purpose.
-
-Altering the content and presenting it as your own original work.
-
-Any unauthorized distribution of these materials may constitute a violation of university academic integrity policies and federal copyright law.
-
-
-
-**Disclaimer**
-These materials are provided "as is" and without warranties of any kind, either express or implied. While every effort has been made to ensure the accuracy and completeness of the mathematical derivations, theoretical explanations, and general information contained within these notes, the author assumes no responsibility for typographical errors, omissions, or any consequences resulting from the use of this material.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
